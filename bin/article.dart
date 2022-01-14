@@ -2,29 +2,37 @@ import 'reaction_type.dart';
 
 class Article {
   final String title;
-  final String link;
+  final String articleLink;
+  final String pictureLink;
+  final String authorAvatarLink;
+  final String authorName;
   final String description;
   final int id;
-  final int bookmarkCount;
-  final int commentCount;
-  late final Map<ReactionType, int> reactions;
+  int bookmarkCount;
+  int commentCount;
+  late Map<ReactionType, int> reactions;
 
   Article({
     required this.title,
-    required this.link,
+    required this.articleLink,
+    required this.pictureLink,
+    required this.authorAvatarLink,
+    required this.authorName,
     required this.description,
     required this.id,
     this.bookmarkCount = 0,
     this.commentCount = 0,
-    Map<ReactionType, int>? reactions,
   }) {
-    this.reactions = reactions ?? { for (final type in ReactionType.values) type: 0 };
+    reactions = { for (final type in ReactionType.values) type: 0 };
   }
 
   @override
   String toString() => 'Article {'
     'title: "$title", '
-    'link: "$link", '
+    'articleLink: "$articleLink", '
+    'pictureLink: "$pictureLink", '
+    'authorAvatarLink: "$authorAvatarLink", '
+    'authorName: "$authorName", '
     'description: "$description", '
     'id: $id, '
     'bookmarkCount: $bookmarkCount, '

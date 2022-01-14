@@ -9,19 +9,19 @@ Future<String> loadArticleListPageContent() async {
   return response.body;
 }
 
-Future<dynamic> loadCommentCount(Iterable<Article> articles, String ids) async {
+Future<dynamic> loadCommentCount(String ids) async {
   final uri = Uri.https(host, '/wp-node/comments/count/posts', { 'ids': ids });
   final response = await get(uri);
   return json.decode(response.body);
 }
 
-Future<dynamic> loadBookmarkCount(Iterable<Article> articles, String ids) async {
+Future<dynamic> loadBookmarkCount(String ids) async {
   final uri = Uri.https(host, '/wp-node/bookmark/posts', { 'ids': ids });
   final response = await get(uri);
   return json.decode(response.body);
 }
 
-Future<dynamic> loadReactions(Iterable<Article> articles, String ids) async {
+Future<dynamic> loadReactions(String ids) async {
   final uri = Uri.https(host, '/wp-node/reaction/posts', { 'ids': ids });
   final response = await get(uri);
   return json.decode(response.body);

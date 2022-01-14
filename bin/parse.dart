@@ -3,13 +3,18 @@ import 'article_parser.dart';
 import 'http_service.dart';
 
 Future<void> main() async {
+  await getArticleList();
+}
+
+Future<void> getArticleList() async {
   final html = await loadArticleListPageContent();
-
   final baseArticles = parseArticleListPage(html);
-  print(baseArticles);
-
-  final articles = loadArticles(baseArticles);
-  print(articles);
+  final articles = await loadArticles(baseArticles);
+  
+  // for (final article in articles) {
+  //   print('=' * 10);
+  //   print(article);
+  // }
 }
 
 
