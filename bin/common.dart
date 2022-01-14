@@ -1,0 +1,1 @@
+const host = 'tproger.ru';
