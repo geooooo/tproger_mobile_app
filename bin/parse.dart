@@ -1,21 +1,33 @@
-import 'articles_loader.dart';
-import 'article_parser.dart';
-import 'http_service.dart';
+import 'package:http/http.dart';
+import 'package:tproger_mobile_app/src/models/article/article.dart';
+import 'package:tproger_mobile_app/src/services/article_list_loader.dart';
+import 'package:tproger_mobile_app/src/services/article_list_page_parser.dart';
+import 'package:tproger_mobile_app/src/services/http_service.dart';
 
 Future<void> main() async {
-  await getArticleList();
+  final httpService = HttpService(Client());
+  final articleListPageParser = ArticleListPageParser();
+  final articleListLoader = ArticleListLoader(articleListPageParser, httpService);
+
+  try {
+    final articles = await articleListLoader.load();
+
+    for (final article in articles) {
+      print('=' * 10);
+      print(article);
+    }
+  } on Exception catch (error, stackTrace) {
+    print([error, stackTrace]);
+  }
+
+  httpService.close();
 }
 
-Future<void> getArticleList() async {
-  final html = await loadArticleListPageContent();
-  final baseArticles = parseArticleListPage(html);
-  final articles = await loadArticles(baseArticles);
-  
-  // for (final article in articles) {
-  //   print('=' * 10);
-  //   print(article);
-  // }
-}
+// Future<void> getArticleList() async {
+//   final html = await loadArticleListPageContent();
+//   final baseArticles = parseArticleListPage(html);
+//   final articles = await loadArticles(baseArticles);
+// }
 
 
 

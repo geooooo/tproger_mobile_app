@@ -17,6 +17,6 @@ class ReactionType {
 
   const ReactionType._(this._value);
 
-  factory ReactionType.fromInt(int value) =>
+  factory ReactionType.fromId(int value) =>
     values.firstWhere((element) => element._value == value);
 }
