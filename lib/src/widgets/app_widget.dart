@@ -1,8 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:tproger_mobile_app/src/models/article/article.dart';
+import 'package:tproger_mobile_app/src/services/article_list_loader.dart';
+import 'package:tproger_mobile_app/src/services/article_list_page_parser.dart';
+import 'package:tproger_mobile_app/src/services/http_service.dart';
 import 'package:tproger_mobile_app/src/widgets/article_widget.dart';
 
-class AppWidget extends StatelessWidget {
+class AppWidget extends StatefulWidget {
   const AppWidget({Key? key}): super(key: key);
+
+  @override
+  State<AppWidget> createState() => _AppWidgetState();
+}
+
+class _AppWidgetState extends State<AppWidget> {
+  List<Article> articles = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    _loadArticles();
+  }
 
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -10,23 +29,14 @@ class AppWidget extends StatelessWidget {
     home: SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromRGBO(12, 17, 17, 1),
-        body: SizedBox(
+        body: Container(
+          padding: const EdgeInsets.all(8),
           width: double.infinity,
           height: double.infinity,
           child: LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) => SingleChildScrollView(
-              child: Container(
-                width: constraints.maxWidth,
-                height: constraints.maxHeight,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20 / 2,
-                  vertical: 24,
-                ),
-                child: Column(
-                  children: const [
-                    ArticleWidget(),
-                  ],
-                ),
+              child: Column(
+                children: _buildArticlesList(),
               ),
             ),
           ),
@@ -34,4 +44,28 @@ class AppWidget extends StatelessWidget {
       ),
     ),
   );
+
+  Future<void> _loadArticles() async {
+    final client = Client();
+    final httpService = HttpService(client);
+    final articleListPageParser = ArticleListPageParser();
+    final articleListLoader = ArticleListLoader(articleListPageParser, httpService);
+
+    final articles = await articleListLoader.load();
+
+    setState(() => this.articles = articles);
+  }
+
+  List<Widget> _buildArticlesList() => articles.map((article) => [
+    ArticleWidget(
+      authorName: article.authorName,
+      authorAvatarLink: article.authorAvatarLink,
+      title: article.title,
+      description: article.description,
+      imageLink: article.imageLink,
+      bookmarkCount: article.bookmarkCount,
+      commentCount: article.commentCount,
+    ),
+    if (article != articles.last) const SizedBox(height: 20),
+  ]).expand((items) => items).toList();
 }

@@ -1,16 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:tproger_mobile_app/src/widgets/article_footer.dart';
-import 'package:tproger_mobile_app/src/widgets/author_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_content_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_footer_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_author_widget.dart';
 
 class ArticleWidget extends StatelessWidget {
-  const ArticleWidget({Key? key}): super(key: key);
+  final String title;
+  final String description;
+  final int bookmarkCount;
+  final int commentCount;
+  final String? authorName;
+  final String? authorAvatarLink;
+  final String? imageLink;
+
+  const ArticleWidget({
+    required this.title,
+    required this.description,
+    required this.bookmarkCount,
+    required this.commentCount,
+    this.authorName,
+    this.authorAvatarLink,
+    this.imageLink,
+    Key? key,
+  }): super(key: key);
   
   @override
   Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.symmetric(
-      horizontal: 38 / 2,
-      vertical: 18,
-    ),
+    padding: const EdgeInsets.all(16),
     width: double.infinity,
     decoration: BoxDecoration(
       border: Border.all(
@@ -21,14 +36,24 @@ class ArticleWidget extends StatelessWidget {
       color: const Color.fromRGBO(24, 29, 28, 1),
     ),
     child: Column(
-      children: const [
-        AuthorWidget(
-          authorName: 'Вадим Бордик',
-          avatarLink: 'https://tproger.ru/s3/uploads/2021/12/iconfinder-icon-70-cover-icon-4x.png',
+      children: [
+        if (authorName != null) ...[
+          ArticleAuthorWidget(
+            authorName: authorName!,
+            avatarLink: authorAvatarLink!,
+          ),
+          const SizedBox(height: 18),
+        ],
+        ArticleContentWidget(
+          title: title,
+          description: description,
+          imageLink: imageLink,
         ),
-        SizedBox(height: 18),
-
-        ArticleFooter(),
+        const SizedBox(height: 18),
+        ArticleFooterWidget(
+          commentCount: commentCount,
+          bookmarkCount: bookmarkCount,
+        ),
       ],
     ),
   );

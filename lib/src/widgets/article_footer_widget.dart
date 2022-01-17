@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:tproger_mobile_app/src/widgets/bookmark_button_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/comment_button_widget.dart';
-import 'package:tproger_mobile_app/src/widgets/reactions_widget.dart';
 
-class ArticleFooter extends StatelessWidget {
-  const ArticleFooter({Key? key}): super(key: key);
+class ArticleFooterWidget extends StatelessWidget {
+  final int bookmarkCount;
+  final int commentCount;
+
+  const ArticleFooterWidget({
+    required this.bookmarkCount,
+    required this.commentCount,
+    Key? key,
+  }): super(key: key);
 
   @override
   Widget build(BuildContext context) => Row(
@@ -13,14 +19,12 @@ class ArticleFooter extends StatelessWidget {
       Flexible(
         child: Row(
           children: [
-            BookmarkButtonWidget(),
-            CommentButtonWidget(),
+            BookmarkButtonWidget(count: bookmarkCount),
+            const SizedBox(width: 25),
+            CommentButtonWidget(count: commentCount),
           ],
         ),
       ),
-      Flexible(
-        child: ReactionsWidget(),
-      )
     ],
   );
 }

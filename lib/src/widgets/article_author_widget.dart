@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class AuthorWidget extends StatelessWidget {
+class ArticleAuthorWidget extends StatelessWidget {
   final String avatarLink;
   final String authorName;
 
-  const AuthorWidget({
+  const ArticleAuthorWidget({
     required this.avatarLink,
     required this.authorName,
     Key? key,
@@ -31,7 +31,14 @@ class AuthorWidget extends StatelessWidget {
         authorName,
         style: const TextStyle(
           fontSize: 16,
+          fontWeight: FontWeight.w500,
           color: Color.fromRGBO(118, 135, 135, 1),
+          fontFamily: 'Inter',
+          fontFamilyFallback: [
+            'Helvetica', 
+            'Arial', 
+            'sans-serif',
+          ],
         )
       ),
     ],

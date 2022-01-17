@@ -45,7 +45,6 @@ class HttpService {
   }
 
   Future<void> addArticleToBookmark() async {
-    // TODO:
     // url: 'https://tproger.ru/wp-node/bookmark'
     // request: { post: "183537" }\
     // response { counts: 0, deleted: true }

@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
 
 class BookmarkButtonWidget extends StatelessWidget {
-  const BookmarkButtonWidget({Key? key}): super(key: key);
+  final int count;
+
+  const BookmarkButtonWidget({
+    required this.count,
+    Key? key,
+  }): super(key: key);
 
   @override
-  Widget build(BuildContext context) => TextButton(
-    onPressed: () {},
-    child: ColorFiltered(
-      child: Image.asset('bookmark.png'),
-      colorFilter: ColorFilter.mode(
-        Colors.green,
-        BlendMode.,
+  Widget build(BuildContext context) => Row(
+    children: [
+      Image.asset(
+        'bookmark.png',
+        width: 24,
+        height: 24,
       ),
-    ),
-    style: ButtonStyle(
-      
-    ),
+      const SizedBox(width: 4),
+      if (count > 0) Text(
+        count.toString(),
+        style: const TextStyle(
+          color: Color.fromRGBO(118, 135, 135, 1),
+        )
+      ),
+    ],
   );
 }
