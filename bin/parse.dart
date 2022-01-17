@@ -1,5 +1,4 @@
 import 'package:http/http.dart';
-import 'package:tproger_mobile_app/src/models/article/article.dart';
 import 'package:tproger_mobile_app/src/services/article_list_loader.dart';
 import 'package:tproger_mobile_app/src/services/article_list_page_parser.dart';
 import 'package:tproger_mobile_app/src/services/http_service.dart';

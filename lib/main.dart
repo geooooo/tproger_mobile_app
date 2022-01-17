@@ -1,10 +1,4 @@
 import 'package:flutter/material.dart';
+import 'package:tproger_mobile_app/src/widgets/app_widget.dart';
 
-void main() => const App();
-
-class App extends StatelessWidget {
-  const App({Key? key}): super(key: key);
-  
-  @override
-  Widget build(BuildContext context) => const Text('+');
-}
+void main() => runApp(const AppWidget());
