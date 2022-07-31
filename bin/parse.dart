@@ -1,25 +1,14 @@
-import 'package:http/http.dart';
-import 'package:tproger_mobile_app/src/services/article_list_loader.dart';
-import 'package:tproger_mobile_app/src/services/article_list_page_parser.dart';
-import 'package:tproger_mobile_app/src/services/http_service.dart';
+import 'package:tproger_mobile_app/src/services/service_provider.dart';
 
 Future<void> main() async {
-  final httpService = HttpService(Client());
-  final articleListPageParser = ArticleListPageParser();
-  final articleListLoader = ArticleListLoader(articleListPageParser, httpService);
+  final serviceProvider = ServiceProvider();
 
-  try {
-    final articles = await articleListLoader.load();
+  serviceProvider.init();
+  final articleListLoader = serviceProvider.provideArticleListLoader();
 
-    for (final article in articles) {
-      print('=' * 10);
-      print(article);
-    }
-  } on Exception catch (error, stackTrace) {
-    print([error, stackTrace]);
-  }
+  await articleListLoader.load();
 
-  httpService.close();
+  serviceProvider.destroy();
 }
 
 // Future<void> getArticleList() async {
@@ -28,30 +17,24 @@ Future<void> main() async {
 //   final articles = await loadArticles(baseArticles);
 // }
 
-
-
 // void parseArticlePage(String html) {
-  // final document = parse(html);
+// final document = parse(html);
 
-  // print(extractDate(document));
-  // print(extractViewCount(document));
-  // print(extractTitle(document));
-  // print(extractCommentCount(document));
-  // print(extractBookmarkCount(document));
-  // print(extractImageUrl(document));
-  // print(extractReactions(document));
-  // print(extractContent(document));
+// print(extractDate(document));
+// print(extractViewCount(document));
+// print(extractTitle(document));
+// print(extractCommentCount(document));
+// print(extractBookmarkCount(document));
+// print(extractImageUrl(document));
+// print(extractReactions(document));
+// print(extractContent(document));
 // }
-
-
-
-
 
 // DateTime extractDate(Document document) {
 //   final element = document.querySelector('.localtime.meta__date')!;
 //   final formattedDate = element.attributes['content']!;
 //   final date = DateTime.parse(formattedDate).toLocal();
-  
+
 //   return date;
 // }
 
@@ -95,7 +78,7 @@ Future<void> main() async {
 // }
 
 // int _parseBookmarkCount(Element articleElement) {
-//   final element = articleElement.querySelector('.article__button-action.bookmarks__button .article__button-action-text'); 
+//   final element = articleElement.querySelector('.article__button-action.bookmarks__button .article__button-action-text');
 //   if (element == null || element.text.isEmpty) {
 //     return 0;
 //   }
@@ -124,9 +107,9 @@ Future<void> main() async {
 //       final reactionValueElement = reactionContainer.querySelector('.reactions__text')!;
 //       final reactionValue = int.parse(reactionValueElement.text);
 
-//       reactions[reactionType] = reactionValue; 
+//       reactions[reactionType] = reactionValue;
 //     }
 //   }
-  
+
 //   return reactions;
 // }

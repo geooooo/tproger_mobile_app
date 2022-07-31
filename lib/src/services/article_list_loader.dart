@@ -1,80 +1,97 @@
-import 'package:tproger_mobile_app/src/models/article_addition_data_dto.dart';
-import 'package:tproger_mobile_app/src/models/api_models/article_bookmark_count_dto.dart';
-import 'package:tproger_mobile_app/src/models/api_models/article_comment_count_dto.dart';
-// import 'package:tproger_mobile_app/src/models/api_models/article_reactions_dto.dart';
-import 'package:tproger_mobile_app/src/models/article/article.dart';
-import 'package:tproger_mobile_app/src/services/article_list_page_parser.dart';
-import 'package:tproger_mobile_app/src/services/http_service.dart';
+import 'package:tproger_mobile_app/src/services/article_list_parser/article_list_parser.dart';
+import 'package:tproger_mobile_app/src/services/article_list_parser/models/article/article.dart';
+import 'package:tproger_mobile_app/src/services/http_service/http_service.dart';
+import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_article_reactions/load_article_reactions_request.dart';
+import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_article_reactions/load_article_reactions_response.dart';
+import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_bookmark_counts/load_articles_bookmark_counts_request.dart';
+import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_comment_counts/load_articles_comment_counts_request.dart';
 
 class ArticleListLoader {
-  final ArticleListPageParser _articleListPageParser;
+  final ArticleListParser _articleListParser;
   final HttpService _httpService;
 
   ArticleListLoader(
-    this._articleListPageParser,
+    this._articleListParser,
     this._httpService,
   );
 
+  //TODO: Add error handling
   Future<List<Article>> load() async {
-    final html = await _httpService.loadArticleListPageContent();
+    final response = await _httpService.loadInitialContent();
+    final articles = _articleListParser.parse(response.html);
 
-    final articles = _articleListPageParser.parse(html);
-    final additionalData = await _loadArticlesAdditionalData(articles);
-    final updatedArticles = _getArticlesWithAddtionalData(additionalData);
+    await _loadArticlesAdditionalData(articles);
+    // final updatedArticles = _getArticlesWithAddtionalData(additionalData);
 
-    return updatedArticles;
+    return [];
   }
 
-  Future<List<ArticleAdditionalData>> _loadArticlesAdditionalData(Iterable<Article> articles) async {
-    final encodedIds = articles.map((article) => article.id).join(',');
+  Future<List<Object>> _loadArticlesAdditionalData(
+      List<Article> articles) async {
+    final encodedIds = encodeIds(articles);
 
     final responses = await Future.wait([
-      _httpService.loadArticleBookmarkCounts(encodedIds),
-      _httpService.loadArticleCommentCounts(encodedIds),
-      // _httpService.loadArticleReactions(encodedIds),
+      _httpService.loadArticlesCommentCounts(
+          LoadArticlesCommentCountsRequest(encodedIds)),
+      _httpService.loadArticlesBookmarkCounts(
+          LoadArticlesBookmarkCountsRequest(encodedIds)),
+      _httpService.loadArticleReactions(LoadArticleReactionsRequest(encodedIds)),
     ]);
 
-    final bookmarkCountsDto = responses[0] as List<ArticleBookmarkCountDto>;
-    final bookmarkCounts = {
-      for (final item in bookmarkCountsDto) item.postId: item.count
-    };
+    final r = responses.last as LoadArticleReactionsResponse;
+    print(r.reactions.length);
+    // for (final cc in r.counts) {
+    //   print([cc.count, cc.postId]);
+    // }
 
-    final commentCountsDto = responses[1] as List<ArticleCommentCountDto>;
-    final commentCounts = {
-      for (final item in commentCountsDto) item.postId: item.count
-    };
-
-    // final reactionsDtos = responses[2] as List<ArticleReactionsDto>;
-    // final reactions = { for (final item in reactionsDtos) item.postId: 
-    //   { for (final reaction in item.reactions) 
-    //     reaction.type: reaction.count
-    //   } 
+    // final bookmarkCountsDto = responses[0] as List<ArticleBookmarkCountDto>;
+    // final bookmarkCounts = {
+    //   for (final item in bookmarkCountsDto) item.postId: item.count
     // };
 
-    return [ for (final article in articles) ArticleAdditionalData(
-      sourceArticle: article,
-      bookmarkCount: bookmarkCounts[article.id] ?? 0,
-      commentCount: commentCounts[article.id] ?? 0,
-      reactions: null,//reactions[article.id],
-    )];
+    // final commentCountsDto = responses[1] as List<ArticleCommentCountDto>;
+    // final commentCounts = {
+    //   for (final item in commentCountsDto) item.postId: item.count
+    // };
+
+    // final reactionsDtos = responses[2] as List<ArticleReactionsDto>;
+    // final reactions = { for (final item in reactionsDtos) item.postId:
+    //   { for (final reaction in item.reactions)
+    //     reaction.type: reaction.count
+    //   }
+    // };
+
+    return [
+      // for (final article in articles)
+      //   ArticleAdditionalData(
+      //     sourceArticle: article,
+      //     bookmarkCount: bookmarkCounts[article.id] ?? 0,
+      //     commentCount: commentCounts[article.id] ?? 0,
+      //     reactions: null, //reactions[article.id],
+      //   )
+    ];
   }
 
-  List<Article> _getArticlesWithAddtionalData(List<ArticleAdditionalData> data) =>
-    data.map(_updateArticleData).toList();
+  String encodeIds(List<Article> articles) =>
+      articles.map((article) => article.id).join(',');
 
-  Article _updateArticleData(ArticleAdditionalData data) => 
-    data.sourceArticle.rebuild((builder) {
-      builder
-        ..bookmarkCount = data.bookmarkCount
-        ..commentCount = data.commentCount;
-      
-      if (data.reactions != null) {
-        final actualReactions = data.reactions!;
-        for (final reactionType in actualReactions.keys) {
-          builder.reactions[reactionType] = actualReactions[reactionType]!;
-        }
-      }
+  // List<Article> _getArticlesWithAddtionalData(
+  //         List<ArticleAdditionalData> data) =>
+  //     data.map(_updateArticleData).toList();
 
-      return builder;
-    });
+  // Article _updateArticleData(ArticleAdditionalData data) =>
+  //     data.sourceArticle.rebuild((builder) {
+  //       builder
+  //         ..bookmarkCount = data.bookmarkCount
+  //         ..commentCount = data.commentCount;
+
+  //       if (data.reactions != null) {
+  //         final actualReactions = data.reactions!;
+  //         for (final reactionType in actualReactions.keys) {
+  //           builder.reactions[reactionType] = actualReactions[reactionType]!;
+  //         }
+  //       }
+
+  //       return builder;
+  //     });
 }

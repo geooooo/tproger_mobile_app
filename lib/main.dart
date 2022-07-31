@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:tproger_mobile_app/src/widgets/app_widget.dart';
+// import 'package:flutter/material.dart';
+// import 'package:tproger_mobile_app/src/widgets/app_widget.dart';
 
-void main() => runApp(const AppWidget());
+// void main() => runApp(const AppWidget());
