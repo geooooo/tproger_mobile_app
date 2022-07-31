@@ -13,7 +13,6 @@ import 'package:tproger_mobile_app/src/services/http_service/models/exceptions/l
 import 'package:tproger_mobile_app/src/services/http_service/models/exceptions/load_articles_comment_counts_exception.dart';
 import 'package:tproger_mobile_app/src/services/http_service/models/exceptions/load_initial_content_exception.dart';
 
-//TODO: Add logger
 class HttpService {
   final Client _httpClient;
 

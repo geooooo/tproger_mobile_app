@@ -5,10 +5,10 @@ part 'load_article_reactions_response.g.dart';
 
 @JsonSerializable(createToJson: false)
 class LoadArticleReactionsResponse {
-  final List<ArticleReactionsDto> reactions;
+  final List<ArticleReactionsDto> articleReactions;
 
-  const LoadArticleReactionsResponse(this.reactions);
+  const LoadArticleReactionsResponse(this.articleReactions);
 
   factory LoadArticleReactionsResponse.fromJson(List<dynamic> json) =>
-      _$LoadArticleReactionsResponseFromJson({'reactions': json});
+      _$LoadArticleReactionsResponseFromJson({'articleReactions': json});
 }

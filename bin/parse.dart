@@ -6,7 +6,13 @@ Future<void> main() async {
   serviceProvider.init();
   final articleListLoader = serviceProvider.provideArticleListLoader();
 
-  await articleListLoader.load();
+  try {
+    final articles = await articleListLoader.load();
+    print(articles.length);
+  } on Exception catch (e, st) {
+    print(e);
+    print(st);
+  }
 
   serviceProvider.destroy();
 }
