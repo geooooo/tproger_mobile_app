@@ -1,3 +1,3 @@
 #!/bin/bash
 
-flutter pub run bin/parse.dart
+flutter pub run --enable-asserts bin/parse.dart

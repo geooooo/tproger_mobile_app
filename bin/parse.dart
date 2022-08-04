@@ -1,20 +1,15 @@
-import 'package:tproger_mobile_app/src/services/service_provider.dart';
+import 'package:tproger_mobile_app/src/services/global_provider.dart';
 
 Future<void> main() async {
-  final serviceProvider = ServiceProvider();
+  final provider = GlobalProvider();
 
-  serviceProvider.init();
-  final articleListLoader = serviceProvider.provideArticleListLoader();
+  provider.init();
+  final articleListLoader = provider.provideArticleListLoader();
 
-  try {
-    final articles = await articleListLoader.load();
-    print(articles.length);
-  } on Exception catch (e, st) {
-    print(e);
-    print(st);
-  }
+  final articles = await articleListLoader.load();
+  print(articles.length);
 
-  serviceProvider.destroy();
+  provider.destroy();
 }
 
 // Future<void> getArticleList() async {

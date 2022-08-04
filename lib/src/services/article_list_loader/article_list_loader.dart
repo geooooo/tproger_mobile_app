@@ -1,3 +1,4 @@
+import 'package:logger/logger.dart';
 import 'package:tproger_mobile_app/src/services/article_list_loader/models/article_addition_data.dart';
 import 'package:tproger_mobile_app/src/services/article_list_loader/models/exceptions/load_articles_list_exception.dart';
 import 'package:tproger_mobile_app/src/services/article_list_parser/article_list_parser.dart';
@@ -12,27 +13,28 @@ import 'package:tproger_mobile_app/src/services/http_service/models/api_models/l
 import 'package:tproger_mobile_app/src/services/http_service/models/enums/reaction.dart';
 
 class ArticleListLoader {
+  final Logger _logger;
   final ArticleListParser _articleListParser;
   final HttpService _httpService;
 
   ArticleListLoader(
+    this._logger,
     this._articleListParser,
     this._httpService,
   );
 
   Future<List<Article>> load() async {
     List<Article> articles;
-    List<ArticleAdditionalData> additionalData;
 
     try {
       final response = await _httpService.loadInitialContent();
       articles = _articleListParser.parse(response.html);
-
-      additionalData = await _loadArticlesAdditionalData(articles);
-    } on Exception {
+    } on Exception catch (error, stackTrace) {
+      _logger.e('Article list load', error, stackTrace);
       throw const LoadArticlesListException();
     }
-
+    
+    final additionalData = await _loadArticlesAdditionalData(articles);
     return _updateArticles(additionalData);
   }
 

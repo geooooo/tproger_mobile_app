@@ -1,6 +1,5 @@
 enum Method {
-  get('get'),
-  post('post');
+  get('get');
 
   final String value;
 

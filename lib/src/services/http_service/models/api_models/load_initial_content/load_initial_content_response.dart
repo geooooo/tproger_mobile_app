@@ -8,6 +8,6 @@ class LoadInitialContentResponse {
 
   const LoadInitialContentResponse(this.html);
 
-  factory LoadInitialContentResponse.fromJson(dynamic json) =>
-      _$LoadInitialContentResponseFromJson(json as Map<String, dynamic>);
+  factory LoadInitialContentResponse.fromJson(String json) =>
+      _$LoadInitialContentResponseFromJson({'html': json});
 }

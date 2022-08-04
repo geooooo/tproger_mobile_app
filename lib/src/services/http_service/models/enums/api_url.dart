@@ -1,5 +1,4 @@
-enum Handler {
-  host('tproger.ru'),
+enum ApiUrl {
   articlesCommentCounts('/wp-node/comments/count/posts'),
   articlesBookmarkCounts('/wp-node/bookmark/posts'),
   articleReactions('/wp-node/reaction/posts'),
@@ -7,7 +6,7 @@ enum Handler {
 
   final String value;
 
-  const Handler(this.value);
+  const ApiUrl(this.value);
 
   @override
   String toString() => value;
