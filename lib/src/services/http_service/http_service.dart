@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_article_reactions/load_article_reactions_request.dart';
 import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_article_reactions/load_article_reactions_response.dart';
@@ -13,6 +14,7 @@ import 'package:tproger_mobile_app/src/services/http_service/models/exceptions/l
 import 'package:tproger_mobile_app/src/services/http_service/models/exceptions/load_articles_comment_counts_exception.dart';
 import 'package:tproger_mobile_app/src/services/http_service/models/exceptions/load_initial_content_exception.dart';
 
+@singleton
 class HttpService {
   final Dio _dio;
   final Logger _logger;
@@ -35,8 +37,8 @@ class HttpService {
   Future<LoadArticlesCommentCountsResponse> loadArticlesCommentCounts(
       LoadArticlesCommentCountsRequest request) async {
     try {
-      final response =
-          await _request(Method.get, ApiUrl.articlesCommentCounts, request.toJson());
+      final response = await _request(
+          Method.get, ApiUrl.articlesCommentCounts, request.toJson());
       return LoadArticlesCommentCountsResponse.fromJson(response);
     } on Exception catch (error, stackTrace) {
       _logger.e('Load articles comment counts', error, stackTrace);
@@ -47,8 +49,8 @@ class HttpService {
   Future<LoadArticlesBookmarkCountsResponse> loadArticlesBookmarkCounts(
       LoadArticlesBookmarkCountsRequest request) async {
     try {
-      final response =
-          await _request(Method.get, ApiUrl.articlesBookmarkCounts, request.toJson());
+      final response = await _request(
+          Method.get, ApiUrl.articlesBookmarkCounts, request.toJson());
       return LoadArticlesBookmarkCountsResponse.fromJson(response);
     } on Exception catch (error, stackTrace) {
       _logger.e('Load articles bookmark counts', error, stackTrace);
@@ -77,8 +79,7 @@ class HttpService {
 
     switch (method) {
       case Method.get:
-        response =
-            await _dio.get(url.value, queryParameters: params);
+        response = await _dio.get(url.value, queryParameters: params);
         break;
       default:
         throw UnimplementedError('another http methods are not implemented');

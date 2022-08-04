@@ -1,3 +1,3 @@
-# Mobile app for tproger.ru
+# Unofficial mobile client for tproger.ru
 
 ![demo](demo.png)

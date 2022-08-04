@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:tproger_mobile_app/src/services/article_list_loader/article_list_loader.dart';
-import 'package:tproger_mobile_app/src/services/article_list_parser/article_list_parser.dart';
 import 'package:tproger_mobile_app/src/services/article_list_parser/models/article/article.dart';
-import 'package:tproger_mobile_app/src/services/http_service/http_service.dart';
 import 'package:tproger_mobile_app/src/widgets/article_widget.dart';
 
 class AppWidget extends StatefulWidget {
@@ -20,6 +19,12 @@ class _AppWidgetState extends State<AppWidget> {
     super.initState();
 
     _loadArticles();
+  }
+
+  @override
+  Future<void> dispose() async {
+    await GetIt.instance.reset();
+    super.dispose();
   }
 
   @override
@@ -46,11 +51,7 @@ class _AppWidgetState extends State<AppWidget> {
       );
 
   Future<void> _loadArticles() async {
-    final client = Client();
-    final httpService = HttpService(client);
-    final articleListPageParser = ArticleListParser();
-    final articleListLoader =
-        ArticleListLoader(articleListPageParser, httpService);
+    final articleListLoader = GetIt.instance.get<ArticleListLoader>();
 
     final articles = await articleListLoader.load();
 

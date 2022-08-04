@@ -1,3 +1,4 @@
+import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:tproger_mobile_app/src/services/article_list_loader/models/article_addition_data.dart';
 import 'package:tproger_mobile_app/src/services/article_list_loader/models/exceptions/load_articles_list_exception.dart';
@@ -12,6 +13,7 @@ import 'package:tproger_mobile_app/src/services/http_service/models/api_models/l
 import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_comment_counts/load_articles_comment_counts_response.dart';
 import 'package:tproger_mobile_app/src/services/http_service/models/enums/reaction.dart';
 
+@singleton
 class ArticleListLoader {
   final Logger _logger;
   final ArticleListParser _articleListParser;
@@ -33,7 +35,7 @@ class ArticleListLoader {
       _logger.e('Article list load', error, stackTrace);
       throw const LoadArticlesListException();
     }
-    
+
     final additionalData = await _loadArticlesAdditionalData(articles);
     return _updateArticles(additionalData);
   }

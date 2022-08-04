@@ -1,9 +1,11 @@
 import 'package:html/dom.dart';
 import 'package:html/parser.dart' as html_parser;
+import 'package:injectable/injectable.dart';
 import 'package:tproger_mobile_app/src/services/article_list_parser/models/article/article.dart';
 import 'package:tproger_mobile_app/src/services/article_list_parser/models/enums/selector.dart';
-import 'package:tproger_mobile_app/src/services/global_provider.dart';
+import 'package:tproger_mobile_app/src/services/http_service/models/enums/base_url.dart';
 
+@singleton
 class ArticleListParser {
   List<Article> parse(String html) {
     final document = html_parser.parse(html);
@@ -115,9 +117,9 @@ class ArticleListParser {
   String _removeSpaces(String value) =>
       value.trim().replaceAll(RegExp(r'\s+'), ' ');
 
-  bool _isLinkHasHost(String link) => link.contains(GlobalProvider.host);
+  bool _isLinkHasHost(String link) => link.contains(BaseUrl.host.value);
 
   bool _isLinkToImage(String link) => link.endsWith('.png');
 
-  String _addHostToLink(String link) => 'https://${GlobalProvider.host}$link';
+  String _addHostToLink(String link) => 'https://${BaseUrl.host}$link';
 }
