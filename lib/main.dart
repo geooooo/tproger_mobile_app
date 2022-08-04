@@ -4,5 +4,6 @@ import 'package:tproger_mobile_app/src/widgets/app_widget.dart';
 
 void main() {
   configureInjactable();
+
   runApp(const AppWidget());
 }

@@ -11,14 +11,15 @@ dependencies:
     sdk: flutter
   html: ^0.15.0
   dio: ^4.0.6
+  dio_logger: ^4.0.8+8
+  logger: ^1.1.0
   json_annotation: ^4.6.0
   built_value: ^8.4.0
   built_collection: ^5.1.1
-  logger: ^1.1.0
   injectable: ^1.5.3
-  get_it: ^7.2.0
   injectable_generator: ^1.5.4
-
+  get_it: ^7.2.0
+  
 dev_dependencies:
   flutter_lints: ^1.0.0
   build_runner: ^2.2.0
