@@ -37,11 +37,6 @@ class ArticleWidget extends StatelessWidget {
           imageLink: article.imageLink,
           imageBackgroundColor: article.imageBackgroundColor,
         ),
-        //   const SizedBox(height: 18),
-        //   ArticleFooterWidget(
-        //     commentCount: commentCount,
-        //     bookmarkCount: bookmarkCount,
-        //   ),
       ],
     ),
   );
