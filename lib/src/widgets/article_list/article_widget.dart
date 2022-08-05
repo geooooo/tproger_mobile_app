@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart' hide Theme;
+import 'package:get_it/get_it.dart';
 import 'package:tproger_mobile_app/src/services/app_theme/app_theme.dart';
+import 'package:tproger_mobile_app/src/services/app_theme/app_theme_dark.dart';
 import 'package:tproger_mobile_app/src/services/article_list_parser/models/article/article.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list/article_author_widget.dart';
 
 class ArticleWidget extends StatelessWidget {
+  final AppTheme _appTheme = GetIt.instance.get<AppThemeDark>();
+
   final Article article;
 
-  const ArticleWidget({
+  ArticleWidget({
     required this.article,
     super.key,
   });
@@ -14,22 +19,17 @@ class ArticleWidget extends StatelessWidget {
   Widget build(BuildContext context) => Container(
     padding: const EdgeInsets.all(AppTheme.articlePaddingSize),
     decoration: BoxDecoration(
-      border: Border.all(
-        color: const Color.fromRGBO(37, 37, 37, 1),
-        width: 1,
-      ),
-      borderRadius: const BorderRadius.all(Radius.elliptical(18, 18)),
-      color: const Color.fromRGBO(24, 29, 28, 1),
+      color: _appTheme.articleBackgroundColor,
     ),
     child: Column(
-        // children: [
-        //   if (authorName != null) ...[
-        //     ArticleAuthorWidget(
-        //       authorName: authorName!,
-        //       avatarLink: authorAvatarLink!,
-        //     ),
-        //     const SizedBox(height: 18),
-        //   ],
+      children: [
+        if (article.authorName != null) ...[
+          ArticleAuthorWidget(
+            authorName: article.authorName!,
+            avatarLink: article.authorAvatarLink!,
+          ),
+          const SizedBox(height: AppTheme.articleContentSeparatorSize),
+        ],
         //   ArticleContentWidget(
         //     title: title,
         //     description: description,
@@ -40,7 +40,7 @@ class ArticleWidget extends StatelessWidget {
         //     commentCount: commentCount,
         //     bookmarkCount: bookmarkCount,
         //   ),
-        // ],
-        ),
+      ],
+    ),
   );
 }

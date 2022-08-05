@@ -14,7 +14,7 @@ class AppWidget extends StatefulWidget {
 
 class _AppWidgetState extends State<AppWidget> {
   final _articleListLoader = GetIt.instance.get<ArticleListLoader>();
-  final _theme = GetIt.instance.get<AppThemeDark>();
+  final _appTheme = GetIt.instance.get<AppThemeDark>();
 
   bool _isLoading = true;
   List<Article> _articles = const [];
@@ -38,7 +38,7 @@ class _AppWidgetState extends State<AppWidget> {
     debugShowCheckedModeBanner: false,
     home: SafeArea(
       child: Scaffold(
-        backgroundColor: _theme.mainBackgroundColor,
+        backgroundColor: _appTheme.mainBackgroundColor,
         body: _isLoading ? null : ArticleListWidget(articles: _articles),
       ),
     ),

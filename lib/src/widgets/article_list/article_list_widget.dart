@@ -17,6 +17,6 @@ class ArticleListWidget extends StatelessWidget {
     itemBuilder: (context, index) =>
       ArticleWidget(article: articles[index]),
     separatorBuilder: (context, index) =>
-      const SizedBox(height: AppTheme.articleListSeparatorHeight),
+      const SizedBox(height: AppTheme.articleListSeparatorSize),
   );
 }
