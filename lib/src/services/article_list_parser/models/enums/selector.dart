@@ -3,6 +3,7 @@ enum Selector {
   authorName2('.company-miniature__name'),
   description('.article__excerpt.article__excerpt--icon'),
   image('.article__icon-image'),
+  imageBackgroundColor('.article__background-icon-image'),
   authorImage('.article__container-author'),
   title('.article__link'),
   article('.main__posts-wrapper article');

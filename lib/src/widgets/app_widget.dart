@@ -39,7 +39,9 @@ class _AppWidgetState extends State<AppWidget> {
     home: SafeArea(
       child: Scaffold(
         backgroundColor: _appTheme.mainBackgroundColor,
-        body: _isLoading ? null : ArticleListWidget(articles: _articles),
+        body: _isLoading 
+          ? const Placeholder() 
+          : ArticleListWidget(articles: _articles),
       ),
     ),
   );

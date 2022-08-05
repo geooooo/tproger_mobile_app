@@ -24,6 +24,8 @@ class _$Article extends Article {
   @override
   final String? imageLink;
   @override
+  final String? imageBackgroundColor;
+  @override
   final String? authorAvatarLink;
   @override
   final String? authorName;
@@ -40,6 +42,7 @@ class _$Article extends Article {
       required this.bookmarkCount,
       required this.commentCount,
       this.imageLink,
+      this.imageBackgroundColor,
       this.authorAvatarLink,
       this.authorName})
       : super._() {
@@ -76,6 +79,7 @@ class _$Article extends Article {
         bookmarkCount == other.bookmarkCount &&
         commentCount == other.commentCount &&
         imageLink == other.imageLink &&
+        imageBackgroundColor == other.imageBackgroundColor &&
         authorAvatarLink == other.authorAvatarLink &&
         authorName == other.authorName;
   }
@@ -90,14 +94,16 @@ class _$Article extends Article {
                         $jc(
                             $jc(
                                 $jc(
-                                    $jc($jc(0, title.hashCode),
-                                        articleLink.hashCode),
-                                    description.hashCode),
-                                id.hashCode),
-                            reactionToCounts.hashCode),
-                        bookmarkCount.hashCode),
-                    commentCount.hashCode),
-                imageLink.hashCode),
+                                    $jc(
+                                        $jc($jc(0, title.hashCode),
+                                            articleLink.hashCode),
+                                        description.hashCode),
+                                    id.hashCode),
+                                reactionToCounts.hashCode),
+                            bookmarkCount.hashCode),
+                        commentCount.hashCode),
+                    imageLink.hashCode),
+                imageBackgroundColor.hashCode),
             authorAvatarLink.hashCode),
         authorName.hashCode));
   }
@@ -113,6 +119,7 @@ class _$Article extends Article {
           ..add('bookmarkCount', bookmarkCount)
           ..add('commentCount', commentCount)
           ..add('imageLink', imageLink)
+          ..add('imageBackgroundColor', imageBackgroundColor)
           ..add('authorAvatarLink', authorAvatarLink)
           ..add('authorName', authorName))
         .toString();
@@ -157,6 +164,11 @@ class ArticleBuilder implements Builder<Article, ArticleBuilder> {
   String? get imageLink => _$this._imageLink;
   set imageLink(String? imageLink) => _$this._imageLink = imageLink;
 
+  String? _imageBackgroundColor;
+  String? get imageBackgroundColor => _$this._imageBackgroundColor;
+  set imageBackgroundColor(String? imageBackgroundColor) =>
+      _$this._imageBackgroundColor = imageBackgroundColor;
+
   String? _authorAvatarLink;
   String? get authorAvatarLink => _$this._authorAvatarLink;
   set authorAvatarLink(String? authorAvatarLink) =>
@@ -179,6 +191,7 @@ class ArticleBuilder implements Builder<Article, ArticleBuilder> {
       _bookmarkCount = $v.bookmarkCount;
       _commentCount = $v.commentCount;
       _imageLink = $v.imageLink;
+      _imageBackgroundColor = $v.imageBackgroundColor;
       _authorAvatarLink = $v.authorAvatarLink;
       _authorName = $v.authorName;
       _$v = null;
@@ -218,6 +231,7 @@ class ArticleBuilder implements Builder<Article, ArticleBuilder> {
               commentCount: BuiltValueNullFieldError.checkNotNull(
                   commentCount, r'Article', 'commentCount'),
               imageLink: imageLink,
+              imageBackgroundColor: imageBackgroundColor,
               authorAvatarLink: authorAvatarLink,
               authorName: authorName);
     } catch (_) {

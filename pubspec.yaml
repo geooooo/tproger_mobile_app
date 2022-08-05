@@ -19,6 +19,7 @@ dependencies:
   injectable: ^1.5.3
   injectable_generator: ^1.5.4
   get_it: ^7.2.0
+  color_parser: ^0.0.3
   
 dev_dependencies:
   flutter_lints: ^1.0.0

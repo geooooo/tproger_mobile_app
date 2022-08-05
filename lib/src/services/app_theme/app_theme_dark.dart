@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'package:flutter/widgets.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tproger_mobile_app/src/services/app_theme/app_theme.dart';
 

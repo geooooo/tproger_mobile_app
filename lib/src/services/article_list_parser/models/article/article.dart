@@ -13,6 +13,7 @@ abstract class Article implements Built<Article, ArticleBuilder> {
   int get bookmarkCount;
   int get commentCount;
   String? get imageLink;
+  String? get imageBackgroundColor;
   String? get authorAvatarLink;
   String? get authorName;
 
@@ -27,6 +28,7 @@ abstract class Article implements Built<Article, ArticleBuilder> {
     int bookmarkCount = 0,
     int commentCount = 0,
     String? imageLink,
+    String? imageBackgroundColor,
     String? authorAvatarLink,
     String? authorName,
   }) => _$Article((builder) => builder
@@ -38,6 +40,7 @@ abstract class Article implements Built<Article, ArticleBuilder> {
     ..commentCount = commentCount
     ..reactionToCounts.replace(reactionToCounts ?? _defaultReactionToCounts)
     ..imageLink = imageLink
+    ..imageBackgroundColor = imageBackgroundColor
     ..authorAvatarLink = authorAvatarLink
     ..authorName = authorName
   );

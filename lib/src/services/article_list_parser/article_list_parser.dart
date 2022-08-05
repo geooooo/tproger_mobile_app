@@ -7,6 +7,8 @@ import 'package:tproger_mobile_app/src/services/http_service/models/enums/base_u
 
 @singleton
 class ArticleListParser {
+  static final backgroundColorPattern = RegExp(r'#[0-9a-fA-F]{6}');
+
   List<Article> parse(String html) {
     final document = html_parser.parse(html);
     return _parseArticles(document);
@@ -25,6 +27,7 @@ class ArticleListParser {
       title: _parseTitle(titleElement),
       articleLink: _parseLink(titleElement),
       imageLink: _parseImage(articleElement),
+      imageBackgroundColor: _parseImageBackgroundColor(articleElement),
       description: _parseDescription(articleElement),
       id: _parseId(articleElement),
       authorAvatarLink: _parseAuthorAvatarLink(authorElement),
@@ -43,6 +46,15 @@ class ArticleListParser {
     }
 
     return _getImageLink(imageElement);
+  }
+
+  String? _parseImageBackgroundColor(Element articleElement) {
+    final backgroundColorElement = _getImageBackgroundColorElement(articleElement);
+    if (backgroundColorElement == null) {
+      return null;
+    }
+
+    return _getBackgroundColor(backgroundColorElement);
   }
 
   String _parseDescription(Element articleElement) {
@@ -97,6 +109,9 @@ class ArticleListParser {
   Element? _getImageElement(Element articleElement) =>
     articleElement.querySelector(Selector.image.value);
 
+  Element? _getImageBackgroundColorElement(Element articleElement) =>
+    articleElement.querySelector(Selector.imageBackgroundColor.value);
+
   String _getImageLink(Element imageElement) {
     final src = imageElement.attributes['src'];
     if (src != null && _isLinkToImage(src)) {
@@ -105,6 +120,14 @@ class ArticleListParser {
 
     final dataSrc = imageElement.attributes['data-src'];
     return dataSrc!;
+  }
+
+  String _getBackgroundColor(Element backgroundColorElement) {
+    final style = backgroundColorElement.attributes['style']!;
+    final match = backgroundColorPattern.firstMatch(style)!;
+    final color = match.group(0)!;
+    
+    return color;
   }
 
   Element _getDescriptionElement(Element articleElement) =>
