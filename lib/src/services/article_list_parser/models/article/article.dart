@@ -29,18 +29,18 @@ abstract class Article implements Built<Article, ArticleBuilder> {
     String? imageLink,
     String? authorAvatarLink,
     String? authorName,
-  }) =>
-      _$Article((builder) => builder
-        ..title = title
-        ..articleLink = articleLink
-        ..description = description
-        ..id = id
-        ..bookmarkCount = bookmarkCount
-        ..commentCount = commentCount
-        ..reactionToCounts.replace(reactionToCounts ?? _defaultReactionToCounts)
-        ..imageLink = imageLink
-        ..authorAvatarLink = authorAvatarLink
-        ..authorName = authorName);
+  }) => _$Article((builder) => builder
+    ..title = title
+    ..articleLink = articleLink
+    ..description = description
+    ..id = id
+    ..bookmarkCount = bookmarkCount
+    ..commentCount = commentCount
+    ..reactionToCounts.replace(reactionToCounts ?? _defaultReactionToCounts)
+    ..imageLink = imageLink
+    ..authorAvatarLink = authorAvatarLink
+    ..authorName = authorName
+  );
 
   static final _defaultReactionToCounts = {
     for (final reaction in Reaction.values) reaction: 0

@@ -15,5 +15,5 @@ class ArticleCommentCountDto {
   });
 
   factory ArticleCommentCountDto.fromJson(dynamic json) =>
-      _$ArticleCommentCountDtoFromJson(json as Map<String, dynamic>);
+    _$ArticleCommentCountDtoFromJson(json as Map<String, dynamic>);
 }

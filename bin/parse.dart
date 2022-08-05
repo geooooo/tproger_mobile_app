@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:tproger_mobile_app/src/services/article_list_loader/article_list_loader.dart';
 import 'package:tproger_mobile_app/src/services/di_configuration/configure_injactable.dart';
 

@@ -10,5 +10,5 @@ class LoadArticlesBookmarkCountsResponse {
   const LoadArticlesBookmarkCountsResponse(this.counts);
 
   factory LoadArticlesBookmarkCountsResponse.fromJson(List<dynamic> json) =>
-      _$LoadArticlesBookmarkCountsResponseFromJson({'counts': json});
+    _$LoadArticlesBookmarkCountsResponseFromJson({'counts': json});
 }

@@ -10,5 +10,5 @@ class LoadArticleReactionsResponse {
   const LoadArticleReactionsResponse(this.articleReactions);
 
   factory LoadArticleReactionsResponse.fromJson(List<dynamic> json) =>
-      _$LoadArticleReactionsResponseFromJson({'articleReactions': json});
+    _$LoadArticleReactionsResponseFromJson({'articleReactions': json});
 }

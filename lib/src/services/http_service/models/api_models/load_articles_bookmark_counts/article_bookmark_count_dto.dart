@@ -15,5 +15,5 @@ class ArticleBookmarkCountDto {
   });
 
   factory ArticleBookmarkCountDto.fromJson(Map<String, dynamic> json) =>
-      _$ArticleBookmarkCountDtoFromJson(json);
+    _$ArticleBookmarkCountDtoFromJson(json);
 }

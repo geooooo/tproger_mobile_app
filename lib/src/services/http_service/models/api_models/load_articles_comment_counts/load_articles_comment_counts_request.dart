@@ -9,5 +9,5 @@ class LoadArticlesCommentCountsRequest {
   const LoadArticlesCommentCountsRequest(this.ids);
 
   Map<String, dynamic> toJson() =>
-      _$LoadArticlesCommentCountsRequestToJson(this);
+    _$LoadArticlesCommentCountsRequestToJson(this);
 }

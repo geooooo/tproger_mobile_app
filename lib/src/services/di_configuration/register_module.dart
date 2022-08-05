@@ -11,7 +11,7 @@ abstract class RegisterModule {
 
   @Singleton(dispose: disposeDio)
   Dio get dio {
-    final dio = Dio(BaseOptions(baseUrl: BaseUrl.base.value)); 
+    final dio = Dio(BaseOptions(baseUrl: BaseUrl.base.value));
     dio.interceptors.add(dioLoggerInterceptor);
     return dio;
   }

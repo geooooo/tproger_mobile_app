@@ -10,7 +10,7 @@ enum Reaction {
   const Reaction(this.value);
 
   factory Reaction.fromInt(int value) =>
-      values.firstWhere((reaction) => reaction.value == value);
+    values.firstWhere((reaction) => reaction.value == value);
 
   @override
   String toString() => value.toString();

@@ -10,5 +10,5 @@ class LoadArticlesCommentCountsResponse {
   const LoadArticlesCommentCountsResponse(this.counts);
 
   factory LoadArticlesCommentCountsResponse.fromJson(List<dynamic> json) =>
-      _$LoadArticlesCommentCountsResponseFromJson({'counts': json});
+    _$LoadArticlesCommentCountsResponseFromJson({'counts': json});
 }

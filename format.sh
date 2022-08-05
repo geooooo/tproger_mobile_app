@@ -1,3 +1,4 @@
 #!/bin/bash
 
-flutter format bin lib
+find lib -name "*.g.dart" -exec flutter format {} \;
+find lib -name "*.config.dart" -exec flutter format {} \;

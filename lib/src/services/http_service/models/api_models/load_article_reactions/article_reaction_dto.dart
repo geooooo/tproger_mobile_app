@@ -19,7 +19,7 @@ class ArticleReactionDto {
   });
 
   factory ArticleReactionDto.fromJson(Map<String, dynamic> json) =>
-      _$ArticleReactionDtoFromJson(json);
+    _$ArticleReactionDtoFromJson(json);
 
   static Reaction _reactionFromJson(int value) => Reaction.fromInt(value);
 }

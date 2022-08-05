@@ -9,5 +9,5 @@ class LoadInitialContentResponse {
   const LoadInitialContentResponse(this.html);
 
   factory LoadInitialContentResponse.fromJson(String json) =>
-      _$LoadInitialContentResponseFromJson({'html': json});
+    _$LoadInitialContentResponseFromJson({'html': json});
 }

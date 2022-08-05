@@ -9,5 +9,5 @@ class LoadArticlesBookmarkCountsRequest {
   const LoadArticlesBookmarkCountsRequest(this.ids);
 
   Map<String, dynamic> toJson() =>
-      _$LoadArticlesBookmarkCountsRequestToJson(this);
+    _$LoadArticlesBookmarkCountsRequestToJson(this);
 }

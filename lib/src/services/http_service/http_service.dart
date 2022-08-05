@@ -34,11 +34,9 @@ class HttpService {
     }
   }
 
-  Future<LoadArticlesCommentCountsResponse> loadArticlesCommentCounts(
-      LoadArticlesCommentCountsRequest request) async {
+  Future<LoadArticlesCommentCountsResponse> loadArticlesCommentCounts(LoadArticlesCommentCountsRequest request) async {
     try {
-      final response = await _request(
-          Method.get, ApiUrl.articlesCommentCounts, request.toJson());
+      final response = await _request(Method.get, ApiUrl.articlesCommentCounts, request.toJson());
       return LoadArticlesCommentCountsResponse.fromJson(response);
     } on Exception catch (error, stackTrace) {
       _logger.e('Load articles comment counts', error, stackTrace);
@@ -46,11 +44,9 @@ class HttpService {
     }
   }
 
-  Future<LoadArticlesBookmarkCountsResponse> loadArticlesBookmarkCounts(
-      LoadArticlesBookmarkCountsRequest request) async {
+  Future<LoadArticlesBookmarkCountsResponse> loadArticlesBookmarkCounts(LoadArticlesBookmarkCountsRequest request) async {
     try {
-      final response = await _request(
-          Method.get, ApiUrl.articlesBookmarkCounts, request.toJson());
+      final response = await _request(Method.get, ApiUrl.articlesBookmarkCounts, request.toJson());
       return LoadArticlesBookmarkCountsResponse.fromJson(response);
     } on Exception catch (error, stackTrace) {
       _logger.e('Load articles bookmark counts', error, stackTrace);
@@ -58,11 +54,9 @@ class HttpService {
     }
   }
 
-  Future<LoadArticleReactionsResponse> loadArticleReactions(
-      LoadArticleReactionsRequest request) async {
+  Future<LoadArticleReactionsResponse> loadArticleReactions(LoadArticleReactionsRequest request) async {
     try {
-      final response =
-          await _request(Method.get, ApiUrl.articleReactions, request.toJson());
+      final response = await _request(Method.get, ApiUrl.articleReactions, request.toJson());
       return LoadArticleReactionsResponse.fromJson(response);
     } on Exception catch (error, stackTrace) {
       _logger.e('Load article reactions', error, stackTrace);

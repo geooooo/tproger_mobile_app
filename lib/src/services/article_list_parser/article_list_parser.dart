@@ -89,13 +89,13 @@ class ArticleListParser {
   }
 
   Element _getTitleElement(Element articleElement) =>
-      articleElement.querySelector(Selector.title.value)!;
+    articleElement.querySelector(Selector.title.value)!;
 
   Element? _getAuthorElement(Element articleElement) =>
-      articleElement.querySelector(Selector.authorImage.value);
+    articleElement.querySelector(Selector.authorImage.value);
 
   Element? _getImageElement(Element articleElement) =>
-      articleElement.querySelector(Selector.image.value);
+    articleElement.querySelector(Selector.image.value);
 
   String _getImageLink(Element imageElement) {
     final src = imageElement.attributes['src'];
@@ -108,14 +108,14 @@ class ArticleListParser {
   }
 
   Element _getDescriptionElement(Element articleElement) =>
-      articleElement.querySelector(Selector.description.value)!;
+    articleElement.querySelector(Selector.description.value)!;
 
   Element _getAuthorNameElement(Element authorElement) =>
-      authorElement.querySelector(Selector.authorName1.value) ??
-      authorElement.querySelector(Selector.authorName2.value)!;
+    authorElement.querySelector(Selector.authorName1.value) ??
+    authorElement.querySelector(Selector.authorName2.value)!;
 
   String _removeSpaces(String value) =>
-      value.trim().replaceAll(RegExp(r'\s+'), ' ');
+    value.trim().replaceAll(RegExp(r'\s+'), ' ');
 
   bool _isLinkHasHost(String link) => link.contains(BaseUrl.host.value);
 

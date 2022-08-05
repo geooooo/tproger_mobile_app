@@ -40,57 +40,45 @@ class ArticleListLoader {
     return _updateArticles(additionalData);
   }
 
-  Future<List<ArticleAdditionalData>> _loadArticlesAdditionalData(
-      List<Article> articles) async {
+  Future<List<ArticleAdditionalData>> _loadArticlesAdditionalData(List<Article> articles) async {
     final encodedIds = _encodeIds(articles);
 
     final responses = await Future.wait([
-      _httpService.loadArticlesCommentCounts(
-          LoadArticlesCommentCountsRequest(encodedIds)),
-      _httpService.loadArticlesBookmarkCounts(
-          LoadArticlesBookmarkCountsRequest(encodedIds)),
-      _httpService
-          .loadArticleReactions(LoadArticleReactionsRequest(encodedIds)),
+      _httpService.loadArticlesCommentCounts(LoadArticlesCommentCountsRequest(encodedIds)),
+      _httpService.loadArticlesBookmarkCounts(LoadArticlesBookmarkCountsRequest(encodedIds)),
+      _httpService.loadArticleReactions(LoadArticleReactionsRequest(encodedIds)),
     ]);
 
-    final loadArticlesCommentCountsResponse =
-        responses[0] as LoadArticlesCommentCountsResponse;
-    final loadArticlesBookmarkCountsResponse =
-        responses[1] as LoadArticlesBookmarkCountsResponse;
-    final loadArticleReactionsResponse =
-        responses[2] as LoadArticleReactionsResponse;
+    final loadArticlesCommentCountsResponse = responses[0] as LoadArticlesCommentCountsResponse;
+    final loadArticlesBookmarkCountsResponse = responses[1] as LoadArticlesBookmarkCountsResponse;
+    final loadArticleReactionsResponse = responses[2] as LoadArticleReactionsResponse;
 
-    final idsToCommentCounts =
-        _getArticleIdsToCommentCounts(loadArticlesCommentCountsResponse);
-    final idsToBookmarkCounts =
-        _getArticleIdsToBookmarkCounts(loadArticlesBookmarkCountsResponse);
+    final idsToCommentCounts = _getArticleIdsToCommentCounts(loadArticlesCommentCountsResponse);
+    final idsToBookmarkCounts = _getArticleIdsToBookmarkCounts(loadArticlesBookmarkCountsResponse);
     final idsToReactions = _getArticleReactions(loadArticleReactionsResponse);
 
     final additionalData = articles
-        .map((article) => ArticleAdditionalData(
-              sourceArticle: article,
-              commentCount: idsToCommentCounts[article.id] ?? 0,
-              bookmarkCount: idsToBookmarkCounts[article.id] ?? 0,
-              reactions: idsToReactions[article.id] ?? {},
-            ))
-        .toList();
+      .map((article) => ArticleAdditionalData(
+        sourceArticle: article,
+        commentCount: idsToCommentCounts[article.id] ?? 0,
+        bookmarkCount: idsToBookmarkCounts[article.id] ?? 0,
+        reactions: idsToReactions[article.id] ?? {},
+      ))
+      .toList();
 
     return additionalData;
   }
 
   String _encodeIds(List<Article> articles) =>
-      articles.map((article) => article.id).join(',');
+    articles.map((article) => article.id).join(',');
 
-  Map<int, int> _getArticleIdsToCommentCounts(
-          LoadArticlesCommentCountsResponse response) =>
-      {for (final count in response.counts) count.articleId: count.count};
+  Map<int, int> _getArticleIdsToCommentCounts(LoadArticlesCommentCountsResponse response) =>
+    {for (final count in response.counts) count.articleId: count.count};
 
-  Map<int, int> _getArticleIdsToBookmarkCounts(
-          LoadArticlesBookmarkCountsResponse response) =>
-      {for (final count in response.counts) count.articleId: count.count};
+  Map<int, int> _getArticleIdsToBookmarkCounts(LoadArticlesBookmarkCountsResponse response) =>
+    {for (final count in response.counts) count.articleId: count.count};
 
-  Map<int, Map<Reaction, int>> _getArticleReactions(
-      LoadArticleReactionsResponse response) {
+  Map<int, Map<Reaction, int>> _getArticleReactions(LoadArticleReactionsResponse response) {
     final idsToReactions = <int, Map<Reaction, int>>{};
 
     for (final articleReaction in response.articleReactions) {
@@ -108,19 +96,18 @@ class ArticleListLoader {
   }
 
   List<Article> _updateArticles(List<ArticleAdditionalData> data) =>
-      data.map(_updateArticle).toList();
+    data.map(_updateArticle).toList();
 
-  Article _updateArticle(ArticleAdditionalData data) =>
-      data.sourceArticle.rebuild((builder) {
-        builder
-          ..bookmarkCount = data.bookmarkCount
-          ..commentCount = data.commentCount;
+  Article _updateArticle(ArticleAdditionalData data) => data.sourceArticle.rebuild((builder) {
+    builder
+      ..bookmarkCount = data.bookmarkCount
+      ..commentCount = data.commentCount;
 
-        for (final reaction in data.reactions.keys) {
-          final count = data.reactions[reaction]!;
-          builder.reactionToCounts[reaction] = count;
-        }
+    for (final reaction in data.reactions.keys) {
+      final count = data.reactions[reaction]!;
+      builder.reactionToCounts[reaction] = count;
+    }
 
-        return builder;
-      });
+    return builder;
+  });
 }
