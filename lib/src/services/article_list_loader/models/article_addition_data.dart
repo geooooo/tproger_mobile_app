@@ -1,6 +1,6 @@
-import 'package:tproger_mobile_app/src/services/article_list_loader/models/article_model/article_model.dart';
+import 'package:tproger_mobile_app/src/services/article_list_parser/models/parsed_article/parsed_article.dart';
 class ArticleAdditionalData {
-  final ArticleModel sourceArticle;
+  final ParsedArticle sourceArticle;
   final int commentCount;
   final int bookmarkCount;
   final Map<int, int> reactions;

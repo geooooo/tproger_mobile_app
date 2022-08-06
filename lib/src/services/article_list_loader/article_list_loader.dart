@@ -1,10 +1,17 @@
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
+import 'package:tproger_mobile_app/src/services/article_list_loader/models/article_addition_data.dart';
 import 'package:tproger_mobile_app/src/services/article_list_loader/models/article_model/article_model.dart';
 import 'package:tproger_mobile_app/src/services/article_list_loader/models/exceptions/load_articles_list_exception.dart';
 import 'package:tproger_mobile_app/src/services/article_list_parser/article_list_parser.dart';
 import 'package:tproger_mobile_app/src/services/article_list_parser/models/parsed_article/parsed_article.dart';
 import 'package:tproger_mobile_app/src/services/http_service/http_service.dart';
+import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_article_reactions/load_article_reactions_request.dart';
+import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_article_reactions/load_article_reactions_response.dart';
+import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_bookmark_counts/load_articles_bookmark_counts_request.dart';
+import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_bookmark_counts/load_articles_bookmark_counts_response.dart';
+import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_comment_counts/load_articles_comment_counts_request.dart';
+import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_comment_counts/load_articles_comment_counts_response.dart';
 import 'package:tproger_mobile_app/src/services/http_service/models/exceptions/load_initial_content_exception.dart';
 
 @singleton
@@ -30,27 +37,11 @@ class ArticleListLoader {
       throw const LoadArticlesListException();
     }
 
-    final articles = parsedArticles
-      .map(_parsedArticleToArticleModel)
-      .toList();
-
-    // final additionalData = await _loadArticlesAdditionalData(articles);
-    // return _updateArticles(additionalData);
-    return articles;
+    final additionalData = await _loadArticlesAdditionalData(parsedArticles);
+    return _getArticleModels(additionalData);
   }
 
-  ArticleModel _parsedArticleToArticleModel(ParsedArticle parsedArticle) => ArticleModel(
-    title: parsedArticle.title, 
-    articleLink: parsedArticle.articleLink, 
-    description: parsedArticle.description, 
-    id: parsedArticle.id,
-    authorAvatarLink: parsedArticle.authorAvatarLink,
-    authorName: parsedArticle.authorName,
-    imageBackgroundColor: parsedArticle.imageBackgroundColor,
-    imageLink: parsedArticle.imageLink,
-  );
-/*
-  Future<List<ArticleAdditionalData>> _loadArticlesAdditionalData(List<Article> articles) async {
+  Future<List<ArticleAdditionalData>> _loadArticlesAdditionalData(List<ParsedArticle> articles) async {
     final encodedIds = _encodeIds(articles);
 
     final responses = await Future.wait([
@@ -79,7 +70,7 @@ class ArticleListLoader {
     return additionalData;
   }
 
-  String _encodeIds(List<Article> articles) =>
+  String _encodeIds(List<ParsedArticle> articles) =>
     articles.map((article) => article.id).join(',');
 
   Map<int, int> _getArticleIdsToCommentCounts(LoadArticlesCommentCountsResponse response) =>
@@ -88,8 +79,8 @@ class ArticleListLoader {
   Map<int, int> _getArticleIdsToBookmarkCounts(LoadArticlesBookmarkCountsResponse response) =>
     {for (final count in response.counts) count.articleId: count.count};
 
-  Map<int, Map<Reaction, int>> _getArticleReactions(LoadArticleReactionsResponse response) {
-    final idsToReactions = <int, Map<Reaction, int>>{};
+  Map<int, Map<int, int>> _getArticleReactions(LoadArticleReactionsResponse response) {
+    final idsToReactions = <int, Map<int, int>>{};
 
     for (final articleReaction in response.articleReactions) {
       final reactions = articleReaction.reactions;
@@ -105,19 +96,20 @@ class ArticleListLoader {
     return idsToReactions;
   }
 
-  List<Article> _updateArticles(List<ArticleAdditionalData> data) =>
-    data.map(_updateArticle).toList();
+  List<ArticleModel> _getArticleModels(List<ArticleAdditionalData> data) =>
+    data.map(_getArticleModel).toList();
 
-  Article _updateArticle(ArticleAdditionalData data) => data.sourceArticle.rebuild((builder) {
-    builder
-      ..bookmarkCount = data.bookmarkCount
-      ..commentCount = data.commentCount;
-
-    for (final reaction in data.reactions.keys) {
-      final count = data.reactions[reaction]!;
-      builder.reactionToCounts[reaction] = count;
-    }
-
-    return builder;
-  });*/
+  ArticleModel _getArticleModel(ArticleAdditionalData data) => ArticleModel(
+    id: data.sourceArticle.id,
+    articleLink: data.sourceArticle.articleLink,
+    title: data.sourceArticle.title,
+    description: data.sourceArticle.description,
+    authorName: data.sourceArticle.authorName,
+    authorAvatarLink: data.sourceArticle.authorAvatarLink,
+    imageLink: data.sourceArticle.imageLink,
+    imageBackgroundColor: data.sourceArticle.imageBackgroundColor,
+    bookmarkCount: data.bookmarkCount,
+    commentCount: data.commentCount,
+    reactionToCounts: data.reactions,
+  );
 }

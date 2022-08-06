@@ -45,6 +45,6 @@ class ArticleListService {
     imageLink: articleModel.imageLink,
     bookmarkCount: articleModel.bookmarkCount,
     commentCount: articleModel.commentCount,
-    reactionToCounts: articleModel.reactionToCounts.toMap(),
+    reactionToCounts: articleModel.reactionToCounts,
   );
 }

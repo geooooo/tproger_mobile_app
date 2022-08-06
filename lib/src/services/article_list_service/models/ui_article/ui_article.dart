@@ -28,7 +28,7 @@ abstract class UiArticle implements Built<UiArticle, UiArticleBuilder> {
     required String articleLink,
     required String description,
     required int id,
-    required Map<int, int> reactionToCounts,
+    required BuiltMap<int, int> reactionToCounts,
     required int bookmarkCount,
     required int commentCount,
     required String? imageLink,
@@ -50,7 +50,7 @@ abstract class UiArticle implements Built<UiArticle, UiArticleBuilder> {
     ..authorName = authorName
   );
 
-  static _getRreactionToCounts(Map<int, int> reactionToCounts) => 
+  static _getRreactionToCounts(BuiltMap<int, int> reactionToCounts) => 
     { for (final reaction in Reaction.values) 
       reaction: reactionToCounts[reaction.value] ?? 0
     };
