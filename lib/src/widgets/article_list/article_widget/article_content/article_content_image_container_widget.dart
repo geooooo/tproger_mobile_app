@@ -32,20 +32,23 @@ class _ArticleContentImageContainerWidgetState extends State<ArticleContentImage
   }
 
   @override
-  Widget build(BuildContext context) => _isLoading
-    ? ArticleContentImageShimmerWidget(
-        backgroundColor: widget.backgroundColor,
-      )
-    : _hasError
+  Widget build(BuildContext context) => _hasError
     ? Container()
-    : ArticleContentImageWidget(
-        link: widget.link, 
-        backgroundColor: widget.backgroundColor,
+    : Stack(
+        children: [
+          ArticleContentImageWidget(
+            link: widget.link, 
+            backgroundColor: widget.backgroundColor,
+          ),
+          if (_isLoading) ArticleContentImageShimmerWidget(
+            backgroundColor: widget.backgroundColor,
+          ),
+        ],
       );
 
   Future<void> _preloadImage() async {
     await precacheImage(
-      NetworkImage(widget.link+'s'), 
+      NetworkImage(widget.link), 
       context,
       onError: _onPreloadImageError,
     );
