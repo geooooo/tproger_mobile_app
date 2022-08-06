@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 import 'package:tproger_mobile_app/src/services/app_theme/app_theme.dart';
-import 'package:tproger_mobile_app/src/widgets/common/shimmer_author_avatar_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list/article_widget/article_author/author_avatar_shimmer_widget.dart';
 
 class ArticleAuthorAvatarWidget extends StatelessWidget {
   final _logger = GetIt.instance.get<Logger>();
@@ -34,12 +34,12 @@ class ArticleAuthorAvatarWidget extends StatelessWidget {
     return Image.asset(Asset.defaultAvatar.value);
   }
 
-  Widget _loadingBuilder(BuildContext context, Widget imageWidget, ImageChunkEvent? event) {
-    if (event == null) {
+  Widget _loadingBuilder(BuildContext context, Widget imageWidget, ImageChunkEvent? loadingProgress) {
+    if (loadingProgress == null) {
       return imageWidget;
     }
 
-    return ShimmerWidget(
+    return ArticleAuthorShimmerWidget(
       child: imageWidget,
     );
   }

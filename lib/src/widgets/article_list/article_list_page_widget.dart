@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tproger_mobile_app/src/services/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/services/article_list_service/article_list_service.dart';
+import 'package:tproger_mobile_app/src/services/article_list_service/models/exceptions/load_articles_list_exception.dart';
 import 'package:tproger_mobile_app/src/services/article_list_service/models/ui_article/ui_article.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list/article_list_loader_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list/article_list_widget.dart';
@@ -40,12 +41,15 @@ class _ArticleListPageWidgetState extends State<ArticleListPageWidget> {
   );
 
   Future<void> _loadArticleList() async {
-    //TODO: error
-    final articles = await _articleListService.getArticles();
+    try {
+      final articles = await _articleListService.getArticles();
 
-    setState(() {
-      _articles = articles;
-      _isLoading = false;
-    });
+      setState(() {
+        _articles = articles;
+        _isLoading = false;
+      });
+    } on GetArticlesException {
+      await _loadArticleList();
+    }
   }
 }
