@@ -27,6 +27,13 @@ class _ArticleDetailPageWidgetState extends State<ArticleDetailPageWidget> {
   bool _isLoaded = false;
 
   @override
+  void dispose() {
+    _controller.dispose();
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) => MaterialApp(
     debugShowCheckedModeBanner: false,
     home: SafeArea(

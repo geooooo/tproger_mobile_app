@@ -14,12 +14,14 @@ class ArticleListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ListView.separated(
+    addAutomaticKeepAlives: true,
     itemCount: articles.length,
     itemBuilder: (context, index) => GestureDetector(
       onTap: () => _onTapArticle(context, articles[index].articleLink),
       child: ArticleWidget(
         article: articles[index],
       ),
+      key: ValueKey(articles[index].id),
     ),
     separatorBuilder: (context, index) =>
       const SizedBox(height: AppTheme.articleListSeparatorSize),
