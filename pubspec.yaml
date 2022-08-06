@@ -34,3 +34,4 @@ flutter:
   assets:
     - bookmark.png
     - comment.png
+    - default_avatar.png
