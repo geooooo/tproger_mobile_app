@@ -14,14 +14,6 @@ class _$Article extends Article {
   @override
   final String description;
   @override
-  final int id;
-  @override
-  final BuiltMap<Reaction, int> reactionToCounts;
-  @override
-  final int bookmarkCount;
-  @override
-  final int commentCount;
-  @override
   final String? imageLink;
   @override
   final String? imageBackgroundColor;
@@ -37,10 +29,6 @@ class _$Article extends Article {
       {required this.title,
       required this.articleLink,
       required this.description,
-      required this.id,
-      required this.reactionToCounts,
-      required this.bookmarkCount,
-      required this.commentCount,
       this.imageLink,
       this.imageBackgroundColor,
       this.authorAvatarLink,
@@ -51,13 +39,6 @@ class _$Article extends Article {
         articleLink, r'Article', 'articleLink');
     BuiltValueNullFieldError.checkNotNull(
         description, r'Article', 'description');
-    BuiltValueNullFieldError.checkNotNull(id, r'Article', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        reactionToCounts, r'Article', 'reactionToCounts');
-    BuiltValueNullFieldError.checkNotNull(
-        bookmarkCount, r'Article', 'bookmarkCount');
-    BuiltValueNullFieldError.checkNotNull(
-        commentCount, r'Article', 'commentCount');
   }
 
   @override
@@ -74,10 +55,6 @@ class _$Article extends Article {
         title == other.title &&
         articleLink == other.articleLink &&
         description == other.description &&
-        id == other.id &&
-        reactionToCounts == other.reactionToCounts &&
-        bookmarkCount == other.bookmarkCount &&
-        commentCount == other.commentCount &&
         imageLink == other.imageLink &&
         imageBackgroundColor == other.imageBackgroundColor &&
         authorAvatarLink == other.authorAvatarLink &&
@@ -90,18 +67,8 @@ class _$Article extends Article {
         $jc(
             $jc(
                 $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc($jc(0, title.hashCode),
-                                            articleLink.hashCode),
-                                        description.hashCode),
-                                    id.hashCode),
-                                reactionToCounts.hashCode),
-                            bookmarkCount.hashCode),
-                        commentCount.hashCode),
+                    $jc($jc($jc(0, title.hashCode), articleLink.hashCode),
+                        description.hashCode),
                     imageLink.hashCode),
                 imageBackgroundColor.hashCode),
             authorAvatarLink.hashCode),
@@ -114,10 +81,6 @@ class _$Article extends Article {
           ..add('title', title)
           ..add('articleLink', articleLink)
           ..add('description', description)
-          ..add('id', id)
-          ..add('reactionToCounts', reactionToCounts)
-          ..add('bookmarkCount', bookmarkCount)
-          ..add('commentCount', commentCount)
           ..add('imageLink', imageLink)
           ..add('imageBackgroundColor', imageBackgroundColor)
           ..add('authorAvatarLink', authorAvatarLink)
@@ -140,25 +103,6 @@ class ArticleBuilder implements Builder<Article, ArticleBuilder> {
   String? _description;
   String? get description => _$this._description;
   set description(String? description) => _$this._description = description;
-
-  int? _id;
-  int? get id => _$this._id;
-  set id(int? id) => _$this._id = id;
-
-  MapBuilder<Reaction, int>? _reactionToCounts;
-  MapBuilder<Reaction, int> get reactionToCounts =>
-      _$this._reactionToCounts ??= new MapBuilder<Reaction, int>();
-  set reactionToCounts(MapBuilder<Reaction, int>? reactionToCounts) =>
-      _$this._reactionToCounts = reactionToCounts;
-
-  int? _bookmarkCount;
-  int? get bookmarkCount => _$this._bookmarkCount;
-  set bookmarkCount(int? bookmarkCount) =>
-      _$this._bookmarkCount = bookmarkCount;
-
-  int? _commentCount;
-  int? get commentCount => _$this._commentCount;
-  set commentCount(int? commentCount) => _$this._commentCount = commentCount;
 
   String? _imageLink;
   String? get imageLink => _$this._imageLink;
@@ -186,10 +130,6 @@ class ArticleBuilder implements Builder<Article, ArticleBuilder> {
       _title = $v.title;
       _articleLink = $v.articleLink;
       _description = $v.description;
-      _id = $v.id;
-      _reactionToCounts = $v.reactionToCounts.toBuilder();
-      _bookmarkCount = $v.bookmarkCount;
-      _commentCount = $v.commentCount;
       _imageLink = $v.imageLink;
       _imageBackgroundColor = $v.imageBackgroundColor;
       _authorAvatarLink = $v.authorAvatarLink;
@@ -214,37 +154,18 @@ class ArticleBuilder implements Builder<Article, ArticleBuilder> {
   Article build() => _build();
 
   _$Article _build() {
-    _$Article _$result;
-    try {
-      _$result = _$v ??
-          new _$Article._(
-              title: BuiltValueNullFieldError.checkNotNull(
-                  title, r'Article', 'title'),
-              articleLink: BuiltValueNullFieldError.checkNotNull(
-                  articleLink, r'Article', 'articleLink'),
-              description: BuiltValueNullFieldError.checkNotNull(
-                  description, r'Article', 'description'),
-              id: BuiltValueNullFieldError.checkNotNull(id, r'Article', 'id'),
-              reactionToCounts: reactionToCounts.build(),
-              bookmarkCount: BuiltValueNullFieldError.checkNotNull(
-                  bookmarkCount, r'Article', 'bookmarkCount'),
-              commentCount: BuiltValueNullFieldError.checkNotNull(
-                  commentCount, r'Article', 'commentCount'),
-              imageLink: imageLink,
-              imageBackgroundColor: imageBackgroundColor,
-              authorAvatarLink: authorAvatarLink,
-              authorName: authorName);
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'reactionToCounts';
-        reactionToCounts.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            r'Article', _$failedField, e.toString());
-      }
-      rethrow;
-    }
+    final _$result = _$v ??
+        new _$Article._(
+            title: BuiltValueNullFieldError.checkNotNull(
+                title, r'Article', 'title'),
+            articleLink: BuiltValueNullFieldError.checkNotNull(
+                articleLink, r'Article', 'articleLink'),
+            description: BuiltValueNullFieldError.checkNotNull(
+                description, r'Article', 'description'),
+            imageLink: imageLink,
+            imageBackgroundColor: imageBackgroundColor,
+            authorAvatarLink: authorAvatarLink,
+            authorName: authorName);
     replace(_$result);
     return _$result;
   }

@@ -1,17 +1,17 @@
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
-import 'package:tproger_mobile_app/src/services/article_list_loader/models/article_addition_data.dart';
+// import 'package:tproger_mobile_app/src/services/article_list_loader/models/article_addition_data.dart';
 import 'package:tproger_mobile_app/src/services/article_list_loader/models/exceptions/load_articles_list_exception.dart';
 import 'package:tproger_mobile_app/src/services/article_list_parser/article_list_parser.dart';
 import 'package:tproger_mobile_app/src/services/article_list_parser/models/article/article.dart';
 import 'package:tproger_mobile_app/src/services/http_service/http_service.dart';
-import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_article_reactions/load_article_reactions_request.dart';
-import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_article_reactions/load_article_reactions_response.dart';
-import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_bookmark_counts/load_articles_bookmark_counts_request.dart';
-import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_bookmark_counts/load_articles_bookmark_counts_response.dart';
-import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_comment_counts/load_articles_comment_counts_request.dart';
-import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_comment_counts/load_articles_comment_counts_response.dart';
-import 'package:tproger_mobile_app/src/services/http_service/models/enums/reaction.dart';
+// import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_article_reactions/load_article_reactions_request.dart';
+// import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_article_reactions/load_article_reactions_response.dart';
+// import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_bookmark_counts/load_articles_bookmark_counts_request.dart';
+// import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_bookmark_counts/load_articles_bookmark_counts_response.dart';
+// import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_comment_counts/load_articles_comment_counts_request.dart';
+// import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_comment_counts/load_articles_comment_counts_response.dart';
+// import 'package:tproger_mobile_app/src/services/http_service/models/enums/reaction.dart';
 
 @singleton
 class ArticleListLoader {
@@ -36,10 +36,11 @@ class ArticleListLoader {
       throw const LoadArticlesListException();
     }
 
-    final additionalData = await _loadArticlesAdditionalData(articles);
-    return _updateArticles(additionalData);
+    // final additionalData = await _loadArticlesAdditionalData(articles);
+    // return _updateArticles(additionalData);
+    return articles;
   }
-
+/*
   Future<List<ArticleAdditionalData>> _loadArticlesAdditionalData(List<Article> articles) async {
     final encodedIds = _encodeIds(articles);
 
@@ -109,5 +110,5 @@ class ArticleListLoader {
     }
 
     return builder;
-  });
+  });*/
 }

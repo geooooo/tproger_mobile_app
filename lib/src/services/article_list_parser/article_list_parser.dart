@@ -29,7 +29,7 @@ class ArticleListParser {
       imageLink: _parseImage(articleElement),
       imageBackgroundColor: _parseImageBackgroundColor(articleElement),
       description: _parseDescription(articleElement),
-      id: _parseId(articleElement),
+      // id: _parseId(articleElement),
       authorAvatarLink: _parseAuthorAvatarLink(authorElement),
       authorName: _parseAuthorName(authorElement),
     );
@@ -62,10 +62,10 @@ class ArticleListParser {
     return _removeSpaces(descriptionElement.text);
   }
 
-  int _parseId(Element articleElement) {
-    final dataPost = articleElement.attributes['data-post']!;
-    return int.parse(dataPost);
-  }
+  // int _parseId(Element articleElement) {
+  //   final dataPost = articleElement.attributes['data-post']!;
+  //   return int.parse(dataPost);
+  // }
 
   String? _parseAuthorAvatarLink(Element? authorElement) {
     if (authorElement == null) {
