@@ -26,8 +26,9 @@ class _ArticleContentImageContainerWidgetState extends State<ArticleContentImage
 
   @override
   void didChangeDependencies() {
-    _preloadImage();
     super.didChangeDependencies();
+
+    _preloadImage();
   }
 
   @override
@@ -52,7 +53,11 @@ class _ArticleContentImageContainerWidgetState extends State<ArticleContentImage
       onError: _onPreloadImageError,
     );
 
-    setState(() { _isLoading = false; });
+    setState(() { 
+      if (mounted) {
+        _isLoading = false;
+      }
+    });
   }
 
    void _onPreloadImageError(Object error, StackTrace? stackTrace) {
