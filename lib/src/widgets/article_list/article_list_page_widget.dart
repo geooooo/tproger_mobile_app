@@ -18,7 +18,7 @@ class _ArticleListPageWidgetState extends State<ArticleListPageWidget> {
 
   bool _isLoading = true;
   List<Article> _articles = const [];
-
+  
   @override
   void initState() {
     super.initState();

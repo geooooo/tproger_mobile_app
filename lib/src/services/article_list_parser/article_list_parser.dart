@@ -11,7 +11,7 @@ class ArticleListParser {
 
   List<Article> parse(String html) {
     final document = html_parser.parse(html);
-    return _parseArticles(document);
+    return _parseArticles(document).reversed.take(1).toList();
   }
 
   List<Article> _parseArticles(Document document) {
@@ -107,7 +107,8 @@ class ArticleListParser {
     articleElement.querySelector(Selector.authorImage.value);
 
   Element? _getImageElement(Element articleElement) =>
-    articleElement.querySelector(Selector.image.value);
+    articleElement.querySelector(Selector.image1.value) ??
+    articleElement.querySelector(Selector.image2.value);
 
   Element? _getImageBackgroundColorElement(Element articleElement) =>
     articleElement.querySelector(Selector.imageBackgroundColor.value);

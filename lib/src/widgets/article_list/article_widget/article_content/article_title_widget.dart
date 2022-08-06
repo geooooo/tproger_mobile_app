@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:tproger_mobile_app/src/services/app_theme/app_theme.dart';
 
-class ArticleDescriptionWidget extends StatelessWidget {
+class ArticleTitleWidget extends StatelessWidget {
   final String text;
 
-  const ArticleDescriptionWidget({
+  const ArticleTitleWidget({
     required this.text,
     super.key,
   });
@@ -12,6 +12,6 @@ class ArticleDescriptionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Text(
     text,
-    style: AppTheme.articleDescriptionTextStyle,
+    style: AppTheme.articleTitleTextStyle,
   );
 }

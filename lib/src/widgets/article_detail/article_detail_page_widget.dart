@@ -34,7 +34,7 @@ class _ArticleDetailPageWidgetState extends State<ArticleDetailPageWidget> {
       child: Scaffold(
         backgroundColor: _appTheme.mainBackgroundColor,
         body: _hasError
-          ? const Placeholder(color: Colors.red)
+          ? const Placeholder(color: Color.fromRGBO(255, 0, 0, 1))
           : Stack(
               children: [
                 WebViewX(  

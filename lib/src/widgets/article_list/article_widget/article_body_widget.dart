@@ -1,27 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
+import 'package:flutter/widgets.dart';
 import 'package:tproger_mobile_app/src/services/app_theme/app_theme.dart';
-import 'package:tproger_mobile_app/src/services/app_theme/app_theme_dark.dart';
 import 'package:tproger_mobile_app/src/services/article_list_parser/models/article/article.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list/article_author/article_author_widget.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list/article_content/article_content_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list/article_widget/article_author/article_author_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list/article_widget/article_content/article_content_widget.dart';
 
-class ArticleWidget extends StatelessWidget {
-  final AppTheme _appTheme = GetIt.instance.get<AppThemeDark>();
-
+class ArticleBodyWidget extends StatelessWidget {
   final Article article;
-
-  ArticleWidget({
+  
+  const ArticleBodyWidget({
     required this.article,
     super.key,
   });
-
+  
   @override
-  Widget build(BuildContext context) => Container(
+  Widget build(BuildContext context) => Padding(
     padding: const EdgeInsets.all(AppTheme.articlePaddingSize),
-    decoration: BoxDecoration(
-      color: _appTheme.articleBackgroundColor,
-    ),
     child: Column(
       children: [
         if (article.authorName != null) ...[
@@ -34,6 +27,7 @@ class ArticleWidget extends StatelessWidget {
         ArticleContentWidget(
           title: article.title,
           description: article.description,
+          imageType: article.imageType,
           imageLink: article.imageLink,
           imageBackgroundColor: article.imageBackgroundColor,
         ),

@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:tproger_mobile_app/src/services/app_theme/app_theme.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list/article_author/article_author_avatar_widget.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list/article_author/article_author_name_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list/article_widget/article_author/article_author_avatar_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list/article_widget/article_author/article_author_name_widget.dart';
 
 class ArticleAuthorWidget extends StatelessWidget {
   final String avatarLink;

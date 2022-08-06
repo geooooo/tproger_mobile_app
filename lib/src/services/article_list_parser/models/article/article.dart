@@ -1,5 +1,6 @@
 // import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
+import 'package:tproger_mobile_app/src/services/article_list_parser/models/enums/image_type.dart';
 // import 'package:tproger_mobile_app/src/services/http_service/models/enums/reaction.dart';
 
 part 'article.g.dart';
@@ -16,6 +17,18 @@ abstract class Article implements Built<Article, ArticleBuilder> {
   String? get imageBackgroundColor;
   String? get authorAvatarLink;
   String? get authorName;
+
+  ImageType get imageType {
+    if (imageLink != null) {
+      if (imageBackgroundColor != null) {
+        return ImageType.content;
+      }
+
+      return ImageType.background;
+    }
+
+    return ImageType.none;
+  }
 
   Article._();
 

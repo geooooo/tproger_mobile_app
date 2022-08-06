@@ -1,4 +1,4 @@
-// import 'package:flutter/material.dart';
+// import 'package:flutter/widgets.dart';
 // import 'package:tproger_mobile_app/src/widgets/bookmark_button_widget.dart';
 // import 'package:tproger_mobile_app/src/widgets/comment_button_widget.dart';
 
