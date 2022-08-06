@@ -7,7 +7,7 @@ class ArticleContentImageWidget extends StatelessWidget {
   final _logger = GetIt.instance.get<Logger>();
   
   final String link;
-  final String backgroundColor;
+  final Color backgroundColor;
 
   ArticleContentImageWidget({
     required this.link,
@@ -20,7 +20,7 @@ class ArticleContentImageWidget extends StatelessWidget {
     height: AppTheme.articleImageContainerHeight,
     width: double.infinity,
     decoration: BoxDecoration(
-      color: AppTheme.getColorFromHex(backgroundColor),
+      color: backgroundColor,
       borderRadius: const BorderRadius.all(AppTheme.articleImageRadius),
     ),
     child: Center(
@@ -35,7 +35,7 @@ class ArticleContentImageWidget extends StatelessWidget {
   );
 
   Widget _imageErrorBuilder(BuildContext context, Object error, StackTrace? stackTrace) {
-    _logger.e('article image loading', error, stackTrace);
+    _logger.e('Article image loading', error, stackTrace);
     return const Placeholder();
   }
 }

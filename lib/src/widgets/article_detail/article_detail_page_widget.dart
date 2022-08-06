@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
-import 'package:tproger_mobile_app/src/services/app_theme/app_theme_dark.dart';
+import 'package:tproger_mobile_app/src/services/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/services/hide_content_js_code/hide_content_js_code.dart';
 import 'package:webviewx/webviewx.dart';
 
@@ -18,7 +18,6 @@ class ArticleDetailPageWidget extends StatefulWidget {
 }
 
 class _ArticleDetailPageWidgetState extends State<ArticleDetailPageWidget> {
-  final _appTheme = GetIt.instance.get<AppThemeDark>();
   final _logger = GetIt.instance.get<Logger>();
   final _hideContentJsCode = GetIt.instance.get<HideContentJsCode>();
 
@@ -32,7 +31,7 @@ class _ArticleDetailPageWidgetState extends State<ArticleDetailPageWidget> {
     debugShowCheckedModeBanner: false,
     home: SafeArea(
       child: Scaffold(
-        backgroundColor: _appTheme.mainBackgroundColor,
+        backgroundColor: AppTheme.mainBackgroundColor,
         body: _hasError
           ? const Placeholder(color: Color.fromRGBO(255, 0, 0, 1))
           : Stack(
@@ -80,7 +79,7 @@ class _ArticleDetailPageWidgetState extends State<ArticleDetailPageWidget> {
     try {
       await _controller.evalRawJavascript(jsCode, inGlobalContext: true);
     } on Exception catch (error, stackTrace) {
-      _logger.e('evaluate js code "$jsCode"', error, stackTrace);
+      _logger.e('Evaluate js code "$jsCode"', error, stackTrace);
       rethrow;
     }
   }

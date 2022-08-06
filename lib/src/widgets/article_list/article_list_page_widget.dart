@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:tproger_mobile_app/src/services/app_theme/app_theme_dark.dart';
-import 'package:tproger_mobile_app/src/services/article_list_loader/article_list_loader.dart';
-import 'package:tproger_mobile_app/src/services/article_list_parser/models/article/article.dart';
+import 'package:tproger_mobile_app/src/services/app_theme/app_theme.dart';
+import 'package:tproger_mobile_app/src/services/article_list_service/article_list_service.dart';
+import 'package:tproger_mobile_app/src/services/article_list_service/models/ui_article/ui_article.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list/article_list_loader_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list/article_list_widget.dart';
 
 class ArticleListPageWidget extends StatefulWidget {
@@ -13,11 +14,10 @@ class ArticleListPageWidget extends StatefulWidget {
 }
 
 class _ArticleListPageWidgetState extends State<ArticleListPageWidget> {
-  final _articleListLoader = GetIt.instance.get<ArticleListLoader>();
-  final _appTheme = GetIt.instance.get<AppThemeDark>();
+  final _articleListService = GetIt.instance.get<ArticleListService>();
 
+  List<UiArticle> _articles = [];
   bool _isLoading = true;
-  List<Article> _articles = const [];
   
   @override
   void initState() {
@@ -31,16 +31,17 @@ class _ArticleListPageWidgetState extends State<ArticleListPageWidget> {
     debugShowCheckedModeBanner: false,
     home: SafeArea(
       child: Scaffold(
-        backgroundColor: _appTheme.mainBackgroundColor,
-        body: _isLoading 
-          ? const Placeholder() 
-          : ArticleListWidget(articles: _articles),
+        backgroundColor: AppTheme.mainBackgroundColor,
+        body: _isLoading
+          ? const ArticleListLoaderWidget()
+          : ArticleListWidget(articles: _articles)
       ),
     ),
   );
 
   Future<void> _loadArticleList() async {
-    final articles = await _articleListLoader.load();
+    //TODO: error
+    final articles = await _articleListService.getArticles();
 
     setState(() {
       _articles = articles;

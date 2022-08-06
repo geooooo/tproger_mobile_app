@@ -8,6 +8,6 @@ part of 'article_reaction_dto.dart';
 
 ArticleReactionDto _$ArticleReactionDtoFromJson(Map<String, dynamic> json) =>
     ArticleReactionDto(
-      type: ArticleReactionDto._reactionFromJson(json['reaction'] as int),
+      type: json['reaction'] as int,
       count: json['count'] as int,
     );

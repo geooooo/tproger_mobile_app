@@ -1,18 +1,20 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'article.dart';
+part of 'parsed_article.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$Article extends Article {
+class _$ParsedArticle extends ParsedArticle {
   @override
   final String title;
   @override
   final String articleLink;
   @override
   final String description;
+  @override
+  final int id;
   @override
   final String? imageLink;
   @override
@@ -22,39 +24,42 @@ class _$Article extends Article {
   @override
   final String? authorName;
 
-  factory _$Article([void Function(ArticleBuilder)? updates]) =>
-      (new ArticleBuilder()..update(updates))._build();
+  factory _$ParsedArticle([void Function(ParsedArticleBuilder)? updates]) =>
+      (new ParsedArticleBuilder()..update(updates))._build();
 
-  _$Article._(
+  _$ParsedArticle._(
       {required this.title,
       required this.articleLink,
       required this.description,
+      required this.id,
       this.imageLink,
       this.imageBackgroundColor,
       this.authorAvatarLink,
       this.authorName})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(title, r'Article', 'title');
+    BuiltValueNullFieldError.checkNotNull(title, r'ParsedArticle', 'title');
     BuiltValueNullFieldError.checkNotNull(
-        articleLink, r'Article', 'articleLink');
+        articleLink, r'ParsedArticle', 'articleLink');
     BuiltValueNullFieldError.checkNotNull(
-        description, r'Article', 'description');
+        description, r'ParsedArticle', 'description');
+    BuiltValueNullFieldError.checkNotNull(id, r'ParsedArticle', 'id');
   }
 
   @override
-  Article rebuild(void Function(ArticleBuilder) updates) =>
+  ParsedArticle rebuild(void Function(ParsedArticleBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ArticleBuilder toBuilder() => new ArticleBuilder()..replace(this);
+  ParsedArticleBuilder toBuilder() => new ParsedArticleBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Article &&
+    return other is ParsedArticle &&
         title == other.title &&
         articleLink == other.articleLink &&
         description == other.description &&
+        id == other.id &&
         imageLink == other.imageLink &&
         imageBackgroundColor == other.imageBackgroundColor &&
         authorAvatarLink == other.authorAvatarLink &&
@@ -67,8 +72,10 @@ class _$Article extends Article {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, title.hashCode), articleLink.hashCode),
-                        description.hashCode),
+                    $jc(
+                        $jc($jc($jc(0, title.hashCode), articleLink.hashCode),
+                            description.hashCode),
+                        id.hashCode),
                     imageLink.hashCode),
                 imageBackgroundColor.hashCode),
             authorAvatarLink.hashCode),
@@ -77,10 +84,11 @@ class _$Article extends Article {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'Article')
+    return (newBuiltValueToStringHelper(r'ParsedArticle')
           ..add('title', title)
           ..add('articleLink', articleLink)
           ..add('description', description)
+          ..add('id', id)
           ..add('imageLink', imageLink)
           ..add('imageBackgroundColor', imageBackgroundColor)
           ..add('authorAvatarLink', authorAvatarLink)
@@ -89,8 +97,9 @@ class _$Article extends Article {
   }
 }
 
-class ArticleBuilder implements Builder<Article, ArticleBuilder> {
-  _$Article? _$v;
+class ParsedArticleBuilder
+    implements Builder<ParsedArticle, ParsedArticleBuilder> {
+  _$ParsedArticle? _$v;
 
   String? _title;
   String? get title => _$this._title;
@@ -103,6 +112,10 @@ class ArticleBuilder implements Builder<Article, ArticleBuilder> {
   String? _description;
   String? get description => _$this._description;
   set description(String? description) => _$this._description = description;
+
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
   String? _imageLink;
   String? get imageLink => _$this._imageLink;
@@ -122,14 +135,15 @@ class ArticleBuilder implements Builder<Article, ArticleBuilder> {
   String? get authorName => _$this._authorName;
   set authorName(String? authorName) => _$this._authorName = authorName;
 
-  ArticleBuilder();
+  ParsedArticleBuilder();
 
-  ArticleBuilder get _$this {
+  ParsedArticleBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _title = $v.title;
       _articleLink = $v.articleLink;
       _description = $v.description;
+      _id = $v.id;
       _imageLink = $v.imageLink;
       _imageBackgroundColor = $v.imageBackgroundColor;
       _authorAvatarLink = $v.authorAvatarLink;
@@ -140,28 +154,30 @@ class ArticleBuilder implements Builder<Article, ArticleBuilder> {
   }
 
   @override
-  void replace(Article other) {
+  void replace(ParsedArticle other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$Article;
+    _$v = other as _$ParsedArticle;
   }
 
   @override
-  void update(void Function(ArticleBuilder)? updates) {
+  void update(void Function(ParsedArticleBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  Article build() => _build();
+  ParsedArticle build() => _build();
 
-  _$Article _build() {
+  _$ParsedArticle _build() {
     final _$result = _$v ??
-        new _$Article._(
+        new _$ParsedArticle._(
             title: BuiltValueNullFieldError.checkNotNull(
-                title, r'Article', 'title'),
+                title, r'ParsedArticle', 'title'),
             articleLink: BuiltValueNullFieldError.checkNotNull(
-                articleLink, r'Article', 'articleLink'),
+                articleLink, r'ParsedArticle', 'articleLink'),
             description: BuiltValueNullFieldError.checkNotNull(
-                description, r'Article', 'description'),
+                description, r'ParsedArticle', 'description'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'ParsedArticle', 'id'),
             imageLink: imageLink,
             imageBackgroundColor: imageBackgroundColor,
             authorAvatarLink: authorAvatarLink,

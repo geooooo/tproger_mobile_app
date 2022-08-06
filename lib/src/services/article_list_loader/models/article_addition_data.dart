@@ -1,11 +1,9 @@
-import 'package:tproger_mobile_app/src/services/article_list_parser/models/article/article.dart';
-import 'package:tproger_mobile_app/src/services/http_service/models/enums/reaction.dart';
-
+import 'package:tproger_mobile_app/src/services/article_list_loader/models/article_model/article_model.dart';
 class ArticleAdditionalData {
-  final Article sourceArticle;
+  final ArticleModel sourceArticle;
   final int commentCount;
   final int bookmarkCount;
-  final Map<Reaction, int> reactions;
+  final Map<int, int> reactions;
 
   const ArticleAdditionalData({
     required this.sourceArticle,

@@ -27,7 +27,7 @@ class ArticleAuthorAvatarWidget extends StatelessWidget {
   );
 
   Widget _imageErrorBuilder(BuildContext context, Object error, StackTrace? stackTrace) {
-    _logger.e('author avatar loading', error, stackTrace);
+    _logger.e('Author avatar loading', error, stackTrace);
     return const Placeholder();
   }
 }

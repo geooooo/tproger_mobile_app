@@ -1,17 +1,11 @@
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
-// import 'package:tproger_mobile_app/src/services/article_list_loader/models/article_addition_data.dart';
+import 'package:tproger_mobile_app/src/services/article_list_loader/models/article_model/article_model.dart';
 import 'package:tproger_mobile_app/src/services/article_list_loader/models/exceptions/load_articles_list_exception.dart';
 import 'package:tproger_mobile_app/src/services/article_list_parser/article_list_parser.dart';
-import 'package:tproger_mobile_app/src/services/article_list_parser/models/article/article.dart';
+import 'package:tproger_mobile_app/src/services/article_list_parser/models/parsed_article/parsed_article.dart';
 import 'package:tproger_mobile_app/src/services/http_service/http_service.dart';
-// import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_article_reactions/load_article_reactions_request.dart';
-// import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_article_reactions/load_article_reactions_response.dart';
-// import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_bookmark_counts/load_articles_bookmark_counts_request.dart';
-// import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_bookmark_counts/load_articles_bookmark_counts_response.dart';
-// import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_comment_counts/load_articles_comment_counts_request.dart';
-// import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_comment_counts/load_articles_comment_counts_response.dart';
-// import 'package:tproger_mobile_app/src/services/http_service/models/enums/reaction.dart';
+import 'package:tproger_mobile_app/src/services/http_service/models/exceptions/load_initial_content_exception.dart';
 
 @singleton
 class ArticleListLoader {
@@ -25,21 +19,36 @@ class ArticleListLoader {
     this._httpService,
   );
 
-  Future<List<Article>> load() async {
-    List<Article> articles;
+  Future<List<ArticleModel>> load() async {
+    List<ParsedArticle> parsedArticles;
 
     try {
       final response = await _httpService.loadInitialContent();
-      articles = _articleListParser.parse(response.html);
-    } on Exception catch (error, stackTrace) {
+      parsedArticles = _articleListParser.parse(response.html);
+    } on LoadInitialContentException catch (error, stackTrace) {
       _logger.e('Article list load', error, stackTrace);
       throw const LoadArticlesListException();
     }
+
+    final articles = parsedArticles
+      .map(_parsedArticleToArticleModel)
+      .toList();
 
     // final additionalData = await _loadArticlesAdditionalData(articles);
     // return _updateArticles(additionalData);
     return articles;
   }
+
+  ArticleModel _parsedArticleToArticleModel(ParsedArticle parsedArticle) => ArticleModel(
+    title: parsedArticle.title, 
+    articleLink: parsedArticle.articleLink, 
+    description: parsedArticle.description, 
+    id: parsedArticle.id,
+    authorAvatarLink: parsedArticle.authorAvatarLink,
+    authorName: parsedArticle.authorName,
+    imageBackgroundColor: parsedArticle.imageBackgroundColor,
+    imageLink: parsedArticle.imageLink,
+  );
 /*
   Future<List<ArticleAdditionalData>> _loadArticlesAdditionalData(List<Article> articles) async {
     final encodedIds = _encodeIds(articles);

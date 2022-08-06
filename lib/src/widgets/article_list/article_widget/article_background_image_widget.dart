@@ -3,11 +3,11 @@ import 'package:flutter/widgets.dart';
 
 class ArticleBackgroundImageWidget extends StatelessWidget {
   final String imageLink;
-  // final Widget child;
+  final Widget child;
   
   const ArticleBackgroundImageWidget({
     required this.imageLink,
-    // required this.child,
+    required this.child,
     super.key,
   });
   
@@ -46,9 +46,7 @@ class ArticleBackgroundImageWidget extends StatelessWidget {
           ),
         ),
       ),
-      // Positioned.fill(
-      //   child: child,
-      // ),
+      child,
     ],
   );
 }

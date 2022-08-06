@@ -1,4 +1,3 @@
-import 'package:color_parser/color_parser.dart';
 import 'package:flutter/widgets.dart';
 
 abstract class AppTheme {
@@ -8,14 +7,13 @@ abstract class AppTheme {
     'Arial',
     'sans-serif',
   ];
-  static const white1 = Color.fromRGBO(238, 242, 241, 1);
+  static const _white1 = Color.fromRGBO(238, 242, 241, 1);
 
   static const articleListSeparatorSize = 20.0;
   static const articleContentSeparatorSize = 18.0;
   static const articleImageAndTitleSeparatorSize = 12.0;
   static const articleTitleAndDescriptionSeparatorSize = 16.0;
   static const articleAuthorAvatarAndNameSeparatorSize = 8.0;
-
   static const articlePaddingSize = 16.0;
   static const articleAuthorAvatarSize = 24.0;
 
@@ -24,6 +22,13 @@ abstract class AppTheme {
 
   static const articleImageContainerHeight = 120.0;
   static const articleImageHeight = 80.0;
+
+  static const transparentColor = Color.fromRGBO(0, 0, 0, 0);
+  static const mainBackgroundColor = Color.fromRGBO(0, 0, 0, 1);
+  static const articleBackgroundColor =Color.fromRGBO(24, 29, 28, 1);
+  static const articleListLoaderColor = articleBackgroundColor;
+  static const shimmerBaseColor = mainBackgroundColor;
+  static const shimmerHiglightColor = articleBackgroundColor;
 
   static const articleAuthorNameTextStyle = TextStyle(
     fontSize: 16,
@@ -37,7 +42,7 @@ abstract class AppTheme {
     fontSize: 28,
     height: 32 / 28,
     fontWeight: FontWeight.w600,
-    color: white1,
+    color: _white1,
     fontFamily: _fontFamily,
     fontFamilyFallback: _fontFamilyFallback
   );
@@ -46,14 +51,8 @@ abstract class AppTheme {
     fontSize: 18,
     height: 28 / 18,
     fontWeight: FontWeight.w400,
-    color: white1,
+    color: _white1,
     fontFamily: _fontFamily,
     fontFamilyFallback: _fontFamilyFallback,
   );
-
-  static Color getColorFromHex(String hexColor) => ColorParser.hex(hexColor).getColor()!;
-
-  Color get mainBackgroundColor;
-
-  Color get articleBackgroundColor;
 }

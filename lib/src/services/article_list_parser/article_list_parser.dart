@@ -1,35 +1,35 @@
 import 'package:html/dom.dart';
 import 'package:html/parser.dart' as html_parser;
 import 'package:injectable/injectable.dart';
-import 'package:tproger_mobile_app/src/services/article_list_parser/models/article/article.dart';
 import 'package:tproger_mobile_app/src/services/article_list_parser/models/enums/selector.dart';
+import 'package:tproger_mobile_app/src/services/article_list_parser/models/parsed_article/parsed_article.dart';
 import 'package:tproger_mobile_app/src/services/http_service/models/enums/base_url.dart';
 
 @singleton
 class ArticleListParser {
   static final backgroundColorPattern = RegExp(r'#[0-9a-fA-F]{6}');
 
-  List<Article> parse(String html) {
+  List<ParsedArticle> parse(String html) {
     final document = html_parser.parse(html);
-    return _parseArticles(document).reversed.take(1).toList();
+    return _parseArticles(document).toList();
   }
 
-  List<Article> _parseArticles(Document document) {
+  List<ParsedArticle> _parseArticles(Document document) {
     final articleElements = document.querySelectorAll(Selector.article.value);
     return articleElements.map(_parseArticle).toList();
   }
 
-  Article _parseArticle(Element articleElement) {
+  ParsedArticle _parseArticle(Element articleElement) {
     final titleElement = _getTitleElement(articleElement);
     final authorElement = _getAuthorElement(articleElement);
 
-    return Article(
+    return ParsedArticle(
       title: _parseTitle(titleElement),
       articleLink: _parseLink(titleElement),
       imageLink: _parseImage(articleElement),
       imageBackgroundColor: _parseImageBackgroundColor(articleElement),
       description: _parseDescription(articleElement),
-      // id: _parseId(articleElement),
+      id: _parseId(articleElement),
       authorAvatarLink: _parseAuthorAvatarLink(authorElement),
       authorName: _parseAuthorName(authorElement),
     );
@@ -62,10 +62,10 @@ class ArticleListParser {
     return _removeSpaces(descriptionElement.text);
   }
 
-  // int _parseId(Element articleElement) {
-  //   final dataPost = articleElement.attributes['data-post']!;
-  //   return int.parse(dataPost);
-  // }
+  int _parseId(Element articleElement) {
+    final dataPost = articleElement.attributes['data-post']!;
+    return int.parse(dataPost);
+  }
 
   String? _parseAuthorAvatarLink(Element? authorElement) {
     if (authorElement == null) {

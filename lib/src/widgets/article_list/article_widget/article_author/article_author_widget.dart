@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:tproger_mobile_app/src/services/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list/article_widget/article_author/article_author_avatar_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list/article_widget/article_author/article_author_name_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/common/shimmer_author_avatar_widget.dart';
 
 class ArticleAuthorWidget extends StatelessWidget {
   final String avatarLink;
@@ -16,7 +17,9 @@ class ArticleAuthorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Row(
     children: [
-      ArticleAuthorAvatarWidget(avatarLink: avatarLink),
+      ShimmerWidget(
+        child: ArticleAuthorAvatarWidget(avatarLink: avatarLink),
+      ),
       const SizedBox(width: AppTheme.articleAuthorAvatarAndNameSeparatorSize),
       ArticleAuthorNameWidget(authorName: authorName),
     ],
