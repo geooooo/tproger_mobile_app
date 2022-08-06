@@ -45,7 +45,7 @@ class _ArticleContentImageContainerWidgetState extends State<ArticleContentImage
 
   Future<void> _preloadImage() async {
     await precacheImage(
-      NetworkImage(widget.link), 
+      NetworkImage(widget.link+'s'), 
       context,
       onError: _onPreloadImageError,
     );

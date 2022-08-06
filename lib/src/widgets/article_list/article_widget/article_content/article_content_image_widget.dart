@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:tproger_mobile_app/src/services/app_theme/app_theme.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class ArticleContentImageWidget extends StatelessWidget {
   final String link;
@@ -22,7 +23,10 @@ class ArticleContentImageWidget extends StatelessWidget {
     child: Center(
       child: SizedBox(
         height: AppTheme.articleImageHeight,
-        child: Image.network(link),
+        child: FadeInImage.memoryNetwork(
+          image: link,
+          placeholder: kTransparentImage,
+        ),
       ),
     ),
   );

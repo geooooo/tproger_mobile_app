@@ -27,8 +27,6 @@ abstract class AppTheme {
   static const mainBackgroundColor = Color.fromRGBO(0, 0, 0, 1);
   static const articleBackgroundColor =Color.fromRGBO(24, 29, 28, 1);
   static const articleListLoaderColor = articleBackgroundColor;
-  static const articleAuthorShimmerBaseColor = mainBackgroundColor;
-  static const articleAuthorShimmerHiglightColor = articleBackgroundColor;
 
   static const articleAuthorNameTextStyle = TextStyle(
     fontSize: 16,
