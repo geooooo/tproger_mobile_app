@@ -44,6 +44,7 @@ class ArticleListService {
     imageBackgroundColor: articleModel.imageBackgroundColor,
     imageLink: articleModel.imageLink,
     bookmarkCount: articleModel.bookmarkCount,
+    viewCount: articleModel.viewCount,
     commentCount: articleModel.commentCount,
     reactionToCounts: articleModel.reactionToCounts,
   );

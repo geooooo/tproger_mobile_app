@@ -7,11 +7,14 @@ import 'package:tproger_mobile_app/src/services/http_service/models/api_models/l
 import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_bookmark_counts/load_articles_bookmark_counts_response.dart';
 import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_comment_counts/load_articles_comment_counts_request.dart';
 import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_comment_counts/load_articles_comment_counts_response.dart';
+import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_view_counts/load_articles_view_counts_request.dart';
+import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_view_counts/load_articles_view_counts_response.dart';
 import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_initial_content/load_initial_content_response.dart';
 import 'package:tproger_mobile_app/src/services/http_service/models/enums/api_url.dart';
 import 'package:tproger_mobile_app/src/services/http_service/models/enums/method.dart';
 import 'package:tproger_mobile_app/src/services/http_service/models/exceptions/load_article_reactions_exception.dart';
 import 'package:tproger_mobile_app/src/services/http_service/models/exceptions/load_articles_comment_counts_exception.dart';
+import 'package:tproger_mobile_app/src/services/http_service/models/exceptions/load_articles_view_counts_exception.dart';
 import 'package:tproger_mobile_app/src/services/http_service/models/exceptions/load_initial_content_exception.dart';
 
 @singleton
@@ -51,6 +54,16 @@ class HttpService {
     } on Exception catch (error, stackTrace) {
       _logger.e('Load articles bookmark counts', error, stackTrace);
       throw const LoadArticlesCommentCountsException();
+    }
+  }
+
+  Future<LoadArticlesViewCountsResponse> loadArticlesViewCounts(LoadArticlesViewCountsRequest request) async {
+    try {
+      final response = await _request(Method.get, ApiUrl.articlesViewCounts, request.toJson());
+      return LoadArticlesViewCountsResponse.fromJson(response);
+    } on Exception catch (error, stackTrace) {
+      _logger.e('Load articles view counts', error, stackTrace);
+      throw const LoadArticlesViewCountsException();
     }
   }
 

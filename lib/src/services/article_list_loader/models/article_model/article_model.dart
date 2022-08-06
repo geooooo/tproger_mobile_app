@@ -9,6 +9,7 @@ abstract class ArticleModel implements Built<ArticleModel, ArticleModelBuilder> 
   String get description;
   int get id;
   int get bookmarkCount;
+  int get viewCount;
   int get commentCount;
   BuiltMap<int, int> get reactionToCounts;
   String? get imageLink;
@@ -24,6 +25,7 @@ abstract class ArticleModel implements Built<ArticleModel, ArticleModelBuilder> 
     required String description,
     required int id,
     required int bookmarkCount,
+    required int viewCount,
     required int commentCount,
     required Map<int, int> reactionToCounts,
     String? imageLink,
@@ -35,9 +37,10 @@ abstract class ArticleModel implements Built<ArticleModel, ArticleModelBuilder> 
     ..articleLink = articleLink
     ..description = description
     ..id = id
-    ..bookmarkCount = 0
-    ..commentCount = 0
-    ..reactionToCounts.replace({})
+    ..bookmarkCount = bookmarkCount
+    ..viewCount = viewCount
+    ..commentCount = commentCount
+    ..reactionToCounts.replace(reactionToCounts)
     ..imageLink = imageLink
     ..imageBackgroundColor = imageBackgroundColor
     ..authorAvatarLink = authorAvatarLink

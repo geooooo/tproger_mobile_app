@@ -12,6 +12,8 @@ import 'package:tproger_mobile_app/src/services/http_service/models/api_models/l
 import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_bookmark_counts/load_articles_bookmark_counts_response.dart';
 import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_comment_counts/load_articles_comment_counts_request.dart';
 import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_comment_counts/load_articles_comment_counts_response.dart';
+import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_view_counts/load_articles_view_counts_request.dart';
+import 'package:tproger_mobile_app/src/services/http_service/models/api_models/load_articles_view_counts/load_articles_view_counts_response.dart';
 import 'package:tproger_mobile_app/src/services/http_service/models/exceptions/load_initial_content_exception.dart';
 
 @singleton
@@ -47,15 +49,18 @@ class ArticleListLoader {
     final responses = await Future.wait([
       _httpService.loadArticlesCommentCounts(LoadArticlesCommentCountsRequest(encodedIds)),
       _httpService.loadArticlesBookmarkCounts(LoadArticlesBookmarkCountsRequest(encodedIds)),
+      _httpService.loadArticlesViewCounts(LoadArticlesViewCountsRequest(encodedIds)),
       _httpService.loadArticleReactions(LoadArticleReactionsRequest(encodedIds)),
     ]);
 
     final loadArticlesCommentCountsResponse = responses[0] as LoadArticlesCommentCountsResponse;
     final loadArticlesBookmarkCountsResponse = responses[1] as LoadArticlesBookmarkCountsResponse;
-    final loadArticleReactionsResponse = responses[2] as LoadArticleReactionsResponse;
+    final loadArticlesViewCountsResponse = responses[2] as LoadArticlesViewCountsResponse;
+    final loadArticleReactionsResponse = responses[3] as LoadArticleReactionsResponse;
 
     final idsToCommentCounts = _getArticleIdsToCommentCounts(loadArticlesCommentCountsResponse);
     final idsToBookmarkCounts = _getArticleIdsToBookmarkCounts(loadArticlesBookmarkCountsResponse);
+    final idsToViewCounts = _getArticleIdsToViewCounts(loadArticlesViewCountsResponse);
     final idsToReactions = _getArticleReactions(loadArticleReactionsResponse);
 
     final additionalData = articles
@@ -63,6 +68,7 @@ class ArticleListLoader {
         sourceArticle: article,
         commentCount: idsToCommentCounts[article.id] ?? 0,
         bookmarkCount: idsToBookmarkCounts[article.id] ?? 0,
+        viewCount: idsToViewCounts[article.id] ?? 0,
         reactions: idsToReactions[article.id] ?? {},
       ))
       .toList();
@@ -77,6 +83,9 @@ class ArticleListLoader {
     {for (final count in response.counts) count.articleId: count.count};
 
   Map<int, int> _getArticleIdsToBookmarkCounts(LoadArticlesBookmarkCountsResponse response) =>
+    {for (final count in response.counts) count.articleId: count.count};
+
+  Map<int, int> _getArticleIdsToViewCounts(LoadArticlesViewCountsResponse response) =>
     {for (final count in response.counts) count.articleId: count.count};
 
   Map<int, Map<int, int>> _getArticleReactions(LoadArticleReactionsResponse response) {
@@ -109,6 +118,7 @@ class ArticleListLoader {
     imageLink: data.sourceArticle.imageLink,
     imageBackgroundColor: data.sourceArticle.imageBackgroundColor,
     bookmarkCount: data.bookmarkCount,
+    viewCount: data.viewCount,
     commentCount: data.commentCount,
     reactionToCounts: data.reactions,
   );

@@ -22,6 +22,8 @@ class _$UiArticle extends UiArticle {
   @override
   final int bookmarkCount;
   @override
+  final int viewCount;
+  @override
   final int commentCount;
   @override
   final String? imageLink;
@@ -43,6 +45,7 @@ class _$UiArticle extends UiArticle {
       required this.imageType,
       required this.reactionToCounts,
       required this.bookmarkCount,
+      required this.viewCount,
       required this.commentCount,
       this.imageLink,
       this.imageBackgroundColor,
@@ -60,6 +63,7 @@ class _$UiArticle extends UiArticle {
         reactionToCounts, r'UiArticle', 'reactionToCounts');
     BuiltValueNullFieldError.checkNotNull(
         bookmarkCount, r'UiArticle', 'bookmarkCount');
+    BuiltValueNullFieldError.checkNotNull(viewCount, r'UiArticle', 'viewCount');
     BuiltValueNullFieldError.checkNotNull(
         commentCount, r'UiArticle', 'commentCount');
   }
@@ -82,6 +86,7 @@ class _$UiArticle extends UiArticle {
         imageType == other.imageType &&
         reactionToCounts == other.reactionToCounts &&
         bookmarkCount == other.bookmarkCount &&
+        viewCount == other.viewCount &&
         commentCount == other.commentCount &&
         imageLink == other.imageLink &&
         imageBackgroundColor == other.imageBackgroundColor &&
@@ -101,13 +106,15 @@ class _$UiArticle extends UiArticle {
                                 $jc(
                                     $jc(
                                         $jc(
-                                            $jc($jc(0, title.hashCode),
-                                                articleLink.hashCode),
-                                            description.hashCode),
-                                        id.hashCode),
-                                    imageType.hashCode),
-                                reactionToCounts.hashCode),
-                            bookmarkCount.hashCode),
+                                            $jc(
+                                                $jc($jc(0, title.hashCode),
+                                                    articleLink.hashCode),
+                                                description.hashCode),
+                                            id.hashCode),
+                                        imageType.hashCode),
+                                    reactionToCounts.hashCode),
+                                bookmarkCount.hashCode),
+                            viewCount.hashCode),
                         commentCount.hashCode),
                     imageLink.hashCode),
                 imageBackgroundColor.hashCode),
@@ -125,6 +132,7 @@ class _$UiArticle extends UiArticle {
           ..add('imageType', imageType)
           ..add('reactionToCounts', reactionToCounts)
           ..add('bookmarkCount', bookmarkCount)
+          ..add('viewCount', viewCount)
           ..add('commentCount', commentCount)
           ..add('imageLink', imageLink)
           ..add('imageBackgroundColor', imageBackgroundColor)
@@ -168,6 +176,10 @@ class UiArticleBuilder implements Builder<UiArticle, UiArticleBuilder> {
   set bookmarkCount(int? bookmarkCount) =>
       _$this._bookmarkCount = bookmarkCount;
 
+  int? _viewCount;
+  int? get viewCount => _$this._viewCount;
+  set viewCount(int? viewCount) => _$this._viewCount = viewCount;
+
   int? _commentCount;
   int? get commentCount => _$this._commentCount;
   set commentCount(int? commentCount) => _$this._commentCount = commentCount;
@@ -202,6 +214,7 @@ class UiArticleBuilder implements Builder<UiArticle, UiArticleBuilder> {
       _imageType = $v.imageType;
       _reactionToCounts = $v.reactionToCounts.toBuilder();
       _bookmarkCount = $v.bookmarkCount;
+      _viewCount = $v.viewCount;
       _commentCount = $v.commentCount;
       _imageLink = $v.imageLink;
       _imageBackgroundColor = $v.imageBackgroundColor;
@@ -243,6 +256,8 @@ class UiArticleBuilder implements Builder<UiArticle, UiArticleBuilder> {
               reactionToCounts: reactionToCounts.build(),
               bookmarkCount: BuiltValueNullFieldError.checkNotNull(
                   bookmarkCount, r'UiArticle', 'bookmarkCount'),
+              viewCount: BuiltValueNullFieldError.checkNotNull(
+                  viewCount, r'UiArticle', 'viewCount'),
               commentCount: BuiltValueNullFieldError.checkNotNull(
                   commentCount, r'UiArticle', 'commentCount'),
               imageLink: imageLink,

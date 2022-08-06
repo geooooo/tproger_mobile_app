@@ -15,6 +15,7 @@ abstract class UiArticle implements Built<UiArticle, UiArticleBuilder> {
   ImageType get imageType;
   BuiltMap<Reaction, int> get reactionToCounts;
   int get bookmarkCount;
+  int get viewCount;
   int get commentCount;
   String? get imageLink;
   Color? get imageBackgroundColor;
@@ -30,6 +31,7 @@ abstract class UiArticle implements Built<UiArticle, UiArticleBuilder> {
     required int id,
     required BuiltMap<int, int> reactionToCounts,
     required int bookmarkCount,
+    required int viewCount,
     required int commentCount,
     required String? imageLink,
     required String? imageBackgroundColor,
@@ -43,6 +45,7 @@ abstract class UiArticle implements Built<UiArticle, UiArticleBuilder> {
     ..imageType = _getImageType(imageLink, imageBackgroundColor)
     ..reactionToCounts.replace(_getRreactionToCounts(reactionToCounts))
     ..bookmarkCount = bookmarkCount
+    ..viewCount = viewCount
     ..commentCount = commentCount
     ..imageLink = imageLink
     ..imageBackgroundColor = _getImageBackgroundColor(imageBackgroundColor)

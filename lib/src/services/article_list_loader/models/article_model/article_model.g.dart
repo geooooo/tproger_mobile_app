@@ -18,6 +18,8 @@ class _$ArticleModel extends ArticleModel {
   @override
   final int bookmarkCount;
   @override
+  final int viewCount;
+  @override
   final int commentCount;
   @override
   final BuiltMap<int, int> reactionToCounts;
@@ -39,6 +41,7 @@ class _$ArticleModel extends ArticleModel {
       required this.description,
       required this.id,
       required this.bookmarkCount,
+      required this.viewCount,
       required this.commentCount,
       required this.reactionToCounts,
       this.imageLink,
@@ -54,6 +57,8 @@ class _$ArticleModel extends ArticleModel {
     BuiltValueNullFieldError.checkNotNull(id, r'ArticleModel', 'id');
     BuiltValueNullFieldError.checkNotNull(
         bookmarkCount, r'ArticleModel', 'bookmarkCount');
+    BuiltValueNullFieldError.checkNotNull(
+        viewCount, r'ArticleModel', 'viewCount');
     BuiltValueNullFieldError.checkNotNull(
         commentCount, r'ArticleModel', 'commentCount');
     BuiltValueNullFieldError.checkNotNull(
@@ -76,6 +81,7 @@ class _$ArticleModel extends ArticleModel {
         description == other.description &&
         id == other.id &&
         bookmarkCount == other.bookmarkCount &&
+        viewCount == other.viewCount &&
         commentCount == other.commentCount &&
         reactionToCounts == other.reactionToCounts &&
         imageLink == other.imageLink &&
@@ -95,11 +101,13 @@ class _$ArticleModel extends ArticleModel {
                             $jc(
                                 $jc(
                                     $jc(
-                                        $jc($jc(0, title.hashCode),
-                                            articleLink.hashCode),
-                                        description.hashCode),
-                                    id.hashCode),
-                                bookmarkCount.hashCode),
+                                        $jc(
+                                            $jc($jc(0, title.hashCode),
+                                                articleLink.hashCode),
+                                            description.hashCode),
+                                        id.hashCode),
+                                    bookmarkCount.hashCode),
+                                viewCount.hashCode),
                             commentCount.hashCode),
                         reactionToCounts.hashCode),
                     imageLink.hashCode),
@@ -116,6 +124,7 @@ class _$ArticleModel extends ArticleModel {
           ..add('description', description)
           ..add('id', id)
           ..add('bookmarkCount', bookmarkCount)
+          ..add('viewCount', viewCount)
           ..add('commentCount', commentCount)
           ..add('reactionToCounts', reactionToCounts)
           ..add('imageLink', imageLink)
@@ -150,6 +159,10 @@ class ArticleModelBuilder
   int? get bookmarkCount => _$this._bookmarkCount;
   set bookmarkCount(int? bookmarkCount) =>
       _$this._bookmarkCount = bookmarkCount;
+
+  int? _viewCount;
+  int? get viewCount => _$this._viewCount;
+  set viewCount(int? viewCount) => _$this._viewCount = viewCount;
 
   int? _commentCount;
   int? get commentCount => _$this._commentCount;
@@ -189,6 +202,7 @@ class ArticleModelBuilder
       _description = $v.description;
       _id = $v.id;
       _bookmarkCount = $v.bookmarkCount;
+      _viewCount = $v.viewCount;
       _commentCount = $v.commentCount;
       _reactionToCounts = $v.reactionToCounts.toBuilder();
       _imageLink = $v.imageLink;
@@ -229,6 +243,8 @@ class ArticleModelBuilder
                   id, r'ArticleModel', 'id'),
               bookmarkCount: BuiltValueNullFieldError.checkNotNull(
                   bookmarkCount, r'ArticleModel', 'bookmarkCount'),
+              viewCount: BuiltValueNullFieldError.checkNotNull(
+                  viewCount, r'ArticleModel', 'viewCount'),
               commentCount: BuiltValueNullFieldError.checkNotNull(
                   commentCount, r'ArticleModel', 'commentCount'),
               reactionToCounts: reactionToCounts.build(),
