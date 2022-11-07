@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 import 'package:tproger_mobile_app/src/services/app_theme/app_theme.dart';
-import 'package:tproger_mobile_app/src/services/hide_content_js_code/hide_content_js_code.dart';
+import 'package:tproger_mobile_app/src/services/hide_content_js_code.dart';
 import 'package:webviewx/webviewx.dart';
 
 class ArticleDetailPageWidget extends StatefulWidget {

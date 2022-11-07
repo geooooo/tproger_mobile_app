@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:tproger_mobile_app/src/services/app_theme/app_theme.dart';
-import 'package:tproger_mobile_app/src/services/article_list_loader/models/enums/image_type.dart';
+import 'package:tproger_mobile_app/src/models/enums/image_type.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list/article_widget/article_content/article_content_image_container_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list/article_widget/article_content/article_description_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list/article_widget/article_content/article_title_widget.dart';

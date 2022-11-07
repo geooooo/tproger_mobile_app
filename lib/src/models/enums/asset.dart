@@ -1,5 +1,5 @@
 enum Asset {
-  eye('assets/eye.svg'),
+  eye('eye.svg'),
   defaultAvatar('default_avatar.png');
 
   final String value;

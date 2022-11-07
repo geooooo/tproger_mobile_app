@@ -1,0 +1,4 @@
+enum ArticleAuthorType {
+  user,
+  company,
+}
