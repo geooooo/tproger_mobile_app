@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:dio_logger/dio_logger.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
-import 'package:tproger_mobile_app/src/services/http_service/models/enums/base_url.dart';
+import 'package:tproger_mobile_app/src/models/enums/base_url.dart';
 
 @module
 abstract class RegisterModule {

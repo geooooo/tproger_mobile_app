@@ -24,13 +24,9 @@ class _$ArticleModel extends ArticleModel {
   @override
   final BuiltMap<int, int> reactionToCounts;
   @override
-  final String? imageLink;
+  final ArticleImage? image;
   @override
-  final String? imageBackgroundColor;
-  @override
-  final String? authorAvatarLink;
-  @override
-  final String? authorName;
+  final ArticleAuthor? author;
 
   factory _$ArticleModel([void Function(ArticleModelBuilder)? updates]) =>
       (new ArticleModelBuilder()..update(updates))._build();
@@ -44,10 +40,8 @@ class _$ArticleModel extends ArticleModel {
       required this.viewCount,
       required this.commentCount,
       required this.reactionToCounts,
-      this.imageLink,
-      this.imageBackgroundColor,
-      this.authorAvatarLink,
-      this.authorName})
+      this.image,
+      this.author})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(title, r'ArticleModel', 'title');
     BuiltValueNullFieldError.checkNotNull(
@@ -84,10 +78,8 @@ class _$ArticleModel extends ArticleModel {
         viewCount == other.viewCount &&
         commentCount == other.commentCount &&
         reactionToCounts == other.reactionToCounts &&
-        imageLink == other.imageLink &&
-        imageBackgroundColor == other.imageBackgroundColor &&
-        authorAvatarLink == other.authorAvatarLink &&
-        authorName == other.authorName;
+        image == other.image &&
+        author == other.author;
   }
 
   @override
@@ -100,20 +92,16 @@ class _$ArticleModel extends ArticleModel {
                         $jc(
                             $jc(
                                 $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc($jc(0, title.hashCode),
-                                                articleLink.hashCode),
-                                            description.hashCode),
-                                        id.hashCode),
-                                    bookmarkCount.hashCode),
-                                viewCount.hashCode),
-                            commentCount.hashCode),
-                        reactionToCounts.hashCode),
-                    imageLink.hashCode),
-                imageBackgroundColor.hashCode),
-            authorAvatarLink.hashCode),
-        authorName.hashCode));
+                                    $jc($jc(0, title.hashCode),
+                                        articleLink.hashCode),
+                                    description.hashCode),
+                                id.hashCode),
+                            bookmarkCount.hashCode),
+                        viewCount.hashCode),
+                    commentCount.hashCode),
+                reactionToCounts.hashCode),
+            image.hashCode),
+        author.hashCode));
   }
 
   @override
@@ -127,10 +115,8 @@ class _$ArticleModel extends ArticleModel {
           ..add('viewCount', viewCount)
           ..add('commentCount', commentCount)
           ..add('reactionToCounts', reactionToCounts)
-          ..add('imageLink', imageLink)
-          ..add('imageBackgroundColor', imageBackgroundColor)
-          ..add('authorAvatarLink', authorAvatarLink)
-          ..add('authorName', authorName))
+          ..add('image', image)
+          ..add('author', author))
         .toString();
   }
 }
@@ -174,23 +160,13 @@ class ArticleModelBuilder
   set reactionToCounts(MapBuilder<int, int>? reactionToCounts) =>
       _$this._reactionToCounts = reactionToCounts;
 
-  String? _imageLink;
-  String? get imageLink => _$this._imageLink;
-  set imageLink(String? imageLink) => _$this._imageLink = imageLink;
+  ArticleImage? _image;
+  ArticleImage? get image => _$this._image;
+  set image(ArticleImage? image) => _$this._image = image;
 
-  String? _imageBackgroundColor;
-  String? get imageBackgroundColor => _$this._imageBackgroundColor;
-  set imageBackgroundColor(String? imageBackgroundColor) =>
-      _$this._imageBackgroundColor = imageBackgroundColor;
-
-  String? _authorAvatarLink;
-  String? get authorAvatarLink => _$this._authorAvatarLink;
-  set authorAvatarLink(String? authorAvatarLink) =>
-      _$this._authorAvatarLink = authorAvatarLink;
-
-  String? _authorName;
-  String? get authorName => _$this._authorName;
-  set authorName(String? authorName) => _$this._authorName = authorName;
+  ArticleAuthor? _author;
+  ArticleAuthor? get author => _$this._author;
+  set author(ArticleAuthor? author) => _$this._author = author;
 
   ArticleModelBuilder();
 
@@ -205,10 +181,8 @@ class ArticleModelBuilder
       _viewCount = $v.viewCount;
       _commentCount = $v.commentCount;
       _reactionToCounts = $v.reactionToCounts.toBuilder();
-      _imageLink = $v.imageLink;
-      _imageBackgroundColor = $v.imageBackgroundColor;
-      _authorAvatarLink = $v.authorAvatarLink;
-      _authorName = $v.authorName;
+      _image = $v.image;
+      _author = $v.author;
       _$v = null;
     }
     return this;
@@ -248,10 +222,8 @@ class ArticleModelBuilder
               commentCount: BuiltValueNullFieldError.checkNotNull(
                   commentCount, r'ArticleModel', 'commentCount'),
               reactionToCounts: reactionToCounts.build(),
-              imageLink: imageLink,
-              imageBackgroundColor: imageBackgroundColor,
-              authorAvatarLink: authorAvatarLink,
-              authorName: authorName);
+              image: image,
+              author: author);
     } catch (_) {
       late String _$failedField;
       try {

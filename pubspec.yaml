@@ -13,7 +13,7 @@ dependencies:
   dio: ^4.0.6
   dio_logger: ^4.0.8+8
   logger: ^1.1.0
-  json_annotation: ^4.6.0
+  json_annotation: ^4.7.0
   built_value: ^8.4.0
   built_collection: ^5.1.1
   injectable: ^1.5.3

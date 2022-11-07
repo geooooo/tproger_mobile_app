@@ -9,5 +9,7 @@ part of 'load_articles_view_counts_response.dart';
 LoadArticlesViewCountsResponse _$LoadArticlesViewCountsResponseFromJson(
         Map<String, dynamic> json) =>
     LoadArticlesViewCountsResponse(
-      json['counts'] as List<dynamic>,
+      (json['counts'] as List<dynamic>)
+          .map((e) => ArticleViewCountDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );

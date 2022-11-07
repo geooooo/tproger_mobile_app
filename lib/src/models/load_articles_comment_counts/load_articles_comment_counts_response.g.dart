@@ -9,5 +9,7 @@ part of 'load_articles_comment_counts_response.dart';
 LoadArticlesCommentCountsResponse _$LoadArticlesCommentCountsResponseFromJson(
         Map<String, dynamic> json) =>
     LoadArticlesCommentCountsResponse(
-      json['counts'] as List<dynamic>,
+      (json['counts'] as List<dynamic>)
+          .map((e) => ArticleCommentCountDto.fromJson(e))
+          .toList(),
     );

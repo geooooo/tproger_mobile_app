@@ -1,38 +1,37 @@
 import 'package:injectable/injectable.dart';
-import 'package:logger/logger.dart';
-import 'package:tproger_mobile_app/src/models/article_addition_data.dart';
-import 'package:tproger_mobile_app/src/models/exceptions/load_articles_list_exception.dart';
+import 'package:tproger_mobile_app/src/models/article_model/article_model.dart';
+import 'package:tproger_mobile_app/src/models/load_article_reactions/load_article_reactions_request.dart';
+import 'package:tproger_mobile_app/src/models/load_article_reactions/load_article_reactions_response.dart';
+import 'package:tproger_mobile_app/src/models/load_articles_bookmark_counts/load_articles_bookmark_counts_request.dart';
+import 'package:tproger_mobile_app/src/models/load_articles_bookmark_counts/load_articles_bookmark_counts_response.dart';
+import 'package:tproger_mobile_app/src/models/load_articles_comment_counts/load_articles_comment_counts_request.dart';
+import 'package:tproger_mobile_app/src/models/load_articles_comment_counts/load_articles_comment_counts_response.dart';
+import 'package:tproger_mobile_app/src/models/load_articles_view_counts/load_articles_view_counts_request.dart';
+import 'package:tproger_mobile_app/src/models/load_articles_view_counts/load_articles_view_counts_response.dart';
+import 'package:tproger_mobile_app/src/models/parsed_article/addition_data.dart';
+import 'package:tproger_mobile_app/src/models/parsed_article/parsed_article.dart';
 import 'package:tproger_mobile_app/src/services/article_list_parser.dart';
 import 'package:tproger_mobile_app/src/services/http_service.dart';
 
 @singleton
 class ArticleListLoader {
-  final Logger _logger;
   final ArticleListParser _articleListParser;
   final HttpService _httpService;
 
   ArticleListLoader(
-    this._logger,
     this._articleListParser,
     this._httpService,
   );
 
   Future<List<ArticleModel>> load() async {
-    List<ParsedArticle> parsedArticles;
-
-    try {
-      final response = await _httpService.loadInitialContent();
-      parsedArticles = _articleListParser.parse(response.html);
-    } on LoadInitialContentException catch (error, stackTrace) {
-      _logger.e('Article list load', error, stackTrace);
-      throw const LoadArticlesListException();
-    }
-
-    final additionalData = await _loadArticlesAdditionalData(parsedArticles);
-    return _getArticleModels(additionalData);
+    final response = await _httpService.loadInitialContent();
+    final parsedArticles = _articleListParser.parse(response.html);
+    
+    final data = await _loadAdditionalData(parsedArticles);
+    return _getArticleModels(data);
   }
 
-  Future<List<ArticleAdditionalData>> _loadArticlesAdditionalData(List<ParsedArticle> articles) async {
+  Future<List<AdditionalData>> _loadAdditionalData(List<ParsedArticle> articles) async {
     final encodedIds = _encodeIds(articles);
 
     final responses = await Future.wait([
@@ -53,7 +52,7 @@ class ArticleListLoader {
     final idsToReactions = _getArticleReactions(loadArticleReactionsResponse);
 
     final additionalData = articles
-      .map((article) => ArticleAdditionalData(
+      .map((article) => AdditionalData(
         sourceArticle: article,
         commentCount: idsToCommentCounts[article.id] ?? 0,
         bookmarkCount: idsToBookmarkCounts[article.id] ?? 0,
@@ -94,18 +93,16 @@ class ArticleListLoader {
     return idsToReactions;
   }
 
-  List<ArticleModel> _getArticleModels(List<ArticleAdditionalData> data) =>
+  List<ArticleModel> _getArticleModels(List<AdditionalData> data) =>
     data.map(_getArticleModel).toList();
 
-  ArticleModel _getArticleModel(ArticleAdditionalData data) => ArticleModel(
+  ArticleModel _getArticleModel(AdditionalData data) => ArticleModel(
     id: data.sourceArticle.id,
     articleLink: data.sourceArticle.articleLink,
     title: data.sourceArticle.title,
     description: data.sourceArticle.description,
-    authorName: data.sourceArticle.authorName,
-    authorAvatarLink: data.sourceArticle.authorAvatarLink,
-    imageLink: data.sourceArticle.imageLink,
-    imageBackgroundColor: data.sourceArticle.imageBackgroundColor,
+    author: data.sourceArticle.author,
+    image: data.sourceArticle.image,
     bookmarkCount: data.bookmarkCount,
     viewCount: data.viewCount,
     commentCount: data.commentCount,

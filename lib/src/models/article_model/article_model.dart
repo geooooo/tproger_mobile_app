@@ -1,5 +1,8 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
+import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
+import 'package:tproger_mobile_app/src/models/parsed_article/article_author/article_author.dart';
+import 'package:tproger_mobile_app/src/models/parsed_article/article_image/article_image.dart';
 
 part 'article_model.g.dart';
 
@@ -12,10 +15,8 @@ abstract class ArticleModel implements Built<ArticleModel, ArticleModelBuilder> 
   int get viewCount;
   int get commentCount;
   BuiltMap<int, int> get reactionToCounts;
-  String? get imageLink;
-  String? get imageBackgroundColor;
-  String? get authorAvatarLink;
-  String? get authorName;
+  ArticleImage? get image;
+  ArticleAuthor? get author;
 
   ArticleModel._();
 
@@ -28,10 +29,8 @@ abstract class ArticleModel implements Built<ArticleModel, ArticleModelBuilder> 
     required int viewCount,
     required int commentCount,
     required Map<int, int> reactionToCounts,
-    String? imageLink,
-    String? imageBackgroundColor,
-    String? authorAvatarLink,
-    String? authorName,
+    ArticleImage? image,
+    ArticleAuthor? author,
   }) => _$ArticleModel((builder) => builder
     ..title = title
     ..articleLink = articleLink
@@ -40,10 +39,21 @@ abstract class ArticleModel implements Built<ArticleModel, ArticleModelBuilder> 
     ..bookmarkCount = bookmarkCount
     ..viewCount = viewCount
     ..commentCount = commentCount
-    ..reactionToCounts.replace(reactionToCounts)
-    ..imageLink = imageLink
-    ..imageBackgroundColor = imageBackgroundColor
-    ..authorAvatarLink = authorAvatarLink
-    ..authorName = authorName
+    ..reactionToCounts.replace(_getRreactionToCounts(reactionToCounts))
+    ..image = image
+    ..author = author
   );
+
+  static Map<Reaction, int> _getRreactionToCounts(Map<int, int> reactionToCounts) => 
+    { for (final reaction in Reaction.values) 
+      reaction: reactionToCounts[reaction.value] ?? 0
+    };
 }
+
+// static Color? _getImageBackgroundColor(String? hexColor) {
+//     if (hexColor == null) {
+//       return null;
+//     }
+
+//     return ColorParser.hex(hexColor).getColor();
+//   }
