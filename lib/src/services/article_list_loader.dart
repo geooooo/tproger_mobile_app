@@ -1,5 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:tproger_mobile_app/src/models/article_model/article_model.dart';
+import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
 import 'package:tproger_mobile_app/src/models/load_article_reactions/load_article_reactions_request.dart';
 import 'package:tproger_mobile_app/src/models/load_article_reactions/load_article_reactions_response.dart';
 import 'package:tproger_mobile_app/src/models/load_articles_bookmark_counts/load_articles_bookmark_counts_request.dart';
@@ -106,6 +107,11 @@ class ArticleListLoader {
     bookmarkCount: data.bookmarkCount,
     viewCount: data.viewCount,
     commentCount: data.commentCount,
-    reactionToCounts: data.reactions,
+    reactionToCounts: _getRreactionToCounts(data.reactions),
   );
+
+  Map<Reaction, int> _getRreactionToCounts(Map<int, int> reactionToCounts) => 
+    { for (final reaction in Reaction.values) 
+      reaction: reactionToCounts[reaction.value] ?? 0
+    };
 }

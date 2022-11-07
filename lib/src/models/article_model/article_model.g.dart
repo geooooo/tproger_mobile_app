@@ -22,7 +22,7 @@ class _$ArticleModel extends ArticleModel {
   @override
   final int commentCount;
   @override
-  final BuiltMap<int, int> reactionToCounts;
+  final BuiltMap<Reaction, int> reactionToCounts;
   @override
   final ArticleImage? image;
   @override
@@ -154,10 +154,10 @@ class ArticleModelBuilder
   int? get commentCount => _$this._commentCount;
   set commentCount(int? commentCount) => _$this._commentCount = commentCount;
 
-  MapBuilder<int, int>? _reactionToCounts;
-  MapBuilder<int, int> get reactionToCounts =>
-      _$this._reactionToCounts ??= new MapBuilder<int, int>();
-  set reactionToCounts(MapBuilder<int, int>? reactionToCounts) =>
+  MapBuilder<Reaction, int>? _reactionToCounts;
+  MapBuilder<Reaction, int> get reactionToCounts =>
+      _$this._reactionToCounts ??= new MapBuilder<Reaction, int>();
+  set reactionToCounts(MapBuilder<Reaction, int>? reactionToCounts) =>
       _$this._reactionToCounts = reactionToCounts;
 
   ArticleImage? _image;

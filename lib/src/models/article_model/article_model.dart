@@ -14,7 +14,7 @@ abstract class ArticleModel implements Built<ArticleModel, ArticleModelBuilder> 
   int get bookmarkCount;
   int get viewCount;
   int get commentCount;
-  BuiltMap<int, int> get reactionToCounts;
+  BuiltMap<Reaction, int> get reactionToCounts;
   ArticleImage? get image;
   ArticleAuthor? get author;
 
@@ -28,7 +28,7 @@ abstract class ArticleModel implements Built<ArticleModel, ArticleModelBuilder> 
     required int bookmarkCount,
     required int viewCount,
     required int commentCount,
-    required Map<int, int> reactionToCounts,
+    required Map<Reaction, int> reactionToCounts,
     ArticleImage? image,
     ArticleAuthor? author,
   }) => _$ArticleModel((builder) => builder
@@ -39,21 +39,8 @@ abstract class ArticleModel implements Built<ArticleModel, ArticleModelBuilder> 
     ..bookmarkCount = bookmarkCount
     ..viewCount = viewCount
     ..commentCount = commentCount
-    ..reactionToCounts.replace(_getRreactionToCounts(reactionToCounts))
+    ..reactionToCounts.replace(reactionToCounts)
     ..image = image
     ..author = author
   );
-
-  static Map<Reaction, int> _getRreactionToCounts(Map<int, int> reactionToCounts) => 
-    { for (final reaction in Reaction.values) 
-      reaction: reactionToCounts[reaction.value] ?? 0
-    };
 }
-
-// static Color? _getImageBackgroundColor(String? hexColor) {
-//     if (hexColor == null) {
-//       return null;
-//     }
-
-//     return ColorParser.hex(hexColor).getColor();
-//   }

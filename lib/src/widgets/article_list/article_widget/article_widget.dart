@@ -1,14 +1,13 @@
 import 'package:flutter/widgets.dart';
-import 'package:tproger_mobile_app/src/services/app_theme/app_theme.dart';
-import 'package:tproger_mobile_app/src/models/enums/image_type.dart';
-import 'package:tproger_mobile_app/src/services/article_list_service/models/ui_article/ui_article.dart';
+import 'package:tproger_mobile_app/src/models/article_model/article_model.dart';
+import 'package:tproger_mobile_app/src/models/parsed_article/article_image/article_background_image.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list/article_widget/article_background_image_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list/article_widget/article_body_widget.dart';
 
 class ArticleWidget extends StatelessWidget {
-  final UiArticle article;
+  final ArticleModel article;
 
-  bool get _hasBackgroundImage => article.imageType == ImageType.background;
+  bool get _hasBackgroundImage => article.image is ArticleBackgroundImage;
 
   const ArticleWidget({
     required this.article,
@@ -18,12 +17,12 @@ class ArticleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => _hasBackgroundImage
     ? ArticleBackgroundImageWidget(
-        imageLink: article.imageLink!,
+        imageLink: article.image!.link,
         child: ArticleBodyWidget(article: article),
       )
     : DecoratedBox(
         decoration: const BoxDecoration(
-          color: AppTheme.articleBackgroundColor,
+          color: Color.fromARGB(255, 4, 5, 5),
         ),
         child: ArticleBodyWidget(article: article),
       );
