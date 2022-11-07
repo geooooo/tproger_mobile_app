@@ -113,14 +113,14 @@ class ArticleListParser {
   Element? _getImageBackgroundColorElement(Element articleElement) =>
     articleElement.querySelector(Selector.imageBackgroundColor.value);
 
-  String _getImageLink(Element imageElement) {
+  String? _getImageLink(Element imageElement) {
     final src = imageElement.attributes['src'];
     if (src != null && _isLinkToImage(src)) {
       return src;
     }
 
     final dataSrc = imageElement.attributes['data-src'];
-    return dataSrc!;
+    return dataSrc;
   }
 
   String _getBackgroundColor(Element backgroundColorElement) {

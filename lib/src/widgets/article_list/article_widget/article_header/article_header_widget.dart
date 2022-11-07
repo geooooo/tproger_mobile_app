@@ -20,13 +20,12 @@ class ArticleHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Row(
-    
     children: [
       if (_hasAuthor) ArticleAuthorAvatarWidget(avatarLink: avatarLink!),
       const SizedBox(width: AppTheme.articleAuthorAvatarAndNameSeparatorSize),
       if (_hasAuthor) ArticleAuthorNameWidget(authorName: authorName!),
-      const SizedBox(width: AppTheme.articleAuthorNameAndViewCountSeparatorSize),
-      if (viewCount != 0) ArticleViewCountWidget(viewCount: viewCount),
+      // const SizedBox(width: AppTheme.articleAuthorNameAndViewCountSeparatorSize),
+      // if (viewCount != 0) ArticleViewCountWidget(viewCount: viewCount),
     ],
   );
 }
