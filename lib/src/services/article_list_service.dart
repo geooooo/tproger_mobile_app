@@ -4,6 +4,7 @@ import 'package:tproger_mobile_app/src/models/article_model/article_model.dart';
 import 'package:tproger_mobile_app/src/services/article_list_loader.dart';
 import 'package:tproger_mobile_app/src/models/exceptions/load_articles_list_exception.dart';
 
+// TODO: Unit tests
 @singleton
 class ArticleListService {
   final ArticleListLoader _articleListLoader;
