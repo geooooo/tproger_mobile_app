@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
+import 'package:tproger_mobile_app/src/services/app_theme.dart';
 import 'package:tproger_mobile_app/src/widgets/common/svg_widget.dart';
 
 class ArticleViewCountWidget extends StatelessWidget {
@@ -21,7 +22,7 @@ class ArticleViewCountWidget extends StatelessWidget {
       ),
       Text(
         viewCount.toString(),
-        style: AppTheme.articleViewCountTextStyle,
+        style: AppTheme.of(context).articleViewCountTextStyle,
       ),
     ],
   );

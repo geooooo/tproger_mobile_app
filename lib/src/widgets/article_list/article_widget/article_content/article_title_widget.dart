@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:tproger_mobile_app/src/services/app_theme/app_theme.dart';
+import 'package:tproger_mobile_app/src/services/app_theme.dart';
 
 class ArticleTitleWidget extends StatelessWidget {
   final String text;
@@ -12,6 +12,6 @@ class ArticleTitleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Text(
     text,
-    style: AppTheme.articleTitleTextStyle,
+    style: AppTheme.of(context).articleTitleTextStyle,
   );
 }

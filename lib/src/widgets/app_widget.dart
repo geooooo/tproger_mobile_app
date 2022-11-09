@@ -22,7 +22,7 @@ class _AppWidgetState extends State<AppWidget> {
 
   @override
   Widget build(BuildContext context) => CustomThemes(
-    data: [
+    data: const [
       CustomThemeDataSet(
         data: AppTheme.dark(),
         dataDark: AppTheme.dark(),

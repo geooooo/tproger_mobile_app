@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:tproger_mobile_app/src/services/app_theme.dart';
 
 class ArticleDescriptionWidget extends StatelessWidget {
   final String text;
@@ -11,6 +12,6 @@ class ArticleDescriptionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Text(
     text,
-    style: AppTheme.articleDescriptionTextStyle,
+    style: AppTheme.of(context).articleDescriptionTextStyle,
   );
 }

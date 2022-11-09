@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:tproger_mobile_app/src/services/app_theme/app_theme.dart';
+import 'package:tproger_mobile_app/src/services/app_theme.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class ArticleContentImageWidget extends StatelessWidget {

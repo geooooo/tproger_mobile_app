@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
+import 'package:tproger_mobile_app/src/services/app_theme.dart';
 import 'package:tproger_mobile_app/src/services/hide_content_js_code.dart';
 import 'package:webviewx/webviewx.dart';
 
@@ -37,7 +38,7 @@ class _ArticleDetailPageWidgetState extends State<ArticleDetailPageWidget> {
     debugShowCheckedModeBanner: false,
     home: SafeArea(
       child: Scaffold(
-        backgroundColor: AppTheme.mainBackgroundColor,
+        backgroundColor: AppTheme.of(context).mainBackgroundColor,
         body: _hasError
           ? const Placeholder(color: Color.fromRGBO(255, 0, 0, 1))
           : Stack(

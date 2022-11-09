@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:tproger_mobile_app/src/services/app_theme/app_theme.dart';
+import 'package:tproger_mobile_app/src/services/app_theme.dart';
 
 class ArticleContentImageShimmerWidget extends StatelessWidget {
   final Color backgroundColor;
