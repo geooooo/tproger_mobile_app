@@ -1,6 +1,6 @@
 import 'package:built_value/built_value.dart';
-import 'package:tproger_mobile_app/src/models/parsed_article/article_author/article_author.dart';
-import 'package:tproger_mobile_app/src/models/parsed_article/article_image/article_image.dart';
+import 'package:tproger_mobile_app/src/models/article_author/article_author.dart';
+import 'package:tproger_mobile_app/src/models/article_image/article_image.dart';
 
 part 'parsed_article.g.dart';
 

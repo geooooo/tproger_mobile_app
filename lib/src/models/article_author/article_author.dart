@@ -1,6 +1,6 @@
+import 'package:tproger_mobile_app/src/models/article_author/article_company_author.dart';
+import 'package:tproger_mobile_app/src/models/article_author/article_user_author.dart';
 import 'package:tproger_mobile_app/src/models/enums/article_author_type.dart';
-import 'package:tproger_mobile_app/src/models/parsed_article/article_author/article_company_author.dart';
-import 'package:tproger_mobile_app/src/models/parsed_article/article_author/article_user_author.dart';
 
 abstract class ArticleAuthor {
   String get name;

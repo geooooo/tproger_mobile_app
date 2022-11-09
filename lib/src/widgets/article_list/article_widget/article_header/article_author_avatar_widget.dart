@@ -1,16 +1,16 @@
 import 'package:flutter/widgets.dart';
-import 'package:get_it/get_it.dart';
-import 'package:logger/logger.dart';
+// import 'package:get_it/get_it.dart';
+// import 'package:logger/logger.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 import 'package:tproger_mobile_app/src/services/app_theme.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class ArticleAuthorAvatarWidget extends StatelessWidget {
-  final _logger = GetIt.instance.get<Logger>();
+  // final _logger = GetIt.instance.get<Logger>();
 
   final String avatarLink;
 
-  ArticleAuthorAvatarWidget({
+  const ArticleAuthorAvatarWidget({
     required this.avatarLink,
     super.key,
   });
@@ -30,7 +30,7 @@ class ArticleAuthorAvatarWidget extends StatelessWidget {
   );
 
   Widget imageErrorBuilder(BuildContext context, Object error, StackTrace? stackTrace) {
-    _logger.e('Author avatar loading', error, stackTrace);
+    // _logger.e('Author avatar loading', error, stackTrace);
     return Image.asset(Asset.defaultAvatar.value);
   }
 }

@@ -1,11 +1,11 @@
 import 'package:html/dom.dart';
 import 'package:html/parser.dart' as html_parser;
 import 'package:injectable/injectable.dart';
+import 'package:tproger_mobile_app/src/models/article_author/article_author.dart';
+import 'package:tproger_mobile_app/src/models/article_image/article_image.dart';
 import 'package:tproger_mobile_app/src/models/enums/article_author_type.dart';
 import 'package:tproger_mobile_app/src/models/enums/article_list_selector.dart';
 import 'package:tproger_mobile_app/src/models/enums/base_url.dart';
-import 'package:tproger_mobile_app/src/models/parsed_article/article_author/article_author.dart';
-import 'package:tproger_mobile_app/src/models/parsed_article/article_image/article_image.dart';
 import 'package:tproger_mobile_app/src/models/parsed_article/parsed_article.dart';
 import 'package:tuple/tuple.dart';
 
