@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tproger_mobile_app/src/models/article_model/article_model.dart';
 import 'package:tproger_mobile_app/src/models/exceptions/load_articles_list_exception.dart';
-import 'package:tproger_mobile_app/src/services/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/services/article_list_service.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list/article_list_loader_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list/article_list_widget.dart';

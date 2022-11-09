@@ -18,10 +18,10 @@ class ArticleListWidget extends StatelessWidget {
     itemCount: articles.length,
     itemBuilder: (context, index) => GestureDetector(
       onTap: () => _onTapArticle(context, articles[index].articleLink),
+      key: ValueKey(articles[index].id),
       child: ArticleWidget(
         article: articles[index],
       ),
-      key: ValueKey(articles[index].id),
     ),
     separatorBuilder: (context, index) =>
       const SizedBox(height: AppTheme.articleListSeparatorSize),

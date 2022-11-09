@@ -2,7 +2,6 @@ import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
-import 'package:tproger_mobile_app/src/services/app_theme/app_theme.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class ArticleAuthorAvatarWidget extends StatelessWidget {
