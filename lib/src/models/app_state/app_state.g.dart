@@ -9,12 +9,17 @@ part of 'app_state.dart';
 class _$AppState extends AppState {
   @override
   final BuiltList<ArticleModel> articles;
+  @override
+  final bool isArticlesLoaded;
 
   factory _$AppState([void Function(AppStateBuilder)? updates]) =>
       (new AppStateBuilder()..update(updates))._build();
 
-  _$AppState._({required this.articles}) : super._() {
+  _$AppState._({required this.articles, required this.isArticlesLoaded})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(articles, r'AppState', 'articles');
+    BuiltValueNullFieldError.checkNotNull(
+        isArticlesLoaded, r'AppState', 'isArticlesLoaded');
   }
 
   @override
@@ -27,17 +32,21 @@ class _$AppState extends AppState {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is AppState && articles == other.articles;
+    return other is AppState &&
+        articles == other.articles &&
+        isArticlesLoaded == other.isArticlesLoaded;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, articles.hashCode));
+    return $jf($jc($jc(0, articles.hashCode), isArticlesLoaded.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'AppState')..add('articles', articles))
+    return (newBuiltValueToStringHelper(r'AppState')
+          ..add('articles', articles)
+          ..add('isArticlesLoaded', isArticlesLoaded))
         .toString();
   }
 }
@@ -51,6 +60,11 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   set articles(ListBuilder<ArticleModel>? articles) =>
       _$this._articles = articles;
 
+  bool? _isArticlesLoaded;
+  bool? get isArticlesLoaded => _$this._isArticlesLoaded;
+  set isArticlesLoaded(bool? isArticlesLoaded) =>
+      _$this._isArticlesLoaded = isArticlesLoaded;
+
   AppStateBuilder() {
     AppState._setDefaults(this);
   }
@@ -59,6 +73,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
     final $v = _$v;
     if ($v != null) {
       _articles = $v.articles.toBuilder();
+      _isArticlesLoaded = $v.isArticlesLoaded;
       _$v = null;
     }
     return this;
@@ -81,7 +96,11 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   _$AppState _build() {
     _$AppState _$result;
     try {
-      _$result = _$v ?? new _$AppState._(articles: articles.build());
+      _$result = _$v ??
+          new _$AppState._(
+              articles: articles.build(),
+              isArticlesLoaded: BuiltValueNullFieldError.checkNotNull(
+                  isArticlesLoaded, r'AppState', 'isArticlesLoaded'));
     } catch (_) {
       late String _$failedField;
       try {

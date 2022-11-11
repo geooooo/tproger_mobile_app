@@ -1,11 +1,12 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
 import 'package:tproger_mobile_app/src/services/app_theme.dart';
-import 'package:tproger_mobile_app/src/widgets/article_detail/article_detail_page_widget.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list/article_widget/article_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_detail_page/article_detail_page_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_widget/article_widget.dart';
 
 class ArticleListWidget extends StatelessWidget {
-  final List<ArticleModel> articles;
+  final BuiltList<ArticleModel> articles;
 
   const ArticleListWidget({
     required this.articles,
@@ -13,7 +14,7 @@ class ArticleListWidget extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => ListView.separated(
+  Widget build(BuildContext context) {print('+2'); return ListView.separated(
     addAutomaticKeepAlives: true,
     itemCount: articles.length,
     itemBuilder: (context, index) => GestureDetector(
@@ -25,7 +26,7 @@ class ArticleListWidget extends StatelessWidget {
     ),
     separatorBuilder: (context, index) =>
       const SizedBox(height: AppTheme.articleListSeparatorSize),
-  );
+  );}
 
   Future<void> _onTapArticle(BuildContext context, String articleLink) =>
     Navigator.of(context).push(MaterialPageRoute(

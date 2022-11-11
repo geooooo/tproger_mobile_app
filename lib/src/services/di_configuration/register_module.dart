@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:dio_logger/dio_logger.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:tproger_mobile_app/src/models/enums/base_url.dart';
@@ -14,7 +13,7 @@ abstract class RegisterModule {
   @Singleton(dispose: disposeDio)
   Dio get dio {
     final dio = Dio(dioBaseOptions);
-    dio.interceptors.add(dioLoggerInterceptor);
+    // dio.interceptors.add(dioLoggerInterceptor);
     return dio;
   }
 }

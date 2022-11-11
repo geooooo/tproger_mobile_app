@@ -5,9 +5,10 @@ class ArticleListLoaderWidget extends StatelessWidget {
   const ArticleListLoaderWidget({ super.key });
 
   @override
-  Widget build(BuildContext context) => Center(
+  Widget build(BuildContext context) {print('+1');
+    return Center(
     child: CircularProgressIndicator(
       color: AppTheme.of(context).articleBackgroundColor,
     )
-  );
+  );}
 }

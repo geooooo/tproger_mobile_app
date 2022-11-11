@@ -6,11 +6,13 @@ part 'app_state.g.dart';
 
 abstract class AppState implements Built<AppState, AppStateBuilder> {
   BuiltList<ArticleModel> get articles;
+  bool get isArticlesLoaded;
 
   AppState._();
   factory AppState() = _$AppState;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _setDefaults(AppStateBuilder b) => b
-    ..articles.replace([]);
+    ..articles.replace([])
+    ..isArticlesLoaded = false;
 }
