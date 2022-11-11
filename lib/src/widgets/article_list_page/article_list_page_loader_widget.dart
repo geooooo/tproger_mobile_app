@@ -25,9 +25,9 @@ class ArticleListPageLoaderWidget extends StatelessWidget {
     );
   }
 
-  void _loadArticles(AppStateChangeNotifier appStateChangeNotifier) async {
+  Future<void> _loadArticles(AppStateChangeNotifier appStateChangeNotifier) async {
     try {
-      appStateChangeNotifier.loadArticles();
+      await appStateChangeNotifier.loadArticles();
     } on LoadArticlesListException {
       _loadArticles(appStateChangeNotifier);
     }

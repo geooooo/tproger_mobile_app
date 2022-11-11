@@ -14,7 +14,7 @@ class ArticleListWidget extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {print('+2'); return ListView.separated(
+  Widget build(BuildContext context) => ListView.separated(
     addAutomaticKeepAlives: true,
     itemCount: articles.length,
     itemBuilder: (context, index) => GestureDetector(
@@ -26,7 +26,7 @@ class ArticleListWidget extends StatelessWidget {
     ),
     separatorBuilder: (context, index) =>
       const SizedBox(height: AppTheme.articleListSeparatorSize),
-  );}
+  );
 
   Future<void> _onTapArticle(BuildContext context, String articleLink) =>
     Navigator.of(context).push(MaterialPageRoute(

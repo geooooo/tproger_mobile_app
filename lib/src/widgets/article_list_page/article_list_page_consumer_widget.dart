@@ -11,13 +11,11 @@ class ArticleListPageConsumerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('+0');
     final articles = context.select<AppStateChangeNotifier, BuiltList<ArticleModel>>((appStateChangeNotifier) => appStateChangeNotifier.articles);
     final isArticlesLoaded = context.select<AppStateChangeNotifier, bool>((appStateChangeNotifier) => appStateChangeNotifier.isArticlesLoaded);
-    print(['+++', articles.length, isArticlesLoaded]);
-
+    
     return isArticlesLoaded
-      ? const ArticleListLoaderWidget()
-      : ArticleListWidget(articles: articles);
+      ? ArticleListWidget(articles: articles)
+      : const ArticleListLoaderWidget();
   }
 }

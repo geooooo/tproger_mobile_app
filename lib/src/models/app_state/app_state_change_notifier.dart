@@ -14,11 +14,11 @@ class AppStateChangeNotifier with ChangeNotifier {
 
   AppStateChangeNotifier(this._articleListService);
 
-  void loadArticles() {
-    // final articles = await _articleListService.getArticles();
+  Future<void> loadArticles() async {
+    final articles = await _articleListService.getArticles();
 
     _state = _state.rebuild((b) => b
-      // ..articles.replace(articles)
+      ..articles.replace(articles)
       ..isArticlesLoaded = true
     );
 
