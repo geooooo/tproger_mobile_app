@@ -34,7 +34,7 @@ class AppWidget extends StatelessWidget {
             useCases: [
               WidgetbookUseCase(
                 name: '4', 
-                builder: (context) => ArticleHeaderWidget(
+                builder: (context) => const ArticleHeaderWidget(
                   author: ArticleUserAuthor(name: 'name', avatarLink: 'link'),
                   viewCount: 0,
                 ),

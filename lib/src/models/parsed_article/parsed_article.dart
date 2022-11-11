@@ -1,32 +1,24 @@
-import 'package:built_value/built_value.dart';
+import 'package:equatable/equatable.dart';
 import 'package:tproger_mobile_app/src/models/article_author/article_author.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_image.dart';
 
-part 'parsed_article.g.dart';
+class ParsedArticle extends Equatable {
+  final String title;
+  final String articleLink;
+  final String description;
+  final int id;
+  final ArticleImage? image;
+  final ArticleAuthor? author;
 
-abstract class ParsedArticle implements Built<ParsedArticle, ParsedArticleBuilder> {
-  String get title;
-  String get articleLink;
-  String get description;
-  int get id;
-  ArticleImage? get image;
-  ArticleAuthor? get author;
+  const ParsedArticle({
+    required this.title,
+    required this.articleLink,
+    required this.description,
+    required this.id,
+    this.image,
+    this.author,
+  });
 
-  const ParsedArticle._();
-
-  factory ParsedArticle({
-    required String title,
-    required String articleLink,
-    required String description,
-    required int id,
-    ArticleImage? image,
-    ArticleAuthor? author,
-  }) => _$ParsedArticle((builder) => builder
-    ..title = title
-    ..articleLink = articleLink
-    ..description = description
-    ..id = id
-    ..image = image
-    ..author = author
-  );
+  @override
+  List<Object?> get props => [title, articleLink, description, id, image, author];
 }

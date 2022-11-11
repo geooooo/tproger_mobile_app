@@ -24,7 +24,7 @@ import 'package:tproger_mobile_app/src/services/http_service.dart'
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
-_i1.GetIt $configureInjactable(
+_i1.GetIt $configureInjectable(
   _i1.GetIt get, {
   String? environment,
   _i2.EnvironmentFilter? environmentFilter,

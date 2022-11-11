@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_custom_theme/flutter_custom_theme.dart';
 
 class AppTheme extends CustomThemeData {

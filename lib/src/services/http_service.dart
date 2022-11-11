@@ -2,15 +2,15 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tproger_mobile_app/src/models/enums/api_url.dart';
 import 'package:tproger_mobile_app/src/models/enums/method.dart';
-import 'package:tproger_mobile_app/src/models/load_article_reactions/load_article_reactions_request.dart';
-import 'package:tproger_mobile_app/src/models/load_article_reactions/load_article_reactions_response.dart';
-import 'package:tproger_mobile_app/src/models/load_articles_bookmark_counts/load_articles_bookmark_counts_request.dart';
-import 'package:tproger_mobile_app/src/models/load_articles_bookmark_counts/load_articles_bookmark_counts_response.dart';
-import 'package:tproger_mobile_app/src/models/load_articles_comment_counts/load_articles_comment_counts_request.dart';
-import 'package:tproger_mobile_app/src/models/load_articles_comment_counts/load_articles_comment_counts_response.dart';
-import 'package:tproger_mobile_app/src/models/load_articles_view_counts/load_articles_view_counts_request.dart';
-import 'package:tproger_mobile_app/src/models/load_articles_view_counts/load_articles_view_counts_response.dart';
-import 'package:tproger_mobile_app/src/models/load_initial_content/load_initial_content_response.dart';
+import 'package:tproger_mobile_app/src/models/api/load_article_reactions/load_article_reactions_request.dart';
+import 'package:tproger_mobile_app/src/models/api/load_article_reactions/load_article_reactions_response.dart';
+import 'package:tproger_mobile_app/src/models/api/load_articles_bookmark_counts/load_articles_bookmark_counts_request.dart';
+import 'package:tproger_mobile_app/src/models/api/load_articles_bookmark_counts/load_articles_bookmark_counts_response.dart';
+import 'package:tproger_mobile_app/src/models/api/load_articles_comment_counts/load_articles_comment_counts_request.dart';
+import 'package:tproger_mobile_app/src/models/api/load_articles_comment_counts/load_articles_comment_counts_response.dart';
+import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/load_articles_view_counts_request.dart';
+import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/load_articles_view_counts_response.dart';
+import 'package:tproger_mobile_app/src/models/api/load_initial_content/load_initial_content_response.dart';
 
 @singleton
 class HttpService {

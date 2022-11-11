@@ -29,14 +29,14 @@ class ArticleListParser {
 
     final imageLink = _parseImage(articleElement);
     final imageBackgroundColor = _parseImageBackgroundColor(articleElement);
-    final image = (imageLink == null)? null : ArticleImage(
+    final image = (imageLink == null)? null : ArticleImage.from(
       link: imageLink,
       backgroundColor: imageBackgroundColor,
     );
 
     final authorAvatarLink = _parseAuthorAvatarLink(authorElement);
     final authorName = _parseAuthorName(authorElement);
-    final author = (authorName == null)? null : ArticleAuthor(
+    final author = (authorName == null)? null : ArticleAuthor.from(
       avatarLink: authorAvatarLink!,
       name: authorName.item1,
       type: authorName.item2,

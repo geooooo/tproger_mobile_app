@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:tproger_mobile_app/src/models/load_article_reactions/article_reactions_dto.dart';
+import 'package:tproger_mobile_app/src/models/api/load_article_reactions/article_reactions_dto.dart';
 
 part 'load_article_reactions_response.g.dart';
 

@@ -1,5 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:tproger_mobile_app/src/models/parsed_article/parsed_article.dart';
-class AdditionalData {
+
+class AdditionalData extends Equatable {
   final ParsedArticle sourceArticle;
   final int commentCount;
   final int bookmarkCount;
@@ -13,4 +15,7 @@ class AdditionalData {
     required this.viewCount,
     required this.reactions,
   });
+
+  @override
+  List<Object> get props => [sourceArticle, commentCount, bookmarkCount, viewCount, reactions];
 }

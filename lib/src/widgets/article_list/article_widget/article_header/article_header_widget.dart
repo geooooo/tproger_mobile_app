@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:tproger_mobile_app/src/models/article_author/article_author.dart';
 import 'package:tproger_mobile_app/src/services/app_theme.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list/article_widget/article_header/article_author_avatar_widget.dart';

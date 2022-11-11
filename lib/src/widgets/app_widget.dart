@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_custom_theme/flutter_custom_theme.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tproger_mobile_app/src/services/app_theme.dart';

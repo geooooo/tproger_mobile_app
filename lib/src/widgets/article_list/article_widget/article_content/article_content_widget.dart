@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:color_parser/color_parser.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_icon_image.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_image.dart';

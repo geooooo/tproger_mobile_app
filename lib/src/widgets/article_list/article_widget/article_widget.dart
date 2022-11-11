@@ -1,6 +1,6 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_background_image.dart';
-import 'package:tproger_mobile_app/src/models/article_model/article_model.dart';
+import 'package:tproger_mobile_app/src/models/article_model.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list/article_widget/article_background_image_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list/article_widget/article_body_widget.dart';
 

@@ -1,18 +1,13 @@
-import 'package:built_value/built_value.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_image.dart';
 
-part 'article_icon_image.g.dart';
+class ArticleIconImage extends ArticleImage {  
+  final String backgroundColor;
+  
+  const ArticleIconImage({
+    required super.link,
+    required this.backgroundColor,
+  });
 
-abstract class ArticleIconImage implements ArticleImage, Built<ArticleIconImage, ArticleIconImageBuilder> {  
-  String get backgroundColor;
-
-  const ArticleIconImage._();
-
-  factory ArticleIconImage({
-    required String link,
-    required String backgroundColor,
-  }) => _$ArticleIconImage((builder) => builder
-    ..link = link
-    ..backgroundColor = backgroundColor
-  );
+  @override
+  List<Object> get props => [link, backgroundColor];
 }

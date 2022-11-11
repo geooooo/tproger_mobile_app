@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 class ArticleBackgroundImageWidget extends StatelessWidget {
   final String imageLink;
