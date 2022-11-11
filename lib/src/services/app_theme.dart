@@ -2,6 +2,43 @@ import 'package:flutter/material.dart';
 import 'package:flutter_custom_theme/flutter_custom_theme.dart';
 
 class AppTheme extends CustomThemeData {
+  const AppTheme.light(): 
+    mainBackgroundColor = const Color.fromRGBO(255, 255, 255, 1),
+    articleBackgroundColor = const Color.fromRGBO(255, 255, 255, 1),
+    articleListLoaderColor = const Color.fromRGBO(24, 29, 28, 1),
+    articleAuthorNameTextStyle = const TextStyle(
+      fontSize: 16,
+      height: 24 / 16,
+      fontWeight: FontWeight.w500,
+      fontFamily: _fontFamily,
+      fontFamilyFallback: _fontFamilyFallback,
+      color: Color.fromRGBO(118, 135, 135, 1),
+    ),
+    articleTitleTextStyle = const TextStyle(
+      fontSize: 28,
+      height: 32 / 28,
+      fontWeight: FontWeight.w600,
+      fontFamily: _fontFamily,
+      fontFamilyFallback: _fontFamilyFallback,
+      color: Color.fromRGBO(238, 242, 241, 1),
+    ),
+    articleViewCountTextStyle = const TextStyle(
+      fontSize: 14,
+      height: 21 / 14,
+      fontWeight: FontWeight.w400,
+      fontFamily: _fontFamily,
+      fontFamilyFallback: _fontFamilyFallback,
+      color: Color.fromRGBO(197, 211, 211, 1),
+    ),
+    articleDescriptionTextStyle = const TextStyle(
+      fontSize: 18,
+      height: 28 / 18,
+      fontWeight: FontWeight.w400,
+      fontFamily: _fontFamily,
+      fontFamilyFallback: _fontFamilyFallback,
+      color: Color.fromRGBO(238, 242, 241, 1),
+    );
+  
   const AppTheme.dark():
     mainBackgroundColor = const Color.fromRGBO(0, 0, 0, 1),
     articleBackgroundColor = const Color.fromRGBO(24, 29, 28, 1),

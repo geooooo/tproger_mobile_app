@@ -28,7 +28,7 @@ class _AppWidgetState extends State<AppWidget> {
   Widget build(BuildContext context) => CustomThemes(
     data: const [
       CustomThemeDataSet(
-        data: AppTheme.dark(),
+        data: AppTheme.light(),
         dataDark: AppTheme.dark(),
       ),
     ],
