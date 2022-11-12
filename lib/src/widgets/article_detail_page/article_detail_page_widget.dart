@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
-import 'package:tproger_mobile_app/src/services/app_theme.dart';
 import 'package:tproger_mobile_app/src/services/hide_content_js_code.dart';
 import 'package:webviewx/webviewx.dart';
 
@@ -36,27 +35,29 @@ class _ArticleDetailPageWidgetState extends State<ArticleDetailPageWidget> {
   @override
   Widget build(BuildContext context) => MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: SafeArea(
-      child: Scaffold(
-        backgroundColor: AppTheme.of(context).mainBackgroundColor,
-        body: _hasError
-          ? const Placeholder(color: Color.fromRGBO(255, 0, 0, 1))
-          : Stack(
-              children: [
-                WebViewX(  
-                  initialContent: widget.articleLink,
-                  initialSourceType: SourceType.urlBypass,
-                  width: double.infinity,
-                  height: double.infinity,
-                  javascriptMode: JavascriptMode.unrestricted,
-                  onWebViewCreated: _onWebViewCreated,
-                  onPageFinished: _onPageFinished,
-                ),
-                if (!_isLoaded) const Placeholder(),
-              ],
-            ),
-      ),
-    ),
+    builder: (context, _) {
+      return SafeArea(
+        child: Scaffold(
+          // backgroundColor: mainBackgroundColor,
+          body: _hasError
+            ? const Placeholder(color: Color.fromRGBO(255, 0, 0, 1))
+            : Stack(
+                children: [
+                  WebViewX(  
+                    initialContent: widget.articleLink,
+                    initialSourceType: SourceType.urlBypass,
+                    width: double.infinity,
+                    height: double.infinity,
+                    javascriptMode: JavascriptMode.unrestricted,
+                    onWebViewCreated: _onWebViewCreated,
+                    onPageFinished: _onPageFinished,
+                  ),
+                  if (!_isLoaded) const Placeholder(),
+                ],
+              ),
+        ),
+      );
+    }
   );
 
   Future<void> _onWebViewCreated(WebViewXController controller) async {

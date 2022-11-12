@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tproger_mobile_app/src/services/app_theme.dart';
 
 class ArticleAuthorNameWidget extends StatelessWidget {
   final String authorName;
@@ -10,8 +9,10 @@ class ArticleAuthorNameWidget extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => Text(
-    authorName,
-    style: AppTheme.of(context).articleAuthorNameTextStyle,
-  );
+  Widget build(BuildContext context) {
+    return Text(
+      authorName,
+      // style: articleAuthorNameTextStyle,
+    );
+  }
 }

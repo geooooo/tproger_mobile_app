@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:color_parser/color_parser.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_icon_image.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_image.dart';
-import 'package:tproger_mobile_app/src/services/app_theme.dart';
+import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_widget/article_content/article_content_image_container_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_widget/article_content/article_description_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_widget/article_content/article_title_widget.dart';

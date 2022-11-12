@@ -1,12 +1,15 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
 
 part 'app_state.g.dart';
 
 abstract class AppState implements Built<AppState, AppStateBuilder> {
   BuiltList<ArticleModel> get articles;
-  bool get isArticlesLoaded;
+  AppTheme get theme;
+
+  bool get isArticlesLoaded => articles.isNotEmpty;
 
   AppState._();
   factory AppState() = _$AppState;
@@ -14,5 +17,5 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   @BuiltValueHook(initializeBuilder: true)
   static void _setDefaults(AppStateBuilder b) => b
     ..articles.replace([])
-    ..isArticlesLoaded = false;
+    ..theme = const AppTheme.light();
 }

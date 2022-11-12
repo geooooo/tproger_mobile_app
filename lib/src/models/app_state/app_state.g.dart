@@ -10,16 +10,14 @@ class _$AppState extends AppState {
   @override
   final BuiltList<ArticleModel> articles;
   @override
-  final bool isArticlesLoaded;
+  final AppTheme theme;
 
   factory _$AppState([void Function(AppStateBuilder)? updates]) =>
       (new AppStateBuilder()..update(updates))._build();
 
-  _$AppState._({required this.articles, required this.isArticlesLoaded})
-      : super._() {
+  _$AppState._({required this.articles, required this.theme}) : super._() {
     BuiltValueNullFieldError.checkNotNull(articles, r'AppState', 'articles');
-    BuiltValueNullFieldError.checkNotNull(
-        isArticlesLoaded, r'AppState', 'isArticlesLoaded');
+    BuiltValueNullFieldError.checkNotNull(theme, r'AppState', 'theme');
   }
 
   @override
@@ -34,19 +32,19 @@ class _$AppState extends AppState {
     if (identical(other, this)) return true;
     return other is AppState &&
         articles == other.articles &&
-        isArticlesLoaded == other.isArticlesLoaded;
+        theme == other.theme;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, articles.hashCode), isArticlesLoaded.hashCode));
+    return $jf($jc($jc(0, articles.hashCode), theme.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'AppState')
           ..add('articles', articles)
-          ..add('isArticlesLoaded', isArticlesLoaded))
+          ..add('theme', theme))
         .toString();
   }
 }
@@ -60,10 +58,9 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   set articles(ListBuilder<ArticleModel>? articles) =>
       _$this._articles = articles;
 
-  bool? _isArticlesLoaded;
-  bool? get isArticlesLoaded => _$this._isArticlesLoaded;
-  set isArticlesLoaded(bool? isArticlesLoaded) =>
-      _$this._isArticlesLoaded = isArticlesLoaded;
+  AppTheme? _theme;
+  AppTheme? get theme => _$this._theme;
+  set theme(AppTheme? theme) => _$this._theme = theme;
 
   AppStateBuilder() {
     AppState._setDefaults(this);
@@ -73,7 +70,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
     final $v = _$v;
     if ($v != null) {
       _articles = $v.articles.toBuilder();
-      _isArticlesLoaded = $v.isArticlesLoaded;
+      _theme = $v.theme;
       _$v = null;
     }
     return this;
@@ -99,8 +96,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _$result = _$v ??
           new _$AppState._(
               articles: articles.build(),
-              isArticlesLoaded: BuiltValueNullFieldError.checkNotNull(
-                  isArticlesLoaded, r'AppState', 'isArticlesLoaded'));
+              theme: BuiltValueNullFieldError.checkNotNull(
+                  theme, r'AppState', 'theme'));
     } catch (_) {
       late String _$failedField;
       try {

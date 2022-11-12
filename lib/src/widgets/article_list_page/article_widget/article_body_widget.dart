@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
-import 'package:tproger_mobile_app/src/services/app_theme.dart';
+import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_widget/article_content/article_content_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_widget/article_header/article_header_widget.dart';
 
