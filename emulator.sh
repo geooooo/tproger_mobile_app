@@ -1,3 +1,3 @@
 #!/bin/bash
 
-flutter emulators --launch Pixel_4_API_28
+flutter emulators --launch apple_ios_simulator
