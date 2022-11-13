@@ -21,7 +21,7 @@ class ArticleBodyWidget extends StatelessWidget {
           author: article.author,
           viewCount: article.viewCount,
         ),
-        const SizedBox(height: AppTheme.articleContentSeparatorSize),
+        const SizedBox(height: AppTheme.articleHeaderAndContentSeparatorSize),
         ArticleContentWidget(
           title: article.title,
           description: article.description,

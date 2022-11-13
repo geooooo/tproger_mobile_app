@@ -8,7 +8,7 @@ class AppTheme {
     'sans-serif',
   ];
   static const articleListSeparatorSize = 20.0;
-  static const articleContentSeparatorSize = 18.0;
+  static const articleHeaderAndContentSeparatorSize = 18.0;
   static const articleImageAndTitleSeparatorSize = 12.0;
   static const articleTitleAndDescriptionSeparatorSize = 16.0;
   static const articleAuthorAvatarAndNameSeparatorSize = 8.0;
@@ -18,7 +18,7 @@ class AppTheme {
   static const articleAuthorAvatarRadius = Radius.elliptical(8, 8);
   static const articleImageRadius = Radius.elliptical(12, 12);
   static const articleImageContainerHeight = 120.0;
-  static const articleImageHeight = 80.0;
+  static const articleImageHeight = 70.0;
 
   final Color mainBackgroundColor;
   final Color articleBackgroundColor;
@@ -78,8 +78,8 @@ class AppTheme {
       color: Color.fromRGBO(118, 135, 135, 1),
     ),
     articleTitleTextStyle = const TextStyle(
-      fontSize: 28,
-      height: 32 / 28,
+      fontSize: 24,
+      height: 32 / 24,
       fontWeight: FontWeight.w600,
       fontFamily: _fontFamily,
       fontFamilyFallback: _fontFamilyFallback,
