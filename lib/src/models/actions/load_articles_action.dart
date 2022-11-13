@@ -1,3 +1,0 @@
-class LoadArticlesAction {
-  const LoadArticlesAction();
-}

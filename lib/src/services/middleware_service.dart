@@ -1,7 +1,8 @@
 import 'package:injectable/injectable.dart';
 import 'package:redux_epics/redux_epics.dart';
-import 'package:tproger_mobile_app/src/models/actions/load_articles_action.dart';
-import 'package:tproger_mobile_app/src/models/actions/load_articles_success_action.dart';
+import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_action.dart';
+import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_base_action.dart';
+import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_success_action.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/services/article_list_service.dart';
 
@@ -15,7 +16,7 @@ class MiddlewareService {
 
   MiddlewareService(this._articleListService);
 
-  Stream<Object> _loadArticles(Stream<LoadArticlesAction> actions, EpicStore<AppState> store) =>
+  Stream<LoadArticlesBaseAction> _loadArticles(Stream<LoadArticlesAction> actions, EpicStore<AppState> store) =>
     actions.asyncMap((action) async {
       try {
         final articles = await _articleListService.getArticles();
