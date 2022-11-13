@@ -19,13 +19,13 @@ class ReducerService {
 
   AppState _initTheme(AppState state, InitThemeAction action) {
     final isDarkMode = _appThemeService.isDarkMode(action.context);
+    final newTheme = isDarkMode
+      ? const AppTheme.dark()
+      : const AppTheme.light();
 
-    return state.rebuild((b) => b
-      ..isThemeInitialized = true
-      ..theme = isDarkMode
-        ? const AppTheme.dark()
-        : const AppTheme.light()
-    );
+    return (state.theme == newTheme)
+      ? state
+      : state.rebuild((b) => b.theme = newTheme);
   }
 
   AppState _loadArticlesSuccess(AppState state, LoadArticlesSuccessAction action) => 

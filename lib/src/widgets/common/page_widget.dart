@@ -11,9 +11,7 @@ abstract class PageWidget extends StatelessWidget {
     builder: (context, store) => MaterialApp(
       debugShowCheckedModeBanner: false,
       builder: (context, widget) {
-        if (!store.state.isThemeInitialized) {
-          store.dispatch(InitThemeAction(context));
-        }
+        store.dispatch(InitThemeAction(context));
 
         return SafeArea(
           child: Scaffold(

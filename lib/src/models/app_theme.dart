@@ -25,28 +25,38 @@ class AppTheme {
   final Color articleListLoaderColor;
   final TextStyle articleAuthorNameTextStyle;
   final TextStyle articleTitleTextStyle;
+  final TextStyle articleTitleInvertedTextStyle;
   final TextStyle articleViewCountTextStyle;
   final TextStyle articleDescriptionTextStyle;
+  final TextStyle articleDescriptionInvertedTextStyle;
 
   const AppTheme.light(): 
-    mainBackgroundColor = const Color.fromRGBO(255, 255, 255, 1),
+    mainBackgroundColor = const Color.fromRGBO(246, 245, 245, 1),
     articleBackgroundColor = const Color.fromRGBO(255, 255, 255, 1),
-    articleListLoaderColor = const Color.fromRGBO(24, 29, 28, 1),
+    articleListLoaderColor = const Color.fromRGBO(255, 255, 255, 1),
     articleAuthorNameTextStyle = const TextStyle(
       fontSize: 16,
       height: 24 / 16,
       fontWeight: FontWeight.w500,
       fontFamily: _fontFamily,
       fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(118, 135, 135, 1),
+      color: Color.fromRGBO(98, 112, 112, 1),
     ),
     articleTitleTextStyle = const TextStyle(
-      fontSize: 28,
-      height: 32 / 28,
+      fontSize: 24,
+      height: 32 / 24,
       fontWeight: FontWeight.w600,
       fontFamily: _fontFamily,
       fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(238, 242, 241, 1),
+      color: Color.fromRGBO(15, 17, 17, 1),
+    ),
+    articleTitleInvertedTextStyle = const TextStyle(
+      fontSize: 24,
+      height: 32 / 24,
+      fontWeight: FontWeight.w600,
+      fontFamily: _fontFamily,
+      fontFamilyFallback: _fontFamilyFallback,
+      color: Color.fromRGBO(255, 255, 255, 1),
     ),
     articleViewCountTextStyle = const TextStyle(
       fontSize: 14,
@@ -62,7 +72,15 @@ class AppTheme {
       fontWeight: FontWeight.w400,
       fontFamily: _fontFamily,
       fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(238, 242, 241, 1),
+      color: Color.fromRGBO(15, 17, 17, 1),
+    ),
+    articleDescriptionInvertedTextStyle = const TextStyle(
+      fontSize: 18,
+      height: 28 / 18,
+      fontWeight: FontWeight.w400,
+      fontFamily: _fontFamily,
+      fontFamilyFallback: _fontFamilyFallback,
+      color: Color.fromRGBO(255, 255, 255, 1),
     );
   
   const AppTheme.dark():
@@ -85,6 +103,14 @@ class AppTheme {
       fontFamilyFallback: _fontFamilyFallback,
       color: Color.fromRGBO(238, 242, 241, 1),
     ),
+    articleTitleInvertedTextStyle = const TextStyle(
+      fontSize: 24,
+      height: 32 / 24,
+      fontWeight: FontWeight.w600,
+      fontFamily: _fontFamily,
+      fontFamilyFallback: _fontFamilyFallback,
+      color: Color.fromRGBO(255, 255, 255, 1),
+    ),
     articleViewCountTextStyle = const TextStyle(
       fontSize: 14,
       height: 21 / 14,
@@ -100,5 +126,13 @@ class AppTheme {
       fontFamily: _fontFamily,
       fontFamilyFallback: _fontFamilyFallback,
       color: Color.fromRGBO(238, 242, 241, 1),
+    ),
+    articleDescriptionInvertedTextStyle = const TextStyle(
+      fontSize: 18,
+      height: 28 / 18,
+      fontWeight: FontWeight.w400,
+      fontFamily: _fontFamily,
+      fontFamilyFallback: _fontFamilyFallback,
+      color: Color.fromRGBO(255, 255, 255, 1),
     );
 }

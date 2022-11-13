@@ -4,9 +4,11 @@ import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 
 class ArticleDescriptionWidget extends StatelessWidget {
   final String text;
+  final bool isInvertetStyle;
 
   const ArticleDescriptionWidget({
     required this.text,
+    required this.isInvertetStyle,
     super.key,
   });
 
@@ -14,7 +16,9 @@ class ArticleDescriptionWidget extends StatelessWidget {
   Widget build(BuildContext context) => StoreBuilder<AppState>(
     builder: (context, store) => Text(
       text,
-      style: store.state.theme.articleDescriptionTextStyle,
+      style: isInvertetStyle
+        ? store.state.theme.articleDescriptionInvertedTextStyle
+        : store.state.theme.articleDescriptionTextStyle,
     ),
   );
 }

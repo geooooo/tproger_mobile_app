@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:color_parser/color_parser.dart';
+import 'package:tproger_mobile_app/src/models/article_image/article_background_image.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_icon_image.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_image.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
@@ -13,6 +14,7 @@ class ArticleContentWidget extends StatelessWidget {
   final ArticleImage? image;
 
   bool get _hasContentImage => image is ArticleIconImage;
+  bool get _hasBackgroundImage => image is ArticleBackgroundImage;
 
   const ArticleContentWidget({
     required this.title,
@@ -23,6 +25,7 @@ class ArticleContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       if (_hasContentImage) ...[
         ArticleContentImageContainerWidget(
@@ -31,9 +34,15 @@ class ArticleContentWidget extends StatelessWidget {
         ),
         const SizedBox(height: AppTheme.articleImageAndTitleSeparatorSize),
       ],
-      ArticleTitleWidget(text: title),
+      ArticleTitleWidget(
+        text: title,
+        isInvertetStyle: _hasBackgroundImage,
+      ),
       const SizedBox(height: AppTheme.articleTitleAndDescriptionSeparatorSize),
-      ArticleDescriptionWidget(text: description),
+      ArticleDescriptionWidget(
+        text: description,
+        isInvertetStyle: _hasBackgroundImage,
+      ),
     ],
   );
 }
