@@ -160,13 +160,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_custom_theme:
-    dependency: "direct main"
-    description:
-      name: flutter_custom_theme
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.1"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -174,6 +167,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
+  flutter_redux:
+    dependency: "direct main"
+    description:
+      name: flutter_redux
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.10.0"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -284,13 +284,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
-  list_ext:
-    dependency: transitive
-    description:
-      name: list_ext
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.6"
   logger:
     dependency: transitive
     description:
@@ -389,13 +382,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
-  quiver:
-    dependency: transitive
+  redux:
+    dependency: "direct main"
     description:
-      name: quiver
+      name: redux
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.0"
+    version: "5.0.0"
+  redux_epics:
+    dependency: transitive
+    description:
+      name: redux_epics
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.15.1"
+  rxdart:
+    dependency: transitive
+    description:
+      name: rxdart
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.27.6"
   shimmer:
     dependency: transitive
     description:
