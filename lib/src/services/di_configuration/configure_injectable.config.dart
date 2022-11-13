@@ -23,8 +23,9 @@ import 'package:tproger_mobile_app/src/services/hide_content_js_code.dart'
 import 'package:tproger_mobile_app/src/services/http_service.dart' as _i8;
 import 'package:tproger_mobile_app/src/services/middleware_service.dart'
     as _i13;
-import 'package:tproger_mobile_app/src/services/reducer_service.dart'
-    as _i10; // ignore_for_file: unnecessary_lambdas
+import 'package:tproger_mobile_app/src/services/reducer_service.dart' as _i10;
+import 'package:tproger_mobile_app/src/services/store_factory.dart'
+    as _i14; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -63,6 +64,10 @@ _i1.GetIt $configureInjectable(
   ));
   gh.singleton<_i13.MiddlewareService>(
       _i13.MiddlewareService(get<_i12.ArticleListService>()));
+  gh.singleton<_i14.StoreFactory>(_i14.StoreFactory(
+    get<_i10.ReducerService>(),
+    get<_i13.MiddlewareService>(),
+  ));
   return get;
 }
 

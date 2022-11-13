@@ -10,7 +10,7 @@ import 'package:tproger_mobile_app/src/services/app_theme_service.dart';
 class ReducerService {
   final AppThemeService _appThemeService;
 
-  const ReducerService(this._appThemeService);
+  ReducerService(this._appThemeService);
   
   Reducer<AppState> get reducer => combineReducers<AppState>([
     TypedReducer(_initTheme),
@@ -20,9 +20,11 @@ class ReducerService {
   AppState _initTheme(AppState state, InitThemeAction action) {
     final isDarkMode = _appThemeService.isDarkMode(action.context);
 
-    return state.rebuild((b) => b.theme = isDarkMode
-      ? const AppTheme.dark()
-      : const AppTheme.light()
+    return state.rebuild((b) => b
+      ..isThemeInitialized = true
+      ..theme = isDarkMode
+        ? const AppTheme.dark()
+        : const AppTheme.light()
     );
   }
 

@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-// import 'package:get_it/get_it.dart';
-// import 'package:logger/logger.dart';
-import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class ArticleAuthorAvatarWidget extends StatelessWidget {
-  // final _logger = GetIt.instance.get<Logger>();
-
   final String avatarLink;
 
   const ArticleAuthorAvatarWidget({
@@ -24,13 +19,7 @@ class ArticleAuthorAvatarWidget extends StatelessWidget {
       child: FadeInImage.memoryNetwork(
         image: avatarLink,
         placeholder: kTransparentImage,
-        imageErrorBuilder: imageErrorBuilder,
       ),
     ),
   );
-
-  Widget imageErrorBuilder(BuildContext context, Object error, StackTrace? stackTrace) {
-    // _logger.e('Author avatar loading', error, stackTrace);
-    return Image.asset(Asset.defaultAvatar.value);
-  }
 }

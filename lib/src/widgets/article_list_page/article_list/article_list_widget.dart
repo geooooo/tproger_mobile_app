@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/widgets/article_detail_page/article_detail_page_widget.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_widget/article_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_widget.dart';
 
 class ArticleListWidget extends StatelessWidget {
   final BuiltList<ArticleModel> articles;
@@ -18,7 +18,7 @@ class ArticleListWidget extends StatelessWidget {
     addAutomaticKeepAlives: true,
     itemCount: articles.length,
     itemBuilder: (context, index) => GestureDetector(
-      onTap: () => _onTapArticle(context, articles[index].articleLink),
+      // onTap: () => _onTapArticle(context, articles[index].articleLink),
       key: ValueKey(articles[index].id),
       child: ArticleWidget(
         article: articles[index],

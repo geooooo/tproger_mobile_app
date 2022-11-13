@@ -11,13 +11,21 @@ class _$AppState extends AppState {
   final BuiltList<ArticleModel> articles;
   @override
   final AppTheme theme;
+  @override
+  final bool isThemeInitialized;
 
   factory _$AppState([void Function(AppStateBuilder)? updates]) =>
       (new AppStateBuilder()..update(updates))._build();
 
-  _$AppState._({required this.articles, required this.theme}) : super._() {
+  _$AppState._(
+      {required this.articles,
+      required this.theme,
+      required this.isThemeInitialized})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(articles, r'AppState', 'articles');
     BuiltValueNullFieldError.checkNotNull(theme, r'AppState', 'theme');
+    BuiltValueNullFieldError.checkNotNull(
+        isThemeInitialized, r'AppState', 'isThemeInitialized');
   }
 
   @override
@@ -32,19 +40,22 @@ class _$AppState extends AppState {
     if (identical(other, this)) return true;
     return other is AppState &&
         articles == other.articles &&
-        theme == other.theme;
+        theme == other.theme &&
+        isThemeInitialized == other.isThemeInitialized;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, articles.hashCode), theme.hashCode));
+    return $jf($jc($jc($jc(0, articles.hashCode), theme.hashCode),
+        isThemeInitialized.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'AppState')
           ..add('articles', articles)
-          ..add('theme', theme))
+          ..add('theme', theme)
+          ..add('isThemeInitialized', isThemeInitialized))
         .toString();
   }
 }
@@ -62,6 +73,11 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   AppTheme? get theme => _$this._theme;
   set theme(AppTheme? theme) => _$this._theme = theme;
 
+  bool? _isThemeInitialized;
+  bool? get isThemeInitialized => _$this._isThemeInitialized;
+  set isThemeInitialized(bool? isThemeInitialized) =>
+      _$this._isThemeInitialized = isThemeInitialized;
+
   AppStateBuilder() {
     AppState._setDefaults(this);
   }
@@ -71,6 +87,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
     if ($v != null) {
       _articles = $v.articles.toBuilder();
       _theme = $v.theme;
+      _isThemeInitialized = $v.isThemeInitialized;
       _$v = null;
     }
     return this;
@@ -97,7 +114,9 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
           new _$AppState._(
               articles: articles.build(),
               theme: BuiltValueNullFieldError.checkNotNull(
-                  theme, r'AppState', 'theme'));
+                  theme, r'AppState', 'theme'),
+              isThemeInitialized: BuiltValueNullFieldError.checkNotNull(
+                  isThemeInitialized, r'AppState', 'isThemeInitialized'));
     } catch (_) {
       late String _$failedField;
       try {

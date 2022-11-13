@@ -184,7 +184,7 @@ class ArticleListParser {
 
   bool _isLinkHasHost(String link) => link.contains(BaseUrl.host.value);
 
-  bool _isLinkToImage(String link) => link.endsWith('.png');
+  bool _isLinkToImage(String link) => link.endsWith('.png') || link.endsWith('.jpg');
 
   String _addHostToLink(String link) => 'https://${BaseUrl.host}$link';
 }

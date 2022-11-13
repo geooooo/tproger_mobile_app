@@ -13,7 +13,7 @@ class MiddlewareService {
     TypedEpic(_loadArticles),
   ]);
 
-  const MiddlewareService(this._articleListService);
+  MiddlewareService(this._articleListService);
 
   Stream<Object> _loadArticles(Stream<LoadArticlesAction> actions, EpicStore<AppState> store) =>
     actions.asyncMap((action) async {
@@ -21,7 +21,6 @@ class MiddlewareService {
         final articles = await _articleListService.getArticles();
         return LoadArticlesSuccessAction(articles);
       } on Exception {
-        // ...
         return const LoadArticlesAction();
       }
     });

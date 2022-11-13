@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_page_content_widget.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/page_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_page_widget.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({ super.key });
@@ -19,7 +18,5 @@ class _AppWidgetState extends State<AppWidget> {
   }
 
   @override
-  Widget build(BuildContext context) => const PageWidget(
-    child: ArticleListPageContentWidget(),
-  );
+  Widget build(BuildContext context) => const ArticleListPageWidget();
 }
