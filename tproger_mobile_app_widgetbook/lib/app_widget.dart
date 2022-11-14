@@ -1,17 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:tproger_mobile_app_widgetbook/init_theme_action.dart';
-import 'package:widgetbook/widgetbook.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_header/article_author_name_widget.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_content/article_title_widget.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_content_component.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_content_image_component.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_content_image_container_component.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_content_image_shimmer_component.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_description_component.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_title_component.dart';
+import 'package:tproger_mobile_app_widgetbook/models/init_theme_action.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_author_avatar_component.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_author_name_component.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_header_component.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
+
+import 'package:widgetbook/widgetbook.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({ super.key });
 
   @override
   Widget build(BuildContext context) => Widgetbook<AppTheme>(
+    categories: [
+      WidgetbookCategory(
+        name: 'All',
+        folders: [
+          WidgetbookFolder(
+            name: 'ArticleHeader',
+            widgets: [
+              buildArticleHeaderComponent(context),
+              buildArticleAuthorNameComponent(context),
+              buildArticleAuthorAvatarComponent(context),
+            ],
+          ),
+          WidgetbookFolder(
+            name: 'ArticleContent',
+            widgets: [
+              buildArticleContentComponent(context),
+              buildArticleDescriptionComponent(context),
+              buildArticleTitleComponent(context),
+            ],
+            folders: [
+              WidgetbookFolder(
+                name: 'ArticleContentImageContainer',
+                widgets: [
+                  buildArticleContentImageContainerComponent(context),
+                  buildArticleContentImageShimmerComponent(context),
+                  buildArticleContentImageComponent(context),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+    ],
     frames: [
       WidgetbookFrame.defaultFrame(),
       WidgetbookFrame.deviceFrame(),
@@ -22,16 +63,22 @@ class AppWidget extends StatelessWidget {
     supportedLocales: const [
       Locale('ru'),
     ],
-    appBuilder: (context, child) => MaterialApp(
-      home: child,
+    appBuilder: (context, widget) => MaterialApp(
       debugShowCheckedModeBanner: false,
+      home: widget,
     ),
     themeBuilder: (context, theme, widget) => StoreBuilder<AppState>(
       builder: (context, store) {
         store.dispatch(InitThemeAction(theme));
 
         return widget;
-      }
+      },
+    ),
+    scaffoldBuilder: (context, frame, widget) => StoreBuilder<AppState>(
+      builder: (context, store) => Scaffold(
+        backgroundColor: store.state.theme.mainBackgroundColor,
+        body: widget,
+      ),
     ),
     appInfo: AppInfo(
       name: 'Tproger mobile app',
@@ -44,31 +91,6 @@ class AppWidget extends StatelessWidget {
       WidgetbookTheme(
         name: 'Dark',
         data: const AppTheme.dark(),
-      ),
-    ],
-    categories: [
-      WidgetbookCategory(
-        name: 'Cat',
-        widgets: [
-          WidgetbookComponent(
-            name: 'Comp',
-            useCases: [
-              WidgetbookUseCase(
-                name: '1', 
-                builder: (context) => const ArticleAuthorNameWidget(
-                  authorName: 'Name',
-                )
-              ),
-              WidgetbookUseCase(
-                name: '2', 
-                builder: (context) => const ArticleTitleWidget(
-                  text: 'Title',
-                  isInvertetStyle: false,
-                )
-              ),
-            ],
-          ),
-        ],
       ),
     ],
   );

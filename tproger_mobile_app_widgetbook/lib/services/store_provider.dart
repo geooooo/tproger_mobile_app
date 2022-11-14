@@ -2,7 +2,7 @@ import 'package:redux/redux.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/services/store_factory.dart';
 import 'package:tproger_mobile_app/src/services/di_configuration/configure_injectable.dart';
-import 'package:tproger_mobile_app_widgetbook/init_theme_action.dart';
+import 'package:tproger_mobile_app_widgetbook/models/init_theme_action.dart';
 
 AppState _initTheme(AppState state, InitThemeAction action) => 
   state.rebuild((b) => b.theme = action.theme);
