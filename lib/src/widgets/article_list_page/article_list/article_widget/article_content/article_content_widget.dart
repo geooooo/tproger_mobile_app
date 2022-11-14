@@ -19,7 +19,7 @@ class ArticleContentWidget extends StatelessWidget {
   const ArticleContentWidget({
     required this.title,
     required this.description,
-    required this.image,
+    this.image,
     super.key,
   });
 

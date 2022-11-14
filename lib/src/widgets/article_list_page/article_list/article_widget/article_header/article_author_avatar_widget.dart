@@ -15,7 +15,7 @@ class ArticleAuthorAvatarWidget extends StatelessWidget {
     borderRadius: const BorderRadius.all(AppTheme.articleAuthorAvatarRadius),
     child: SizedBox(
       width: AppTheme.articleAuthorAvatarSize,
-      height: AppTheme.articleAuthorAvatarSize,
+      height: AppTheme.articleAuthorAvatarSize,      
       child: FadeInImage.memoryNetwork(
         image: avatarLink,
         placeholder: kTransparentImage,
