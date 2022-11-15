@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_footer/bookmark_button_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_footer/comment_button_widget.dart';
 
 class ArticleFooterWidget extends StatelessWidget {
   final int bookmarkCount;
@@ -24,8 +26,11 @@ class ArticleFooterWidget extends StatelessWidget {
               count: bookmarkCount,
               isInvertetStyle: isInvertetStyle,
             ),
-            const SizedBox(width: 25),
-            // CommentButtonWidget(count: commentCount),
+            const SizedBox(width: AppTheme.articleBookmarkAndCommentSeparatorSize),
+            CommentButtonWidget(
+              count: commentCount,
+              isInvertetStyle: isInvertetStyle,
+            ),
           ],
         ),
       ),

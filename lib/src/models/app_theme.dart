@@ -16,10 +16,13 @@ class AppTheme {
   static const articleAuthorNameAndViewCountSeparatorSize = 16.0;
   static const articleViewCountIconAndViewCountTextSeparatorSize = 5.0;
   static const articleBookmarkIconAndBookmarkTextSeparatorSize = 4.0;
+  static const articleCommentIconAndCommentTextSeparatorSize = 4.0;
+  static const articleBookmarkAndCommentSeparatorSize = 24.0;
   static const articlePaddingSize = 16.0;
   static const articleAuthorAvatarSize = 24.0;
   static const articleViewCountIconSize = 16.0;
   static const articleBookmarkIconSize = 28.0;
+  static const articleCommentIconSize = 28.0;
   static const articleAuthorAvatarRadius = Radius.elliptical(8, 8);
   static const articleImageRadius = Radius.elliptical(12, 12);
   static const articleImageContainerHeight = 120.0;
@@ -32,6 +35,8 @@ class AppTheme {
   final Color articleViewCountIconInvertedColor;
   final Color articleBookmarkIconColor;
   final Color articleBookmarkIconInvertedColor;
+  final Color articleCommentIconColor;
+  final Color articleCommentIconInvertedColor;
   final TextStyle articleAuthorNameTextStyle;
   final TextStyle articleTitleTextStyle;
   final TextStyle articleTitleInvertedTextStyle;
@@ -41,6 +46,8 @@ class AppTheme {
   final TextStyle articleDescriptionInvertedTextStyle;
   final TextStyle articleBookmarkTextStyle;
   final TextStyle articleBookmarkInvertedTextStyle;
+  final TextStyle articleCommentTextStyle;
+  final TextStyle articleCommentInvertedTextStyle;
 
   const AppTheme.light(): 
     mainBackgroundColor = const Color.fromRGBO(246, 245, 245, 1),
@@ -50,6 +57,8 @@ class AppTheme {
     articleViewCountIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
     articleBookmarkIconColor = const Color.fromRGBO(98, 112, 112, 1),
     articleBookmarkIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
+    articleCommentIconColor = const Color.fromRGBO(98, 112, 112, 1),
+    articleCommentIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
     articleAuthorNameTextStyle = const TextStyle(
       fontSize: 16,
       height: 24 / 16,
@@ -121,6 +130,22 @@ class AppTheme {
       fontFamily: _fontFamily,
       fontFamilyFallback: _fontFamilyFallback,
       color: Color.fromRGBO(255, 255, 255, 1),
+    ),
+    articleCommentTextStyle = const TextStyle(
+      fontSize: 16,
+      height: 24 / 16,
+      fontWeight: FontWeight.w500,
+      fontFamily: _fontFamily,
+      fontFamilyFallback: _fontFamilyFallback,
+      color: Color.fromRGBO(98, 112, 112, 1),
+    ),
+    articleCommentInvertedTextStyle = const TextStyle(
+      fontSize: 16,
+      height: 24 / 16,
+      fontWeight: FontWeight.w500,
+      fontFamily: _fontFamily,
+      fontFamilyFallback: _fontFamilyFallback,
+      color: Color.fromRGBO(255, 255, 255, 1),
     );
   
   const AppTheme.dark():
@@ -131,6 +156,8 @@ class AppTheme {
     articleViewCountIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
     articleBookmarkIconColor = const Color.fromRGBO(118, 135, 135, 1),
     articleBookmarkIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
+    articleCommentIconColor = const Color.fromRGBO(118, 135, 135, 1),
+    articleCommentIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
     articleAuthorNameTextStyle = const TextStyle(
       fontSize: 16,
       height: 24 / 16,
@@ -196,6 +223,22 @@ class AppTheme {
       color: Color.fromRGBO(118, 135, 135, 1),
     ),
     articleBookmarkInvertedTextStyle = const TextStyle(
+      fontSize: 16,
+      height: 24 / 16,
+      fontWeight: FontWeight.w500,
+      fontFamily: _fontFamily,
+      fontFamilyFallback: _fontFamilyFallback,
+      color: Color.fromRGBO(255, 255, 255, 1),
+    ),
+    articleCommentTextStyle = const TextStyle(
+      fontSize: 16,
+      height: 24 / 16,
+      fontWeight: FontWeight.w500,
+      fontFamily: _fontFamily,
+      fontFamilyFallback: _fontFamilyFallback,
+      color: Color.fromRGBO(118, 135, 135, 1),
+    ),
+    articleCommentInvertedTextStyle = const TextStyle(
       fontSize: 16,
       height: 24 / 16,
       fontWeight: FontWeight.w500,
