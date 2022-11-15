@@ -113,13 +113,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
-  clock:
-    dependency: transitive
-    description:
-      name: clock
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.1"
   code_builder:
     dependency: transitive
     description:
@@ -230,6 +223,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.0"
+  flutter_svg:
+    dependency: "direct main"
+    description:
+      name: flutter_svg
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.6"
   frontend_server_client:
     dependency: transitive
     description:
@@ -307,13 +307,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.5.4"
-  intl:
-    dependency: transitive
-    description:
-      name: intl
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.17.0"
   io:
     dependency: transitive
     description:
@@ -321,20 +314,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
-  jovial_misc:
-    dependency: transitive
-    description:
-      name: jovial_misc
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.8.4"
-  jovial_svg:
-    dependency: "direct main"
-    description:
-      name: jovial_svg
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.6"
   js:
     dependency: transitive
     description:
@@ -433,6 +412,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.2"
+  path_drawing:
+    dependency: transitive
+    description:
+      name: path_drawing
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
+  path_parsing:
+    dependency: transitive
+    description:
+      name: path_parsing
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   petitparser:
     dependency: transitive
     description:
@@ -454,13 +447,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.9.3+3"
-  pointycastle:
-    dependency: transitive
-    description:
-      name: pointycastle
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.6.2"
   pool:
     dependency: transitive
     description:

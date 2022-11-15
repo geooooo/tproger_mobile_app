@@ -23,7 +23,7 @@ dependencies:
   webviewx: ^0.2.1
   shimmer: ^2.0.0
   transparent_image: ^2.0.0
-  jovial_svg: ^1.1.5
+  flutter_svg: ^1.1.6
   tuple: ^2.0.1
   equatable: ^2.0.5
   redux: ^5.0.0
@@ -42,8 +42,4 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - bookmark.png
-    - comment.png
-    - default_avatar.png
-    - eye.svg
-    - eye1.svg
+    - assets/eye.svg
