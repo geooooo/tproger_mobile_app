@@ -3,6 +3,7 @@ import 'package:tproger_mobile_app/src/models/article_image/article_background_i
 import 'package:tproger_mobile_app/src/models/article_model.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_content/article_content_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_footer/article_footer_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_header/article_header_widget.dart';
 
 class ArticleBodyWidget extends StatelessWidget {
@@ -30,6 +31,12 @@ class ArticleBodyWidget extends StatelessWidget {
           title: article.title,
           description: article.description,
           image: article.image,
+        ),
+        const SizedBox(height: AppTheme.articleDescriptionAndFooterSeparatorSize),
+        ArticleFooterWidget(
+          bookmarkCount: article.bookmarkCount,
+          commentCount: article.commentCount,
+          isInvertetStyle: _hasBackgroundImage,
         ),
       ],
     ),

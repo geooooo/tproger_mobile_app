@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_svg/parser.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
@@ -23,8 +22,6 @@ class ArticleViewCountWidget extends StatelessWidget {
       children: [
         SvgPicture.asset(
           Asset.eye.value,
-          allowDrawingOutsideViewBox: true,
-          bundle: DefaultAssetBundle.of(context),
           width: AppTheme.articleViewCountIconSize,
           height: AppTheme.articleViewCountIconSize,
           color: isInvertetStyle

@@ -1,5 +1,6 @@
 enum Asset {
-  eye('assets/eye.svg');
+  eye('assets/eye.svg'),
+  bookmark('assets/bookmark.svg');
 
   final String value;
 

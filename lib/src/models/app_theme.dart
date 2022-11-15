@@ -11,12 +11,15 @@ class AppTheme {
   static const articleHeaderAndContentSeparatorSize = 18.0;
   static const articleImageAndTitleSeparatorSize = 12.0;
   static const articleTitleAndDescriptionSeparatorSize = 16.0;
+  static const articleDescriptionAndFooterSeparatorSize = 18.0;
   static const articleAuthorAvatarAndNameSeparatorSize = 8.0;
   static const articleAuthorNameAndViewCountSeparatorSize = 16.0;
   static const articleViewCountIconAndViewCountTextSeparatorSize = 5.0;
+  static const articleBookmarkIconAndBookmarkTextSeparatorSize = 4.0;
   static const articlePaddingSize = 16.0;
   static const articleAuthorAvatarSize = 24.0;
   static const articleViewCountIconSize = 16.0;
+  static const articleBookmarkIconSize = 28.0;
   static const articleAuthorAvatarRadius = Radius.elliptical(8, 8);
   static const articleImageRadius = Radius.elliptical(12, 12);
   static const articleImageContainerHeight = 120.0;
@@ -27,6 +30,8 @@ class AppTheme {
   final Color articleListLoaderColor;
   final Color articleViewCountIconColor;
   final Color articleViewCountIconInvertedColor;
+  final Color articleBookmarkIconColor;
+  final Color articleBookmarkIconInvertedColor;
   final TextStyle articleAuthorNameTextStyle;
   final TextStyle articleTitleTextStyle;
   final TextStyle articleTitleInvertedTextStyle;
@@ -34,6 +39,8 @@ class AppTheme {
   final TextStyle articleViewCountInvertedTextStyle;
   final TextStyle articleDescriptionTextStyle;
   final TextStyle articleDescriptionInvertedTextStyle;
+  final TextStyle articleBookmarkTextStyle;
+  final TextStyle articleBookmarkInvertedTextStyle;
 
   const AppTheme.light(): 
     mainBackgroundColor = const Color.fromRGBO(246, 245, 245, 1),
@@ -41,6 +48,8 @@ class AppTheme {
     articleListLoaderColor = const Color.fromRGBO(255, 255, 255, 1),
     articleViewCountIconColor = const Color.fromRGBO(72, 86, 86, 1),
     articleViewCountIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
+    articleBookmarkIconColor = const Color.fromRGBO(98, 112, 112, 1),
+    articleBookmarkIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
     articleAuthorNameTextStyle = const TextStyle(
       fontSize: 16,
       height: 24 / 16,
@@ -96,6 +105,22 @@ class AppTheme {
       fontFamily: _fontFamily,
       fontFamilyFallback: _fontFamilyFallback,
       color: Color.fromRGBO(255, 255, 255, 1),
+    ),
+    articleBookmarkTextStyle = const TextStyle(
+      fontSize: 16,
+      height: 24 / 16,
+      fontWeight: FontWeight.w500,
+      fontFamily: _fontFamily,
+      fontFamilyFallback: _fontFamilyFallback,
+      color: Color.fromRGBO(98, 112, 112, 1),
+    ),
+    articleBookmarkInvertedTextStyle = const TextStyle(
+      fontSize: 16,
+      height: 24 / 16,
+      fontWeight: FontWeight.w500,
+      fontFamily: _fontFamily,
+      fontFamilyFallback: _fontFamilyFallback,
+      color: Color.fromRGBO(255, 255, 255, 1),
     );
   
   const AppTheme.dark():
@@ -104,6 +129,8 @@ class AppTheme {
     articleListLoaderColor = const Color.fromRGBO(24, 29, 28, 1),
     articleViewCountIconColor = const Color.fromRGBO(197, 211, 211, 1),
     articleViewCountIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
+    articleBookmarkIconColor = const Color.fromRGBO(118, 135, 135, 1),
+    articleBookmarkIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
     articleAuthorNameTextStyle = const TextStyle(
       fontSize: 16,
       height: 24 / 16,
@@ -156,6 +183,22 @@ class AppTheme {
       fontSize: 18,
       height: 28 / 18,
       fontWeight: FontWeight.w400,
+      fontFamily: _fontFamily,
+      fontFamilyFallback: _fontFamilyFallback,
+      color: Color.fromRGBO(255, 255, 255, 1),
+    ),
+    articleBookmarkTextStyle = const TextStyle(
+      fontSize: 16,
+      height: 24 / 16,
+      fontWeight: FontWeight.w500,
+      fontFamily: _fontFamily,
+      fontFamilyFallback: _fontFamilyFallback,
+      color: Color.fromRGBO(118, 135, 135, 1),
+    ),
+    articleBookmarkInvertedTextStyle = const TextStyle(
+      fontSize: 16,
+      height: 24 / 16,
+      fontWeight: FontWeight.w500,
       fontFamily: _fontFamily,
       fontFamilyFallback: _fontFamilyFallback,
       color: Color.fromRGBO(255, 255, 255, 1),
