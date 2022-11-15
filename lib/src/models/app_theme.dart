@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  static const _fontFamily = 'Inter';
-  static const _fontFamilyFallback = [
-    'Helvetica',
-    'Arial',
-    'sans-serif',
-  ];
+  static const _fontFamily = GoogleFonts.inter;
   static const articleListSeparatorSize = 20.0;
   static const articleHeaderAndContentSeparatorSize = 18.0;
   static const articleImageAndTitleSeparatorSize = 12.0;
@@ -28,6 +24,7 @@ class AppTheme {
   static const articleImageContainerHeight = 120.0;
   static const articleImageHeight = 70.0;
 
+  final bool isDark;
   final Color mainBackgroundColor;
   final Color articleBackgroundColor;
   final Color articleListLoaderColor;
@@ -49,7 +46,8 @@ class AppTheme {
   final TextStyle articleCommentTextStyle;
   final TextStyle articleCommentInvertedTextStyle;
 
-  const AppTheme.light(): 
+  AppTheme.light(): 
+    isDark = false,
     mainBackgroundColor = const Color.fromRGBO(246, 245, 245, 1),
     articleBackgroundColor = const Color.fromRGBO(255, 255, 255, 1),
     articleListLoaderColor = const Color.fromRGBO(255, 255, 255, 1),
@@ -59,96 +57,68 @@ class AppTheme {
     articleBookmarkIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
     articleCommentIconColor = const Color.fromRGBO(98, 112, 112, 1),
     articleCommentIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
-    articleAuthorNameTextStyle = const TextStyle(
+    articleAuthorNameTextStyle = _fontFamily(
       fontSize: 16,
-      height: 24 / 16,
       fontWeight: FontWeight.w500,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(98, 112, 112, 1),
+      color: const Color.fromRGBO(98, 112, 112, 1),
     ),
-    articleTitleTextStyle = const TextStyle(
+    articleTitleTextStyle = _fontFamily(
       fontSize: 24,
       height: 32 / 24,
       fontWeight: FontWeight.w600,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(15, 17, 17, 1),
+      color: const Color.fromRGBO(15, 17, 17, 1),
     ),
-    articleTitleInvertedTextStyle = const TextStyle(
+    articleTitleInvertedTextStyle = _fontFamily(
       fontSize: 24,
       height: 32 / 24,
       fontWeight: FontWeight.w600,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(255, 255, 255, 1),
+      color: const Color.fromRGBO(255, 255, 255, 1),
     ),
-    articleViewCountTextStyle = const TextStyle(
+    articleViewCountTextStyle = _fontFamily(
       fontSize: 14,
-      height: 21 / 14,
       fontWeight: FontWeight.w400,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(72, 86, 86, 1),
+      color: const Color.fromRGBO(72, 86, 86, 1),
     ),
-    articleViewCountInvertedTextStyle = const TextStyle(
+    articleViewCountInvertedTextStyle = _fontFamily(
       fontSize: 14,
-      height: 21 / 14,
       fontWeight: FontWeight.w400,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(255, 255, 255, 1),
+      color: const Color.fromRGBO(255, 255, 255, 1),
     ),
-    articleDescriptionTextStyle = const TextStyle(
+    articleDescriptionTextStyle = _fontFamily(
       fontSize: 18,
       height: 28 / 18,
       fontWeight: FontWeight.w400,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(15, 17, 17, 1),
+      color: const Color.fromRGBO(15, 17, 17, 1),
     ),
-    articleDescriptionInvertedTextStyle = const TextStyle(
+    articleDescriptionInvertedTextStyle = _fontFamily(
       fontSize: 18,
       height: 28 / 18,
       fontWeight: FontWeight.w400,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(255, 255, 255, 1),
+      color: const Color.fromRGBO(255, 255, 255, 1),
     ),
-    articleBookmarkTextStyle = const TextStyle(
+    articleBookmarkTextStyle = _fontFamily(
       fontSize: 16,
-      height: 24 / 16,
       fontWeight: FontWeight.w500,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(98, 112, 112, 1),
+      color: const Color.fromRGBO(98, 112, 112, 1),
     ),
-    articleBookmarkInvertedTextStyle = const TextStyle(
+    articleBookmarkInvertedTextStyle = _fontFamily(
       fontSize: 16,
-      height: 24 / 16,
       fontWeight: FontWeight.w500,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(255, 255, 255, 1),
+      color: const Color.fromRGBO(255, 255, 255, 1),
     ),
-    articleCommentTextStyle = const TextStyle(
+    articleCommentTextStyle = _fontFamily(
       fontSize: 16,
-      height: 24 / 16,
       fontWeight: FontWeight.w500,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(98, 112, 112, 1),
+      color: const Color.fromRGBO(98, 112, 112, 1),
     ),
-    articleCommentInvertedTextStyle = const TextStyle(
+    articleCommentInvertedTextStyle = _fontFamily(
       fontSize: 16,
-      height: 24 / 16,
       fontWeight: FontWeight.w500,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(255, 255, 255, 1),
+      color: const Color.fromRGBO(255, 255, 255, 1),
     );
   
-  const AppTheme.dark():
+  AppTheme.dark():
+    isDark = true,
     mainBackgroundColor = const Color.fromRGBO(0, 0, 0, 1),
     articleBackgroundColor = const Color.fromRGBO(24, 29, 28, 1),
     articleListLoaderColor = const Color.fromRGBO(24, 29, 28, 1),
@@ -158,92 +128,63 @@ class AppTheme {
     articleBookmarkIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
     articleCommentIconColor = const Color.fromRGBO(118, 135, 135, 1),
     articleCommentIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
-    articleAuthorNameTextStyle = const TextStyle(
+    articleAuthorNameTextStyle = _fontFamily(
       fontSize: 16,
-      height: 24 / 16,
       fontWeight: FontWeight.w500,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(118, 135, 135, 1),
+      color: const Color.fromRGBO(118, 135, 135, 1),
     ),
-    articleTitleTextStyle = const TextStyle(
+    articleTitleTextStyle = _fontFamily(
       fontSize: 24,
       height: 32 / 24,
       fontWeight: FontWeight.w600,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(238, 242, 241, 1),
+      color: const Color.fromRGBO(238, 242, 241, 1),
     ),
-    articleTitleInvertedTextStyle = const TextStyle(
+    articleTitleInvertedTextStyle = _fontFamily(
       fontSize: 24,
       height: 32 / 24,
       fontWeight: FontWeight.w600,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(255, 255, 255, 1),
+      color: const Color.fromRGBO(255, 255, 255, 1),
     ),
-    articleViewCountTextStyle = const TextStyle(
+    articleViewCountTextStyle = _fontFamily(
       fontSize: 14,
-      height: 21 / 14,
       fontWeight: FontWeight.w400,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(197, 211, 211, 1),
+      color: const Color.fromRGBO(197, 211, 211, 1),
     ),
-    articleViewCountInvertedTextStyle = const TextStyle(
+    articleViewCountInvertedTextStyle = _fontFamily(
       fontSize: 14,
-      height: 21 / 14,
       fontWeight: FontWeight.w400,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(255, 255, 255, 1),
+      color: const Color.fromRGBO(255, 255, 255, 1),
     ),
-    articleDescriptionTextStyle = const TextStyle(
+    articleDescriptionTextStyle = _fontFamily(
       fontSize: 18,
       height: 28 / 18,
       fontWeight: FontWeight.w400,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(238, 242, 241, 1),
+      color: const Color.fromRGBO(238, 242, 241, 1),
     ),
-    articleDescriptionInvertedTextStyle = const TextStyle(
+    articleDescriptionInvertedTextStyle = _fontFamily(
       fontSize: 18,
       height: 28 / 18,
       fontWeight: FontWeight.w400,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(255, 255, 255, 1),
+      color: const Color.fromRGBO(255, 255, 255, 1),
     ),
-    articleBookmarkTextStyle = const TextStyle(
+    articleBookmarkTextStyle = _fontFamily(
       fontSize: 16,
-      height: 24 / 16,
       fontWeight: FontWeight.w500,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(118, 135, 135, 1),
+      color: const Color.fromRGBO(118, 135, 135, 1),
     ),
-    articleBookmarkInvertedTextStyle = const TextStyle(
+    articleBookmarkInvertedTextStyle = _fontFamily(
       fontSize: 16,
-      height: 24 / 16,
       fontWeight: FontWeight.w500,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(255, 255, 255, 1),
+      color: const Color.fromRGBO(255, 255, 255, 1),
     ),
-    articleCommentTextStyle = const TextStyle(
+    articleCommentTextStyle = _fontFamily(
       fontSize: 16,
-      height: 24 / 16,
       fontWeight: FontWeight.w500,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(118, 135, 135, 1),
+      color: const Color.fromRGBO(118, 135, 135, 1),
     ),
-    articleCommentInvertedTextStyle = const TextStyle(
+    articleCommentInvertedTextStyle = _fontFamily(
       fontSize: 16,
-      height: 24 / 16,
       fontWeight: FontWeight.w500,
-      fontFamily: _fontFamily,
-      fontFamilyFallback: _fontFamilyFallback,
-      color: Color.fromRGBO(255, 255, 255, 1),
+      color: const Color.fromRGBO(255, 255, 255, 1),
     );
 }

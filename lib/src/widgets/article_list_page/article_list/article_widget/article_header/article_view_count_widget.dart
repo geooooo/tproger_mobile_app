@@ -31,6 +31,7 @@ class ArticleViewCountWidget extends StatelessWidget {
         const SizedBox(width: AppTheme.articleViewCountIconAndViewCountTextSeparatorSize),
         Text(
           viewCount.toString(),
+          textAlign: TextAlign.start,
           style: isInvertetStyle
             ? store.state.theme.articleViewCountInvertedTextStyle
             : store.state.theme.articleViewCountTextStyle,

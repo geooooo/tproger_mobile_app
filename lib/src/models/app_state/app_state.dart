@@ -17,5 +17,5 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   @BuiltValueHook(initializeBuilder: true)
   static void _setDefaults(AppStateBuilder b) => b
     ..articles.replace([])
-    ..theme = const AppTheme.light();
+    ..theme = AppTheme.light();
 }
