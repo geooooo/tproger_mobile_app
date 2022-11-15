@@ -12,7 +12,7 @@ Future<void> main() async {
 
   final articles = await articleListLoader.load();
   for (var i = articles.length - 1; i >= 0; i--) {
-    print([articles[i].title, articles[i].id]);
+    print([articles[i].title, articles[i].reactionToCounts]);
     if (articles[i] != articles.last) {
       print('=' * 5);
     }

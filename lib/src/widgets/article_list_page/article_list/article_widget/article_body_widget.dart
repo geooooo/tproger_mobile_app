@@ -36,6 +36,7 @@ class ArticleBodyWidget extends StatelessWidget {
         ArticleFooterWidget(
           bookmarkCount: article.bookmarkCount,
           commentCount: article.commentCount,
+          reactionToCounts: article.reactionToCounts,
           isInvertetStyle: _hasBackgroundImage,
         ),
       ],
