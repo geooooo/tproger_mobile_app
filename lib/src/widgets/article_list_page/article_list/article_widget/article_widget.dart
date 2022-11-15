@@ -29,17 +29,17 @@ class _ArticleWidgetState extends State<ArticleWidget> with AutomaticKeepAliveCl
     super.build(context);
     
     return StoreBuilder<AppState>(
-      builder: (builder, store) => DecoratedBox(
-        decoration: BoxDecoration(
-          color: store.state.theme.articleBackgroundColor,
-        ),
-        child: _hasBackgroundImage
-          ? ArticleBackgroundImageWidget(
-              imageLink: widget.article.image!.link,
-              child: ArticleBodyWidget(article: widget.article),
-            )
-          : ArticleBodyWidget(article: widget.article),
-      ),
+      builder: (builder, store) => _hasBackgroundImage
+        ? ArticleBackgroundImageWidget(
+            imageLink: widget.article.image!.link,
+            child: ArticleBodyWidget(article: widget.article),
+          )
+        : DecoratedBox(
+            decoration: BoxDecoration(
+              color: store.state.theme.articleBackgroundColor,
+            ),
+            child: ArticleBodyWidget(article: widget.article),
+          ),
     );
   }
 }

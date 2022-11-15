@@ -5,8 +5,6 @@ import 'package:tproger_mobile_app/src/services/di_configuration/configure_injec
 import 'package:tproger_mobile_app/src/services/store_factory.dart';
 import 'package:tproger_mobile_app/src/widgets/app_widget.dart';
 
-// TODO: fix blur
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
