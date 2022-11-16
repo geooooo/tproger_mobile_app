@@ -11,18 +11,38 @@ class AppTheme {
   static const articleAuthorAvatarAndNameSeparatorSize = 8.0;
   static const articleAuthorNameAndViewCountSeparatorSize = 16.0;
   static const articleViewCountIconAndViewCountTextSeparatorSize = 5.0;
-  static const articleBookmarkIconAndBookmarkTextSeparatorSize = 4.0;
-  static const articleCommentIconAndCommentTextSeparatorSize = 4.0;
-  static const articleBookmarkAndCommentSeparatorSize = 24.0;
+  static const articleFooterButtonIconAndTextSeparatorSize = 4.0;
+  static const articleFooterButtonsSeparatorSize = 24.0;
+  static const reactionAndTextSeparatorSize = 2.0;
   static const articlePaddingSize = 16.0;
   static const articleAuthorAvatarSize = 24.0;
   static const articleViewCountIconSize = 16.0;
-  static const articleBookmarkIconSize = 28.0;
-  static const articleCommentIconSize = 28.0;
-  static const articleAuthorAvatarRadius = Radius.elliptical(8, 8);
+  static const articleFooterButtonIconSize = 28.0;
+  static const reactionIconSize = 24.0;
+  static const articleImageBlurSize = 2.0;
+  static const articleReactionsBorderSize = 1.0;
+  static const articleReactionBorderSize = 3.0;
   static const articleImageRadius = Radius.elliptical(12, 12);
+  static const articleAuthorAvatarRadius = Radius.elliptical(8, 8);
+  static const articleReactionsBorderRadius = Radius.circular(50);
+  static const articleReactionBorderRadius = Radius.circular(180);
   static const articleImageContainerHeight = 120.0;
   static const articleImageHeight = 70.0;
+  static const articleImageGradient = LinearGradient(
+    begin: Alignment.bottomCenter,
+    end: Alignment.topCenter,
+    stops: [0.1185, 0.906],
+    colors: [
+      Color.fromRGBO(0, 0, 0, 0.8),
+      Color.fromRGBO(0, 0, 0, 0.4),                
+    ],
+  );
+  static const articleReactionsPadding = EdgeInsets.only(
+    top: 4,
+    right: 12,
+    bottom: 4,
+    left: 3,
+  );
 
   final bool isDark;
   final Color mainBackgroundColor;
@@ -30,10 +50,12 @@ class AppTheme {
   final Color articleListLoaderColor;
   final Color articleViewCountIconColor;
   final Color articleViewCountIconInvertedColor;
-  final Color articleBookmarkIconColor;
-  final Color articleBookmarkIconInvertedColor;
-  final Color articleCommentIconColor;
-  final Color articleCommentIconInvertedColor;
+  final Color articleFooterButtonIconColor;
+  final Color articleFooterButtonIconInvertedColor;
+  final Color articleReactionsBackgroundColor;
+  final Color articleReactionsBorderColor;
+  final Color articleReactionBorderColor;
+  
   final TextStyle articleAuthorNameTextStyle;
   final TextStyle articleTitleTextStyle;
   final TextStyle articleTitleInvertedTextStyle;
@@ -41,10 +63,9 @@ class AppTheme {
   final TextStyle articleViewCountInvertedTextStyle;
   final TextStyle articleDescriptionTextStyle;
   final TextStyle articleDescriptionInvertedTextStyle;
-  final TextStyle articleBookmarkTextStyle;
-  final TextStyle articleBookmarkInvertedTextStyle;
-  final TextStyle articleCommentTextStyle;
-  final TextStyle articleCommentInvertedTextStyle;
+  final TextStyle articleFooterButtonTextStyle;
+  final TextStyle articleFooterButtonInvertedTextStyle;
+  final TextStyle articleReactionTextStyle;
 
   AppTheme.light(): 
     isDark = false,
@@ -53,10 +74,11 @@ class AppTheme {
     articleListLoaderColor = const Color.fromRGBO(255, 255, 255, 1),
     articleViewCountIconColor = const Color.fromRGBO(72, 86, 86, 1),
     articleViewCountIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
-    articleBookmarkIconColor = const Color.fromRGBO(98, 112, 112, 1),
-    articleBookmarkIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
-    articleCommentIconColor = const Color.fromRGBO(98, 112, 112, 1),
-    articleCommentIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
+    articleFooterButtonIconColor = const Color.fromRGBO(98, 112, 112, 1),
+    articleFooterButtonIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
+    articleReactionsBackgroundColor = const Color.fromRGBO(245, 245, 245, 1),
+    articleReactionsBorderColor = const Color.fromRGBO(234, 234, 234, 1),
+    articleReactionBorderColor = const Color.fromRGBO(255, 255, 255, 1),
     articleAuthorNameTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
@@ -96,25 +118,20 @@ class AppTheme {
       fontWeight: FontWeight.w400,
       color: const Color.fromRGBO(255, 255, 255, 1),
     ),
-    articleBookmarkTextStyle = _fontFamily(
+    articleFooterButtonTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
       color: const Color.fromRGBO(98, 112, 112, 1),
     ),
-    articleBookmarkInvertedTextStyle = _fontFamily(
+    articleFooterButtonInvertedTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
       color: const Color.fromRGBO(255, 255, 255, 1),
     ),
-    articleCommentTextStyle = _fontFamily(
+    articleReactionTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
       color: const Color.fromRGBO(98, 112, 112, 1),
-    ),
-    articleCommentInvertedTextStyle = _fontFamily(
-      fontSize: 16,
-      fontWeight: FontWeight.w500,
-      color: const Color.fromRGBO(255, 255, 255, 1),
     );
   
   AppTheme.dark():
@@ -124,10 +141,11 @@ class AppTheme {
     articleListLoaderColor = const Color.fromRGBO(24, 29, 28, 1),
     articleViewCountIconColor = const Color.fromRGBO(197, 211, 211, 1),
     articleViewCountIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
-    articleBookmarkIconColor = const Color.fromRGBO(118, 135, 135, 1),
-    articleBookmarkIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
-    articleCommentIconColor = const Color.fromRGBO(118, 135, 135, 1),
-    articleCommentIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
+    articleFooterButtonIconColor = const Color.fromRGBO(118, 135, 135, 1),
+    articleFooterButtonIconInvertedColor = const Color.fromRGBO(255, 255, 255, 1),
+    articleReactionsBackgroundColor = const Color.fromRGBO(0, 0, 0, 1),
+    articleReactionsBorderColor = const Color.fromRGBO(37, 37, 37, 1),
+    articleReactionBorderColor = const Color.fromRGBO(24, 29, 28, 1),
     articleAuthorNameTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
@@ -167,24 +185,19 @@ class AppTheme {
       fontWeight: FontWeight.w400,
       color: const Color.fromRGBO(255, 255, 255, 1),
     ),
-    articleBookmarkTextStyle = _fontFamily(
+    articleFooterButtonTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
       color: const Color.fromRGBO(118, 135, 135, 1),
     ),
-    articleBookmarkInvertedTextStyle = _fontFamily(
+    articleFooterButtonInvertedTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
       color: const Color.fromRGBO(255, 255, 255, 1),
     ),
-    articleCommentTextStyle = _fontFamily(
+    articleReactionTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
       color: const Color.fromRGBO(118, 135, 135, 1),
-    ),
-    articleCommentInvertedTextStyle = _fontFamily(
-      fontSize: 16,
-      fontWeight: FontWeight.w500,
-      color: const Color.fromRGBO(255, 255, 255, 1),
     );
 }

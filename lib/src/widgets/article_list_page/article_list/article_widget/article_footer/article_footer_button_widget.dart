@@ -5,11 +5,13 @@ import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 
-class BookmarkButtonWidget extends StatelessWidget {
+class ArticleFooterButtonWidget extends StatelessWidget {
+  final Asset icon;
   final int count;
   final bool isInvertetStyle;
 
-  const BookmarkButtonWidget({
+  const ArticleFooterButtonWidget({
+    required this.icon,
     required this.count,
     required this.isInvertetStyle,
     super.key,
@@ -20,19 +22,19 @@ class BookmarkButtonWidget extends StatelessWidget {
     builder: (context, store) => Row(
       children: [
         SvgPicture.asset(
-            Asset.bookmark.value,
-            width: AppTheme.articleBookmarkIconSize,
-            height: AppTheme.articleBookmarkIconSize,
+            icon.value,
+            width: AppTheme.articleFooterButtonIconSize,
+            height: AppTheme.articleFooterButtonIconSize,
             color: isInvertetStyle
-              ? store.state.theme.articleBookmarkIconInvertedColor
-              : store.state.theme.articleBookmarkIconColor,
+              ? store.state.theme.articleFooterButtonIconInvertedColor
+              : store.state.theme.articleFooterButtonIconColor,
           ),
-        const SizedBox(width: AppTheme.articleBookmarkIconAndBookmarkTextSeparatorSize),
+        const SizedBox(width: AppTheme.articleFooterButtonIconAndTextSeparatorSize),
         if (count > 0) Text(
           count.toString(),
           style: isInvertetStyle
-            ? store.state.theme.articleBookmarkInvertedTextStyle
-            : store.state.theme.articleBookmarkTextStyle,
+            ? store.state.theme.articleFooterButtonInvertedTextStyle
+            : store.state.theme.articleFooterButtonTextStyle,
         ),
       ],
     ),

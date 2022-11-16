@@ -40,14 +40,10 @@ class _ArticleContentImageContainerWidgetState extends State<ArticleContentImage
   );
 
   Future<void> _preloadImage() async {
-    setState(() { 
-      _isLoading = true;
-    });
+    setState(() { _isLoading = true; });
     
     await precacheImage(NetworkImage(widget.link), context);
 
-    setState(() { 
-      _isLoading = false;
-    });
+    setState(() { _isLoading = false; });
   }
 }

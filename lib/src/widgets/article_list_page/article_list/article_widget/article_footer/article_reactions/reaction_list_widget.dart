@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_footer/reactions/reaction_text_widget.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_footer/reactions/reaction_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_footer/article_reactions/reaction_text_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_footer/article_reactions/reaction_widget.dart';
 
 class ReactionListWidget extends StatelessWidget {
   const ReactionListWidget({ super.key });
@@ -16,14 +16,14 @@ class ReactionListWidget extends StatelessWidget {
           children: const [
             Positioned(
               left: 44,
-              child: ReactionWidget(reaction: Asset.surprise),
+              child: ReactionWidget(icon: Asset.surprise),
             ),
             Positioned(
               left: 22,
-              child: ReactionWidget(reaction: Asset.like),
+              child: ReactionWidget(icon: Asset.like),
             ),
             Positioned(
-              child: ReactionWidget(reaction: Asset.surprise),
+              child: ReactionWidget(icon: Asset.surprise),
             ),
           ],
         ),

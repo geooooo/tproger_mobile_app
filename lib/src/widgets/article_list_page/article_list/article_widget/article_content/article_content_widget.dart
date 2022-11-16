@@ -30,7 +30,7 @@ class ArticleContentWidget extends StatelessWidget {
       if (_hasContentImage) ...[
         ArticleContentImageContainerWidget(
           link: image!.link,
-          backgroundColor: ColorParser.hex((image as ArticleIconImage).backgroundColor).getColor()!,
+          backgroundColor: _getBackgroundColor(image!),
         ),
         const SizedBox(height: AppTheme.articleImageAndTitleSeparatorSize),
       ],
@@ -45,4 +45,10 @@ class ArticleContentWidget extends StatelessWidget {
       ),
     ],
   );
+
+  Color _getBackgroundColor(ArticleImage image) {
+    final iconImage = image as ArticleIconImage;
+    final colorParser = ColorParser.hex(iconImage.backgroundColor);
+    return colorParser.getColor()!;
+  }
 }
