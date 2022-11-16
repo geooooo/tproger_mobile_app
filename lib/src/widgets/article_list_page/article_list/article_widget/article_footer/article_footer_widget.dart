@@ -3,7 +3,7 @@ import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_footer/bookmark_button_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_footer/comment_button_widget.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_footer/reactions_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_footer/reactions/reactions_widget.dart';
 
 class ArticleFooterWidget extends StatelessWidget {
   final int bookmarkCount;
