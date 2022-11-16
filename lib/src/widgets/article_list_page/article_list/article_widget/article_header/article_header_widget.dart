@@ -25,7 +25,10 @@ class ArticleHeaderWidget extends StatelessWidget {
       if (_hasAuthor) ...[
         ArticleAuthorAvatarWidget(avatarLink: author!.avatarLink),
         const SizedBox(width: AppTheme.articleAuthorAvatarAndNameSeparatorSize),
-        ArticleAuthorNameWidget(authorName: author!.name),
+        ArticleAuthorNameWidget(
+          authorName: author!.name,
+          isInvertetStyle: isInvertetStyle,
+        ),
         const SizedBox(width: AppTheme.articleAuthorNameAndViewCountSeparatorSize),
       ],
       if (viewCount != 0) ArticleViewCountWidget(

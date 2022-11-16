@@ -57,6 +57,7 @@ class AppTheme {
   final Color articleReactionBorderColor;
   
   final TextStyle articleAuthorNameTextStyle;
+  final TextStyle articleAuthorNameInvertedTextStyle;
   final TextStyle articleTitleTextStyle;
   final TextStyle articleTitleInvertedTextStyle;
   final TextStyle articleViewCountTextStyle;
@@ -83,6 +84,11 @@ class AppTheme {
       fontSize: 16,
       fontWeight: FontWeight.w500,
       color: const Color.fromRGBO(98, 112, 112, 1),
+    ),
+    articleAuthorNameInvertedTextStyle = _fontFamily(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: const Color.fromRGBO(255, 255, 255, 1),
     ),
     articleTitleTextStyle = _fontFamily(
       fontSize: 24,
@@ -150,6 +156,11 @@ class AppTheme {
       fontSize: 16,
       fontWeight: FontWeight.w500,
       color: const Color.fromRGBO(118, 135, 135, 1),
+    ),
+    articleAuthorNameInvertedTextStyle = _fontFamily(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: const Color.fromRGBO(255, 255, 255, 1),
     ),
     articleTitleTextStyle = _fontFamily(
       fontSize: 24,
