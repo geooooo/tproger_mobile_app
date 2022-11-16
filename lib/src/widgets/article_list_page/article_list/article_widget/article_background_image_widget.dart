@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class ArticleBackgroundImageWidget extends StatelessWidget {
   final String imageLink;
@@ -22,7 +23,6 @@ class ArticleBackgroundImageWidget extends StatelessWidget {
             imageFilter: ImageFilter.blur(
               sigmaX: 2,
               sigmaY: 2,
-              // tileMode: TileMode.decal,
             ),
             child: Container(
               foregroundDecoration: const BoxDecoration(
@@ -36,11 +36,10 @@ class ArticleBackgroundImageWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(imageLink),
-                  fit: BoxFit.cover,
-                ),
+              child: FadeInImage.memoryNetwork(
+                fit: BoxFit.cover,
+                image: imageLink,
+                placeholder: kTransparentImage,
               ),
             ),
           ),
