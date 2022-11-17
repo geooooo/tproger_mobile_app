@@ -22,6 +22,7 @@ class AppTheme {
   static const articleImageBlurSize = 2.0;
   static const articleReactionsBorderSize = 1.0;
   static const articleReactionBorderSize = 3.0;
+  static const articleReactionListSize = 30.0;
   static const articleImageRadius = Radius.elliptical(12, 12);
   static const articleAuthorAvatarRadius = Radius.elliptical(8, 8);
   static const articleReactionsBorderRadius = Radius.circular(50);

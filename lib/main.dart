@@ -5,8 +5,11 @@ import 'package:tproger_mobile_app/src/services/di_configuration/configure_injec
 import 'package:tproger_mobile_app/src/services/store_factory.dart';
 import 'package:tproger_mobile_app/src/widgets/app_widget.dart';
 
-// TODO: add intl
 // TODO: generalize theme's values
+// TODO: maybe order of reactions is getting from the backend
+// TODO: add launch screen
+// TODO: unit tests to services
+// TODO: fill widgetbook
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
