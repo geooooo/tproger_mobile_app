@@ -7,13 +7,36 @@ WidgetbookComponent buildArticleHeaderComponent(BuildContext context) => Widgetb
   name: 'ArticleHeader',
   useCases: [
     WidgetbookUseCase(
-      name: 'Some', 
+      name: 'Without views', 
       builder: (context) => const ArticleHeaderWidget(
         author: ArticleUserAuthor(
           avatarLink: 'https://tproger.ru/wp-content/themes/gecko/images/default-avatar-48.png',
           name: 'Vasia Pupkin',
         ),
         viewCount: 0,
+        isInvertetStyle: false,
+      ),
+    ),
+    WidgetbookUseCase(
+      name: 'With views', 
+      builder: (context) => const ArticleHeaderWidget(
+        author: ArticleUserAuthor(
+          avatarLink: 'https://tproger.ru/wp-content/themes/gecko/images/default-avatar-48.png',
+          name: 'Vasia Pupkin',
+        ),
+        viewCount: 5,
+        isInvertetStyle: false,
+      ),
+    ),
+    WidgetbookUseCase(
+      name: 'Inverted', 
+      builder: (context) => const ArticleHeaderWidget(
+        author: ArticleUserAuthor(
+          avatarLink: 'https://tproger.ru/wp-content/themes/gecko/images/default-avatar-48.png',
+          name: 'Vasia Pupkin',
+        ),
+        viewCount: 5,
+        isInvertetStyle: true,
       ),
     ),
     WidgetbookUseCase(
@@ -29,7 +52,14 @@ WidgetbookComponent buildArticleHeaderComponent(BuildContext context) => Widgetb
             label: 'Author name',
           ),
         ),
-        viewCount: 0,
+        viewCount: context.knobs.number(
+          label: 'Count of views',
+          initialValue: 0,
+        ).toInt(),
+        isInvertetStyle: context.knobs.boolean(
+          label: 'Enable inverted style',
+          initialValue: false,
+        ),
       ),
     ),
   ],

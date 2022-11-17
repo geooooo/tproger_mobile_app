@@ -9,12 +9,21 @@ WidgetbookComponent buildArticleAuthorNameComponent(BuildContext context) => Wid
       name: 'User name', 
       builder: (context) => const ArticleAuthorNameWidget(
         authorName: 'Vasiy Pupkin',
+        isInvertetStyle: false,
+      ),
+    ),
+    WidgetbookUseCase(
+      name: 'Inverted', 
+      builder: (context) => const ArticleAuthorNameWidget(
+        authorName: 'Vasiy Pupkin',
+        isInvertetStyle: true,
       ),
     ),
     WidgetbookUseCase(
       name: 'Company name', 
       builder: (context) => const ArticleAuthorNameWidget(
         authorName: 'Yandex',
+        isInvertetStyle: false,
       ),
     ),
     WidgetbookUseCase(
@@ -23,6 +32,10 @@ WidgetbookComponent buildArticleAuthorNameComponent(BuildContext context) => Wid
         authorName: context.knobs.text(
           label: 'Name',
           initialValue: 'Author Name',
+        ),
+        isInvertetStyle: context.knobs.boolean(
+          label: 'Enable inverted style',
+          initialValue: false,
         ),
       ),
     ),

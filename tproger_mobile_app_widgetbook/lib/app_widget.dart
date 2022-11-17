@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:tproger_mobile_app_widgetbook/components/article_content_component.dart';
-import 'package:tproger_mobile_app_widgetbook/components/article_content_image_component.dart';
-import 'package:tproger_mobile_app_widgetbook/components/article_content_image_container_component.dart';
-import 'package:tproger_mobile_app_widgetbook/components/article_content_image_shimmer_component.dart';
-import 'package:tproger_mobile_app_widgetbook/components/article_description_component.dart';
-import 'package:tproger_mobile_app_widgetbook/components/article_title_component.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_list_page/article_list/article/article_content/article_content_component.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_list_page/article_list/article/article_content/article_content_image_container/article_content_image_component.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_list_page/article_list/article/article_content/article_content_image_container/article_content_image_container_component.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_list_page/article_list/article/article_content/article_content_image_container/article_content_image_shimmer_component.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_list_page/article_list/article/article_content/article_description_component.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_list_page/article_list/article/article_content/article_title_component.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_list_page/article_list/article/article_header/article_view_count_component.dart';
 import 'package:tproger_mobile_app_widgetbook/models/init_theme_action.dart';
-import 'package:tproger_mobile_app_widgetbook/components/article_author_avatar_component.dart';
-import 'package:tproger_mobile_app_widgetbook/components/article_author_name_component.dart';
-import 'package:tproger_mobile_app_widgetbook/components/article_header_component.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_list_page/article_list/article/article_header/article_author_avatar_component.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_list_page/article_list/article/article_header/article_author_name_component.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_list_page/article_list/article/article_header/article_header_component.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 
@@ -30,6 +31,7 @@ class AppWidget extends StatelessWidget {
               buildArticleHeaderComponent(context),
               buildArticleAuthorNameComponent(context),
               buildArticleAuthorAvatarComponent(context),
+              buildArticleViewCountComponent(context),
             ],
           ),
           WidgetbookFolder(
@@ -86,11 +88,11 @@ class AppWidget extends StatelessWidget {
     themes: [
       WidgetbookTheme(
         name: 'Light',
-        data: const AppTheme.light(),
+        data: AppTheme.light(),
       ),
       WidgetbookTheme(
         name: 'Dark',
-        data: const AppTheme.dark(),
+        data: AppTheme.dark(),
       ),
     ],
   );
