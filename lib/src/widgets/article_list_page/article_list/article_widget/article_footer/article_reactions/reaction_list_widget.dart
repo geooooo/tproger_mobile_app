@@ -9,10 +9,8 @@ import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/ar
 class ReactionListWidget extends StatelessWidget {
   final _reactionService = GetIt.instance.get<ReactionService>();
 
-  List<Reaction> get _sortedReactions => _reactionService.sortReactions(reactionToCounts);
-
   double get _width => 
-    _sortedReactions.length * (AppTheme.reactionIconSize + AppTheme.articleReactionBorderSize * 2);
+    reactionToCounts.length * AppTheme.reactionIconSize + AppTheme.articleReactionBorderSize * 2;
 
   final Map<Reaction, int> reactionToCounts;
 
@@ -40,8 +38,8 @@ class ReactionListWidget extends StatelessWidget {
   List<Widget> _buildReactionWidgets() {
     final widgets = <Widget>[];
 
-    for (var i = _sortedReactions.length - 1; i >= 0 ; i--) {
-      final icon = _reactionService.getIconByReaction(_sortedReactions[i]);
+    for (var i = reactionToCounts.length - 1; i >= 0 ; i--) {
+      final icon = _reactionService.getIconByReaction(reactionToCounts.entries.elementAt(i).key);
 
       final widget = Positioned(
         left: i * 22,

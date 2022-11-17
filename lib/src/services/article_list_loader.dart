@@ -111,7 +111,7 @@ class ArticleListLoader {
   );
 
   Map<Reaction, int> _getRreactionToCounts(Map<int, int> reactionToCounts) => 
-    { for (final reaction in Reaction.values) 
-      reaction: reactionToCounts[reaction.value] ?? 0
+    { for (final reaction in reactionToCounts.keys) 
+        Reaction.fromInt(reaction): reactionToCounts[reaction]!
     };
 }
