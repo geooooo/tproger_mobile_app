@@ -1,3 +1,3 @@
 #!/bin/bash
 
-dart test
+flutter test
