@@ -13,7 +13,7 @@ class AddReactionWidget extends StatelessWidget {
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
       const ReactionWidget(icon: Asset.like),
-      const SizedBox(width: AppTheme.reactionAndTextSeparatorSize),
+      const SizedBox(width: AppTheme.articleReactionAndTextSeparatorSize),
       ReactionTextWidget(text: AppLocalizations.of(context)!.estimateText),
     ],
   );

@@ -27,12 +27,12 @@ class AppTheme {
   static const articleViewCountIconAndViewCountTextSeparatorSize = 5.0;
   static const articleFooterButtonIconAndTextSeparatorSize = 4.0;
   static const articleFooterButtonsSeparatorSize = 24.0;
-  static const reactionAndTextSeparatorSize = 2.0;
+  static const articleReactionAndTextSeparatorSize = 2.0;
   static const articlePaddingSize = 16.0;
   static const articleAuthorAvatarSize = 24.0;
   static const articleViewCountIconSize = 16.0;
   static const articleFooterButtonIconSize = 28.0;
-  static const reactionIconSize = 24.0;
+  static const articleReactionIconSize = 24.0;
   static const articleImageBlurSize = 2.0;
   static const articleReactionsBorderSize = 1.0;
   static const articleReactionBorderSize = 3.0;
