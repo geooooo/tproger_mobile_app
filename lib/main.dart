@@ -6,8 +6,10 @@ import 'package:tproger_mobile_app/src/services/di_configuration/configure_injec
 import 'package:tproger_mobile_app/src/services/store_factory.dart';
 import 'package:tproger_mobile_app/src/widgets/app_widget.dart';
 
-// TODO: unit tests to services
+// TODO: unit tests for services
 // TODO: fill widgetbook
+// TODO: move assets in separate repo
+// TODO: pixel perfect in reaction list
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
