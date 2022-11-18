@@ -8,6 +8,7 @@ part 'app_state.g.dart';
 abstract class AppState implements Built<AppState, AppStateBuilder> {
   BuiltList<ArticleModel> get articles;
   AppTheme get theme;
+  bool get isSetThemeProgrammatically;
 
   bool get isArticlesLoaded => articles.isNotEmpty;
 
@@ -17,5 +18,6 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   @BuiltValueHook(initializeBuilder: true)
   static void _setDefaults(AppStateBuilder b) => b
     ..articles.replace([])
-    ..theme = AppTheme.light();
+    ..theme = AppTheme.light()
+    ..isSetThemeProgrammatically = false;
 }
