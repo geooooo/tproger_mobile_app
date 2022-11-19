@@ -3,6 +3,7 @@ import 'package:tproger_mobile_app/src/models/article_image/article_icon_image.d
 import 'package:tproger_mobile_app/src/models/article_image/article_background_image.dart';
 import 'package:tproger_mobile_app/src/models/article_author/article_user_author.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
+import 'package:tproger_mobile_app_widgetbook/models/default_values.dart';
 
 class HelperService {
   static ArticleModel createArticleModel({
@@ -26,16 +27,16 @@ class HelperService {
     reactionToCounts: reactionToCounts,
     viewCount: viewCount,
     author: ArticleUserAuthor(
-      avatarLink: 'https://tproger.ru/signed_image/AQ7LzjU5VY2qpnA0X0P37I3qX7aRKQpi9xD5uhQ0eWQ/rs:fill:48:48:1/cb:vimg_1/f:webp/aHR0cHM6Ly9tZWRpYS50cHJvZ2VyLnJ1L3VwbG9hZHMvMjAyMC8wNi9sb2dvXzY0MHg2NDBfdGlsZGExODEzNzA5MS5wbmc',
+      avatarLink: DefaultValues.authorImageLink,
       name: authorName,
     ),
     image: isBackgroundImage
       ? const ArticleBackgroundImage(
-          link: 'https://media.tproger.ru/uploads/2022/10/image_2022-10-10_14-49-49-autoconverted-e1665745183547.jpeg',
+          link: DefaultValues.backgroundImageLink,
         )
       : ArticleIconImage(
           backgroundColor: backgroundColor,
-          link: 'https://media.tproger.ru/uploads/2022/11/2755770_advice_attention_caution_exception_exclamation_icon-cover-icon-original.png',
+          link: DefaultValues.iconImageLink,
         ),
   );
 }
