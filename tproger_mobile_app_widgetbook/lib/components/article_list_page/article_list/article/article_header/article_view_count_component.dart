@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_header/article_view_count_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_header/article_view_count_widget.dart';
 
 WidgetbookComponent buildArticleViewCountComponent(BuildContext context) => WidgetbookComponent(
   name: 'ArticleViewCount',

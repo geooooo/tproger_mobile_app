@@ -16,7 +16,7 @@ WidgetbookComponent buildArticleListComponent(BuildContext context) => Widgetboo
     WidgetbookUseCase(
       name: 'One item', 
       builder: (context) => ArticleListWidget(
-        articles: <ArticleModel>[HelperService.createArticleModel(id: 1)],
+        articles: <ArticleModel>[HelperService.createArticleModel()],
       ),
     ),
     WidgetbookUseCase(

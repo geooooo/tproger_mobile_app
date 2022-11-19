@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_content/article_content_image_container/article_content_image_container_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_content/article_content_image_container/article_content_image_container_widget.dart';
 
 WidgetbookComponent buildArticleContentImageContainerComponent(BuildContext context) => WidgetbookComponent(
   name: 'ArticleContentImageContainer',

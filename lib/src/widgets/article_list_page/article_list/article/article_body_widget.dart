@@ -20,6 +20,7 @@ class ArticleBodyWidget extends StatelessWidget {
   Widget build(BuildContext context) => Padding(
     padding: const EdgeInsets.all(AppTheme.articlePaddingSize),
     child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ArticleHeaderWidget(
           author: article.author,

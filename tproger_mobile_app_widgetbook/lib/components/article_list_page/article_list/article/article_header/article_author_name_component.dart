@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_header/article_author_name_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_header/article_author_name_widget.dart';
 
 WidgetbookComponent buildArticleAuthorNameComponent(BuildContext context) => WidgetbookComponent(
   name: 'ArticleAuthorName',

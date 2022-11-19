@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:tproger_mobile_app/src/models/article_author/article_user_author.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_header/article_header_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_header/article_header_widget.dart';
 
 WidgetbookComponent buildArticleHeaderComponent(BuildContext context) => WidgetbookComponent(
   name: 'ArticleHeader',
