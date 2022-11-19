@@ -1,8 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:tproger_mobile_app_widgetbook/models/default_values.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
+import 'package:tproger_mobile_app/src/models/article_author/article_user_author.dart';
 
 class KnobsService {
+  static String avatarLink(BuildContext context, {String defaultValue = DefaultValues.avatarLink}) => context.knobs.text(
+    initialValue: defaultValue,
+    label: 'Network link to an avatar'
+  );
+
+  static ArticleUserAuthor author(BuildContext context) => ArticleUserAuthor(
+    avatarLink: KnobsService.avatarLink(context, defaultValue: DefaultValues.avatarLink),
+    name: KnobsService.authorName(context),
+  );
+
+  static bool isInvertetStyle(BuildContext context) => context.knobs.boolean(
+    label: 'Enable inverted style',
+    initialValue: false,
+  );
+
   static String imageLink(BuildContext context, String defaultValue) => context.knobs.text(
     initialValue: defaultValue,
     label: 'Network link to an image',
@@ -13,24 +30,24 @@ class KnobsService {
     initialValue: false,
   );
 
-  static String backgroundColor(BuildContext context) => context.knobs.text(
+  static String backgroundColor(BuildContext context, {String? description}) => context.knobs.text(
     initialValue: '#000000',
     label: 'Color of a background',
-    description: 'Only if isBackgroundImage is false'
+    description: description,
   );
 
   static String authorName(BuildContext context) => context.knobs.text(
-    label: 'Name',
+    label: 'Author name',
     initialValue: 'Author Name',
   );
 
   static String title(BuildContext context) => context.knobs.text(
-    label: 'Title',
+    label: 'Title of an article',
     initialValue: 'Title of an article',
   );
 
   static String description(BuildContext context) => context.knobs.text(
-    label: 'Description',
+    label: 'Description of an article',
     initialValue: 'Description of an article',
   );
 

@@ -27,7 +27,7 @@ class HelperService {
     reactionToCounts: reactionToCounts,
     viewCount: viewCount,
     author: ArticleUserAuthor(
-      avatarLink: DefaultValues.authorImageLink,
+      avatarLink: DefaultValues.avatarLink,
       name: authorName,
     ),
     image: isBackgroundImage

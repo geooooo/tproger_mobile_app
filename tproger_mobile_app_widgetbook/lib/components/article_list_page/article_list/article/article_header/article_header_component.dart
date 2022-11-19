@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tproger_mobile_app_widgetbook/models/default_values.dart';
+import 'package:tproger_mobile_app_widgetbook/services/knobs_service.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:tproger_mobile_app/src/models/article_author/article_user_author.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_header/article_header_widget.dart';
@@ -10,7 +12,7 @@ WidgetbookComponent buildArticleHeaderComponent(BuildContext context) => Widgetb
       name: 'Without views', 
       builder: (context) => const ArticleHeaderWidget(
         author: ArticleUserAuthor(
-          avatarLink: 'https://tproger.ru/wp-content/themes/gecko/images/default-avatar-48.png',
+          avatarLink: DefaultValues.avatarLink,
           name: 'Vasia Pupkin',
         ),
         viewCount: 0,
@@ -21,7 +23,7 @@ WidgetbookComponent buildArticleHeaderComponent(BuildContext context) => Widgetb
       name: 'With views', 
       builder: (context) => const ArticleHeaderWidget(
         author: ArticleUserAuthor(
-          avatarLink: 'https://tproger.ru/wp-content/themes/gecko/images/default-avatar-48.png',
+          avatarLink: DefaultValues.avatarLink,
           name: 'Vasia Pupkin',
         ),
         viewCount: 5,
@@ -32,7 +34,7 @@ WidgetbookComponent buildArticleHeaderComponent(BuildContext context) => Widgetb
       name: 'Inverted', 
       builder: (context) => const ArticleHeaderWidget(
         author: ArticleUserAuthor(
-          avatarLink: 'https://tproger.ru/wp-content/themes/gecko/images/default-avatar-48.png',
+          avatarLink: DefaultValues.avatarLink,
           name: 'Vasia Pupkin',
         ),
         viewCount: 5,
@@ -42,24 +44,9 @@ WidgetbookComponent buildArticleHeaderComponent(BuildContext context) => Widgetb
     WidgetbookUseCase(
       name: 'Custom', 
       builder: (context) => ArticleHeaderWidget(
-        author: ArticleUserAuthor(
-          avatarLink: context.knobs.text(
-            initialValue: 'https://tproger.ru/wp-content/themes/gecko/images/default-avatar-48.png',
-            label: 'Network link to author avatar'
-          ),
-          name: context.knobs.text(
-            initialValue: 'Vasia Pupkin',
-            label: 'Author name',
-          ),
-        ),
-        viewCount: context.knobs.number(
-          label: 'Count of views',
-          initialValue: 0,
-        ).toInt(),
-        isInvertetStyle: context.knobs.boolean(
-          label: 'Enable inverted style',
-          initialValue: false,
-        ),
+        author: KnobsService.author(context),
+        viewCount: KnobsService.viewCount(context),
+        isInvertetStyle: KnobsService.isInvertetStyle(context),
       ),
     ),
   ],
