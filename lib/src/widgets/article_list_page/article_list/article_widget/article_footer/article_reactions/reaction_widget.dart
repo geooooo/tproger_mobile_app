@@ -25,6 +25,7 @@ class ReactionWidget extends StatelessWidget {
       ),
       child: SvgPicture.asset(
         icon.value,
+        package: Asset.package,
         width: AppTheme.articleReactionIconSize,
         height: AppTheme.articleReactionIconSize,
       ),

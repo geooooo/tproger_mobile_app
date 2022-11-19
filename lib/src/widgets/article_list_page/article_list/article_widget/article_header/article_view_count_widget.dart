@@ -22,6 +22,7 @@ class ArticleViewCountWidget extends StatelessWidget {
       children: [
         SvgPicture.asset(
           Asset.eye.value,
+          package: Asset.package,
           width: AppTheme.articleViewCountIconSize,
           height: AppTheme.articleViewCountIconSize,
           color: isInvertetStyle

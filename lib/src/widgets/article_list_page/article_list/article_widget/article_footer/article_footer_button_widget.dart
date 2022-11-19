@@ -22,13 +22,14 @@ class ArticleFooterButtonWidget extends StatelessWidget {
     builder: (context, store) => Row(
       children: [
         SvgPicture.asset(
-            icon.value,
-            width: AppTheme.articleFooterButtonIconSize,
-            height: AppTheme.articleFooterButtonIconSize,
-            color: isInvertetStyle
-              ? store.state.theme.articleFooterButtonIconInvertedColor
-              : store.state.theme.articleFooterButtonIconColor,
-          ),
+          icon.value,
+          package: Asset.package,
+          width: AppTheme.articleFooterButtonIconSize,
+          height: AppTheme.articleFooterButtonIconSize,
+          color: isInvertetStyle
+            ? store.state.theme.articleFooterButtonIconInvertedColor
+            : store.state.theme.articleFooterButtonIconColor,
+        ),
         const SizedBox(width: AppTheme.articleFooterButtonIconAndTextSeparatorSize),
         if (count > 0) Text(
           count.toString(),

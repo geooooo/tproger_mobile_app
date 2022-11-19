@@ -2,7 +2,7 @@ flutter_native_splash:
   android: true
   ios: true
   fullscreen: true
-  image: assets/images/splash.png
+  image: tproger_mobile_app_assets/lib/images/splash.png
   color: "#2aa59f"
   android_12:
     color: "#2aa59f"

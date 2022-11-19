@@ -1,12 +1,14 @@
 enum Asset {
-  eye('lib/assets/images/eye.svg'),
-  bookmark('lib/assets/images/bookmark.svg'),
-  comment('lib/assets/images/comment.svg'),
-  angry('lib/assets/images/angry.svg'),
-  laugh('lib/assets/images/laugh.svg'),
-  think('lib/assets/images/think.svg'),
-  like('lib/assets/images/like.svg'),
-  surprise('lib/assets/images/surprise.svg');
+  eye('images/eye.svg'),
+  bookmark('images/bookmark.svg'),
+  comment('images/comment.svg'),
+  angry('images/angry.svg'),
+  laugh('images/laugh.svg'),
+  think('images/think.svg'),
+  like('images/like.svg'),
+  surprise('images/surprise.svg');
+
+  static const package = 'tproger_mobile_app_assets';
 
   final String value;
 

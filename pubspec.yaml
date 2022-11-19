@@ -51,5 +51,14 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - packages/tproger_mobile_app_assets/images
-    - packages/tproger_mobile_app_assets/fonts
+    - packages/tproger_mobile_app_assets/fonts/Inter-Medium.ttf
+    - packages/tproger_mobile_app_assets/fonts/Inter-Regular.ttf
+    - packages/tproger_mobile_app_assets/fonts/Inter-SemiBold.ttf
+    - packages/tproger_mobile_app_assets/images/eye.svg
+    - packages/tproger_mobile_app_assets/images/angry.svg
+    - packages/tproger_mobile_app_assets/images/bookmark.svg
+    - packages/tproger_mobile_app_assets/images/comment.svg
+    - packages/tproger_mobile_app_assets/images/laugh.svg
+    - packages/tproger_mobile_app_assets/images/like.svg
+    - packages/tproger_mobile_app_assets/images/surprise.svg
+    - packages/tproger_mobile_app_assets/images/think.svg
