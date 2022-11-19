@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_footer/article_footer_button_widget.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_footer/article_reactions/article_reactions_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_footer_button_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_reactions/article_reactions_widget.dart';
 
 class ArticleFooterWidget extends StatelessWidget {
   final int bookmarkCount;

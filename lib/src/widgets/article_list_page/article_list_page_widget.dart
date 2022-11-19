@@ -18,7 +18,7 @@ class ArticleListPageWidget extends PageWidget {
         return const ArticleListLoaderWidget();
       }
 
-      return ArticleListWidget(articles: store.state.articles);
+      return ArticleListWidget(articles: store.state.articles.toList());
     },
   );
 }

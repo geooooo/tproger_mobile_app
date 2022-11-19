@@ -1,11 +1,10 @@
-import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_widget.dart';
 
 class ArticleListWidget extends StatelessWidget {
-  final BuiltList<ArticleModel> articles;
+  final List<ArticleModel> articles;
 
   const ArticleListWidget({
     required this.articles,

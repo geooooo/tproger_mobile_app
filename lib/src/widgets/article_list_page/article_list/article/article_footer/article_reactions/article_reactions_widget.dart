@@ -5,8 +5,8 @@ import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
 import 'package:tproger_mobile_app/src/services/reaction_service.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_footer/article_reactions/add_reaction_widget.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_widget/article_footer/article_reactions/reaction_list_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_reactions/add_reaction_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_reactions/reaction_list_widget.dart';
 
 class ArticleReactionsWidget extends StatelessWidget {
   final _reactionService = GetIt.instance.get<ReactionService>();
