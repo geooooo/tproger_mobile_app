@@ -1,12 +1,12 @@
 enum Asset {
-  eye('assets/images/eye.svg'),
-  bookmark('assets/images/bookmark.svg'),
-  comment('assets/images/comment.svg'),
-  angry('assets/images/angry.svg'),
-  laugh('assets/images/laugh.svg'),
-  think('assets/images/think.svg'),
-  like('assets/images/like.svg'),
-  surprise('assets/images/surprise.svg');
+  eye('lib/assets/images/eye.svg'),
+  bookmark('lib/assets/images/bookmark.svg'),
+  comment('lib/assets/images/comment.svg'),
+  angry('lib/assets/images/angry.svg'),
+  laugh('lib/assets/images/laugh.svg'),
+  think('lib/assets/images/think.svg'),
+  like('lib/assets/images/like.svg'),
+  surprise('lib/assets/images/surprise.svg');
 
   final String value;
 

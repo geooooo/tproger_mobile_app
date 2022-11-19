@@ -13,6 +13,8 @@ dependencies:
   redux: ^5.0.0
   tproger_mobile_app:
     path: ../../tproger_mobile_app
+  tproger_mobile_app_assets:
+    path: ../tproger_mobile_app_assets
   
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -20,5 +22,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets: 
-    - assets/images/
-    - assets/fonts/
+    - packages/tproger_mobile_app_assets/images
+    - packages/tproger_mobile_app_assets/fonts

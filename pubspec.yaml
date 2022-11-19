@@ -45,9 +45,11 @@ dev_dependencies:
   http_mock_adapter: ^0.3.3
   flutter_launcher_icons: ^0.11.0
   rename: ^2.0.1
+  tproger_mobile_app_assets:
+    path: tproger_mobile_app_assets
   
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/
-    - assets/fonts/
+    - packages/tproger_mobile_app_assets/images
+    - packages/tproger_mobile_app_assets/fonts
