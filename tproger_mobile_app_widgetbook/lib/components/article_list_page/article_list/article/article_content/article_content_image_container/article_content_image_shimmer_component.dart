@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tproger_mobile_app_widgetbook/services/knobs_service.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_content/article_content_image_container/article_content_image_shimmer_widget.dart';
 
@@ -24,32 +25,9 @@ WidgetbookComponent buildArticleContentImageShimmerComponent(BuildContext contex
       ),
     ),
     WidgetbookUseCase(
-      name: 'Customizable', 
+      name: 'Custom', 
       builder: (context) => ArticleContentImageShimmerWidget(
-        backgroundColor: Color.fromRGBO(
-          context.knobs.slider(
-            label: 'Red',
-            divisions: 255,
-            initialValue: 0,
-            min: 0,
-            max: 255,
-          ).toInt(), 
-          context.knobs.slider(
-            label: 'Green',
-            divisions: 255,
-            initialValue: 0,
-            min: 0,
-            max: 255,
-          ).toInt(),
-          context.knobs.slider(
-            label: 'Blue',
-            divisions: 255,
-            initialValue: 0,
-            min: 0,
-            max: 255,
-          ).toInt(),
-          1,
-        ), 
+        backgroundColor: KnobsService.backgroundColor(context),
       ),
     ),
   ],

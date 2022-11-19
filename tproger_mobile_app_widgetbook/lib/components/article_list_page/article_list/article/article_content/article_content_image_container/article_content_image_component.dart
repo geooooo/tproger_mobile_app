@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tproger_mobile_app_widgetbook/models/default_values.dart';
+import 'package:tproger_mobile_app_widgetbook/services/knobs_service.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_content/article_content_image_container/article_content_image_widget.dart';
 
@@ -6,41 +8,18 @@ WidgetbookComponent buildArticleContentImageComponent(BuildContext context) => W
   name: 'ArticleContentImage',
   useCases: [
     WidgetbookUseCase(
-      name: 'Some', 
+      name: 'Default', 
       builder: (context) => const ArticleContentImageWidget(
-        backgroundColor: Color.fromRGBO(0, 0, 0, 1),
-        link: 'https://media.tproger.ru/uploads/2022/11/2755770_advice_attention_caution_exception_exclamation_icon-cover-icon-original.png',
+        backgroundColor: DefaultValues.backgroundColor,
+        link: DefaultValues.iconImageLink,
       ),
     ),
     WidgetbookUseCase(
       name: 'Custom', 
       builder: (context) => ArticleContentImageWidget(
-        backgroundColor: Color.fromRGBO(
-          context.knobs.slider(
-            label: 'Red',
-            divisions: 255,
-            initialValue: 0,
-            min: 0,
-            max: 255,
-          ).toInt(), 
-          context.knobs.slider(
-            label: 'Green',
-            divisions: 255,
-            initialValue: 0,
-            min: 0,
-            max: 255,
-          ).toInt(),
-          context.knobs.slider(
-            label: 'Blue',
-            divisions: 255,
-            initialValue: 0,
-            min: 0,
-            max: 255,
-          ).toInt(),
-          1,
-        ), 
+        backgroundColor: KnobsService.backgroundColor(context),
         link: context.knobs.text(
-          initialValue: 'https://media.tproger.ru/uploads/2022/11/2755770_advice_attention_caution_exception_exclamation_icon-cover-icon-original.png',
+          initialValue: DefaultValues.iconImageLink,
           label: 'Network link to image'
         ),
       ),

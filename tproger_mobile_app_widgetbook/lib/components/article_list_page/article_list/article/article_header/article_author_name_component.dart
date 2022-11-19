@@ -7,7 +7,7 @@ WidgetbookComponent buildArticleAuthorNameComponent(BuildContext context) => Wid
   name: 'ArticleAuthorName',
   useCases: [
     WidgetbookUseCase(
-      name: 'User name', 
+      name: 'Default', 
       builder: (context) => const ArticleAuthorNameWidget(
         authorName: 'Vasiy Pupkin',
         isInvertetStyle: false,
@@ -18,13 +18,6 @@ WidgetbookComponent buildArticleAuthorNameComponent(BuildContext context) => Wid
       builder: (context) => const ArticleAuthorNameWidget(
         authorName: 'Vasiy Pupkin',
         isInvertetStyle: true,
-      ),
-    ),
-    WidgetbookUseCase(
-      name: 'Company name', 
-      builder: (context) => const ArticleAuthorNameWidget(
-        authorName: 'Yandex',
-        isInvertetStyle: false,
       ),
     ),
     WidgetbookUseCase(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tproger_mobile_app_widgetbook/models/default_values.dart';
+import 'package:tproger_mobile_app_widgetbook/services/knobs_service.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_content/article_content_image_container/article_content_image_container_widget.dart';
 
@@ -6,20 +8,17 @@ WidgetbookComponent buildArticleContentImageContainerComponent(BuildContext cont
   name: 'ArticleContentImageContainer',
   useCases: [
     WidgetbookUseCase(
-      name: 'Some', 
+      name: 'Default', 
       builder: (context) => const ArticleContentImageContainerWidget(
-        backgroundColor: Color.fromRGBO(0, 0, 0, 1),
-        link: 'https://media.tproger.ru/uploads/2022/11/2755770_advice_attention_caution_exception_exclamation_icon-cover-icon-original.png',
+        backgroundColor: DefaultValues.backgroundColor,
+        link: DefaultValues.iconImageLink,
       ),
     ),
       WidgetbookUseCase(
       name: 'Custom', 
       builder: (context) => ArticleContentImageContainerWidget(
-        backgroundColor: const Color.fromRGBO(0, 0, 0, 1),
-        link: context.knobs.text(
-          initialValue: 'https://media.tproger.ru/uploads/2022/11/2755770_advice_attention_caution_exception_exclamation_icon-cover-icon-original.png',
-          label: 'Network link to image'
-        ),
+        backgroundColor: DefaultValues.backgroundColor,
+        link: KnobsService.imageLink(context, DefaultValues.iconImageLink),
       ),
     ),
   ],

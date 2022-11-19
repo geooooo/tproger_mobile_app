@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tproger_mobile_app_widgetbook/services/knobs_service.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_content/article_description_widget.dart';
 
@@ -6,7 +7,7 @@ WidgetbookComponent buildArticleDescriptionComponent(BuildContext context) => Wi
   name: 'ArticleDescription',
   useCases: [
     WidgetbookUseCase(
-      name: 'Some', 
+      name: 'Default', 
       builder: (context) => const ArticleDescriptionWidget(
         text: 'Description of an article',
         isInvertetStyle: false,
@@ -22,14 +23,8 @@ WidgetbookComponent buildArticleDescriptionComponent(BuildContext context) => Wi
     WidgetbookUseCase(
       name: 'Custom', 
       builder: (context) => ArticleDescriptionWidget(
-        text: context.knobs.text(
-          label: 'Description',
-          initialValue: 'Description of an article',
-        ),
-        isInvertetStyle: context.knobs.boolean(
-          label: 'Enable inverted style',
-          initialValue: false,
-        ),
+        text: KnobsService.description(context),
+        isInvertetStyle: KnobsService.isInvertetStyle(context),
       ),
     ),
   ],

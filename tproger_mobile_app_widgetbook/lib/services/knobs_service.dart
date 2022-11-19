@@ -3,8 +3,15 @@ import 'package:tproger_mobile_app_widgetbook/models/default_values.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
 import 'package:tproger_mobile_app/src/models/article_author/article_user_author.dart';
+import 'package:tproger_mobile_app/src/models/article_image/article_icon_image.dart';
+
 
 class KnobsService {
+  static ArticleIconImage? image(BuildContext context) => context.knobs.boolean(
+    label: 'Has image',
+    initialValue: true,
+  ) ? _iconImage(context) : null;
+      
   static String avatarLink(BuildContext context, {String defaultValue = DefaultValues.avatarLink}) => context.knobs.text(
     initialValue: defaultValue,
     label: 'Network link to an avatar'
@@ -30,10 +37,35 @@ class KnobsService {
     initialValue: false,
   );
 
-  static String backgroundColor(BuildContext context, {String? description}) => context.knobs.text(
-    initialValue: '#000000',
+  static String backgroundColorHex(BuildContext context, {String? description}) => context.knobs.text(
+    initialValue: DefaultValues.backgroundColorHex,
     label: 'Color of a background',
     description: description,
+  );
+
+  static Color backgroundColor(BuildContext context) => Color.fromRGBO(
+    context.knobs.slider(
+      label: 'Red',
+      divisions: 255,
+      initialValue: 0,
+      min: 0,
+      max: 255,
+    ).toInt(), 
+    context.knobs.slider(
+      label: 'Green',
+      divisions: 255,
+      initialValue: 0,
+      min: 0,
+      max: 255,
+    ).toInt(),
+    context.knobs.slider(
+      label: 'Blue',
+      divisions: 255,
+      initialValue: 0,
+      min: 0,
+      max: 255,
+    ).toInt(),
+    1,
   );
 
   static String authorName(BuildContext context) => context.knobs.text(
@@ -111,4 +143,9 @@ class KnobsService {
     label: 'Count of like reactions',
     initialValue: 0,
   ).toInt();
+
+  static ArticleIconImage _iconImage(BuildContext context) => ArticleIconImage(
+    backgroundColor: KnobsService.backgroundColorHex(context),
+    link: KnobsService.imageLink(context, DefaultValues.iconImageLink),
+  );
 }

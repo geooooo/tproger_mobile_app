@@ -16,7 +16,7 @@ class HelperService {
     int viewCount = 0,
     String authorName = 'Author',
     bool isBackgroundImage = false,
-    String backgroundColor = '#000000',
+    String backgroundColor = DefaultValues.backgroundColorHex,
   }) => ArticleModel(
     id: id,
     title: title,

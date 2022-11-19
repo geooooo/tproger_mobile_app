@@ -37,7 +37,7 @@ WidgetbookComponent buildArticleComponent(BuildContext context) => WidgetbookCom
           ArticleWidget(
             article: HelperService.createArticleModel(
               isBackgroundImage: KnobsService.isBackgroundImage(context),
-              backgroundColor: KnobsService.backgroundColor(
+              backgroundColor: KnobsService.backgroundColorHex(
                 context,
                 description: 'Only if isBackgroundImage is false',
               ),
