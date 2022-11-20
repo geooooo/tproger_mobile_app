@@ -37,6 +37,7 @@ class AppTheme {
   static const articleReactionsBorderSize = 1.0;
   static const articleReactionBorderSize = 3.0;
   static const articleReactionListSize = 30.0;
+  static const loaderItemSeparatorSize = 8.0;
 
   static const articleImageContainerHeight = 120.0;
   static const articleImageHeight = 70.0;
@@ -65,8 +66,8 @@ class AppTheme {
   final bool isDark;
 
   final Color mainBackgroundColor;
+  final Color loaderColor;
   final Color articleBackgroundColor;
-  final Color articleListLoaderColor;
   final Color articleViewCountIconColor;
   final Color articleViewCountIconInvertedColor;
   final Color articleFooterButtonIconColor;
@@ -90,8 +91,8 @@ class AppTheme {
   AppTheme.light(): 
     isDark = false,
     mainBackgroundColor = _whiteColor0,
+    loaderColor = _blackColor2,
     articleBackgroundColor = _whiteColor,
-    articleListLoaderColor = _blackColor2,
     articleViewCountIconColor = _grayColor,
     articleViewCountIconInvertedColor = _whiteColor,
     articleFooterButtonIconColor = _grayColor0,
@@ -162,8 +163,8 @@ class AppTheme {
   AppTheme.dark():
     isDark = true,
     mainBackgroundColor = _blackColor,
+    loaderColor = _whiteColor3,
     articleBackgroundColor = _blackColor0,
-    articleListLoaderColor = _whiteColor3,
     articleViewCountIconColor = _grayColor1,
     articleViewCountIconInvertedColor = _whiteColor,
     articleFooterButtonIconColor = _grayColor2,
