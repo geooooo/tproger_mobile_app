@@ -7,9 +7,7 @@ import 'package:tproger_mobile_app/src/services/store_factory.dart';
 import 'package:tproger_mobile_app/src/widgets/app_widget.dart';
 
 // TODO: unit tests for services
-// TODO: fill widgetbook
 // TODO: load next articles in the list
-// TODO: update demo screenshot
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
