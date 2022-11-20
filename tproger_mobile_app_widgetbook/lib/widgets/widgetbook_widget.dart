@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:tproger_mobile_app_widgetbook/components/article_list_page/article_list/articles_loader_component.dart';
 import 'package:tproger_mobile_app_widgetbook/folders/article_list_page_folder.dart';
 import 'package:tproger_mobile_app/src/models/actions/set_theme_action.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
@@ -13,9 +14,13 @@ class WidgetbookWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Widgetbook<AppTheme>(
+
     categories: [
       WidgetbookCategory(
         name: 'All',
+        widgets: [
+          buildArticlesLoaderComponent(context),
+        ],
         folders: [
           buildArticleListPageFolder(context),
         ],
@@ -35,7 +40,8 @@ class WidgetbookWidget extends StatelessWidget {
       builder: (context, store) {
         final isNeedUpdateTheme = theme.isDark != store.state.theme.isDark;
         if (isNeedUpdateTheme) {
-          store.dispatch(SetThemeAction(theme));
+          // store.dispatch(SetThemeAction(theme));
+          store.dispatch(SetThemeAction(AppTheme.dark()));
         }
 
         return widget;

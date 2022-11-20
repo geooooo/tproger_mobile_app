@@ -11,6 +11,7 @@ import 'package:tproger_mobile_app/src/widgets/app_widget.dart';
 // TODO: pixel perfect in reaction list
 // TODO: article list scroll bottom animation
 // TODO: load next articles in the list
+// TODO: update demo screenshot
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
