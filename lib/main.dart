@@ -8,7 +8,6 @@ import 'package:tproger_mobile_app/src/widgets/app_widget.dart';
 
 // TODO: unit tests for services
 // TODO: fill widgetbook
-// TODO: pixel perfect in reaction list
 // TODO: load next articles in the list
 // TODO: update demo screenshot
 

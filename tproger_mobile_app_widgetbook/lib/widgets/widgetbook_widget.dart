@@ -5,6 +5,7 @@ import 'package:tproger_mobile_app/src/models/actions/set_theme_action.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/localization.dart';
+import 'package:tproger_mobile_app_widgetbook/folders/common_folder.dart';
 import 'package:tproger_mobile_app_widgetbook/widgets/widgetbook_page_widget.dart';
 import 'package:widgetbook/widgetbook.dart';
 
@@ -18,6 +19,7 @@ class WidgetbookWidget extends StatelessWidget {
         name: 'All',
         folders: [
           buildArticleListPageFolder(context),
+          buildCommonFolder(context),
         ],
       ),
     ],

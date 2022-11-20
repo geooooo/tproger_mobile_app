@@ -4,9 +4,54 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
 import 'package:tproger_mobile_app/src/models/article_author/article_user_author.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_icon_image.dart';
-
+import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 
 class KnobsService {
+  static int footerButtonCount(BuildContext context) => context.knobs.number(
+    label: 'Count of bookmarks/comments',
+    initialValue: 0,
+  ).toInt();
+
+  static Asset reactionIcon(BuildContext context) => context.knobs.options(
+    label: 'Reaction icon', 
+    options: const [
+      Option(
+        label: 'Like',
+        value: Asset.like,
+      ),
+      Option(
+        label: 'Angry',
+        value: Asset.angry,
+      ),
+      Option(
+        label: 'Laugh',
+        value: Asset.laugh,
+      ),
+      Option(
+        label: 'Surprise',
+        value: Asset.surprise,
+      ),
+      Option(
+        label: 'Think',
+        value: Asset.think,
+      ),
+    ],
+  );
+
+  static Asset footerButtonIcon(BuildContext context) => context.knobs.options(
+    label: 'Footer button icon', 
+    options: const [
+      Option(
+        label: 'Comment',
+        value: Asset.comment,
+      ),
+      Option(
+        label: 'Bookmark',
+        value: Asset.bookmark,
+      ),
+    ],
+  );
+
   static ArticleIconImage? image(BuildContext context) => context.knobs.boolean(
     label: 'Has image',
     initialValue: true,
