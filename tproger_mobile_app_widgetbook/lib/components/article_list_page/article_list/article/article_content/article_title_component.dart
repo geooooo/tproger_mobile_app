@@ -7,20 +7,6 @@ WidgetbookComponent buildArticleTitleComponent(BuildContext context) => Widgetbo
   name: 'ArticleTitle',
   useCases: [
     WidgetbookUseCase(
-      name: 'Default', 
-      builder: (context) => const ArticleTitleWidget(
-        text: 'Title',
-        isInvertetStyle: false,
-      ),
-    ),
-    WidgetbookUseCase(
-      name: 'Inverted styles', 
-      builder: (context) => const ArticleTitleWidget(
-        text: 'Title',
-        isInvertetStyle: true,
-      ),
-    ),
-    WidgetbookUseCase(
       name: 'Custom', 
       builder: (context) => ArticleTitleWidget(
         text: KnobsService.title(context),

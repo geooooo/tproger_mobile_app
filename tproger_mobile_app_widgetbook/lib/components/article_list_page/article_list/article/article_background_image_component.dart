@@ -8,17 +8,6 @@ WidgetbookComponent buildArticleBackgroundImageComponent(BuildContext context) =
   name: 'ArticleBackgroundImage',
   useCases: [
     WidgetbookUseCase(
-      name: 'Default', 
-      builder: (context) => const ArticleBackgroundImageWidget(
-        imageLink: DefaultValues.backgroundImageLink,
-        child: SizedBox(
-          width: double.infinity,
-          height: 200,
-          child: Text('Some content'),
-        ),
-      ),
-    ),
-    WidgetbookUseCase(
       name: 'Custom', 
       builder: (context) => ArticleBackgroundImageWidget(
         imageLink: KnobsService.imageLink(context, DefaultValues.backgroundImageLink),

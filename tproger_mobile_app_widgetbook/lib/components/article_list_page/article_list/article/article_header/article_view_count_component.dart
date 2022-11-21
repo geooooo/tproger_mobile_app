@@ -7,20 +7,6 @@ WidgetbookComponent buildArticleViewCountComponent(BuildContext context) => Widg
   name: 'ArticleViewCount',
   useCases: [
     WidgetbookUseCase(
-      name: 'Default', 
-      builder: (context) => const ArticleViewCountWidget(
-        viewCount: 0,
-        isInvertetStyle: false,
-      ),
-    ),
-    WidgetbookUseCase(
-      name: 'Inverted', 
-      builder: (context) => const ArticleViewCountWidget(
-        viewCount: 0,
-        isInvertetStyle: true,
-      ),
-    ),
-    WidgetbookUseCase(
       name: 'Custom', 
       builder: (context) => ArticleViewCountWidget(
         viewCount: KnobsService.viewCount(context),

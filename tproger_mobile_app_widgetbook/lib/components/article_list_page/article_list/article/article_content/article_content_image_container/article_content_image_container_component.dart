@@ -8,13 +8,6 @@ WidgetbookComponent buildArticleContentImageContainerComponent(BuildContext cont
   name: 'ArticleContentImageContainer',
   useCases: [
     WidgetbookUseCase(
-      name: 'Default', 
-      builder: (context) => const ArticleContentImageContainerWidget(
-        backgroundColor: DefaultValues.backgroundColor,
-        link: DefaultValues.iconImageLink,
-      ),
-    ),
-      WidgetbookUseCase(
       name: 'Custom', 
       builder: (context) => ArticleContentImageContainerWidget(
         backgroundColor: DefaultValues.backgroundColor,

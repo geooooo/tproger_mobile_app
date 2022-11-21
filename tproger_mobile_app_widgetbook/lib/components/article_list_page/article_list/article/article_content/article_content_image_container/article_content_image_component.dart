@@ -8,13 +8,6 @@ WidgetbookComponent buildArticleContentImageComponent(BuildContext context) => W
   name: 'ArticleContentImage',
   useCases: [
     WidgetbookUseCase(
-      name: 'Default', 
-      builder: (context) => const ArticleContentImageWidget(
-        backgroundColor: DefaultValues.backgroundColor,
-        link: DefaultValues.iconImageLink,
-      ),
-    ),
-    WidgetbookUseCase(
       name: 'Custom', 
       builder: (context) => ArticleContentImageWidget(
         backgroundColor: KnobsService.backgroundColor(context),

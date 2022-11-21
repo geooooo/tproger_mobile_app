@@ -7,20 +7,6 @@ WidgetbookComponent buildArticleDescriptionComponent(BuildContext context) => Wi
   name: 'ArticleDescription',
   useCases: [
     WidgetbookUseCase(
-      name: 'Default', 
-      builder: (context) => const ArticleDescriptionWidget(
-        text: 'Description of an article',
-        isInvertetStyle: false,
-      ),
-    ),
-    WidgetbookUseCase(
-      name: 'Inverted styles', 
-      builder: (context) => const ArticleDescriptionWidget(
-        text: 'Description of an article',
-        isInvertetStyle: true,
-      ),
-    ),
-    WidgetbookUseCase(
       name: 'Custom', 
       builder: (context) => ArticleDescriptionWidget(
         text: KnobsService.description(context),

@@ -29,18 +29,6 @@ WidgetbookComponent buildArticleFooterComponent(BuildContext context) => Widgetb
       ),
     ),
     WidgetbookUseCase(
-      name: 'Inverted styles', 
-      builder: (context) => const ArticleFooterWidget(
-        bookmarkCount: 10,
-        commentCount: 10,
-        isInvertetStyle: true,
-        reactionToCounts: {
-          Reaction.like: 1,
-          Reaction.angry: 2,
-        },
-      ),
-    ),
-    WidgetbookUseCase(
       name: 'Custom', 
       builder: (context) => ArticleFooterWidget(
         bookmarkCount: KnobsService.bookmarkCount(context),

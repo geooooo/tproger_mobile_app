@@ -8,28 +8,6 @@ WidgetbookComponent buildArticleBodyComponent(BuildContext context) => Widgetboo
   name: 'ArticleBody',
   useCases: [
     WidgetbookUseCase(
-      name: 'Default', 
-      builder: (context) => Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ArticleBodyWidget(
-            article: HelperService.createArticleModel(isBackgroundImage: false),
-          ),
-        ],
-      ),
-    ),
-    WidgetbookUseCase(
-      name: 'Inverted', 
-      builder: (context) => Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ArticleBodyWidget(
-            article: HelperService.createArticleModel(isBackgroundImage: true),
-          ),
-        ],
-      ),
-    ),
-    WidgetbookUseCase(
       name: 'Custom', 
       builder: (context) => Column(
         mainAxisSize: MainAxisSize.min,

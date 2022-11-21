@@ -7,20 +7,6 @@ WidgetbookComponent buildArticleAuthorNameComponent(BuildContext context) => Wid
   name: 'ArticleAuthorName',
   useCases: [
     WidgetbookUseCase(
-      name: 'Default', 
-      builder: (context) => const ArticleAuthorNameWidget(
-        authorName: 'Vasiy Pupkin',
-        isInvertetStyle: false,
-      ),
-    ),
-    WidgetbookUseCase(
-      name: 'Inverted', 
-      builder: (context) => const ArticleAuthorNameWidget(
-        authorName: 'Vasiy Pupkin',
-        isInvertetStyle: true,
-      ),
-    ),
-    WidgetbookUseCase(
       name: 'Custom', 
       builder: (context) => ArticleAuthorNameWidget(
         authorName: KnobsService.authorName(context),

@@ -24,22 +24,6 @@ WidgetbookComponent buildArticleFooterButtonComponent(BuildContext context) => W
       ),
     ),
     WidgetbookUseCase(
-      name: 'Emtpy', 
-      builder: (context) => const ArticleFooterButtonWidget(
-        count: 0,
-        icon: Asset.comment,
-        isInvertetStyle: false,
-      ),
-    ),
-    WidgetbookUseCase(
-      name: 'Inverted', 
-      builder: (context) => const ArticleFooterButtonWidget(
-        count: 5,
-        icon: Asset.comment,
-        isInvertetStyle: true,
-      ),
-    ),
-    WidgetbookUseCase(
       name: 'Custom', 
       builder: (context) => ArticleFooterButtonWidget(
         count: KnobsService.footerButtonCount(context),
