@@ -10,6 +10,9 @@ class ParsedArticle extends Equatable {
   final ArticleImage? image;
   final ArticleAuthor? author;
 
+  @override
+  List<Object?> get props => [title, articleLink, description, id, image, author];
+
   const ParsedArticle({
     required this.title,
     required this.articleLink,
@@ -18,7 +21,4 @@ class ParsedArticle extends Equatable {
     this.image,
     this.author,
   });
-
-  @override
-  List<Object?> get props => [title, articleLink, description, id, image, author];
 }
