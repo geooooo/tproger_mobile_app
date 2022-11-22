@@ -11,7 +11,7 @@ import 'package:tuple/tuple.dart';
 
 @singleton
 class ArticleListParser {
-  static final backgroundColorPattern = RegExp(r'#[0-9a-f]{6}', caseSensitive: false);
+  static final backgroundColorPattern = RegExp(r'#[0-9a-f]{3,6}', caseSensitive: false);
 
   List<ParsedArticle> parse(String html) {
     final document = html_parser.parse(html);
@@ -184,7 +184,9 @@ class ArticleListParser {
 
   bool _isLinkHasHost(String link) => link.contains(BaseUrl.host.value);
 
-  bool _isLinkToImage(String link) => link.endsWith('.png') || link.endsWith('.jpg');
+  bool _isLinkToImage(String link) => link.endsWith('.png') || 
+    link.endsWith('.jpg') ||
+    link.endsWith('.jpeg');
 
   String _addHostToLink(String link) => 'https://${BaseUrl.host}$link';
 }
