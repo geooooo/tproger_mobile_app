@@ -25,9 +25,9 @@ import 'package:tproger_mobile_app/src/services/http_service.dart';
 import 'mocks/mocks.dart';
 
 void main() {
-  late final ArticleListParser articleListParser;
-  late final HttpService httpService;
-  late final ArticleListLoader articleListLoader;
+  late ArticleListParser articleListParser;
+  late HttpService httpService;
+  late ArticleListLoader articleListLoader;
 
   setUpAll(() {
     registerFallbackValue(LoadArticlesCommentCountsRequestMock());
