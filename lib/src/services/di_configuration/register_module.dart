@@ -11,9 +11,7 @@ abstract class RegisterModule {
   Logger get logger => Logger();
 
   @Singleton(dispose: disposeDio)
-  Dio get dio {
-    return Dio(dioBaseOptions);
-  }
+  Dio get dio => Dio(dioBaseOptions);
 }
 
 void disposeLogger(Logger logger) => logger.close();

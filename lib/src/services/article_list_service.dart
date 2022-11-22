@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
+import 'package:tproger_mobile_app/src/models/exceptions/load_next_articles_exception.dart';
 import 'package:tproger_mobile_app/src/services/article_list_loader.dart';
 import 'package:tproger_mobile_app/src/models/exceptions/load_articles_list_exception.dart';
 
@@ -20,6 +21,15 @@ class ArticleListService {
     } on Exception catch (error, stackTrace) {
       _logger.e('Load a list of articles', error, stackTrace);
       throw const LoadArticlesListException();
+    }
+  }
+
+  Future<List<ArticleModel>> getNextArticles(int pageNumber) async {
+    try {
+      return await _articleListLoader.loadNext(pageNumber);
+    } on Exception catch (error, stackTrace) {
+      _logger.e('Load a list of next articles', error, stackTrace);
+      throw const LoadNextArticlesException();
     }
   }
 }

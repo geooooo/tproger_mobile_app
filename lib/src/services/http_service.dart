@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_articles_request.dart';
+import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_articles_response.dart';
 import 'package:tproger_mobile_app/src/models/enums/api_url.dart';
 import 'package:tproger_mobile_app/src/models/enums/method.dart';
 import 'package:tproger_mobile_app/src/models/api/load_article_reactions/load_article_reactions_request.dart';
@@ -21,6 +23,11 @@ class HttpService {
   Future<LoadInitialContentResponse> loadInitialContent() async {
     final response = await _request(Method.get, ApiUrl.initial);
     return LoadInitialContentResponse.fromJson(response);
+  }
+
+  Future<LoadNextArticlesResponse> loadNextArticles(LoadNextArticlesRequest request) async {
+    final response = await _request(Method.get, ApiUrl.loadNextArticles, request.toJson());
+    return LoadNextArticlesResponse.fromJson(response);
   }
 
   Future<LoadArticlesCommentCountsResponse> loadArticlesCommentCounts(LoadArticlesCommentCountsRequest request) async {

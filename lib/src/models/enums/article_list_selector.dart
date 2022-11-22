@@ -7,7 +7,7 @@ enum ArticleListSelector {
   imageBackgroundColor('.article__background-icon-image'),
   authorImage('.article__container-author'),
   title('.article__link'),
-  article('.main__posts-wrapper article');
+  article('article');
 
   final String value;
 

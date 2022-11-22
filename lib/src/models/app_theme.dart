@@ -17,7 +17,8 @@ class AppTheme {
   static const _grayColor1 = Color.fromRGBO(197, 211, 211, 1);
   static const _grayColor2 = Color.fromRGBO(118, 135, 135, 1);
 
-  static const articleListSeparatorSize = 20.0;
+  static const articleListArticleSeparatorSize = 20.0;
+  static const articleListLoaderSeparatorSize = 50.0;
   static const articleHeaderAndContentSeparatorSize = 18.0;
   static const articleImageAndTitleSeparatorSize = 12.0;
   static const articleTitleAndDescriptionSeparatorSize = 16.0;
@@ -38,6 +39,7 @@ class AppTheme {
   static const articleReactionBorderSize = 3.0;
   static const articleReactionListSize = 30.0;
   static const loaderItemSeparatorSize = 8.0;
+  static const articleListLoaderSize = 98.0;
 
   static const articleImageContainerHeight = 120.0;
   static const articleImageHeight = 70.0;

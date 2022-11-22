@@ -11,7 +11,7 @@ class ReactionListWidget extends StatelessWidget {
 
   int get _commonCount => _reactionService.commonCount(reactionToCounts);
   double get _width => 
-    reactionToCounts.length * AppTheme.articleReactionIconSize + AppTheme.articleReactionBorderSize * 2; //TODO: make pixel perfect
+    reactionToCounts.length * AppTheme.articleReactionIconSize + AppTheme.articleReactionBorderSize * 2; //TODO: Make pixel perfect
 
   final Map<Reaction, int> reactionToCounts;
 

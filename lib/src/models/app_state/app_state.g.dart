@@ -13,6 +13,8 @@ class _$AppState extends AppState {
   final AppTheme theme;
   @override
   final bool isSetThemeProgrammatically;
+  @override
+  final int articlesPageNumber;
 
   factory _$AppState([void Function(AppStateBuilder)? updates]) =>
       (new AppStateBuilder()..update(updates))._build();
@@ -20,12 +22,15 @@ class _$AppState extends AppState {
   _$AppState._(
       {required this.articles,
       required this.theme,
-      required this.isSetThemeProgrammatically})
+      required this.isSetThemeProgrammatically,
+      required this.articlesPageNumber})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(articles, r'AppState', 'articles');
     BuiltValueNullFieldError.checkNotNull(theme, r'AppState', 'theme');
     BuiltValueNullFieldError.checkNotNull(
         isSetThemeProgrammatically, r'AppState', 'isSetThemeProgrammatically');
+    BuiltValueNullFieldError.checkNotNull(
+        articlesPageNumber, r'AppState', 'articlesPageNumber');
   }
 
   @override
@@ -41,13 +46,16 @@ class _$AppState extends AppState {
     return other is AppState &&
         articles == other.articles &&
         theme == other.theme &&
-        isSetThemeProgrammatically == other.isSetThemeProgrammatically;
+        isSetThemeProgrammatically == other.isSetThemeProgrammatically &&
+        articlesPageNumber == other.articlesPageNumber;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, articles.hashCode), theme.hashCode),
-        isSetThemeProgrammatically.hashCode));
+    return $jf($jc(
+        $jc($jc($jc(0, articles.hashCode), theme.hashCode),
+            isSetThemeProgrammatically.hashCode),
+        articlesPageNumber.hashCode));
   }
 
   @override
@@ -55,7 +63,8 @@ class _$AppState extends AppState {
     return (newBuiltValueToStringHelper(r'AppState')
           ..add('articles', articles)
           ..add('theme', theme)
-          ..add('isSetThemeProgrammatically', isSetThemeProgrammatically))
+          ..add('isSetThemeProgrammatically', isSetThemeProgrammatically)
+          ..add('articlesPageNumber', articlesPageNumber))
         .toString();
   }
 }
@@ -78,6 +87,11 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   set isSetThemeProgrammatically(bool? isSetThemeProgrammatically) =>
       _$this._isSetThemeProgrammatically = isSetThemeProgrammatically;
 
+  int? _articlesPageNumber;
+  int? get articlesPageNumber => _$this._articlesPageNumber;
+  set articlesPageNumber(int? articlesPageNumber) =>
+      _$this._articlesPageNumber = articlesPageNumber;
+
   AppStateBuilder() {
     AppState._setDefaults(this);
   }
@@ -88,6 +102,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _articles = $v.articles.toBuilder();
       _theme = $v.theme;
       _isSetThemeProgrammatically = $v.isSetThemeProgrammatically;
+      _articlesPageNumber = $v.articlesPageNumber;
       _$v = null;
     }
     return this;
@@ -118,7 +133,9 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
               isSetThemeProgrammatically: BuiltValueNullFieldError.checkNotNull(
                   isSetThemeProgrammatically,
                   r'AppState',
-                  'isSetThemeProgrammatically'));
+                  'isSetThemeProgrammatically'),
+              articlesPageNumber: BuiltValueNullFieldError.checkNotNull(
+                  articlesPageNumber, r'AppState', 'articlesPageNumber'));
     } catch (_) {
       late String _$failedField;
       try {

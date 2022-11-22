@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_articles_request.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
 import 'package:tproger_mobile_app/src/models/api/load_article_reactions/load_article_reactions_request.dart';
@@ -26,8 +27,16 @@ class ArticleListLoader {
 
   Future<List<ArticleModel>> load() async {
     final response = await _httpService.loadInitialContent();
-    final parsedArticles = _articleListParser.parse(response.html);
-    
+    return _parseArticles(response.html);
+  }
+
+  Future<List<ArticleModel>> loadNext(int pageNumber) async {
+    final response = await _httpService.loadNextArticles(LoadNextArticlesRequest(pageNumber));
+    return _parseArticles(response.html);
+  }
+
+  Future<List<ArticleModel>> _parseArticles(String html) async {
+    final parsedArticles = _articleListParser.parse(html);
     final data = await _loadAdditionalData(parsedArticles);
     return _getArticleModels(data);
   }
