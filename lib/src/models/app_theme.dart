@@ -40,6 +40,7 @@ class AppTheme {
   static const articleReactionListSize = 30.0;
   static const loaderItemSeparatorSize = 8.0;
   static const articleListLoaderSize = 98.0;
+  static const articleAuthorNameMaxWidth = 200.0;
 
   static const articleImageContainerHeight = 120.0;
   static const articleImageHeight = 70.0;

@@ -16,6 +16,7 @@ class ArticleAuthorNameWidget extends StatelessWidget {
   Widget build(BuildContext context) => StoreBuilder<AppState>(
     builder: (context, store) => Text(
       authorName,
+      overflow: TextOverflow.ellipsis,
       style: isInvertetStyle
         ? store.state.theme.articleAuthorNameInvertedTextStyle
         : store.state.theme.articleAuthorNameTextStyle,
