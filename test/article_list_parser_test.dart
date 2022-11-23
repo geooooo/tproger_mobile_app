@@ -64,4 +64,27 @@ void main() {
     expect(expectedArticle2, equals(articles[1]));
     expect(expectedArticle3, equals(articles[2]));
   });
+
+  test('Parse html to extract articles', () async {
+    const expectedArticle = ParsedArticle(
+      title: '5 полезных книг по железу', 
+      articleLink: 'https://tproger.ru/digest/5-poleznyh-knig-po-zhelezu/', 
+      description: 'Составили подборку из 5 книг про компьютеры, которые помогут разобраться в архитектуре ЭВМ и понять, как работает все железное.', 
+      id: 233185,
+      author: ArticleUserAuthor(
+        name: 'Daria R', 
+        avatarLink: 'https://tproger.ru/wp-content/themes/gecko/images/default-avatar.png',
+      ),
+      image: ArticleIconImage(
+        link: 'https://media.tproger.ru/uploads/2022/11/7063320_motherboard_hardware_computer_chips_icon-cover-icon-original.png',
+        backgroundColor: '#8cc0f4',
+      ),
+    );
+
+    final nextArticlesMock = await getNextArticlesMock();
+
+    final articles = articleListParser.parse(nextArticlesMock);
+
+    expect(expectedArticle, equals(articles.first));
+  });
 }

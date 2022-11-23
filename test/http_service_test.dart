@@ -8,6 +8,8 @@ import 'package:tproger_mobile_app/src/models/api/load_article_reactions/article
 import 'package:tproger_mobile_app/src/models/api/load_articles_bookmark_counts/article_bookmark_count_dto.dart';
 import 'package:tproger_mobile_app/src/models/api/load_articles_comment_counts/article_comment_count_dto.dart';
 import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/article_view_count_dto.dart';
+import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_articles_request.dart';
+import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_articles_response.dart';
 import 'package:tproger_mobile_app/src/models/enums/api_url.dart';
 import 'package:tproger_mobile_app/src/models/api/load_article_reactions/load_article_reactions_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_article_reactions/load_article_reactions_response.dart';
@@ -42,6 +44,28 @@ void main() {
     );
 
     final response = await httpService.loadInitialContent();
+
+    expect(response, equals(expectedResponse));
+  });
+
+  test('Load next articles', () async {
+    final nextArticlesMock = await getNextArticlesMock();
+    final expectedResponse = LoadNextArticlesResponse(nextArticlesMock);
+
+    dioAdapter.onGet(
+      ApiUrl.loadNextArticles.value, 
+      (server) => server.reply(
+        200,
+        nextArticlesMock,
+      ),
+      queryParameters: {
+        'page': 2,
+        'action': 'infinite-scroll',
+        'sort': 'hot',
+      },
+    );
+
+    final response = await httpService.loadNextArticles(const LoadNextArticlesRequest(2));
 
     expect(response, equals(expectedResponse));
   });

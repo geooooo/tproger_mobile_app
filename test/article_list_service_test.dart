@@ -4,6 +4,7 @@ import 'package:logger/logger.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 import 'package:tproger_mobile_app/src/models/exceptions/load_articles_list_exception.dart';
+import 'package:tproger_mobile_app/src/models/exceptions/load_next_articles_exception.dart';
 import 'package:tproger_mobile_app/src/services/article_list_loader.dart';
 import 'package:tproger_mobile_app/src/services/article_list_service.dart';
 
@@ -61,6 +62,35 @@ void main() {
         verify(() => logger.e(any<String>(), any<Exception>(), any<StackTrace?>())).called(1);
       } on Exception {
         fail('Should be an LoadArticlesListException');
+      }
+    });
+  });
+
+  group('Getting next articles', () {
+    test('success', () async {
+      final expectedArticle = createArticleModel(1);
+
+      when(() => articleListLoader.loadNext(any<int>())).thenAnswer((_) async => [
+        expectedArticle,
+      ]);
+
+      final articles = await articleListService.getNextArticles(2);
+
+      expect(expectedArticle, equals(articles.first));
+
+      verifyNever(() => logger.e(any<String>()));
+    });
+
+    test('failure', () async {
+      when(() => articleListLoader.loadNext(any<int>())).thenThrow(Exception());
+
+      try {
+        await articleListService.getNextArticles(2);
+        fail('Should be an LoadNextArticlesException');
+      } on LoadNextArticlesException {
+        verify(() => logger.e(any<String>(), any<Exception>(), any<StackTrace?>())).called(1);
+      } on Exception {
+        fail('Should be an LoadNextArticlesException');
       }
     });
   });

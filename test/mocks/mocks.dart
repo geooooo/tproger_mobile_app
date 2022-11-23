@@ -5,6 +5,7 @@ import 'package:tproger_mobile_app/src/models/api/load_article_reactions/load_ar
 import 'package:tproger_mobile_app/src/models/api/load_articles_bookmark_counts/load_articles_bookmark_counts_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_articles_comment_counts/load_articles_comment_counts_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/load_articles_view_counts_request.dart';
+import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_articles_request.dart';
 import 'package:tproger_mobile_app/src/models/article_author/article_user_author.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_icon_image.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
@@ -22,6 +23,7 @@ class LoadArticlesCommentCountsRequestMock extends Mock implements LoadArticlesC
 class LoadArticlesBookmarkCountsRequestMock extends Mock implements LoadArticlesBookmarkCountsRequest {}
 class LoadArticlesViewCountsRequestMock extends Mock implements LoadArticlesViewCountsRequest {}
 class LoadArticleReactionsRequestMock extends Mock implements LoadArticleReactionsRequest {}
+class LoadNextArticlesRequestMock extends Mock implements LoadNextArticlesRequest {}
 class ExceptionMock extends Mock implements Exception {}
 class StackTraceMock extends Mock implements StackTrace {}
 
@@ -36,8 +38,23 @@ final _initialContentMockFileUri = Uri.file(
   'initial_content.html'
 );
 
+final _nextArticlesMockFileUri = Uri.file(
+  // ignore: prefer_interpolation_to_compose_strings
+  Directory.current.path +
+  Platform.pathSeparator +
+  'test' +
+  Platform.pathSeparator +
+  'mocks' +
+  Platform.pathSeparator +
+  'next_articles.html'
+);
+
 Future<String> getInitialContetMock() => File
   .fromUri(_initialContentMockFileUri)
+  .readAsString();
+
+Future<String> getNextArticlesMock() => File
+  .fromUri(_nextArticlesMockFileUri)
   .readAsString();
 
 ParsedArticle createParsedArticle(int id) => ParsedArticle(

@@ -16,6 +16,8 @@ import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/arti
 import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/load_articles_view_counts_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/load_articles_view_counts_response.dart';
 import 'package:tproger_mobile_app/src/models/api/load_initial_content/load_initial_content_response.dart';
+import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_articles_request.dart';
+import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_articles_response.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
 import 'package:tproger_mobile_app/src/services/article_list_loader.dart';
@@ -34,6 +36,7 @@ void main() {
     registerFallbackValue(LoadArticlesBookmarkCountsRequestMock());
     registerFallbackValue(LoadArticlesViewCountsRequestMock());
     registerFallbackValue(LoadArticleReactionsRequestMock());
+    registerFallbackValue(LoadNextArticlesRequestMock());
   });
 
   setUp(() {
@@ -135,5 +138,58 @@ void main() {
 
     expect(expectedArticle1, equals(articles[0]));
     expect(expectedArticle2, equals(articles[1]));
+  });
+
+  test('Load next articles', () async {
+    final parsedArticle = createParsedArticle(1);
+
+    final expectedArticle = ArticleModel(
+      title: parsedArticle.title, 
+      articleLink: parsedArticle.articleLink, 
+      description: parsedArticle.description, 
+      id: parsedArticle.id, 
+      author: parsedArticle.author,
+      image: parsedArticle.image,
+      bookmarkCount: 1, 
+      viewCount: 1, 
+      commentCount: 1, 
+      reactionToCounts: {
+        Reaction.fromInt(1): 1,
+      },
+    );
+
+    when(() => articleListParser.parse(any<String>())).thenReturn([
+      parsedArticle,
+    ]);
+    when(() => httpService.loadNextArticles(any<LoadNextArticlesRequest>()))
+      .thenAnswer((_) async => const LoadNextArticlesResponse(''));
+    when(() => httpService.loadArticlesCommentCounts(any<LoadArticlesCommentCountsRequest>()))
+      .thenAnswer((_) async => const LoadArticlesCommentCountsResponse([
+        ArticleCommentCountDto(articleId: 1, count: 1),
+      ]));
+    when(() => httpService.loadArticlesBookmarkCounts(any<LoadArticlesBookmarkCountsRequest>()))
+      .thenAnswer((_) async => const LoadArticlesBookmarkCountsResponse([
+        ArticleBookmarkCountDto(articleId: 1, count: 1),
+      ]));
+    when(() => httpService.loadArticlesViewCounts(any<LoadArticlesViewCountsRequest>()))
+      .thenAnswer((_) async => const LoadArticlesViewCountsResponse([
+        ArticleViewCountDto(articleId: 1, count: 1),
+      ]));
+    when(() => httpService.loadArticleReactions(any<LoadArticleReactionsRequest>()))
+      .thenAnswer((_) async => const LoadArticleReactionsResponse([
+        ArticleReactionsDto(
+          articleId: 1, 
+          reactions: [
+            ArticleReactionDto(
+              count: 1,
+              type: 1,
+            ),
+          ],
+        ),
+      ]));
+
+    final articles = await articleListLoader.loadNext(2);
+
+    expect(expectedArticle, equals(articles.first));
   });
 }
