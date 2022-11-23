@@ -8,6 +8,7 @@ import 'package:tproger_mobile_app/src/models/article_model.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_list_loader_widget.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class ArticleListWidget extends StatelessWidget {
   final List<ArticleModel> articles;
@@ -41,12 +42,13 @@ class ArticleListWidget extends StatelessWidget {
 
           return isArticle
             ? GestureDetector(
-              // onTap: () => _onTapArticle(context, articles[index].articleLink),
-              key: ValueKey(articles[index].id),
-              child: ArticleWidget(
-                article: articles[index],
-              ),
-            ) : const ArticleListLoaderWidget();
+                onTap: () => _onTapArticle(articles[index].articleLink),
+                key: ValueKey(articles[index].id),
+                child: ArticleWidget(
+                  article: articles[index],
+                ),
+              ) 
+            : const ArticleListLoaderWidget();
         },
         separatorBuilder: (context, index) {
           final isLastArticle = index == articles.length - 1;
@@ -63,8 +65,7 @@ class ArticleListWidget extends StatelessWidget {
   Future<void> _onRefresh(Store<AppState> store) async =>
     store.dispatch(const LoadArticlesAction());
 
-  // Future<void> _onTapArticle(BuildContext context, String articleLink) =>
-  //   Navigator.of(context).push(MaterialPageRoute(
-  //     builder: (context) => ArticleDetailPageWidget(articleLink: articleLink),
-  //   ));
+  Future<void> _onTapArticle(String articleLink) async {
+    launchUrlString(articleLink, mode: LaunchMode.externalApplication);
+  }
 }

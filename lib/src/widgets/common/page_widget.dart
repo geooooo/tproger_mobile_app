@@ -14,16 +14,18 @@ abstract class PageWidget extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       localizationsDelegates: Localization.localizationsDelegates,
       supportedLocales: Localization.supportedLocales,
-      builder: (context, widget) {
-        store.dispatch(InitThemeAction(context));
-        
-        return SafeArea(
-          child: Scaffold(
-            backgroundColor: store.state.theme.mainBackgroundColor,
-            body: buildContent(context),
-          ),
-        );
-      },
+      home: Builder(
+        builder: (context) {
+          store.dispatch(InitThemeAction(context));
+          
+          return SafeArea(
+            child: Scaffold(
+              backgroundColor: store.state.theme.mainBackgroundColor,
+              body: buildContent(context),
+            ),
+          );
+        },
+      ),
     ),
   );
 

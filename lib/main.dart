@@ -8,6 +8,8 @@ import 'package:tproger_mobile_app/src/widgets/app_widget.dart';
 
 // TODO: Add sleep cat when user seek the end of list
 // TODO: Update list on top swipe
+// TODO: Update tests
+// TODO: Update widgetbook
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

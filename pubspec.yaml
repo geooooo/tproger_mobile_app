@@ -23,7 +23,7 @@ dependencies:
   injectable_generator: ^1.5.4
   get_it: ^7.2.0
   hexcolor: ^3.0.1
-  webviewx: ^0.2.1
+  url_launcher: ^6.1.7
   shimmer: ^2.0.0
   transparent_image: ^2.0.0
   flutter_svg: ^1.1.6
