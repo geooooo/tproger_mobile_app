@@ -7,6 +7,11 @@ import 'package:tproger_mobile_app/src/models/article_image/article_icon_image.d
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 
 class KnobsService {
+  static bool isFullLoaded(BuildContext context) => context.knobs.boolean(
+    label: 'Is list full loaded',
+    initialValue: false,
+  );
+
   static int footerButtonCount(BuildContext context) => context.knobs.number(
     label: 'Count of bookmarks/comments',
     initialValue: 0,

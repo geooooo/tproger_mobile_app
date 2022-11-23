@@ -11,10 +11,10 @@ WidgetbookComponent buildArticleContentComponent(BuildContext context) => Widget
   useCases: [
     WidgetbookUseCase(
       name: 'Has an image', 
-      builder: (context) => const ArticleContentWidget(
+      builder: (context) => ArticleContentWidget(
         title: 'Title',
         description: 'Description',
-        image: ArticleIconImage(
+        image: const ArticleIconImage(
           backgroundColor: DefaultValues.backgroundColorHex,
           link: DefaultValues.iconImageLink,
         ),
@@ -22,7 +22,7 @@ WidgetbookComponent buildArticleContentComponent(BuildContext context) => Widget
     ),
     WidgetbookUseCase(
       name: 'Without an image', 
-      builder: (context) => const ArticleContentWidget(
+      builder: (context) => ArticleContentWidget(
         title: 'Title',
         description: 'Description',
       ),

@@ -12,12 +12,14 @@ WidgetbookComponent buildArticleListComponent(BuildContext context) => Widgetboo
       name: 'Empty', 
       builder: (context) => const ArticleListWidget(
         articles: <ArticleModel>[],
+        isFullLoaded: false,
       ),
     ),
     WidgetbookUseCase(
       name: 'One item', 
       builder: (context) => ArticleListWidget(
         articles: <ArticleModel>[HelperService.createArticleModel()],
+        isFullLoaded: false,
       ),
     ),
     WidgetbookUseCase(
@@ -26,6 +28,7 @@ WidgetbookComponent buildArticleListComponent(BuildContext context) => Widgetboo
         articles: <ArticleModel>[
           for (var i = 0; i < 5; i++) HelperService.createArticleModel(id: i)
         ],
+        isFullLoaded: false,
       ),
     ),
     WidgetbookUseCase(
@@ -35,6 +38,7 @@ WidgetbookComponent buildArticleListComponent(BuildContext context) => Widgetboo
           for (var i = 0; i < KnobsService.countOfArticles(context); i++)
             HelperService.createArticleModel(id: i)
         ],
+        isFullLoaded: KnobsService.isFullLoaded(context),
       ),
     ),
   ],
