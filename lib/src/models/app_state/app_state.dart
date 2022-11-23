@@ -9,7 +9,9 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   BuiltList<ArticleModel> get articles;
   AppTheme get theme;
   bool get isSetThemeProgrammatically;
+  bool get isArticlesFullLoaded;
   int get articlesPageNumber;
+
 
   bool get isArticlesLoaded => articles.isNotEmpty;
 
@@ -21,5 +23,6 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
     ..articles.replace([])
     ..theme = AppTheme.light()
     ..isSetThemeProgrammatically = false
+    ..isArticlesFullLoaded = false
     ..articlesPageNumber = 7;
 }

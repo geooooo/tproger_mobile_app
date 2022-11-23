@@ -34,10 +34,10 @@ class MiddlewareService {
 
   Stream<LoadNextArticlesBaseAction> _loadNextArticles(Stream<LoadNextArticlesAction> actions, EpicStore<AppState> store) =>
     actions.asyncMap((action) async {
-      final articles = await _articleListService.getNextArticles(action.pageNumber);
+      final articles = await _articleListService.getNextArticles(action.nextPageNumber);
 
       return articles.isEmpty
         ? const LoadNextArticlesEndAction()
-        : LoadNextArticlesSuccessAction(articles, action.pageNumber);
+        : LoadNextArticlesSuccessAction(articles, action.nextPageNumber);
     });
 }

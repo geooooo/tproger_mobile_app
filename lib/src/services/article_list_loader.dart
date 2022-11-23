@@ -37,6 +37,10 @@ class ArticleListLoader {
 
   Future<List<ArticleModel>> _parseArticles(String html) async {
     final parsedArticles = _articleListParser.parse(html);
+    if (parsedArticles.isEmpty) {
+      return [];
+    }
+
     final data = await _loadAdditionalData(parsedArticles);
     return _getArticleModels(data);
   }
