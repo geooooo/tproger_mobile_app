@@ -21,5 +21,5 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
     ..articles.replace([])
     ..theme = AppTheme.light()
     ..isSetThemeProgrammatically = false
-    ..articlesPageNumber = 1;
+    ..articlesPageNumber = 7;
 }
