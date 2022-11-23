@@ -24,5 +24,5 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
     ..theme = AppTheme.light()
     ..isSetThemeProgrammatically = false
     ..isArticlesFullLoaded = false
-    ..articlesPageNumber = 7;
+    ..articlesPageNumber = 1;
 }

@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:redux/redux.dart';
 import 'package:tproger_mobile_app/src/models/actions/init_theme_action.dart';
+import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_success_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/load_next_articles_success_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/set_theme_action.dart';
@@ -17,6 +18,7 @@ class ReducerService {
   ReducerService(this._appThemeService);
   
   Reducer<AppState> get reducer => combineReducers<AppState>([
+    TypedReducer(_loadArticles),
     TypedReducer(_initTheme),
     TypedReducer(_setTheme),
     TypedReducer(_loadArticlesSuccess),
@@ -39,6 +41,12 @@ class ReducerService {
     final newTheme = isDarkMode? AppTheme.dark() : AppTheme.light();
     return state.rebuild((b) => b.theme = newTheme);
   }
+
+  AppState _loadArticles(AppState state, LoadArticlesAction action) => state.rebuild((b) => b
+    ..articles.replace([])
+    ..isArticlesFullLoaded = false
+    ..articlesPageNumber = 1
+  );
 
   AppState _setTheme(AppState state, SetThemeAction action) => state.rebuild((b) => b
     ..theme = action.theme

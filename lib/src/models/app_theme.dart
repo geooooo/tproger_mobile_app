@@ -68,6 +68,8 @@ class AppTheme {
 
   final bool isDark;
 
+  final Color articleListRefreshIndicatorBackgroundColor;
+  final Color articleListRefreshIndicatorColor;
   final Color mainBackgroundColor;
   final Color loaderColor;
   final Color articleBackgroundColor;
@@ -93,6 +95,8 @@ class AppTheme {
 
   AppTheme.light(): 
     isDark = false,
+    articleListRefreshIndicatorBackgroundColor = _whiteColor0,
+    articleListRefreshIndicatorColor = _blackColor2,
     mainBackgroundColor = _whiteColor0,
     loaderColor = _blackColor2,
     articleBackgroundColor = _whiteColor,
@@ -165,6 +169,8 @@ class AppTheme {
   
   AppTheme.dark():
     isDark = true,
+    articleListRefreshIndicatorBackgroundColor = _blackColor,
+    articleListRefreshIndicatorColor = _whiteColor3,
     mainBackgroundColor = _blackColor,
     loaderColor = _whiteColor3,
     articleBackgroundColor = _blackColor0,
