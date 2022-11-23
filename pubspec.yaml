@@ -22,7 +22,7 @@ dependencies:
   injectable: ^1.5.3
   injectable_generator: ^1.5.4
   get_it: ^7.2.0
-  color_parser: ^0.0.3
+  hexcolor: ^3.0.1
   webviewx: ^0.2.1
   shimmer: ^2.0.0
   transparent_image: ^2.0.0

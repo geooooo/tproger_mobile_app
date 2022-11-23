@@ -1,0 +1,24 @@
+import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:injectable/injectable.dart';
+
+// TODO: Add tests
+@singleton
+class ColorService {
+  Color parseHexColor(String hexColor) {
+    hexColor = hexColor.substring(1);
+    
+    if (hexColor.length == 6) {
+      return HexColor(hexColor);
+    }
+
+    final r = hexColor[0] * 2;
+    final g = hexColor[1] * 2;
+    final b = hexColor[2] * 2;
+    final alpha = (hexColor.length == 4)
+      ? int.parse(hexColor[3] * 2, radix: 16)
+      : 255;
+
+    return HexColor('$r$g$b').withAlpha(alpha);
+  }
+}
