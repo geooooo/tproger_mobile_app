@@ -18,7 +18,7 @@ class AppTheme {
   static const _grayColor2 = Color.fromRGBO(118, 135, 135, 1);
 
   static const articleListArticleSeparatorSize = 20.0;
-  static const articleListLoaderSeparatorSize = 50.0;
+  static const articleListLastItemSeparatorSize = 50.0;
   static const articleHeaderAndContentSeparatorSize = 18.0;
   static const articleImageAndTitleSeparatorSize = 12.0;
   static const articleTitleAndDescriptionSeparatorSize = 16.0;
