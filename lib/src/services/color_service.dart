@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:injectable/injectable.dart';
 
-// TODO: Add tests
 @singleton
 class ColorService {
   Color parseHexColor(String hexColor) {

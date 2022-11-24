@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
-// TODO: Add tests
 @singleton
 class AppThemeService {
   bool isDarkMode(BuildContext context) {
