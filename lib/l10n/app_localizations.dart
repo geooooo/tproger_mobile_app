@@ -96,6 +96,12 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Оценить'**
   String get estimateText;
+
+  /// No description provided for @weCouldNotFindPostsText.
+  ///
+  /// In ru, this message translates to:
+  /// **'У нас не получилось найти посты по вашим тегам, уменьшите их количество или сбросьте фильтр.'**
+  String get weCouldNotFindPostsText;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

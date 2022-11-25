@@ -1,4 +1,5 @@
 enum Asset {
+  sleepingCat('images/sleeping_cat.svg'),
   eye('images/eye.svg'),
   bookmark('images/bookmark.svg'),
   comment('images/comment.svg'),

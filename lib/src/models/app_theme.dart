@@ -16,6 +16,7 @@ class AppTheme {
   static const _grayColor0 = Color.fromRGBO(98, 112, 112, 1);
   static const _grayColor1 = Color.fromRGBO(197, 211, 211, 1);
   static const _grayColor2 = Color.fromRGBO(118, 135, 135, 1);
+  static const _grayColor3 = Color.fromRGBO(184, 201, 201, 1);
 
   static const articleListArticleSeparatorSize = 20.0;
   static const articleListLastItemSeparatorSize = 50.0;
@@ -29,6 +30,9 @@ class AppTheme {
   static const articleFooterButtonIconAndTextSeparatorSize = 4.0;
   static const articleFooterButtonsSeparatorSize = 24.0;
   static const articleReactionAndTextSeparatorSize = 2.0;
+  static const articleListEndWidgetSleepingCatAndTextSeparatorSize = 8.0;
+  static const articleListEndWidgetAfterSleepingCatSeparatorSize = 58.0;
+  static const articleListEndWidgetSize = 110.0;
   static const articlePaddingSize = 16.0;
   static const articleAuthorAvatarSize = 24.0;
   static const articleViewCountIconSize = 16.0;
@@ -70,6 +74,7 @@ class AppTheme {
 
   final Color articleListRefreshIndicatorBackgroundColor;
   final Color articleListRefreshIndicatorColor;
+  final Color articleListEndWidgetSleepingCatColor;
   final Color mainBackgroundColor;
   final Color loaderColor;
   final Color articleBackgroundColor;
@@ -92,11 +97,13 @@ class AppTheme {
   final TextStyle articleFooterButtonTextStyle;
   final TextStyle articleFooterButtonInvertedTextStyle;
   final TextStyle articleReactionTextStyle;
+  final TextStyle articleListEndWidgetTextStyle;
 
   AppTheme.light(): 
     isDark = false,
     articleListRefreshIndicatorBackgroundColor = _whiteColor0,
     articleListRefreshIndicatorColor = _blackColor2,
+    articleListEndWidgetSleepingCatColor = _grayColor3,
     mainBackgroundColor = _whiteColor0,
     loaderColor = _blackColor2,
     articleBackgroundColor = _whiteColor,
@@ -165,12 +172,18 @@ class AppTheme {
       fontSize: 16,
       fontWeight: FontWeight.w500,
       color: _grayColor0,
+    ),
+    articleListEndWidgetTextStyle = _fontFamily(
+      fontSize: 20,
+      fontWeight: FontWeight.w500,
+      color: _grayColor0,
     );
   
   AppTheme.dark():
     isDark = true,
     articleListRefreshIndicatorBackgroundColor = _blackColor,
     articleListRefreshIndicatorColor = _whiteColor3,
+    articleListEndWidgetSleepingCatColor = _grayColor,
     mainBackgroundColor = _blackColor,
     loaderColor = _whiteColor3,
     articleBackgroundColor = _blackColor0,
@@ -239,5 +252,10 @@ class AppTheme {
       fontSize: 16,
       fontWeight: FontWeight.w500,
       color: _grayColor2,
+    ),
+    articleListEndWidgetTextStyle = _fontFamily(
+      fontSize: 20,
+      fontWeight: FontWeight.w500,
+      color: _grayColor0,
     );
 }
