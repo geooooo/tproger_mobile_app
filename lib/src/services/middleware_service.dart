@@ -7,9 +7,11 @@ import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/
 import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/load_next_articles_base_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/load_next_articles_end_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/load_next_articles_success_action.dart';
+import 'package:tproger_mobile_app/src/models/actions/open_link_action.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/exceptions/load_articles_list_exception.dart';
 import 'package:tproger_mobile_app/src/services/article_list_service.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 @singleton
 class MiddlewareService {
@@ -18,6 +20,7 @@ class MiddlewareService {
   Epic<AppState> get middleware => combineEpics<AppState>([
     TypedEpic(_loadArticles),
     TypedEpic(_loadNextArticles),
+    TypedEpic(_openLink),
   ]);
 
   MiddlewareService(this._articleListService);
@@ -40,4 +43,9 @@ class MiddlewareService {
         ? const LoadNextArticlesEndAction()
         : LoadNextArticlesSuccessAction(articles, action.nextPageNumber);
     });
+
+  Stream<void> _openLink(Stream<OpenLinkAction> actions, EpicStore<AppState> store) =>
+    actions.map((action) => 
+      launchUrlString(action.link, mode: LaunchMode.externalApplication)
+    );
 }

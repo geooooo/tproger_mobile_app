@@ -9,4 +9,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get weCouldNotFindPostsText => 'У нас не получилось найти посты по вашим тегам, уменьшите их количество или сбросьте фильтр.';
+
+  @override
+  String get orFindInOurTelegramChannelsText => 'Или поищите в наших Telegram-каналах:';
 }

@@ -6,8 +6,8 @@ import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 
-class ArticleListEndWidget extends StatelessWidget {
-  const ArticleListEndWidget({ super.key });
+class ArticleListEndSleepingCatWidget extends StatelessWidget {
+  const ArticleListEndSleepingCatWidget({ super.key });
 
   @override
   Widget build(BuildContext context) => StoreBuilder<AppState>(
@@ -23,10 +23,9 @@ class ArticleListEndWidget extends StatelessWidget {
         const SizedBox(height: AppTheme.articleListEndWidgetSleepingCatAndTextSeparatorSize),
         Text(
           AppLocalizations.of(context)!.weCouldNotFindPostsText,
-          style: store.state.theme.articleListEndWidgetTextStyle,
+          style: store.state.theme.articleListEndWidgetSleepingCatTextStyle,
           textAlign: TextAlign.center,
         ),
-        const SizedBox(height: AppTheme.articleListEndWidgetAfterSleepingCatSeparatorSize),
       ],
     ),
   );

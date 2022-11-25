@@ -17,6 +17,8 @@ class AppTheme {
   static const _grayColor1 = Color.fromRGBO(197, 211, 211, 1);
   static const _grayColor2 = Color.fromRGBO(118, 135, 135, 1);
   static const _grayColor3 = Color.fromRGBO(184, 201, 201, 1);
+  static const _greenColor0 = Color.fromRGBO(42, 165, 160, 1);
+  static const _greenColor1 = Color.fromRGBO(29, 112, 109, 1);
 
   static const articleListArticleSeparatorSize = 20.0;
   static const articleListLastItemSeparatorSize = 50.0;
@@ -31,8 +33,11 @@ class AppTheme {
   static const articleFooterButtonsSeparatorSize = 24.0;
   static const articleReactionAndTextSeparatorSize = 2.0;
   static const articleListEndWidgetSleepingCatAndTextSeparatorSize = 8.0;
-  static const articleListEndWidgetAfterSleepingCatSeparatorSize = 58.0;
+  static const articleListEndWidgetSleepingCatAndTelegramLinkSeparatorSize = 58.0;
+  static const articleListEndAfterTelegramLinkSeparatorSize = 50.0;
+  static const articleListEndWidgetTelegramIconAndTextSeparatorSize = 12.0;
   static const articleListEndWidgetSize = 110.0;
+  static const articleListEndWidgetTelegramIconSize = 48.0;
   static const articlePaddingSize = 16.0;
   static const articleAuthorAvatarSize = 24.0;
   static const articleViewCountIconSize = 16.0;
@@ -97,7 +102,9 @@ class AppTheme {
   final TextStyle articleFooterButtonTextStyle;
   final TextStyle articleFooterButtonInvertedTextStyle;
   final TextStyle articleReactionTextStyle;
-  final TextStyle articleListEndWidgetTextStyle;
+  final TextStyle articleListEndWidgetSleepingCatTextStyle;
+  final TextStyle articleListEndWidgetTelegramTextStyle;
+  final TextStyle articleListEndWidgetTelegramLinkTextStyle;
 
   AppTheme.light(): 
     isDark = false,
@@ -173,10 +180,22 @@ class AppTheme {
       fontWeight: FontWeight.w500,
       color: _grayColor0,
     ),
-    articleListEndWidgetTextStyle = _fontFamily(
+    articleListEndWidgetSleepingCatTextStyle = _fontFamily(
       fontSize: 20,
       fontWeight: FontWeight.w500,
       color: _grayColor0,
+    ),
+    articleListEndWidgetTelegramTextStyle = _fontFamily(
+      fontSize: 20,
+      height: 28 / 20,
+      fontWeight: FontWeight.w600,
+      color: _blackColor2,
+    ),
+    articleListEndWidgetTelegramLinkTextStyle = _fontFamily(
+      color: _greenColor1,
+      fontSize: 20,
+      height: 28 / 20,
+      fontWeight: FontWeight.w600,
     );
   
   AppTheme.dark():
@@ -253,9 +272,21 @@ class AppTheme {
       fontWeight: FontWeight.w500,
       color: _grayColor2,
     ),
-    articleListEndWidgetTextStyle = _fontFamily(
+    articleListEndWidgetSleepingCatTextStyle = _fontFamily(
       fontSize: 20,
       fontWeight: FontWeight.w500,
       color: _grayColor0,
+    ),
+    articleListEndWidgetTelegramTextStyle = _fontFamily(
+      fontSize: 20,
+      height: 28 / 20,
+      fontWeight: FontWeight.w600,
+      color: _whiteColor3,
+    ),
+    articleListEndWidgetTelegramLinkTextStyle = _fontFamily(
+      color: _greenColor0,
+      fontSize: 20,
+      height: 28 / 20,
+      fontWeight: FontWeight.w600,
     );
 }

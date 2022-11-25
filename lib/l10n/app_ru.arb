@@ -3,5 +3,8 @@
     "@estimateText": {},
 
     "weCouldNotFindPostsText": "У нас не получилось найти посты по вашим тегам, уменьшите их количество или сбросьте фильтр.",
-    "@weCouldNotFindPostsText": {}
+    "@weCouldNotFindPostsText": {},
+
+    "orFindInOurTelegramChannelsText": "Или поищите в наших Telegram-каналах:",
+    "@orFindInOurTelegramChannelsText": {}
 }

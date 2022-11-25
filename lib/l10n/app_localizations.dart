@@ -102,6 +102,12 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'У нас не получилось найти посты по вашим тегам, уменьшите их количество или сбросьте фильтр.'**
   String get weCouldNotFindPostsText;
+
+  /// No description provided for @orFindInOurTelegramChannelsText.
+  ///
+  /// In ru, this message translates to:
+  /// **'Или поищите в наших Telegram-каналах:'**
+  String get orFindInOurTelegramChannelsText;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
