@@ -1,6 +1,6 @@
 enum Asset {
   sleepingCat('images/sleeping_cat.svg'),
-  telegram('images/telegram.svg'),
+  telegram0('images/telegram0.svg'),
   telegram1('images/telegram1.svg'),
   eye('images/eye.svg'),
   bookmark('images/bookmark.svg'),

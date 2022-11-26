@@ -18,7 +18,7 @@ class ReactionService {
         return Asset.angry;
       case Reaction.laugh:
         return Asset.laugh;
-      case Reaction.thinking:
+      case Reaction.think:
         return Asset.think;
     }
   }

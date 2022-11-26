@@ -1,8 +1,7 @@
 @TestOn('vm')
 
 import 'package:test/test.dart';
-import 'package:tproger_mobile_app/src/models/article_author/article_company_author.dart';
-import 'package:tproger_mobile_app/src/models/article_author/article_user_author.dart';
+import 'package:tproger_mobile_app/src/models/article_author.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_icon_image.dart';
 import 'package:tproger_mobile_app/src/models/parsed_article/parsed_article.dart';
 import 'package:tproger_mobile_app/src/services/article_list_parser.dart';
@@ -18,7 +17,7 @@ void main() {
       articleLink: 'https://tproger.ru/articles/tehnologija-ar-kak-rabotaet-i-na-chjom-sozdat-proekt/', 
       description: 'Технология дополненной реальности позволяет добавлять цифровые элементы в «живую» картинку. Рассказываем, как разработать простой AR-проект.', 
       id: 232720,
-      author: ArticleCompanyAuthor(
+      author: ArticleAuthor(
         name: 'МТС', 
         avatarLink: 'https://media.tproger.ru/uploads/2022/01/mts.png',
       ),
@@ -32,7 +31,7 @@ void main() {
       articleLink: 'https://tproger.ru/articles/raspredelenie-pamjati-v-python-skolko-i-v-kakih-sluchajah-zanimajut-tipy-dannyh/', 
       description: 'Как устроено выделение памяти под объекты в Python, как работает очистка памяти и в чём разница в памяти на примере типов list, dict и tuple.', 
       id: 232784,
-      author: ArticleUserAuthor(
+      author: ArticleAuthor(
         name: 'Илья Латышев', 
         avatarLink: 'https://tproger.ru/wp-content/themes/gecko/images/default-avatar.png',
       ),
@@ -46,7 +45,7 @@ void main() {
       articleLink: 'https://tproger.ru/articles/pishem-programmu-dlja-testirovanija-s/', 
       description: 'Рассказываем, как написать программу тестирования для проверки работы или знаний человека. В качестве языка программирования используем С++.', 
       id: 232698,
-      author: ArticleUserAuthor(
+      author: ArticleAuthor(
         name: 'Искусство разработки игр', 
         avatarLink: 'https://tproger.ru/wp-content/themes/gecko/images/default-avatar.png',
       ),
@@ -71,7 +70,7 @@ void main() {
       articleLink: 'https://tproger.ru/digest/5-poleznyh-knig-po-zhelezu/', 
       description: 'Составили подборку из 5 книг про компьютеры, которые помогут разобраться в архитектуре ЭВМ и понять, как работает все железное.', 
       id: 233185,
-      author: ArticleUserAuthor(
+      author: ArticleAuthor(
         name: 'Daria R', 
         avatarLink: 'https://tproger.ru/wp-content/themes/gecko/images/default-avatar.png',
       ),

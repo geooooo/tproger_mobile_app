@@ -9,7 +9,7 @@ class ArticleListHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Column(
-    children: [
+    children: const [
       ReadUsTelegramWidget()
     ],
   );

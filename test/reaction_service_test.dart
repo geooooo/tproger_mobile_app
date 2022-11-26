@@ -11,13 +11,13 @@ void main() {
   test('Get icon by reaction', () {
     final likeIcon = reactionService.getIconByReaction(Reaction.like);
     final angryIcon = reactionService.getIconByReaction(Reaction.angry);
-    final thinkingIcon = reactionService.getIconByReaction(Reaction.thinking);
+    final thinkIcon = reactionService.getIconByReaction(Reaction.think);
     final laughIcon = reactionService.getIconByReaction(Reaction.laugh);
     final surpriseIcon = reactionService.getIconByReaction(Reaction.surprise);
 
     expect(Asset.like, equals(likeIcon));
     expect(Asset.angry, equals(angryIcon));
-    expect(Asset.think, equals(thinkingIcon));
+    expect(Asset.think, equals(thinkIcon));
     expect(Asset.laugh, equals(laughIcon));
     expect(Asset.surprise, equals(surpriseIcon));
   });
@@ -40,7 +40,7 @@ void main() {
     expect(1, equals(count));
 
     count = reactionService.commonCount({
-      Reaction.thinking: 3,
+      Reaction.think: 3,
       Reaction.like: 2,
       Reaction.laugh: 1,
     });

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:tproger_mobile_app/src/models/article_author/article_author.dart';
+import 'package:tproger_mobile_app/src/models/article_author.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_image.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
 

@@ -17,7 +17,7 @@ class TelegramLinkWidget extends StatelessWidget {
     builder: (context, store) => Column(
       children: [
         SvgPicture.asset(
-          Asset.telegram.value,
+          Asset.telegram0.value,
           package: Asset.package,
           width: AppTheme.articleListEndWidgetTelegramIconSize,
           height: AppTheme.articleListEndWidgetTelegramIconSize,

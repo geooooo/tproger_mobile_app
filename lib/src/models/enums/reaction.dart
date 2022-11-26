@@ -1,7 +1,7 @@
 enum Reaction {
   angry(1),
   surprise(2),
-  thinking(3),
+  think(3),
   laugh(4),
   like(5);
 

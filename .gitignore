@@ -47,6 +47,3 @@ app.*.map.json
 
 # VSCode
 .vscode
-
-# Other
-emulator.sh

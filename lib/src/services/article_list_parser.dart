@@ -1,13 +1,11 @@
 import 'package:html/dom.dart';
 import 'package:html/parser.dart' as html_parser;
 import 'package:injectable/injectable.dart';
-import 'package:tproger_mobile_app/src/models/article_author/article_author.dart';
+import 'package:tproger_mobile_app/src/models/article_author.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_image.dart';
-import 'package:tproger_mobile_app/src/models/enums/article_author_type.dart';
 import 'package:tproger_mobile_app/src/models/enums/article_list_selector.dart';
 import 'package:tproger_mobile_app/src/models/enums/base_url.dart';
 import 'package:tproger_mobile_app/src/models/parsed_article/parsed_article.dart';
-import 'package:tuple/tuple.dart';
 
 @singleton
 class ArticleListParser {
@@ -36,10 +34,9 @@ class ArticleListParser {
 
     final authorAvatarLink = _parseAuthorAvatarLink(authorElement);
     final authorName = _parseAuthorName(authorElement);
-    final author = (authorName == null)? null : ArticleAuthor.from(
+    final author = (authorName == null)? null : ArticleAuthor(
       avatarLink: authorAvatarLink!,
-      name: authorName.item1,
-      type: authorName.item2,
+      name: authorName,
     );
 
     return ParsedArticle(
@@ -119,19 +116,19 @@ class ArticleListParser {
     return _addHostToLink(dataSrc);
   }
 
-  Tuple2<String, ArticleAuthorType>? _parseAuthorName(Element? authorElement) {
+  String? _parseAuthorName(Element? authorElement) {
     if (authorElement == null) {
       return null;
     }
 
     var authorNameElement = _getAuthorUserNameElement(authorElement);
     if (authorNameElement != null) {
-      return Tuple2(authorNameElement.text.trim(), ArticleAuthorType.user);
+      return authorNameElement.text.trim();
     }
 
     authorNameElement = _getAuthorCompanyNameElement(authorElement);
     if (authorNameElement != null) {
-      return Tuple2(authorNameElement.text.trim(), ArticleAuthorType.company);
+      return authorNameElement.text.trim();
     }
     
     return null;

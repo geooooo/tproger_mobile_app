@@ -6,7 +6,7 @@ import 'package:tproger_mobile_app/src/models/api/load_articles_bookmark_counts/
 import 'package:tproger_mobile_app/src/models/api/load_articles_comment_counts/load_articles_comment_counts_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/load_articles_view_counts_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_articles_request.dart';
-import 'package:tproger_mobile_app/src/models/article_author/article_user_author.dart';
+import 'package:tproger_mobile_app/src/models/article_author.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_icon_image.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
@@ -62,7 +62,7 @@ ParsedArticle createParsedArticle(int id) => ParsedArticle(
   description: 'description$id',
   id: id,
   articleLink: 'articleLink$id', 
-  author: ArticleUserAuthor(
+  author: ArticleAuthor(
     name: 'name$id', 
     avatarLink: 'avatarLink$id',
   ),
@@ -77,7 +77,7 @@ ArticleModel createArticleModel(int id) => ArticleModel(
   description: 'description$id',
   id: id,
   articleLink: 'articleLink$id', 
-  author: ArticleUserAuthor(
+  author: ArticleAuthor(
     name: 'name$id', 
     avatarLink: 'avatarLink$id',
   ),
