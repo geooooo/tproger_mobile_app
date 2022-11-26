@@ -8,28 +8,6 @@ WidgetbookComponent buildArticleComponent(BuildContext context) => WidgetbookCom
   name: 'Article',
   useCases: [
     WidgetbookUseCase(
-      name: 'Icon image', 
-      builder: (context) => Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ArticleWidget(
-            article: HelperService.createArticleModel(isBackgroundImage: false),
-          ),
-        ],
-      ),
-    ),
-    WidgetbookUseCase(
-      name: 'Background image', 
-      builder: (context) => Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ArticleWidget(
-            article: HelperService.createArticleModel(isBackgroundImage: true),
-          ),
-        ],
-      ),
-    ),
-    WidgetbookUseCase(
       name: 'Custom', 
       builder: (context) => Column(
         mainAxisSize: MainAxisSize.min,

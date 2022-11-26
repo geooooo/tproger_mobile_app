@@ -1,7 +1,7 @@
 import 'package:tproger_mobile_app/src/models/article_model.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_icon_image.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_background_image.dart';
-import 'package:tproger_mobile_app/src/models/article_author/article_user_author.dart';
+import 'package:tproger_mobile_app/src/models/article_author.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
 import 'package:tproger_mobile_app_widgetbook/models/default_values.dart';
 
@@ -26,7 +26,7 @@ class HelperService {
     commentCount: commentCount,
     reactionToCounts: reactionToCounts,
     viewCount: viewCount,
-    author: ArticleUserAuthor(
+    author: ArticleAuthor(
       avatarLink: DefaultValues.avatarLink,
       name: authorName,
     ),

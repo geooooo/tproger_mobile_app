@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tproger_mobile_app_widgetbook/models/default_values.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
-import 'package:tproger_mobile_app/src/models/article_author/article_user_author.dart';
+import 'package:tproger_mobile_app/src/models/article_author.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_icon_image.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 
@@ -59,16 +59,16 @@ class KnobsService {
 
   static ArticleIconImage? image(BuildContext context) => context.knobs.boolean(
     label: 'Has image',
-    initialValue: true,
+    initialValue: false,
   ) ? _iconImage(context) : null;
       
-  static String avatarLink(BuildContext context, {String defaultValue = DefaultValues.avatarLink}) => context.knobs.text(
-    initialValue: defaultValue,
+  static String avatarLink(BuildContext context) => context.knobs.text(
+    initialValue: DefaultValues.avatarLink,
     label: 'Network link to an avatar'
   );
 
-  static ArticleUserAuthor author(BuildContext context) => ArticleUserAuthor(
-    avatarLink: KnobsService.avatarLink(context, defaultValue: DefaultValues.avatarLink),
+  static ArticleAuthor author(BuildContext context) => ArticleAuthor(
+    avatarLink: KnobsService.avatarLink(context),
     name: KnobsService.authorName(context),
   );
 
@@ -150,20 +150,20 @@ class KnobsService {
 
   static int countOfArticles(BuildContext context) => context.knobs.number(
     label: 'Count of articles',
-    initialValue: 2,
+    initialValue: 0,
   ).toInt();
 
   static Map<Reaction, int> reactionToCounts(BuildContext context) {
     final angryReactionCount = KnobsService._angryReactionCount(context);
     final surpirseReactionCount = KnobsService._surpirseReactionCount(context);
-    final thinkingReactionCount = KnobsService._thinkingReactionCount(context);
+    final thinkReactionCount = KnobsService._thinkingReactionCount(context);
     final laughReactionCount = KnobsService._laughReactionCount(context);
     final likeReactionCount = KnobsService._likeReactionCount(context);
 
     return {
       if (angryReactionCount > 0) Reaction.angry: angryReactionCount, 
       if (surpirseReactionCount > 0) Reaction.surprise: surpirseReactionCount, 
-      if (thinkingReactionCount > 0) Reaction.thinking: thinkingReactionCount, 
+      if (thinkReactionCount > 0) Reaction.think: thinkReactionCount, 
       if (laughReactionCount > 0) Reaction.laugh: laughReactionCount, 
       if (likeReactionCount > 0) Reaction.like: likeReactionCount, 
     };

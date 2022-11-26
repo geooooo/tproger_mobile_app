@@ -9,29 +9,6 @@ WidgetbookComponent buildArticleListComponent(BuildContext context) => Widgetboo
   name: 'ArticleList',
   useCases: [
     WidgetbookUseCase(
-      name: 'Empty', 
-      builder: (context) => const ArticleListWidget(
-        articles: <ArticleModel>[],
-        isFullLoaded: false,
-      ),
-    ),
-    WidgetbookUseCase(
-      name: 'One item', 
-      builder: (context) => ArticleListWidget(
-        articles: <ArticleModel>[HelperService.createArticleModel()],
-        isFullLoaded: false,
-      ),
-    ),
-    WidgetbookUseCase(
-      name: 'Several items', 
-      builder: (context) => ArticleListWidget(
-        articles: <ArticleModel>[
-          for (var i = 0; i < 5; i++) HelperService.createArticleModel(id: i)
-        ],
-        isFullLoaded: false,
-      ),
-    ),
-    WidgetbookUseCase(
       name: 'Custom', 
       builder: (context) => ArticleListWidget(
         articles: <ArticleModel>[
