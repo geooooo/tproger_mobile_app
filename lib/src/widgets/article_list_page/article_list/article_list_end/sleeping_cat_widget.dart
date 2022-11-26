@@ -6,8 +6,8 @@ import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 
-class ArticleListEndSleepingCatWidget extends StatelessWidget {
-  const ArticleListEndSleepingCatWidget({ super.key });
+class SleepingCatWidget extends StatelessWidget {
+  const SleepingCatWidget({ super.key });
 
   @override
   Widget build(BuildContext context) => StoreBuilder<AppState>(

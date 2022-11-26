@@ -44,7 +44,7 @@ class ReducerService {
   AppState _loadArticles(AppState state, LoadArticlesAction action) => state.rebuild((b) => b
     ..articles.replace([])
     ..isArticlesFullLoaded = false
-    ..articlesPageNumber = 6
+    ..articlesPageNumber = 1
   );
 
   AppState _setTheme(AppState state, SetThemeAction action) => state.rebuild((b) => b

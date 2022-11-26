@@ -28,6 +28,7 @@ class ArticleListWidget extends StatelessWidget {
       backgroundColor: store.state.theme.mainBackgroundColor,
       onRefresh: () async => _onRefresh(store),
       child: ListView.separated(
+        shrinkWrap: true,
         addAutomaticKeepAlives: true,
         itemCount: articles.length + 1,
         itemBuilder: (context, index) => _itemBuilder(store, index),

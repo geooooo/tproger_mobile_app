@@ -9,8 +9,8 @@ import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 
-class ArticleListEndTelegramLinkWidget extends StatelessWidget {
-  const ArticleListEndTelegramLinkWidget({ super.key });
+class TelegramLinkWidget extends StatelessWidget {
+  const TelegramLinkWidget({ super.key });
 
   @override
   Widget build(BuildContext context) => StoreBuilder<AppState>(
