@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:tproger_mobile_app/src/models/app_common.dart';
 import 'package:tproger_mobile_app/src/models/app_size.dart';
-import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
+import 'package:tproger_mobile_app/src/models/reaction_data.dart';
 import 'package:tproger_mobile_app/src/services/reaction_service.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_reactions/reaction_text_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_reactions/reaction_widget.dart';
@@ -9,14 +10,28 @@ import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/ar
 class ReactionListWidget extends StatelessWidget {
   final _reactionService = GetIt.instance.get<ReactionService>();
 
-  int get _commonCount => _reactionService.commonCount(reactionToCounts);
-  double get _width => 
-    reactionToCounts.length * AppSize.articleReactionIconSize + AppSize.articleReactionBorderSize * 2; //TODO: Make pixel perfect
+  final List<ReactionData> reactions;
 
-  final Map<Reaction, int> reactionToCounts;
+  List<ReactionData> get _visibleReactions => reactions.take(AppCommon.maxReactions).toList();
+
+  int get _commonCount => _reactionService.commonCount(reactions);
+  
+  double get _width {
+    final baseWidth = _visibleReactions.length * AppSize.articleReactionIconSize;
+
+    if (_visibleReactions.length == 1) {
+      return baseWidth + AppSize.articleReactionBorderSize * 2;
+    } else if (_visibleReactions.length == 2) {
+      return baseWidth + AppCommon.reactionOffsetPositionK * 2;
+    } else if (_visibleReactions.length == 3) {
+      return baseWidth + AppCommon.reactionOffsetPositionK;
+    }
+
+    throw Exception('Only ${AppCommon.maxReactions} reactions in the list');
+  }
 
   ReactionListWidget({ 
-    required this.reactionToCounts,
+    required this.reactions,
     super.key,
   });
 
@@ -39,14 +54,12 @@ class ReactionListWidget extends StatelessWidget {
   List<Widget> _buildReactionWidgets() {
     final widgets = <Widget>[];
 
-    for (var i = reactionToCounts.length - 1; i >= 0 ; i--) {
-      final reaction = reactionToCounts.entries.elementAt(i).key;
+    for (var i = _visibleReactions.length - 1; i >= 0 ; i--) {
+      final reaction = _visibleReactions[i].reaction;
       final icon = _reactionService.getIconByReaction(reaction);
 
       final widget = Positioned(
-        left: i == 0
-          ? 0
-          : i * AppSize.articleReactionIconSize - i * AppSize.articleReactionBorderSize * 0.6,
+        left: i * AppSize.articleReactionIconSize  - i * AppCommon.reactionOffsetPositionK,
         child: ReactionWidget(icon: icon),
       );
 

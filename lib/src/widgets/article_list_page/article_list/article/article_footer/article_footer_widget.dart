@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
-import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
+import 'package:tproger_mobile_app/src/models/reaction_data.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_footer_button_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_reactions/article_reactions_widget.dart';
 
 class ArticleFooterWidget extends StatelessWidget {
   final int bookmarkCount;
   final int commentCount;
-  final Map<Reaction, int> reactionToCounts;
+  final List<ReactionData> reactions;
   final bool isInvertetStyle;
 
   const ArticleFooterWidget({
     required this.bookmarkCount,
     required this.commentCount,
-    required this.reactionToCounts,
+    required this.reactions,
     required this.isInvertetStyle,
     super.key,
   });
@@ -42,7 +42,7 @@ class ArticleFooterWidget extends StatelessWidget {
       ),
       Flexible(
         child: FittedBox(
-          child: ArticleReactionsWidget(reactionToCounts: reactionToCounts),
+          child: ArticleReactionsWidget(reactions: reactions),
         ),
       ),
     ],

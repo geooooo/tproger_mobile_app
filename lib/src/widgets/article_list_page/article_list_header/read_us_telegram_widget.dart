@@ -5,7 +5,6 @@ import 'package:redux/redux.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 
-// TODO: Add to widgetbook
 class ReadUsTelegramWidget extends StatefulWidget {
   const ReadUsTelegramWidget({ super.key });
 

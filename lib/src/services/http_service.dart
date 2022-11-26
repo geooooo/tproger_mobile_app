@@ -62,7 +62,7 @@ class HttpService {
         response = await _dio.get(url.value, queryParameters: params);
         break;
       default:
-        throw UnimplementedError('another http methods are not implemented');
+        throw UnimplementedError('Another http methods are not implemented');
     }
 
     return response.data;

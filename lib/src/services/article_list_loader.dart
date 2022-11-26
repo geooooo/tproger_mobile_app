@@ -12,6 +12,7 @@ import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/load
 import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/load_articles_view_counts_response.dart';
 import 'package:tproger_mobile_app/src/models/parsed_article/addition_data.dart';
 import 'package:tproger_mobile_app/src/models/parsed_article/parsed_article.dart';
+import 'package:tproger_mobile_app/src/models/reaction_data.dart';
 import 'package:tproger_mobile_app/src/services/article_list_parser.dart';
 import 'package:tproger_mobile_app/src/services/http_service.dart';
 
@@ -63,7 +64,7 @@ class ArticleListLoader {
     final idsToCommentCounts = _getArticleIdsToCommentCounts(loadArticlesCommentCountsResponse);
     final idsToBookmarkCounts = _getArticleIdsToBookmarkCounts(loadArticlesBookmarkCountsResponse);
     final idsToViewCounts = _getArticleIdsToViewCounts(loadArticlesViewCountsResponse);
-    final idsToReactions = _getArticleReactions(loadArticleReactionsResponse);
+    final idsToReactions = _getArticleIdsToReactions(loadArticleReactionsResponse);
 
     final additionalData = articles
       .map((article) => AdditionalData(
@@ -71,7 +72,7 @@ class ArticleListLoader {
         commentCount: idsToCommentCounts[article.id] ?? 0,
         bookmarkCount: idsToBookmarkCounts[article.id] ?? 0,
         viewCount: idsToViewCounts[article.id] ?? 0,
-        reactions: idsToReactions[article.id] ?? {},
+        reactions: idsToReactions[article.id] ?? [],
       ))
       .toList();
 
@@ -90,16 +91,19 @@ class ArticleListLoader {
   Map<int, int> _getArticleIdsToViewCounts(LoadArticlesViewCountsResponse response) =>
     {for (final count in response.counts) count.articleId: count.count};
 
-  Map<int, Map<int, int>> _getArticleReactions(LoadArticleReactionsResponse response) {
-    final idsToReactions = <int, Map<int, int>>{};
+  Map<int, List<ReactionData>> _getArticleIdsToReactions(LoadArticleReactionsResponse response) {
+    final idsToReactions = <int, List<ReactionData>>{};
 
     for (final articleReaction in response.articleReactions) {
       final reactions = articleReaction.reactions;
       final articleId = articleReaction.articleId;
 
-      final reactionToCount = {
-        for (final reaction in reactions) reaction.type: reaction.count
-      };
+      final reactionToCount = [
+        for (var i = 0; i < reactions.length; i++) ReactionData(
+          reaction: Reaction.fromInt(reactions[i].type),
+          count: reactions[i].count,
+        )
+      ];
 
       idsToReactions[articleId] = reactionToCount;
     }
@@ -120,11 +124,6 @@ class ArticleListLoader {
     bookmarkCount: data.bookmarkCount,
     viewCount: data.viewCount,
     commentCount: data.commentCount,
-    reactionToCounts: _getRreactionToCounts(data.reactions),
+    reactions: data.reactions,
   );
-
-  Map<Reaction, int> _getRreactionToCounts(Map<int, int> reactionToCounts) => 
-    { for (final reaction in reactionToCounts.keys) 
-        Reaction.fromInt(reaction): reactionToCounts[reaction]!
-    };
 }

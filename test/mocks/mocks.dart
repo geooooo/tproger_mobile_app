@@ -88,7 +88,7 @@ ArticleModel createArticleModel(int id) => ArticleModel(
   bookmarkCount: id, 
   viewCount: id, 
   commentCount: id, 
-  reactionToCounts: {
+  reactions: {
     Reaction.fromInt(id % Reaction.values.length): id,
   },
 );

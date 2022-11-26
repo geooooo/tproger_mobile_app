@@ -1,12 +1,13 @@
 import 'package:equatable/equatable.dart';
 import 'package:tproger_mobile_app/src/models/parsed_article/parsed_article.dart';
+import 'package:tproger_mobile_app/src/models/reaction_data.dart';
 
 class AdditionalData extends Equatable {
   final ParsedArticle sourceArticle;
   final int commentCount;
   final int bookmarkCount;
   final int viewCount;
-  final Map<int, int> reactions;
+  final List<ReactionData> reactions;
 
   const AdditionalData({
     required this.sourceArticle,

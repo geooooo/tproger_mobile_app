@@ -1,4 +1,4 @@
 #!/bin/bash
 
 flutter pub run build_runner build --delete-conflicting-outputs
-./format.sh
+./tools/format.sh

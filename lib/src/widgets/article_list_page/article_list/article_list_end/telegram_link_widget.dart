@@ -40,5 +40,5 @@ class TelegramLinkWidget extends StatelessWidget {
   );
 
   void _onTap(Store<AppState> store) =>
-    store.dispatch(const OpenLinkAction(AppCommon.tprogerTelegramLink));
+    store.dispatch(const OpenLinkAction(AppCommon.tprogerTelegramLink0));
 }

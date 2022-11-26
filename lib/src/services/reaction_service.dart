@@ -1,12 +1,14 @@
 import 'package:injectable/injectable.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
+import 'package:tproger_mobile_app/src/models/reaction_data.dart';
 
 @singleton
 class ReactionService {
-  int commonCount(Map<Reaction, int> reactionToCounts) => reactionToCounts.isEmpty 
-      ? 0 
-      : reactionToCounts.values.reduce((x, y) => x + y);
+  int commonCount(List<ReactionData> reactions) => reactions.isEmpty
+    ? 0
+    : reactions.map((reaction) => reaction.count) 
+               .reduce((x, y) => x + y);
 
   Asset getIconByReaction(Reaction reaction) {
     switch (reaction) {

@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:tproger_mobile_app/src/models/article_author.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_image.dart';
-import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
+import 'package:tproger_mobile_app/src/models/reaction_data.dart';
 
 class ArticleModel extends Equatable {
   final String title;
@@ -11,7 +11,7 @@ class ArticleModel extends Equatable {
   final int bookmarkCount;
   final int viewCount;
   final int commentCount;
-  final Map<Reaction, int> reactionToCounts;
+  final List<ReactionData> reactions;
   final ArticleImage? image;
   final ArticleAuthor? author;
 
@@ -23,7 +23,7 @@ class ArticleModel extends Equatable {
     required this.bookmarkCount,
     required this.viewCount,
     required this.commentCount,
-    required this.reactionToCounts,
+    required this.reactions,
     this.image,
     this.author,
   });
@@ -37,7 +37,7 @@ class ArticleModel extends Equatable {
     bookmarkCount,
     viewCount,
     commentCount,
-    reactionToCounts,
+    reactions,
     image,
     author,
   ];
