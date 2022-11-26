@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tproger_mobile_app/src/models/app_theme.dart';
+import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_footer_button_widget.dart';
@@ -31,7 +31,7 @@ class ArticleFooterWidget extends StatelessWidget {
               count: bookmarkCount,
               isInvertetStyle: isInvertetStyle,
             ),
-            const SizedBox(width: AppTheme.articleFooterButtonsSeparatorSize),
+            const SizedBox(width: AppSize.articleFooterButtonsSeparatorSize),
             ArticleFooterButtonWidget(
               icon: Asset.comment,
               count: commentCount,

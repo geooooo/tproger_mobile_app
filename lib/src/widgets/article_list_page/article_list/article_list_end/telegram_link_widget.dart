@@ -5,8 +5,8 @@ import 'package:redux/redux.dart';
 import 'package:tproger_mobile_app/l10n/app_localizations.dart';
 import 'package:tproger_mobile_app/src/models/actions/open_link_action.dart';
 import 'package:tproger_mobile_app/src/models/app_common.dart';
+import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
-import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 
 class TelegramLinkWidget extends StatelessWidget {
@@ -19,10 +19,10 @@ class TelegramLinkWidget extends StatelessWidget {
         SvgPicture.asset(
           Asset.telegram0.value,
           package: Asset.package,
-          width: AppTheme.articleListEndWidgetTelegramIconSize,
-          height: AppTheme.articleListEndWidgetTelegramIconSize,
+          width: AppSize.articleListEndWidgetTelegramIconSize,
+          height: AppSize.articleListEndWidgetTelegramIconSize,
         ),
-        const SizedBox(height: AppTheme.articleListEndWidgetTelegramIconAndTextSeparatorSize),
+        const SizedBox(height: AppSize.articleListEndWidgetTelegramIconAndTextSeparatorSize),
         Text(
           AppLocalizations.of(context)!.orFindInOurTelegramChannelsText,
           style: store.state.theme.articleListEndWidgetTelegramTextStyle,

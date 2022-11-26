@@ -1,6 +1,6 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -22,8 +22,8 @@ class ArticleBackgroundImageWidget extends StatelessWidget {
           clipBehavior: Clip.hardEdge,
           child: ImageFiltered(
             imageFilter: ImageFilter.blur(
-              sigmaX: AppTheme.articleImageBlurSize,
-              sigmaY: AppTheme.articleImageBlurSize,
+              sigmaX: AppSize.articleImageBlurSize,
+              sigmaY: AppSize.articleImageBlurSize,
             ),
             child: Container(
               foregroundDecoration: const BoxDecoration(

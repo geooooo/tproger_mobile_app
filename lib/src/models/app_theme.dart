@@ -1,78 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tproger_mobile_app/src/models/app_color.dart';
 
 class AppTheme {
   static const _fontFamily = GoogleFonts.inter;
-  static const _blackColor = Color.fromRGBO(0, 0, 0, 1);
-  static const _blackColor0 = Color.fromRGBO(24, 29, 28, 1);
-  static const _blackColor1 = Color.fromRGBO(37, 37, 37, 1);
-  static const _blackColor2 = Color.fromRGBO(15, 17, 17, 1);
-  static const _whiteColor = Color.fromRGBO(255, 255, 255, 1);
-  static const _whiteColor0 = Color.fromRGBO(246, 245, 245, 1);
-  static const _whiteColor1 = Color.fromRGBO(245, 245, 245, 1);
-  static const _whiteColor2 = Color.fromRGBO(234, 234, 234, 1);
-  static const _whiteColor3 = Color.fromRGBO(238, 242, 241, 1);
-  static const _grayColor = Color.fromRGBO(72, 86, 86, 1);
-  static const _grayColor0 = Color.fromRGBO(98, 112, 112, 1);
-  static const _grayColor1 = Color.fromRGBO(197, 211, 211, 1);
-  static const _grayColor2 = Color.fromRGBO(118, 135, 135, 1);
-  static const _grayColor3 = Color.fromRGBO(184, 201, 201, 1);
-  static const _greenColor0 = Color.fromRGBO(42, 165, 160, 1);
-  static const _greenColor1 = Color.fromRGBO(29, 112, 109, 1);
-
-  static const articleListArticleSeparatorSize = 20.0;
-  static const articleListLastItemSeparatorSize = 50.0;
-  static const articleHeaderAndContentSeparatorSize = 18.0;
-  static const articleImageAndTitleSeparatorSize = 12.0;
-  static const articleTitleAndDescriptionSeparatorSize = 16.0;
-  static const articleDescriptionAndFooterSeparatorSize = 18.0;
-  static const articleAuthorAvatarAndNameSeparatorSize = 8.0;
-  static const articleAuthorNameAndViewCountSeparatorSize = 16.0;
-  static const articleViewCountIconAndViewCountTextSeparatorSize = 5.0;
-  static const articleFooterButtonIconAndTextSeparatorSize = 4.0;
-  static const articleFooterButtonsSeparatorSize = 24.0;
-  static const articleReactionAndTextSeparatorSize = 2.0;
-  static const articleListEndWidgetSleepingCatAndTextSeparatorSize = 8.0;
-  static const articleListEndWidgetSleepingCatAndTelegramLinkSeparatorSize = 58.0;
-  static const articleListEndAfterTelegramLinkSeparatorSize = 50.0;
-  static const articleListEndWidgetTelegramIconAndTextSeparatorSize = 12.0;
-  static const articleListEndWidgetSize = 110.0;
-  static const articleListEndWidgetTelegramIconSize = 48.0;
-  static const articlePaddingSize = 16.0;
-  static const articleAuthorAvatarSize = 24.0;
-  static const articleViewCountIconSize = 16.0;
-  static const articleFooterButtonIconSize = 28.0;
-  static const articleReactionIconSize = 24.0;
-  static const articleImageBlurSize = 2.0;
-  static const articleReactionsBorderSize = 1.0;
-  static const articleReactionBorderSize = 3.0;
-  static const articleReactionListSize = 30.0;
-  static const loaderItemSeparatorSize = 8.0;
-  static const articleListLoaderSize = 98.0;
-  static const articleAuthorNameMaxWidth = 200.0;
-
-  static const articleImageContainerHeight = 120.0;
-  static const articleImageHeight = 70.0;
-
-  static const articleImageRadius = Radius.elliptical(12, 12);
-  static const articleAuthorAvatarRadius = Radius.elliptical(8, 8);
-  static const articleReactionsBorderRadius = Radius.circular(50);
-  static const articleReactionBorderRadius = Radius.circular(180);
 
   static const articleImageGradient = LinearGradient(
     begin: Alignment.bottomCenter,
     end: Alignment.topCenter,
     stops: [0.1185, 0.906],
     colors: [
-      Color.fromRGBO(0, 0, 0, 0.8),
-      Color.fromRGBO(0, 0, 0, 0.4),                
+      AppColor.blackColor3,
+      AppColor.blackColor4,
     ],
-  );
-  static const articleReactionsPadding = EdgeInsets.only(
-    top: 4,
-    right: 12,
-    bottom: 4,
-    left: 3,
   );
 
   final bool isDark;
@@ -108,91 +48,91 @@ class AppTheme {
 
   AppTheme.light(): 
     isDark = false,
-    articleListRefreshIndicatorBackgroundColor = _whiteColor0,
-    articleListRefreshIndicatorColor = _blackColor2,
-    articleListEndWidgetSleepingCatColor = _grayColor3,
-    mainBackgroundColor = _whiteColor0,
-    loaderColor = _blackColor2,
-    articleBackgroundColor = _whiteColor,
-    articleViewCountIconColor = _grayColor,
-    articleViewCountIconInvertedColor = _whiteColor,
-    articleFooterButtonIconColor = _grayColor0,
-    articleFooterButtonIconInvertedColor = _whiteColor,
-    articleReactionsBackgroundColor = _whiteColor1,
-    articleReactionsBorderColor = _whiteColor2,
-    articleReactionBorderColor = _whiteColor,
+    articleListRefreshIndicatorBackgroundColor = AppColor.whiteColor0,
+    articleListRefreshIndicatorColor = AppColor.blackColor2,
+    articleListEndWidgetSleepingCatColor = AppColor.grayColor3,
+    mainBackgroundColor = AppColor.whiteColor0,
+    loaderColor = AppColor.blackColor2,
+    articleBackgroundColor = AppColor.whiteColor,
+    articleViewCountIconColor = AppColor.grayColor,
+    articleViewCountIconInvertedColor = AppColor.whiteColor,
+    articleFooterButtonIconColor = AppColor.grayColor0,
+    articleFooterButtonIconInvertedColor = AppColor.whiteColor,
+    articleReactionsBackgroundColor = AppColor.whiteColor1,
+    articleReactionsBorderColor = AppColor.whiteColor2,
+    articleReactionBorderColor = AppColor.whiteColor,
     articleAuthorNameTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: _grayColor0,
+      color: AppColor.grayColor0,
     ),
     articleAuthorNameInvertedTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: _whiteColor,
+      color: AppColor.whiteColor,
     ),
     articleTitleTextStyle = _fontFamily(
       fontSize: 24,
       height: 32 / 24,
       fontWeight: FontWeight.w600,
-      color: _blackColor2,
+      color: AppColor.blackColor2,
     ),
     articleTitleInvertedTextStyle = _fontFamily(
       fontSize: 24,
       height: 32 / 24,
       fontWeight: FontWeight.w600,
-      color: _whiteColor,
+      color: AppColor.whiteColor,
     ),
     articleViewCountTextStyle = _fontFamily(
       fontSize: 14,
       fontWeight: FontWeight.w400,
-      color: _grayColor,
+      color: AppColor.grayColor,
     ),
     articleViewCountInvertedTextStyle = _fontFamily(
       fontSize: 14,
       fontWeight: FontWeight.w400,
-      color: _whiteColor,
+      color: AppColor.whiteColor,
     ),
     articleDescriptionTextStyle = _fontFamily(
       fontSize: 18,
       height: 28 / 18,
       fontWeight: FontWeight.w400,
-      color: _blackColor2,
+      color: AppColor.blackColor2,
     ),
     articleDescriptionInvertedTextStyle = _fontFamily(
       fontSize: 18,
       height: 28 / 18,
       fontWeight: FontWeight.w400,
-      color: _whiteColor,
+      color: AppColor.whiteColor,
     ),
     articleFooterButtonTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: _grayColor0,
+      color: AppColor.grayColor0,
     ),
     articleFooterButtonInvertedTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: _whiteColor,
+      color: AppColor.whiteColor,
     ),
     articleReactionTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: _grayColor0,
+      color: AppColor.grayColor0,
     ),
     articleListEndWidgetSleepingCatTextStyle = _fontFamily(
       fontSize: 20,
       fontWeight: FontWeight.w500,
-      color: _grayColor0,
+      color: AppColor.grayColor0,
     ),
     articleListEndWidgetTelegramTextStyle = _fontFamily(
       fontSize: 20,
       height: 28 / 20,
       fontWeight: FontWeight.w600,
-      color: _blackColor2,
+      color: AppColor.blackColor2,
     ),
     articleListEndWidgetTelegramLinkTextStyle = _fontFamily(
-      color: _greenColor1,
+      color: AppColor.greenColor1,
       fontSize: 20,
       height: 28 / 20,
       fontWeight: FontWeight.w600,
@@ -200,91 +140,91 @@ class AppTheme {
   
   AppTheme.dark():
     isDark = true,
-    articleListRefreshIndicatorBackgroundColor = _blackColor,
-    articleListRefreshIndicatorColor = _whiteColor3,
-    articleListEndWidgetSleepingCatColor = _grayColor,
-    mainBackgroundColor = _blackColor,
-    loaderColor = _whiteColor3,
-    articleBackgroundColor = _blackColor0,
-    articleViewCountIconColor = _grayColor1,
-    articleViewCountIconInvertedColor = _whiteColor,
-    articleFooterButtonIconColor = _grayColor2,
-    articleFooterButtonIconInvertedColor = _whiteColor,
-    articleReactionsBackgroundColor = _blackColor,
-    articleReactionsBorderColor = _blackColor1,
-    articleReactionBorderColor = _blackColor0,
+    articleListRefreshIndicatorBackgroundColor = AppColor.blackColor,
+    articleListRefreshIndicatorColor = AppColor.whiteColor3,
+    articleListEndWidgetSleepingCatColor = AppColor.grayColor,
+    mainBackgroundColor = AppColor.blackColor,
+    loaderColor = AppColor.whiteColor3,
+    articleBackgroundColor = AppColor.blackColor0,
+    articleViewCountIconColor = AppColor.grayColor1,
+    articleViewCountIconInvertedColor = AppColor.whiteColor,
+    articleFooterButtonIconColor = AppColor.grayColor2,
+    articleFooterButtonIconInvertedColor = AppColor.whiteColor,
+    articleReactionsBackgroundColor = AppColor.blackColor,
+    articleReactionsBorderColor = AppColor.blackColor1,
+    articleReactionBorderColor = AppColor.blackColor0,
     articleAuthorNameTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: _grayColor2,
+      color: AppColor.grayColor2,
     ),
     articleAuthorNameInvertedTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: _whiteColor,
+      color: AppColor.whiteColor,
     ),
     articleTitleTextStyle = _fontFamily(
       fontSize: 24,
       height: 32 / 24,
       fontWeight: FontWeight.w600,
-      color: _whiteColor3,
+      color: AppColor.whiteColor3,
     ),
     articleTitleInvertedTextStyle = _fontFamily(
       fontSize: 24,
       height: 32 / 24,
       fontWeight: FontWeight.w600,
-      color: _whiteColor,
+      color: AppColor.whiteColor,
     ),
     articleViewCountTextStyle = _fontFamily(
       fontSize: 14,
       fontWeight: FontWeight.w400,
-      color: _grayColor1,
+      color: AppColor.grayColor1,
     ),
     articleViewCountInvertedTextStyle = _fontFamily(
       fontSize: 14,
       fontWeight: FontWeight.w400,
-      color: _whiteColor,
+      color: AppColor.whiteColor,
     ),
     articleDescriptionTextStyle = _fontFamily(
       fontSize: 18,
       height: 28 / 18,
       fontWeight: FontWeight.w400,
-      color: _whiteColor3,
+      color: AppColor.whiteColor3,
     ),
     articleDescriptionInvertedTextStyle = _fontFamily(
       fontSize: 18,
       height: 28 / 18,
       fontWeight: FontWeight.w400,
-      color: _whiteColor,
+      color: AppColor.whiteColor,
     ),
     articleFooterButtonTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: _grayColor2,
+      color: AppColor.grayColor2,
     ),
     articleFooterButtonInvertedTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: _whiteColor,
+      color: AppColor.whiteColor,
     ),
     articleReactionTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: _grayColor2,
+      color: AppColor.grayColor2,
     ),
     articleListEndWidgetSleepingCatTextStyle = _fontFamily(
       fontSize: 20,
       fontWeight: FontWeight.w500,
-      color: _grayColor0,
+      color: AppColor.grayColor0,
     ),
     articleListEndWidgetTelegramTextStyle = _fontFamily(
       fontSize: 20,
       height: 28 / 20,
       fontWeight: FontWeight.w600,
-      color: _whiteColor3,
+      color: AppColor.whiteColor3,
     ),
     articleListEndWidgetTelegramLinkTextStyle = _fontFamily(
-      color: _greenColor0,
+      color: AppColor.greenColor0,
       fontSize: 20,
       height: 28 / 20,
       fontWeight: FontWeight.w600,

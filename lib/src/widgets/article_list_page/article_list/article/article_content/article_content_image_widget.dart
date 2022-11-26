@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tproger_mobile_app/src/models/app_theme.dart';
+import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class ArticleContentImageWidget extends StatelessWidget {
@@ -14,15 +14,15 @@ class ArticleContentImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-    height: AppTheme.articleImageContainerHeight,
+    height: AppSize.articleImageContainerHeight,
     width: double.infinity,
     decoration: BoxDecoration(
       color: backgroundColor,
-      borderRadius: const BorderRadius.all(AppTheme.articleImageRadius),
+      borderRadius: const BorderRadius.all(AppSize.articleImageRadius),
     ),
     child: Center(
       child: SizedBox(
-        height: AppTheme.articleImageHeight,
+        height: AppSize.articleImageHeight,
         child: FadeInImage.memoryNetwork(
           image: link,
           placeholder: kTransparentImage,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tproger_mobile_app/src/models/app_theme.dart';
+import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class ArticleAuthorAvatarWidget extends StatelessWidget {
@@ -12,10 +12,10 @@ class ArticleAuthorAvatarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ClipRRect(
-    borderRadius: const BorderRadius.all(AppTheme.articleAuthorAvatarRadius),
+    borderRadius: const BorderRadius.all(AppSize.articleAuthorAvatarRadius),
     child: SizedBox(
-      width: AppTheme.articleAuthorAvatarSize,
-      height: AppTheme.articleAuthorAvatarSize,      
+      width: AppSize.articleAuthorAvatarSize,
+      height: AppSize.articleAuthorAvatarSize,      
       child: FadeInImage.memoryNetwork(
         image: avatarLink,
         placeholder: kTransparentImage,

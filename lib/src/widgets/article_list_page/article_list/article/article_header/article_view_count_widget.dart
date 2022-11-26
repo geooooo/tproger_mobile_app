@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
-import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 
 class ArticleViewCountWidget extends StatelessWidget {
@@ -23,13 +23,13 @@ class ArticleViewCountWidget extends StatelessWidget {
         SvgPicture.asset(
           Asset.eye.value,
           package: Asset.package,
-          width: AppTheme.articleViewCountIconSize,
-          height: AppTheme.articleViewCountIconSize,
+          width: AppSize.articleViewCountIconSize,
+          height: AppSize.articleViewCountIconSize,
           color: isInvertetStyle
             ? store.state.theme.articleViewCountIconInvertedColor
             : store.state.theme.articleViewCountIconColor,
         ),
-        const SizedBox(width: AppTheme.articleViewCountIconAndViewCountTextSeparatorSize),
+        const SizedBox(width: AppSize.articleViewCountIconAndViewCountTextSeparatorSize),
         Text(
           viewCount.toString(),
           textAlign: TextAlign.start,

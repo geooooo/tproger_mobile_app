@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
-import 'package:tproger_mobile_app/src/models/app_theme.dart';
 
 // TODO: Make an identical start animation's frame as in an original
 class LoaderWidget extends StatelessWidget {
@@ -27,7 +27,7 @@ class LoaderWidget extends StatelessWidget {
           speedUpTo: _delay2,
           duration: _duration,
         ),
-        const SizedBox(width: AppTheme.loaderItemSeparatorSize),
+        const SizedBox(width: AppSize.loaderItemSeparatorSize),
         ArticlesLoaderItemWidget(
           color: store.state.theme.loaderColor,
           startHeight: _startHeight,
@@ -37,7 +37,7 @@ class LoaderWidget extends StatelessWidget {
           slowDownTo: _delay1,
           duration: _duration,
         ),
-        const SizedBox(width: AppTheme.loaderItemSeparatorSize),
+        const SizedBox(width: AppSize.loaderItemSeparatorSize),
         ArticlesLoaderItemWidget(
           color: store.state.theme.loaderColor,
           startHeight: _startHeight,

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_background_image.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_icon_image.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_image.dart';
-import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/services/color_service.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_content/article_content_image_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_content/article_description_widget.dart';
@@ -35,13 +35,13 @@ class ArticleContentWidget extends StatelessWidget {
           link: image!.link,
           backgroundColor: _getBackgroundColor(image!),
         ),
-        const SizedBox(height: AppTheme.articleImageAndTitleSeparatorSize),
+        const SizedBox(height: AppSize.articleImageAndTitleSeparatorSize),
       ],
       ArticleTitleWidget(
         text: title,
         isInvertetStyle: _hasBackgroundImage,
       ),
-      const SizedBox(height: AppTheme.articleTitleAndDescriptionSeparatorSize),
+      const SizedBox(height: AppSize.articleTitleAndDescriptionSeparatorSize),
       ArticleDescriptionWidget(
         text: description,
         isInvertetStyle: _hasBackgroundImage,

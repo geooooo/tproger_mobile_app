@@ -4,9 +4,9 @@ import 'package:redux/redux.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/load_next_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/open_link_action.dart';
+import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
-import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_list_end/article_list_end_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_list_loader_widget.dart';
@@ -69,8 +69,8 @@ class ArticleListWidget extends StatelessWidget {
   Widget _separatorBuilder(BuildContext context, int index) {
     final isLastArticle = index == articles.length - 1;
     final height = isLastArticle
-      ? AppTheme.articleListLastItemSeparatorSize
-      : AppTheme.articleListArticleSeparatorSize;
+      ? AppSize.articleListLastItemSeparatorSize
+      : AppSize.articleListArticleSeparatorSize;
 
     return SizedBox(height: height);
   }

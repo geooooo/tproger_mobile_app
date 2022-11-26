@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/article_author.dart';
-import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_header/article_author_avatar_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_header/article_author_name_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_header/article_view_count_widget.dart';
@@ -24,17 +24,17 @@ class ArticleHeaderWidget extends StatelessWidget {
     children: [
       if (_hasAuthor) ...[
         ArticleAuthorAvatarWidget(avatarLink: author!.avatarLink),
-        const SizedBox(width: AppTheme.articleAuthorAvatarAndNameSeparatorSize),
+        const SizedBox(width: AppSize.articleAuthorAvatarAndNameSeparatorSize),
         ConstrainedBox(
           constraints: const BoxConstraints(
-            maxWidth: AppTheme.articleAuthorNameMaxWidth,
+            maxWidth: AppSize.articleAuthorNameMaxWidth,
           ),
           child: ArticleAuthorNameWidget(
             authorName: author!.name,
             isInvertetStyle: isInvertetStyle,
           ),
         ),
-        const SizedBox(width: AppTheme.articleAuthorNameAndViewCountSeparatorSize),
+        const SizedBox(width: AppSize.articleAuthorNameAndViewCountSeparatorSize),
       ],
       if (viewCount != 0) ArticleViewCountWidget(
         viewCount: viewCount,
