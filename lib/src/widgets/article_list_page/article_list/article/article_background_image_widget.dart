@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:tproger_mobile_app/src/models/app_common.dart';
 import 'package:tproger_mobile_app/src/models/app_size.dart';
-import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class ArticleBackgroundImageWidget extends StatelessWidget {
@@ -27,7 +27,7 @@ class ArticleBackgroundImageWidget extends StatelessWidget {
             ),
             child: Container(
               foregroundDecoration: const BoxDecoration(
-                gradient: AppTheme.articleBackgroundImageGradient,
+                gradient: AppCommon.articleBackgroundImageGradient,
               ),
               child: FadeInImage.memoryNetwork(
                 fit: BoxFit.cover,

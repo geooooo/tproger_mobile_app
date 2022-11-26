@@ -5,16 +5,6 @@ import 'package:tproger_mobile_app/src/models/app_color.dart';
 class AppTheme {
   static const _fontFamily = GoogleFonts.inter;
 
-  static const articleBackgroundImageGradient = LinearGradient(
-    begin: Alignment.bottomCenter,
-    end: Alignment.topCenter,
-    stops: [0.1185, 0.906],
-    colors: [
-      AppColor.blackColor3,
-      AppColor.blackColor4,
-    ],
-  );
-
   final bool isDark;
 
   final Color articleListEndWidgetSleepingCatColor;
@@ -28,6 +18,9 @@ class AppTheme {
   final Color articleReactionsBackgroundColor;
   final Color articleReactionsBorderColor;
   final Color articleReactionBorderColor;
+  final Color readUsTelegramButtonColor;
+  final Color readUsTelegramButtonBorderColor;
+  final Color readUsTelegramButtonIconColor;
   
   final TextStyle articleAuthorNameTextStyle;
   final TextStyle articleAuthorNameInvertedTextStyle;
@@ -43,6 +36,7 @@ class AppTheme {
   final TextStyle articleListEndWidgetSleepingCatTextStyle;
   final TextStyle articleListEndWidgetTelegramTextStyle;
   final TextStyle articleListEndWidgetTelegramLinkTextStyle;
+  final TextStyle readUsTelegramButtonTextStyle;
 
   AppTheme.light(): 
     isDark = false,
@@ -57,6 +51,9 @@ class AppTheme {
     articleReactionsBackgroundColor = AppColor.whiteColor1,
     articleReactionsBorderColor = AppColor.whiteColor2,
     articleReactionBorderColor = AppColor.whiteColor,
+    readUsTelegramButtonColor = AppColor.whiteColor,
+    readUsTelegramButtonBorderColor = AppColor.whiteColor2,
+    readUsTelegramButtonIconColor = AppColor.blueColor0,
     articleAuthorNameTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
@@ -132,6 +129,11 @@ class AppTheme {
       fontSize: 20,
       height: 28 / 20,
       fontWeight: FontWeight.w600,
+    ),
+    readUsTelegramButtonTextStyle = _fontFamily(
+      color: AppColor.blackColor2,
+      fontSize: 18,
+      fontWeight: FontWeight.w400,
     );
   
   AppTheme.dark():
@@ -147,6 +149,9 @@ class AppTheme {
     articleReactionsBackgroundColor = AppColor.blackColor,
     articleReactionsBorderColor = AppColor.blackColor1,
     articleReactionBorderColor = AppColor.blackColor0,
+    readUsTelegramButtonColor = AppColor.blackColor0,
+    readUsTelegramButtonBorderColor = AppColor.blackColor1,
+    readUsTelegramButtonIconColor = AppColor.blueColor0,
     articleAuthorNameTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
@@ -222,5 +227,10 @@ class AppTheme {
       fontSize: 20,
       height: 28 / 20,
       fontWeight: FontWeight.w600,
+    ),
+    readUsTelegramButtonTextStyle = _fontFamily(
+      color: AppColor.grayColor1,
+      fontSize: 18,
+      fontWeight: FontWeight.w400,
     );
 }

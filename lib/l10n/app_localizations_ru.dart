@@ -12,4 +12,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get orFindInOurTelegramChannelsText => 'Или поищите в наших Telegram-каналах:';
+
+  @override
+  String get readUsInTelegramText => 'Читать нас в Telegram';
 }

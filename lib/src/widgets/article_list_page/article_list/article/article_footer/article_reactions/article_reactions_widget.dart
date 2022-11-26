@@ -29,7 +29,7 @@ class ArticleReactionsWidget extends StatelessWidget {
           width: AppSize.articleReactionsBorderSize,
           color: store.state.theme.articleReactionsBorderColor,
         ),
-        borderRadius: const BorderRadius.all(AppSize.articleReactionsBorderRadius),
+        borderRadius: AppSize.articleReactionsBorderRadius,
       ),
       padding: AppSize.articleReactionsPadding,
       child: (commonCount == 0) 

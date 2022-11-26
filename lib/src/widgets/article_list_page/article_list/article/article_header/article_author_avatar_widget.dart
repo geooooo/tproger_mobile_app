@@ -12,7 +12,7 @@ class ArticleAuthorAvatarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ClipRRect(
-    borderRadius: const BorderRadius.all(AppSize.articleAuthorAvatarRadius),
+    borderRadius: AppSize.articleAuthorAvatarRadius,
     child: SizedBox(
       width: AppSize.articleAuthorAvatarSize,
       height: AppSize.articleAuthorAvatarSize,      

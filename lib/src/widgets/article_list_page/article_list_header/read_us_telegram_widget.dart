@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:redux/redux.dart';
+import 'package:tproger_mobile_app/l10n/app_localizations.dart';
+import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 
-class ReadUsTelegramWidget extends StatefulWidget {
-  const ReadUsTelegramWidget({ super.key });
+class ReadUsTelegramButtonWidget extends StatefulWidget {
+  const ReadUsTelegramButtonWidget({ super.key });
 
   @override
-  State<ReadUsTelegramWidget> createState() => _ReadUsTelegramWidgetState();
+  State<ReadUsTelegramButtonWidget> createState() => _ReadUsTelegramButtonWidgetState();
 }
 
-class _ReadUsTelegramWidgetState extends State<ReadUsTelegramWidget> {
+class _ReadUsTelegramButtonWidgetState extends State<ReadUsTelegramButtonWidget> {
   bool _isTapped = false;
 
   @override
@@ -20,18 +22,17 @@ class _ReadUsTelegramWidgetState extends State<ReadUsTelegramWidget> {
     builder: (context, store) => GestureDetector(
       onTapDown: _onTapDown,
       onTapUp: (detail) => _onTapUp(detail, store),
-      child: AnimatedOpacity(
-        duration: const Duration(milliseconds: 0),
+      child: Opacity(
         opacity: _isTapped? 0.7 : 1,
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 6),
+          padding: AppSize.readUsTelegramButtonPadding,
           decoration: BoxDecoration(
-            color: const Color.fromRGBO(255, 255, 255, 1),
+            color: store.state.theme.readUsTelegramButtonColor,
             border: Border.all(
-              color: const Color.fromRGBO(234, 234, 234, 1),
+              color: store.state.theme.readUsTelegramButtonBorderColor,
               width: 1,
             ),
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: AppSize.readUsTelegramButtonBorderRadius,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -42,19 +43,15 @@ class _ReadUsTelegramWidgetState extends State<ReadUsTelegramWidget> {
                 child: SvgPicture.asset(
                   Asset.telegram1.value,
                   package: Asset.package,
-                  height: 24,
-                  width: 24,
-                  color: const Color.fromRGBO(37, 163, 225, 1),
+                  height: AppSize.readUsTelegramButtonIconSize,
+                  width: AppSize.readUsTelegramButtonIconSize,
+                  color: store.state.theme.readUsTelegramButtonIconColor,
                 ),
               ),
-              const SizedBox(width: 10),
-              const Text(
-                'Читать нас в Telegram',
-                style: TextStyle(
-                  color: Color.fromRGBO(15, 17, 17, 1),
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
-                ),
+              const SizedBox(width: AppSize.readUsTelegramButtonIconAndTextSeparatorSize),
+              Text(
+                AppLocalizations.of(context)!.readUsInTelegramText,
+                style: store.state.theme.readUsTelegramButtonTextStyle,
               ),
             ],
           ),

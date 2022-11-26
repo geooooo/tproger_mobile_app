@@ -18,7 +18,7 @@ class ArticleImageWidget extends StatelessWidget {
     width: double.infinity,
     decoration: BoxDecoration(
       color: backgroundColor,
-      borderRadius: const BorderRadius.all(AppSize.articleImageRadius),
+      borderRadius: AppSize.articleImageRadius,
     ),
     child: Center(
       child: SizedBox(

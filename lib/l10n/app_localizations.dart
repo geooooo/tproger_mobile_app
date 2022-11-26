@@ -108,6 +108,12 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Или поищите в наших Telegram-каналах:'**
   String get orFindInOurTelegramChannelsText;
+
+  /// No description provided for @readUsInTelegramText.
+  ///
+  /// In ru, this message translates to:
+  /// **'Читать нас в Telegram'**
+  String get readUsInTelegramText;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

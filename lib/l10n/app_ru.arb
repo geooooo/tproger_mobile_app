@@ -6,5 +6,8 @@
     "@weCouldNotFindPostsText": {},
 
     "orFindInOurTelegramChannelsText": "Или поищите в наших Telegram-каналах:",
-    "@orFindInOurTelegramChannelsText": {}
+    "@orFindInOurTelegramChannelsText": {},
+
+    "readUsInTelegramText": "Читать нас в Telegram",
+    "@readUsInTelegramText": {}
 }

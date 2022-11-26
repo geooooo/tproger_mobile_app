@@ -21,7 +21,7 @@ class ReactionWidget extends StatelessWidget {
           width: AppSize.articleReactionBorderSize,
           color: store.state.theme.articleReactionBorderColor,
         ),
-        borderRadius: const BorderRadius.all(AppSize.articleReactionBorderRadius),
+        borderRadius: AppSize.articleReactionBorderRadius,
       ),
       child: SvgPicture.asset(
         icon.value,

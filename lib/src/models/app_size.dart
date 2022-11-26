@@ -17,6 +17,7 @@ class AppSize {
   static const articleListEndWidgetSleepingCatAndTelegramLinkSeparatorSize = 58.0;
   static const articleListEndAfterTelegramLinkSeparatorSize = 50.0;
   static const articleListEndWidgetTelegramIconAndTextSeparatorSize = 12.0;
+  static const readUsTelegramButtonIconAndTextSeparatorSize = 10.0;
   
   static const articleListEndWidgetSize = 110.0;
   static const articleListEndWidgetTelegramIconSize = 48.0;
@@ -31,15 +32,17 @@ class AppSize {
   static const articleReactionListSize = 30.0;
   static const loaderItemSeparatorSize = 8.0;
   static const articleListLoaderSize = 98.0;
+  static const readUsTelegramButtonIconSize = 24.0;
   
   static const articleAuthorNameMaxWidth = 200.0;
   static const articleImageContainerHeight = 120.0;
   static const articleImageHeight = 70.0;
 
-  static const articleImageRadius = Radius.elliptical(12, 12);
-  static const articleAuthorAvatarRadius = Radius.elliptical(8, 8);
-  static const articleReactionsBorderRadius = Radius.circular(50);
-  static const articleReactionBorderRadius = Radius.circular(180);
+  static const articleImageRadius = BorderRadius.all(Radius.circular(12));
+  static const articleAuthorAvatarRadius = BorderRadius.all(Radius.circular(8,));
+  static const articleReactionsBorderRadius = BorderRadius.all(Radius.circular(50));
+  static const articleReactionBorderRadius = BorderRadius.all(Radius.circular(180));
+  static const readUsTelegramButtonBorderRadius = BorderRadius.all(Radius.circular(12));
 
   static const articleReactionsPadding = EdgeInsets.only(
     top: 4,
@@ -47,4 +50,5 @@ class AppSize {
     bottom: 4,
     left: 3,
   );
+  static const readUsTelegramButtonPadding= EdgeInsets.symmetric(vertical: 6);
 }
