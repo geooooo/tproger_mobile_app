@@ -20,6 +20,7 @@ import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_a
 import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_articles_response.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
+import 'package:tproger_mobile_app/src/models/reaction_data.dart';
 import 'package:tproger_mobile_app/src/services/article_list_loader.dart';
 import 'package:tproger_mobile_app/src/services/article_list_parser.dart';
 import 'package:tproger_mobile_app/src/services/http_service.dart';
@@ -67,9 +68,12 @@ void main() {
       bookmarkCount: 1, 
       viewCount: 1, 
       commentCount: 1, 
-      reactionToCounts: {
-        Reaction.fromInt(1): 1,
-      },
+      reactions: const [
+        ReactionData(
+          reaction: Reaction.angry,
+          count: 1,
+        ),
+      ],
     );
     final expectedArticle2 = ArticleModel(
       title: parsedArticle2.title, 
@@ -81,10 +85,16 @@ void main() {
       bookmarkCount: 2, 
       viewCount: 2, 
       commentCount: 2, 
-      reactionToCounts: {
-        Reaction.fromInt(1): 1,
-        Reaction.fromInt(2): 2,
-      },
+      reactions: const [
+        ReactionData(
+          reaction: Reaction.angry,
+          count: 1,
+        ),
+        ReactionData(
+          reaction: Reaction.surprise,
+          count: 2,
+        ),
+      ],
     );
 
     when(() => articleListParser.parse(any<String>())).thenReturn([
@@ -153,9 +163,12 @@ void main() {
       bookmarkCount: 1, 
       viewCount: 1, 
       commentCount: 1, 
-      reactionToCounts: {
-        Reaction.fromInt(1): 1,
-      },
+      reactions: const [
+        ReactionData(
+          reaction: Reaction.angry,
+          count: 1,
+        ),
+      ],
     );
 
     when(() => articleListParser.parse(any<String>())).thenReturn([

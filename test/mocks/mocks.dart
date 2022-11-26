@@ -11,6 +11,7 @@ import 'package:tproger_mobile_app/src/models/article_image/article_icon_image.d
 import 'package:tproger_mobile_app/src/models/article_model.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
 import 'package:tproger_mobile_app/src/models/parsed_article/parsed_article.dart';
+import 'package:tproger_mobile_app/src/models/reaction_data.dart';
 import 'package:tproger_mobile_app/src/services/article_list_loader.dart';
 import 'package:tproger_mobile_app/src/services/article_list_parser.dart';
 import 'package:tproger_mobile_app/src/services/http_service.dart';
@@ -88,7 +89,10 @@ ArticleModel createArticleModel(int id) => ArticleModel(
   bookmarkCount: id, 
   viewCount: id, 
   commentCount: id, 
-  reactions: {
-    Reaction.fromInt(id % Reaction.values.length): id,
-  },
+  reactions: [
+    ReactionData(
+      reaction: Reaction.fromInt(id % Reaction.values.length),
+      count: id,
+    ),
+  ],
 );
