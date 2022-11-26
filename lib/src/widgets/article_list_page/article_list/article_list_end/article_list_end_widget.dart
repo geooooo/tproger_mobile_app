@@ -5,7 +5,6 @@ import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_list_end/sleeping_cat_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_list_end/telegram_link_widget.dart';
 
-// TODO: Add to widgetbook
 class ArticleListEndWidget extends StatelessWidget {
   const ArticleListEndWidget({ super.key });
 
