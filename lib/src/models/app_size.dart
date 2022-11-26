@@ -37,6 +37,9 @@ class AppSize {
   static const articleAuthorNameMaxWidth = 200.0;
   static const articleImageContainerHeight = 120.0;
   static const articleImageHeight = 70.0;
+  static const loaderStartHeight = 64.0;
+  static const loaderEndHeight = 32.0;
+  static const loaderWidth = 16.0;
 
   static const articleImageRadius = BorderRadius.all(Radius.circular(12));
   static const articleAuthorAvatarRadius = BorderRadius.all(Radius.circular(8,));

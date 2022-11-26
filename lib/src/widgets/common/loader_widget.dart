@@ -4,14 +4,10 @@ import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 
 // TODO: Make an identical start animation's frame as in an original
-// TODO: Move common values outside
 class LoaderWidget extends StatelessWidget {
   static const _duration = Duration(milliseconds: 1200);
   static const _delay1 = Duration(milliseconds: 120);
   static const _delay2 = Duration(milliseconds: 240);
-  static const _startHeight = 64.0;
-  static const _endHeight = 32.0;
-  static const _width = 16.0;
 
   const LoaderWidget({ super.key });
 
@@ -22,18 +18,18 @@ class LoaderWidget extends StatelessWidget {
       children: [
         ArticlesLoaderItemWidget(
           color: store.state.theme.loaderColor,
-          startHeight: _startHeight,
-          endHeight: _endHeight,
-          width: _width,
+          startHeight: AppSize.loaderStartHeight,
+          endHeight: AppSize.loaderEndHeight,
+          width: AppSize.loaderWidth,
           speedUpTo: _delay2,
           duration: _duration,
         ),
         const SizedBox(width: AppSize.loaderItemSeparatorSize),
         ArticlesLoaderItemWidget(
           color: store.state.theme.loaderColor,
-          startHeight: _startHeight,
-          endHeight: _endHeight,
-          width: _width,
+          startHeight: AppSize.loaderStartHeight,
+          endHeight: AppSize.loaderEndHeight,
+          width: AppSize.loaderWidth,
           speedUpTo: _delay1,
           slowDownTo: _delay1,
           duration: _duration,
@@ -41,9 +37,9 @@ class LoaderWidget extends StatelessWidget {
         const SizedBox(width: AppSize.loaderItemSeparatorSize),
         ArticlesLoaderItemWidget(
           color: store.state.theme.loaderColor,
-          startHeight: _startHeight,
-          endHeight: _endHeight,
-          width: _width,
+          startHeight: AppSize.loaderStartHeight,
+          endHeight: AppSize.loaderEndHeight,
+          width: AppSize.loaderWidth,
           slowDownTo: _delay2,
           duration: _duration,
         ),
