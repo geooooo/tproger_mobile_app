@@ -9,7 +9,7 @@ WidgetbookComponent buildArticleReactionsComponent(BuildContext context) => Widg
     WidgetbookUseCase(
       name: 'Custom', 
       builder: (context) => ArticleReactionsWidget(
-        reactionToCounts: KnobsService.reactionToCounts(context),
+        reactions: KnobsService.reactions(context),
       ),
     ),
   ],

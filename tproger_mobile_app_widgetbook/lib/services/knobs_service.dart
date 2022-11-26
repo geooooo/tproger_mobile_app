@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tproger_mobile_app_widgetbook/models/default_values.dart';
 import 'package:widgetbook/widgetbook.dart';
+import 'package:tproger_mobile_app/src/models/reaction_data.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
 import 'package:tproger_mobile_app/src/models/article_author.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_icon_image.dart';
@@ -153,20 +154,35 @@ class KnobsService {
     initialValue: 0,
   ).toInt();
 
-  static Map<Reaction, int> reactionToCounts(BuildContext context) {
+  static List<ReactionData> reactions(BuildContext context) {
     final angryReactionCount = KnobsService._angryReactionCount(context);
     final surpirseReactionCount = KnobsService._surpirseReactionCount(context);
     final thinkReactionCount = KnobsService._thinkingReactionCount(context);
     final laughReactionCount = KnobsService._laughReactionCount(context);
     final likeReactionCount = KnobsService._likeReactionCount(context);
 
-    return {
-      if (angryReactionCount > 0) Reaction.angry: angryReactionCount, 
-      if (surpirseReactionCount > 0) Reaction.surprise: surpirseReactionCount, 
-      if (thinkReactionCount > 0) Reaction.think: thinkReactionCount, 
-      if (laughReactionCount > 0) Reaction.laugh: laughReactionCount, 
-      if (likeReactionCount > 0) Reaction.like: likeReactionCount, 
-    };
+    return [
+      if (angryReactionCount > 0) ReactionData(
+        reaction: Reaction.angry, 
+        count: angryReactionCount,
+      ), 
+      if (surpirseReactionCount > 0) ReactionData(
+        reaction: Reaction.surprise,
+        count: surpirseReactionCount,
+      ), 
+      if (thinkReactionCount > 0) ReactionData(
+        reaction: Reaction.think,
+        count: thinkReactionCount, 
+      ),
+      if (laughReactionCount > 0) ReactionData(
+        reaction: Reaction.laugh,
+        count: laughReactionCount, 
+      ),
+      if (likeReactionCount > 0) ReactionData(
+        reaction: Reaction.like,
+        count: likeReactionCount, 
+      ),
+    ];
   }
 
   static int _angryReactionCount(BuildContext context) => context.knobs.number(

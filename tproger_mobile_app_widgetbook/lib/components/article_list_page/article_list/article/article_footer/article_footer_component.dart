@@ -12,7 +12,7 @@ WidgetbookComponent buildArticleFooterComponent(BuildContext context) => Widgetb
         bookmarkCount: KnobsService.bookmarkCount(context),
         commentCount: KnobsService.commentCount(context),
         isInvertetStyle: KnobsService.isInvertetStyle(context),
-        reactionToCounts: KnobsService.reactionToCounts(context),
+        reactions: KnobsService.reactions(context),
       ),
     ),
   ],

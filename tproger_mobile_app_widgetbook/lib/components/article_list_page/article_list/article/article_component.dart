@@ -25,7 +25,7 @@ WidgetbookComponent buildArticleComponent(BuildContext context) => WidgetbookCom
               viewCount: KnobsService.viewCount(context),
               bookmarkCount: KnobsService.bookmarkCount(context),
               commentCount: KnobsService.commentCount(context),
-              reactionToCounts: KnobsService.reactionToCounts(context),
+              reactions: KnobsService.reactions(context),
             ),
           ),
         ],
