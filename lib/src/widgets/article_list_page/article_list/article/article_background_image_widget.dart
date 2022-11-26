@@ -27,7 +27,7 @@ class ArticleBackgroundImageWidget extends StatelessWidget {
             ),
             child: Container(
               foregroundDecoration: const BoxDecoration(
-                gradient: AppTheme.articleImageGradient,
+                gradient: AppTheme.articleBackgroundImageGradient,
               ),
               child: FadeInImage.memoryNetwork(
                 fit: BoxFit.cover,

@@ -5,7 +5,7 @@ import 'package:tproger_mobile_app/src/models/app_color.dart';
 class AppTheme {
   static const _fontFamily = GoogleFonts.inter;
 
-  static const articleImageGradient = LinearGradient(
+  static const articleBackgroundImageGradient = LinearGradient(
     begin: Alignment.bottomCenter,
     end: Alignment.topCenter,
     stops: [0.1185, 0.906],
@@ -17,8 +17,6 @@ class AppTheme {
 
   final bool isDark;
 
-  final Color articleListRefreshIndicatorBackgroundColor;
-  final Color articleListRefreshIndicatorColor;
   final Color articleListEndWidgetSleepingCatColor;
   final Color mainBackgroundColor;
   final Color loaderColor;
@@ -48,8 +46,6 @@ class AppTheme {
 
   AppTheme.light(): 
     isDark = false,
-    articleListRefreshIndicatorBackgroundColor = AppColor.whiteColor0,
-    articleListRefreshIndicatorColor = AppColor.blackColor2,
     articleListEndWidgetSleepingCatColor = AppColor.grayColor3,
     mainBackgroundColor = AppColor.whiteColor0,
     loaderColor = AppColor.blackColor2,
@@ -140,8 +136,6 @@ class AppTheme {
   
   AppTheme.dark():
     isDark = true,
-    articleListRefreshIndicatorBackgroundColor = AppColor.blackColor,
-    articleListRefreshIndicatorColor = AppColor.whiteColor3,
     articleListEndWidgetSleepingCatColor = AppColor.grayColor,
     mainBackgroundColor = AppColor.blackColor,
     loaderColor = AppColor.whiteColor3,

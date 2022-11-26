@@ -5,8 +5,8 @@ import 'package:tproger_mobile_app/src/models/article_image/article_background_i
 import 'package:tproger_mobile_app/src/models/article_image/article_icon_image.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_image.dart';
 import 'package:tproger_mobile_app/src/services/color_service.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_content/article_content_image_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_content/article_description_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_content/article_image_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_content/article_title_widget.dart';
 
 class ArticleContentWidget extends StatelessWidget {
@@ -31,7 +31,7 @@ class ArticleContentWidget extends StatelessWidget {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       if (_hasContentImage) ...[
-        ArticleContentImageWidget(
+        ArticleImageWidget(
           link: image!.link,
           backgroundColor: _getBackgroundColor(image!),
         ),

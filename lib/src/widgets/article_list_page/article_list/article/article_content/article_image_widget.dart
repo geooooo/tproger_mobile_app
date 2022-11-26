@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:transparent_image/transparent_image.dart';
 
-class ArticleContentImageWidget extends StatelessWidget {
+class ArticleImageWidget extends StatelessWidget {
   final String link;
   final Color backgroundColor;
 
-  const ArticleContentImageWidget({
+  const ArticleImageWidget({
     required this.link,
     required this.backgroundColor,
     super.key,
