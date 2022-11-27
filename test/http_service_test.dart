@@ -8,6 +8,7 @@ import 'package:tproger_mobile_app/src/models/api/load_article_reactions/article
 import 'package:tproger_mobile_app/src/models/api/load_articles_bookmark_counts/article_bookmark_count_dto.dart';
 import 'package:tproger_mobile_app/src/models/api/load_articles_comment_counts/article_comment_count_dto.dart';
 import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/article_view_count_dto.dart';
+import 'package:tproger_mobile_app/src/models/api/load_initial_content/load_initial_content_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_articles_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_articles_response.dart';
 import 'package:tproger_mobile_app/src/models/enums/api_url.dart';
@@ -20,6 +21,7 @@ import 'package:tproger_mobile_app/src/models/api/load_articles_comment_counts/l
 import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/load_articles_view_counts_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/load_articles_view_counts_response.dart';
 import 'package:tproger_mobile_app/src/models/api/load_initial_content/load_initial_content_response.dart';
+import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
 import 'package:tproger_mobile_app/src/services/di_configuration/register_module.dart';
 import 'package:tproger_mobile_app/src/services/http_service.dart';
 
@@ -40,10 +42,12 @@ void main() {
         200,
         initialContetMock,
       ),
-      queryParameters: null,
+      queryParameters: {
+        'sort': 'hot',
+      },
     );
 
-    final response = await httpService.loadInitialContent();
+    final response = await httpService.loadInitialContent(const LoadInitialContentRequest(ArticlesSortType.hot));
 
     expect(response, equals(expectedResponse));
   });
@@ -65,7 +69,10 @@ void main() {
       },
     );
 
-    final response = await httpService.loadNextArticles(const LoadNextArticlesRequest(2));
+    final response = await httpService.loadNextArticles(const LoadNextArticlesRequest(
+      pageNumber: 2,
+      sortType: ArticlesSortType.hot,
+    ));
 
     expect(response, equals(expectedResponse));
   });

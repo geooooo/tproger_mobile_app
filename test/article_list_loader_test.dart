@@ -15,10 +15,12 @@ import 'package:tproger_mobile_app/src/models/api/load_articles_comment_counts/l
 import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/article_view_count_dto.dart';
 import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/load_articles_view_counts_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/load_articles_view_counts_response.dart';
+import 'package:tproger_mobile_app/src/models/api/load_initial_content/load_initial_content_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_initial_content/load_initial_content_response.dart';
 import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_articles_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_articles_response.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
+import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
 import 'package:tproger_mobile_app/src/models/reaction_data.dart';
 import 'package:tproger_mobile_app/src/services/article_list_loader.dart';
@@ -38,6 +40,7 @@ void main() {
     registerFallbackValue(LoadArticlesViewCountsRequestMock());
     registerFallbackValue(LoadArticleReactionsRequestMock());
     registerFallbackValue(LoadNextArticlesRequestMock());
+    registerFallbackValue(LoadInitialContentRequestMock());
   });
 
   setUp(() {
@@ -101,7 +104,7 @@ void main() {
       parsedArticle1,
       parsedArticle2,
     ]);
-    when(() => httpService.loadInitialContent())
+    when(() => httpService.loadInitialContent(any<LoadInitialContentRequest>()))
       .thenAnswer((_) async => const LoadInitialContentResponse(''));
     when(() => httpService.loadArticlesCommentCounts(any<LoadArticlesCommentCountsRequest>()))
       .thenAnswer((_) async => const LoadArticlesCommentCountsResponse([
@@ -144,7 +147,7 @@ void main() {
         ),
       ]));
 
-    final articles = await articleListLoader.load();
+    final articles = await articleListLoader.load(ArticlesSortType.hot);
 
     expect(expectedArticle1, equals(articles[0]));
     expect(expectedArticle2, equals(articles[1]));
@@ -201,7 +204,10 @@ void main() {
         ),
       ]));
 
-    final articles = await articleListLoader.loadNext(2);
+    final articles = await articleListLoader.loadNext(
+      pageNumber: 2,
+      sortType: ArticlesSortType.hot,
+    );
 
     expect(expectedArticle, equals(articles.first));
   });

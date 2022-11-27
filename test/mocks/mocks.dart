@@ -5,6 +5,7 @@ import 'package:tproger_mobile_app/src/models/api/load_article_reactions/load_ar
 import 'package:tproger_mobile_app/src/models/api/load_articles_bookmark_counts/load_articles_bookmark_counts_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_articles_comment_counts/load_articles_comment_counts_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/load_articles_view_counts_request.dart';
+import 'package:tproger_mobile_app/src/models/api/load_initial_content/load_initial_content_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_articles_request.dart';
 import 'package:tproger_mobile_app/src/models/article_author.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_icon_image.dart';
@@ -25,6 +26,7 @@ class LoadArticlesBookmarkCountsRequestMock extends Mock implements LoadArticles
 class LoadArticlesViewCountsRequestMock extends Mock implements LoadArticlesViewCountsRequest {}
 class LoadArticleReactionsRequestMock extends Mock implements LoadArticleReactionsRequest {}
 class LoadNextArticlesRequestMock extends Mock implements LoadNextArticlesRequest {}
+class LoadInitialContentRequestMock extends Mock implements LoadInitialContentRequest {}
 class ExceptionMock extends Mock implements Exception {}
 class StackTraceMock extends Mock implements StackTrace {}
 

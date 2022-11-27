@@ -3,6 +3,7 @@
 import 'package:logger/logger.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
+import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
 import 'package:tproger_mobile_app/src/models/exceptions/load_articles_list_exception.dart';
 import 'package:tproger_mobile_app/src/models/exceptions/load_next_articles_exception.dart';
 import 'package:tproger_mobile_app/src/services/article_list_loader.dart';
@@ -18,6 +19,7 @@ void main() {
   setUpAll(() {
     registerFallbackValue(ExceptionMock());
     registerFallbackValue(StackTraceMock());
+    registerFallbackValue(ArticlesSortType.hot);
   });
 
   setUp(() {
@@ -39,12 +41,12 @@ void main() {
       final expectedArticle1 = createArticleModel(1);
       final expectedArticle2 = createArticleModel(2);
 
-      when(() => articleListLoader.load()).thenAnswer((_) async => [
+      when(() => articleListLoader.load(any<ArticlesSortType>())).thenAnswer((_) async => [
         expectedArticle1,
         expectedArticle2,
       ]);
 
-      final articles = await articleListService.getArticles();
+      final articles = await articleListService.getArticles(ArticlesSortType.hot);
 
       expect(expectedArticle1, equals(articles[0]));
       expect(expectedArticle2, equals(articles[1]));
@@ -53,10 +55,10 @@ void main() {
     });
 
     test('failure', () async {
-      when(() => articleListLoader.load()).thenThrow(Exception());
+      when(() => articleListLoader.load(any<ArticlesSortType>())).thenThrow(Exception());
 
       try {
-        await articleListService.getArticles();
+        await articleListService.getArticles(ArticlesSortType.hot);
         fail('Should be an LoadArticlesListException');
       } on LoadArticlesListException {
         verify(() => logger.e(any<String>(), any<Exception>(), any<StackTrace?>())).called(1);
@@ -70,11 +72,17 @@ void main() {
     test('success', () async {
       final expectedArticle = createArticleModel(1);
 
-      when(() => articleListLoader.loadNext(any<int>())).thenAnswer((_) async => [
+      when(() => articleListLoader.loadNext(
+        pageNumber: any<int>(named: 'pageNumber'),
+        sortType: any<ArticlesSortType>(named: 'sortType'),
+      )).thenAnswer((_) async => [
         expectedArticle,
       ]);
 
-      final articles = await articleListService.getNextArticles(2);
+      final articles = await articleListService.getNextArticles(
+        pageNumber: 2,
+        sortType: ArticlesSortType.hot,
+      );
 
       expect(expectedArticle, equals(articles.first));
 
@@ -82,10 +90,16 @@ void main() {
     });
 
     test('failure', () async {
-      when(() => articleListLoader.loadNext(any<int>())).thenThrow(Exception());
+      when(() => articleListLoader.loadNext(
+        pageNumber: any<int>(named: 'pageNumber'),
+        sortType: any<ArticlesSortType>(named: 'sortType'),
+      )).thenThrow(Exception());
 
       try {
-        await articleListService.getNextArticles(2);
+        await articleListService.getNextArticles(
+          pageNumber: 2,
+          sortType: ArticlesSortType.hot,
+        );
         fail('Should be an LoadNextArticlesException');
       } on LoadNextArticlesException {
         verify(() => logger.e(any<String>(), any<Exception>(), any<StackTrace?>())).called(1);
