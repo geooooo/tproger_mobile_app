@@ -9,6 +9,8 @@ enum ArticlesSortType {
 
   const ArticlesSortType(this.value);
 
+  static String staticToString(ArticlesSortType type) => type.value;
+
   @override
   String toString() => value;
 }

@@ -1,6 +1,8 @@
 import 'package:injectable/injectable.dart';
+import 'package:tproger_mobile_app/src/models/api/load_initial_content/load_initial_content_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_articles_request.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
+import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
 import 'package:tproger_mobile_app/src/models/api/load_article_reactions/load_article_reactions_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_article_reactions/load_article_reactions_response.dart';
@@ -26,13 +28,19 @@ class ArticleListLoader {
     this._httpService,
   );
 
-  Future<List<ArticleModel>> load() async {
-    final response = await _httpService.loadInitialContent();
+  Future<List<ArticleModel>> load(ArticlesSortType sortType) async {
+    final response = await _httpService.loadInitialContent(LoadInitialContentRequest(sortType));
     return _parseArticles(response.html);
   }
 
-  Future<List<ArticleModel>> loadNext(int pageNumber) async {
-    final response = await _httpService.loadNextArticles(LoadNextArticlesRequest(pageNumber));
+  Future<List<ArticleModel>> loadNext({
+    required int pageNumber,
+    required ArticlesSortType sortType,
+  }) async {
+    final response = await _httpService.loadNextArticles(LoadNextArticlesRequest(
+      pageNumber: pageNumber,
+      sortType: sortType,
+    ));
     return _parseArticles(response.html);
   }
 

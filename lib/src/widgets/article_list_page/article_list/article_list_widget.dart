@@ -47,8 +47,10 @@ class ArticleListWidget extends StatelessWidget {
     final isLastWidget = index == articles.length;
 
     if (!isFullLoaded && isLastArticle) {
-      final nextPageNumber = articlesPageNumber + 1;
-      store.dispatch(LoadNextArticlesAction(nextPageNumber));
+      store.dispatch(LoadNextArticlesAction(
+        nextPageNumber: articlesPageNumber + 1,
+        sortType: store.state.articlesSortType,
+      ));
     } 
 
     late final Widget widget;

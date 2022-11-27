@@ -8,6 +8,7 @@ import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/
 import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/load_next_articles_end_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/load_next_articles_success_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/open_link_action.dart';
+import 'package:tproger_mobile_app/src/models/actions/sort_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/exceptions/load_articles_list_exception.dart';
 import 'package:tproger_mobile_app/src/services/article_list_service.dart';
@@ -21,6 +22,7 @@ class MiddlewareService {
     TypedEpic(_loadArticles),
     TypedEpic(_loadNextArticles),
     TypedEpic(_openLink),
+    TypedEpic(_sortArticles),
   ]);
 
   MiddlewareService(this._articleListService);
@@ -28,16 +30,19 @@ class MiddlewareService {
   Stream<LoadArticlesBaseAction> _loadArticles(Stream<LoadArticlesAction> actions, EpicStore<AppState> store) =>
     actions.asyncMap((action) async {
       try {
-        final articles = await _articleListService.getArticles();
+        final articles = await _articleListService.getArticles(action.sortType);
         return LoadArticlesSuccessAction(articles);
       } on LoadArticlesListException {
-        return const LoadArticlesAction();
+        return LoadArticlesAction(action.sortType);
       }
     });
 
   Stream<LoadNextArticlesBaseAction> _loadNextArticles(Stream<LoadNextArticlesAction> actions, EpicStore<AppState> store) =>
     actions.asyncMap((action) async {
-      final articles = await _articleListService.getNextArticles(action.nextPageNumber);
+      final articles = await _articleListService.getNextArticles(
+        pageNumber: action.nextPageNumber,
+        sortType: action.sortType,
+      );
 
       return articles.isEmpty
         ? const LoadNextArticlesEndAction()
@@ -48,4 +53,7 @@ class MiddlewareService {
     actions.map((action) => 
       launchUrlString(action.link, mode: LaunchMode.externalApplication)
     );
+
+  Stream<LoadArticlesBaseAction> _sortArticles(Stream<SortArticlesAction> actions, EpicStore<AppState> store) =>
+    actions.map((action) => LoadArticlesAction(action.type));
 }

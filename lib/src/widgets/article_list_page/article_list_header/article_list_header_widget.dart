@@ -4,7 +4,7 @@ import 'package:redux/redux.dart';
 import 'package:tproger_mobile_app/src/models/actions/sort_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_sort/articles_sort_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_sort_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/read_us_telegram_widget.dart';
 
 // TODO: Rework header to scroll full list
@@ -28,6 +28,9 @@ class ArticleListHeaderWidget extends StatelessWidget {
     ),
   );
 
-  void _onSelectSortType(ArticlesSortType type, Store<AppState> store) =>
-    store.dispatch(SortArticlesAction(type));
+  void _onSelectSortType(ArticlesSortType type, Store<AppState> store) {
+    if (type != store.state.articlesSortType) {
+      store.dispatch(SortArticlesAction(type));
+    }
+  }
 }

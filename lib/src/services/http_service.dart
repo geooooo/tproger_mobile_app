@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:tproger_mobile_app/src/models/api/load_initial_content/load_initial_content_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_articles_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_articles_response.dart';
 import 'package:tproger_mobile_app/src/models/enums/api_url.dart';
@@ -20,8 +21,8 @@ class HttpService {
 
   HttpService(this._dio);
 
-  Future<LoadInitialContentResponse> loadInitialContent() async {
-    final response = await _request(Method.get, ApiUrl.initial);
+  Future<LoadInitialContentResponse> loadInitialContent(LoadInitialContentRequest request) async {
+    final response = await _request(Method.get, ApiUrl.initial, request.toJson());
     return LoadInitialContentResponse.fromJson(response);
   }
 
@@ -52,9 +53,9 @@ class HttpService {
 
   Future<dynamic> _request(
     Method method,
-    ApiUrl url, [
-    Map<String, dynamic>? params,
-  ]) async {
+    ApiUrl url,
+    Map<String, dynamic> params,
+  ) async {
     Response response;
 
     switch (method) {

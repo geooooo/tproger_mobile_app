@@ -16,7 +16,7 @@ class ArticleListPageWidget extends PageWidget {
   Widget buildContent(BuildContext context) => StoreBuilder<AppState>(
     builder: (context, store) {      
       if (!store.state.isArticlesLoaded) {
-        store.dispatch(const LoadArticlesAction());
+        store.dispatch(LoadArticlesAction(store.state.articlesSortType));
 
         return const ArticleListLoaderWidget();
       }
@@ -39,7 +39,7 @@ class ArticleListPageWidget extends PageWidget {
   );
 
   void _onRefresh(Store<AppState> store) =>
-    store.dispatch(const LoadArticlesAction());
+    store.dispatch(LoadArticlesAction(store.state.articlesSortType));
 
   void _onSelectArticle(String articleLink, Store<AppState> store) =>
     store.dispatch(OpenLinkAction(articleLink));
