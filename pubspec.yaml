@@ -31,6 +31,7 @@ dependencies:
   redux_epics: ^0.15.1
   google_fonts: ^3.0.1
   flutter_native_splash: ^2.2.14
+  dropdown_button2: ^1.9.1
   
 dev_dependencies:
   flutter_lints: ^2.0.0

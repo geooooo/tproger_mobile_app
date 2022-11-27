@@ -1,3 +1,4 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/svg.dart';
@@ -31,7 +32,6 @@ class _ArticlesSortWidgetState extends State<ArticlesSortWidget> {
   @override
   Widget build(BuildContext context) => StoreBuilder<AppState>(
     builder: (context, store) => Column(
-      
       children: [
         GestureDetector(
           onTap: _onTap,
@@ -72,8 +72,28 @@ class _ArticlesSortWidgetState extends State<ArticlesSortWidget> {
             ),
           ),
         ),
-        if (_isTapped) ArticlesSortListWidget(
-            onSelect: (type) => _onSelect(type, store),
+        // ArticlesSortListWidget(
+        //   onSelect: (type) => _onSelect(type, store),
+        // ),
+        DropdownButtonHideUnderline(
+          child: DropdownButton2(
+            dropdownElevation: 0,
+            isDense: true,
+            buttonElevation: 0,
+            icon: Text('+'),
+            value: 2,
+            items: [
+              DropdownMenuItem<int>(
+                value: 1,
+                child: Text('1' * 5),
+              ),
+              DropdownMenuItem<int>(
+                value: 2,
+                child: Text('2' * 5),
+              ),
+            ],
+            onChanged: (v) => print(v),
+          ),
         ),
       ],
     ),
