@@ -12,9 +12,8 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   ArticlesSortType get articlesSortType;
   bool get isSetThemeProgrammatically;
   bool get isArticlesFullLoaded;
+  bool get isArticlesLoaded;
   int get articlesPageNumber;
-
-  bool get isArticlesLoaded => articles.isNotEmpty;
 
   AppState._();
   factory AppState() = _$AppState;
@@ -26,5 +25,6 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
     ..articlesSortType = ArticlesSortType.hot
     ..isSetThemeProgrammatically = false
     ..isArticlesFullLoaded = false
+    ..isArticlesLoaded = false
     ..articlesPageNumber = 1;
 }

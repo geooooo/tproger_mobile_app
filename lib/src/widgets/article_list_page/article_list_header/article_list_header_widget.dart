@@ -16,14 +16,28 @@ class ArticleListHeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) => StoreBuilder<AppState>(
     builder: (context, store) => Column(
       children: [
-        const SizedBox(height: 20),
-        const ReadUsTelegramButtonWidget(),
-        const SizedBox(height: 20),
-        ArticlesSortWidget(
-          type: store.state.articlesSortType,
-          onSelect: (type) => _onSelectSortType(type, store),
+        Container(
+          color: Colors.grey,
+          height: 58,
+          width: double.infinity,
         ),
-        const SizedBox(height: 20),
+        const ReadUsTelegramButtonWidget(),
+        const SizedBox(height: 15),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ArticlesSortWidget(
+              type: store.state.articlesSortType,
+              onSelect: (type) => _onSelectSortType(type, store),
+            ),
+            Container(
+              color: Colors.grey,
+              height: 42,
+              width: 98,
+            ),
+          ],
+        ),
+        const SizedBox(height: 15),
       ],
     ),
   );

@@ -105,7 +105,11 @@ class _ArticlesLoaderItemWidgetState extends State<ArticlesLoaderItemWidget> wit
       parent: _controller,
     ));
 
-    Future.delayed(widget.slowDownTo).then((_) => _controller.forward());
+    Future.delayed(widget.slowDownTo).then((_) {
+      if (mounted) {
+        _controller.forward();
+      }
+    });
   }
 
   @override

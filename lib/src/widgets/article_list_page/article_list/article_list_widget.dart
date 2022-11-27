@@ -66,7 +66,12 @@ class ArticleListWidget extends StatelessWidget {
     } else if (isFullLoaded && isLastWidget) {
       widget = const ArticleListEndWidget();
     } else {
-      widget = const ArticleListLoaderWidget();
+      widget = articles.isEmpty
+        ? const Padding(
+            padding: EdgeInsets.only(top: AppSize.articleListLastItemSeparatorSize),
+            child: ArticleListLoaderWidget()
+          )
+        : const ArticleListLoaderWidget();
     }
 
     return widget;

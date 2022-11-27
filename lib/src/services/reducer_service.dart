@@ -55,7 +55,10 @@ class ReducerService {
   );
 
   AppState _loadArticlesSuccess(AppState state, LoadArticlesSuccessAction action) => 
-    state.rebuild((b) => b.articles.replace(action.articles));
+    state.rebuild((b) => b
+      ..isArticlesLoaded = true
+      ..articles.replace(action.articles)
+    );
 
   AppState _loadNextArticlesSuccess(AppState state, LoadNextArticlesSuccessAction action) => 
     state.rebuild((b) => b
