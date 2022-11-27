@@ -3,7 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:tproger_mobile_app/src/models/app_color.dart';
 
 class AppTheme {
-  static const _fontFamily = GoogleFonts.inter;
+  static const _fontFamilyInter = GoogleFonts.inter;
+  static const _fontFamilyArial = TextStyle(fontFamily: 'arial');
 
   final bool isDark;
 
@@ -41,215 +42,226 @@ class AppTheme {
   final TextStyle articleListEndTelegramLinkTextStyle;
   final TextStyle readUsTelegramButtonTextStyle;
   final TextStyle articlesSortMenuItemTextStyle;
+  final TextStyle articlesSortButtonTextStyle;
 
   AppTheme.light(): 
     isDark = false,
-    articleListEndSleepingCatColor = AppColor.grayColor3,
-    mainBackgroundColor = AppColor.whiteColor0,
-    articleBorderColor = AppColor.whiteColor2,
-    loaderColor = AppColor.blackColor2,
-    articleBackgroundColor = AppColor.whiteColor,
-    articleViewCountIconColor = AppColor.grayColor,
-    articleViewCountIconInvertedColor = AppColor.whiteColor,
-    articleFooterButtonIconColor = AppColor.grayColor0,
-    articleFooterButtonIconInvertedColor = AppColor.whiteColor,
-    articleReactionsBackgroundColor = AppColor.whiteColor1,
-    articleReactionsBorderColor = AppColor.whiteColor2,
-    articleReactionBorderColor = AppColor.whiteColor,
-    readUsTelegramButtonColor = AppColor.whiteColor,
-    readUsTelegramButtonBorderColor = AppColor.whiteColor2,
+    articleListEndSleepingCatColor = AppColor.grayColor4,
+    mainBackgroundColor = AppColor.whiteColor1,
+    articleBorderColor = AppColor.whiteColor3,
+    loaderColor = AppColor.blackColor3,
+    articleBackgroundColor = AppColor.whiteColor0,
+    articleViewCountIconColor = AppColor.grayColor0,
+    articleViewCountIconInvertedColor = AppColor.whiteColor0,
+    articleFooterButtonIconColor = AppColor.grayColor1,
+    articleFooterButtonIconInvertedColor = AppColor.whiteColor0,
+    articleReactionsBackgroundColor = AppColor.whiteColor2,
+    articleReactionsBorderColor = AppColor.whiteColor3,
+    articleReactionBorderColor = AppColor.whiteColor0,
+    readUsTelegramButtonColor = AppColor.whiteColor0,
+    readUsTelegramButtonBorderColor = AppColor.whiteColor3,
     readUsTelegramButtonIconColor = AppColor.blueColor0,
-    articlesSortColor = AppColor.whiteColor,
-    articlesSortBorderColor = AppColor.whiteColor2,
-    articleAuthorNameTextStyle = _fontFamily(
+    articlesSortColor = AppColor.whiteColor0,
+    articlesSortBorderColor = AppColor.whiteColor3,
+    articleAuthorNameTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: AppColor.grayColor0,
+      color: AppColor.grayColor1,
     ),
-    articleAuthorNameInvertedTextStyle = _fontFamily(
+    articleAuthorNameInvertedTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: AppColor.whiteColor,
+      color: AppColor.whiteColor0,
     ),
-    articleTitleTextStyle = _fontFamily(
+    articleTitleTextStyle = _fontFamilyInter(
       fontSize: 24,
       height: 32 / 24,
       fontWeight: FontWeight.w600,
-      color: AppColor.blackColor2,
+      color: AppColor.blackColor3,
     ),
-    articleTitleInvertedTextStyle = _fontFamily(
+    articleTitleInvertedTextStyle = _fontFamilyInter(
       fontSize: 24,
       height: 32 / 24,
       fontWeight: FontWeight.w600,
-      color: AppColor.whiteColor,
+      color: AppColor.whiteColor0,
     ),
-    articleViewCountTextStyle = _fontFamily(
+    articleViewCountTextStyle = _fontFamilyInter(
       fontSize: 14,
       fontWeight: FontWeight.w400,
-      color: AppColor.grayColor,
+      color: AppColor.grayColor0,
     ),
-    articleViewCountInvertedTextStyle = _fontFamily(
+    articleViewCountInvertedTextStyle = _fontFamilyInter(
       fontSize: 14,
       fontWeight: FontWeight.w400,
-      color: AppColor.whiteColor,
+      color: AppColor.whiteColor0,
     ),
-    articleDescriptionTextStyle = _fontFamily(
+    articleDescriptionTextStyle = _fontFamilyInter(
       fontSize: 18,
       height: 28 / 18,
       fontWeight: FontWeight.w400,
-      color: AppColor.blackColor2,
+      color: AppColor.blackColor3,
     ),
-    articleDescriptionInvertedTextStyle = _fontFamily(
+    articleDescriptionInvertedTextStyle = _fontFamilyInter(
       fontSize: 18,
       height: 28 / 18,
       fontWeight: FontWeight.w400,
-      color: AppColor.whiteColor,
+      color: AppColor.whiteColor0,
     ),
-    articleFooterButtonTextStyle = _fontFamily(
+    articleFooterButtonTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: AppColor.grayColor0,
+      color: AppColor.grayColor1,
     ),
-    articleFooterButtonInvertedTextStyle = _fontFamily(
+    articleFooterButtonInvertedTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: AppColor.whiteColor,
+      color: AppColor.whiteColor0,
     ),
-    articleReactionTextStyle = _fontFamily(
+    articleReactionTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: AppColor.grayColor0,
+      color: AppColor.grayColor1,
     ),
-    articleListEndSleepingCatTextStyle = _fontFamily(
+    articleListEndSleepingCatTextStyle = _fontFamilyInter(
       fontSize: 20,
       fontWeight: FontWeight.w500,
-      color: AppColor.grayColor0,
+      color: AppColor.grayColor1,
     ),
-    articleListEndTelegramTextStyle = _fontFamily(
+    articleListEndTelegramTextStyle = _fontFamilyInter(
       fontSize: 20,
       height: 28 / 20,
       fontWeight: FontWeight.w600,
-      color: AppColor.blackColor2,
+      color: AppColor.blackColor3,
     ),
-    articleListEndTelegramLinkTextStyle = _fontFamily(
+    articleListEndTelegramLinkTextStyle = _fontFamilyInter(
       color: AppColor.greenColor1,
       fontSize: 20,
       height: 28 / 20,
       fontWeight: FontWeight.w600,
     ),
-    readUsTelegramButtonTextStyle = _fontFamily(
-      color: AppColor.blackColor2,
+    readUsTelegramButtonTextStyle = _fontFamilyInter(
+      color: AppColor.blackColor3,
       fontSize: 18,
       fontWeight: FontWeight.w400,
     ),
-    articlesSortMenuItemTextStyle = _fontFamily(
-      color: AppColor.grayColor,
+    articlesSortMenuItemTextStyle = _fontFamilyInter(
+      color: AppColor.grayColor0,
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+    ),
+    articlesSortButtonTextStyle = _fontFamilyArial.copyWith(
+      color: AppColor.grayColor0,
       fontSize: 16,
       fontWeight: FontWeight.w500,
     );
   
   AppTheme.dark():
     isDark = true,
-    articleListEndSleepingCatColor = AppColor.grayColor,
-    mainBackgroundColor = AppColor.blackColor,
-    articleBorderColor = AppColor.blackColor1,
-    loaderColor = AppColor.whiteColor3,
-    articleBackgroundColor = AppColor.blackColor0,
-    articleViewCountIconColor = AppColor.grayColor1,
-    articleViewCountIconInvertedColor = AppColor.whiteColor,
-    articleFooterButtonIconColor = AppColor.grayColor2,
-    articleFooterButtonIconInvertedColor = AppColor.whiteColor,
-    articleReactionsBackgroundColor = AppColor.blackColor,
-    articleReactionsBorderColor = AppColor.blackColor1,
-    articleReactionBorderColor = AppColor.blackColor0,
-    readUsTelegramButtonColor = AppColor.blackColor0,
-    readUsTelegramButtonBorderColor = AppColor.blackColor1,
+    articleListEndSleepingCatColor = AppColor.grayColor0,
+    mainBackgroundColor = AppColor.blackColor0,
+    articleBorderColor = AppColor.blackColor2,
+    loaderColor = AppColor.whiteColor4,
+    articleBackgroundColor = AppColor.blackColor1,
+    articleViewCountIconColor = AppColor.grayColor2,
+    articleViewCountIconInvertedColor = AppColor.whiteColor0,
+    articleFooterButtonIconColor = AppColor.grayColor3,
+    articleFooterButtonIconInvertedColor = AppColor.whiteColor0,
+    articleReactionsBackgroundColor = AppColor.blackColor0,
+    articleReactionsBorderColor = AppColor.blackColor2,
+    articleReactionBorderColor = AppColor.blackColor1,
+    readUsTelegramButtonColor = AppColor.blackColor1,
+    readUsTelegramButtonBorderColor = AppColor.blackColor2,
     readUsTelegramButtonIconColor = AppColor.blueColor0,
-    articlesSortColor = AppColor.blackColor0,
-    articlesSortBorderColor = AppColor.blackColor1,
-    articleAuthorNameTextStyle = _fontFamily(
+    articlesSortColor = AppColor.blackColor1,
+    articlesSortBorderColor = AppColor.blackColor2,
+    articleAuthorNameTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: AppColor.grayColor2,
+      color: AppColor.grayColor3,
     ),
-    articleAuthorNameInvertedTextStyle = _fontFamily(
+    articleAuthorNameInvertedTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: AppColor.whiteColor,
+      color: AppColor.whiteColor0,
     ),
-    articleTitleTextStyle = _fontFamily(
+    articleTitleTextStyle = _fontFamilyInter(
       fontSize: 24,
       height: 32 / 24,
       fontWeight: FontWeight.w600,
-      color: AppColor.whiteColor3,
+      color: AppColor.whiteColor4,
     ),
-    articleTitleInvertedTextStyle = _fontFamily(
+    articleTitleInvertedTextStyle = _fontFamilyInter(
       fontSize: 24,
       height: 32 / 24,
       fontWeight: FontWeight.w600,
-      color: AppColor.whiteColor,
+      color: AppColor.whiteColor0,
     ),
-    articleViewCountTextStyle = _fontFamily(
+    articleViewCountTextStyle = _fontFamilyInter(
       fontSize: 14,
       fontWeight: FontWeight.w400,
-      color: AppColor.grayColor1,
+      color: AppColor.grayColor2,
     ),
-    articleViewCountInvertedTextStyle = _fontFamily(
+    articleViewCountInvertedTextStyle = _fontFamilyInter(
       fontSize: 14,
       fontWeight: FontWeight.w400,
-      color: AppColor.whiteColor,
+      color: AppColor.whiteColor0,
     ),
-    articleDescriptionTextStyle = _fontFamily(
+    articleDescriptionTextStyle = _fontFamilyInter(
       fontSize: 18,
       height: 28 / 18,
       fontWeight: FontWeight.w400,
-      color: AppColor.whiteColor3,
+      color: AppColor.whiteColor4,
     ),
-    articleDescriptionInvertedTextStyle = _fontFamily(
+    articleDescriptionInvertedTextStyle = _fontFamilyInter(
       fontSize: 18,
       height: 28 / 18,
       fontWeight: FontWeight.w400,
-      color: AppColor.whiteColor,
+      color: AppColor.whiteColor0,
     ),
-    articleFooterButtonTextStyle = _fontFamily(
+    articleFooterButtonTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: AppColor.grayColor2,
+      color: AppColor.grayColor3,
     ),
-    articleFooterButtonInvertedTextStyle = _fontFamily(
+    articleFooterButtonInvertedTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: AppColor.whiteColor,
+      color: AppColor.whiteColor0,
     ),
-    articleReactionTextStyle = _fontFamily(
+    articleReactionTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
-      color: AppColor.grayColor2,
+      color: AppColor.grayColor3,
     ),
-    articleListEndSleepingCatTextStyle = _fontFamily(
+    articleListEndSleepingCatTextStyle = _fontFamilyInter(
       fontSize: 20,
       fontWeight: FontWeight.w500,
-      color: AppColor.grayColor0,
-    ),
-    articleListEndTelegramTextStyle = _fontFamily(
-      fontSize: 20,
-      height: 28 / 20,
-      fontWeight: FontWeight.w600,
-      color: AppColor.whiteColor3,
-    ),
-    articleListEndTelegramLinkTextStyle = _fontFamily(
-      color: AppColor.greenColor0,
-      fontSize: 20,
-      height: 28 / 20,
-      fontWeight: FontWeight.w600,
-    ),
-    readUsTelegramButtonTextStyle = _fontFamily(
       color: AppColor.grayColor1,
+    ),
+    articleListEndTelegramTextStyle = _fontFamilyInter(
+      fontSize: 20,
+      height: 28 / 20,
+      fontWeight: FontWeight.w600,
+      color: AppColor.whiteColor4,
+    ),
+    articleListEndTelegramLinkTextStyle = _fontFamilyInter(
+      color: AppColor.greenColor1,
+      fontSize: 20,
+      height: 28 / 20,
+      fontWeight: FontWeight.w600,
+    ),
+    readUsTelegramButtonTextStyle = _fontFamilyInter(
+      color: AppColor.grayColor2,
       fontSize: 18,
       fontWeight: FontWeight.w400,
     ),
-    articlesSortMenuItemTextStyle = _fontFamily(
-      color: AppColor.grayColor1,
+    articlesSortMenuItemTextStyle = _fontFamilyInter(
+      color: AppColor.grayColor2,
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+    ),
+    articlesSortButtonTextStyle = _fontFamilyArial.copyWith(
+      color: AppColor.grayColor2,
       fontSize: 16,
       fontWeight: FontWeight.w500,
     );

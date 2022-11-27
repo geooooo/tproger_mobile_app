@@ -27,19 +27,19 @@ class ArticleBackgroundImageWidget extends StatelessWidget {
               tileMode: TileMode.decal,
             ),
             child: Container(
-              foregroundDecoration: const BoxDecoration(
+              foregroundDecoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
-                  stops: [0.1185, 0.906],
+                  stops: const [0.1185, 0.906],
                   colors: [
-                    AppColor.blackColor3,
-                    AppColor.blackColor4,
+                    AppColor.blackColor0.withOpacity(0.8),
+                    AppColor.blackColor0.withOpacity(0.4),
                   ],
                 ),
               ),
               child: FadeInImage.memoryNetwork(
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
                 image: imageLink,
                 placeholder: kTransparentImage,
               ),

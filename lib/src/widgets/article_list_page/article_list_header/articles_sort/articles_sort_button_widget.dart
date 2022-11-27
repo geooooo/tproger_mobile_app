@@ -40,7 +40,7 @@ class ArticlesSortButtonWidget extends StatelessWidget {
         children: [
           Text(
             _appLocalizationService.getTextByArticlesSortType(type, context),
-            style: store.state.theme.articlesSortMenuItemTextStyle,
+            style: store.state.theme.articlesSortButtonTextStyle,
           ),
           const SizedBox(width: AppSize.articleSortTextAndIconSeparatorSize),
           AnimatedRotation(
