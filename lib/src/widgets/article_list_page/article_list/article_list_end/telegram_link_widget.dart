@@ -19,20 +19,20 @@ class TelegramLinkWidget extends StatelessWidget {
         SvgPicture.asset(
           Asset.telegram0.value,
           package: Asset.package,
-          width: AppSize.articleListEndWidgetTelegramIconSize,
-          height: AppSize.articleListEndWidgetTelegramIconSize,
+          width: AppSize.articleListEndTelegramIconSize,
+          height: AppSize.articleListEndTelegramIconSize,
         ),
-        const SizedBox(height: AppSize.articleListEndWidgetTelegramIconAndTextSeparatorSize),
+        const SizedBox(height: AppSize.articleListEndTelegramIconAndTextSeparatorSize),
         Text(
           AppLocalizations.of(context)!.orFindInOurTelegramChannelsText,
-          style: store.state.theme.articleListEndWidgetTelegramTextStyle,
+          style: store.state.theme.articleListEndTelegramTextStyle,
           textAlign: TextAlign.center,
         ),
         GestureDetector(
           onTap: () => _onTap(store),
           child: Text(
             '@tproger_channels',
-            style: store.state.theme.articleListEndWidgetTelegramLinkTextStyle,
+            style: store.state.theme.articleListEndTelegramLinkTextStyle,
           ),
         ),
       ],

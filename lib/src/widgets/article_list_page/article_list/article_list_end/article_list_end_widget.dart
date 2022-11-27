@@ -13,7 +13,7 @@ class ArticleListEndWidget extends StatelessWidget {
     builder: (context, store) => Column(
       children: const [
         SleepingCatWidget(),
-        SizedBox(height: AppSize.articleListEndWidgetSleepingCatAndTelegramLinkSeparatorSize),
+        SizedBox(height: AppSize.articleListEndSleepingCatAndTelegramLinkSeparatorSize),
         TelegramLinkWidget(),
         SizedBox(height: AppSize.articleListEndAfterTelegramLinkSeparatorSize),
       ],

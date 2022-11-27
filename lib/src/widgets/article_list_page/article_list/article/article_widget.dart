@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_background_image.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
@@ -28,18 +29,26 @@ class _ArticleWidgetState extends State<ArticleWidget> with AutomaticKeepAliveCl
   Widget build(BuildContext context) {
     super.build(context);
     
+    final articleBodyWidget = ArticleBodyWidget(article: widget.article);
+
     return StoreBuilder<AppState>(
-      builder: (builder, store) => _hasBackgroundImage
-        ? ArticleBackgroundImageWidget(
-            imageLink: widget.article.image!.link,
-            child: ArticleBodyWidget(article: widget.article),
-          )
-        : DecoratedBox(
-            decoration: BoxDecoration(
-              color: store.state.theme.articleBackgroundColor,
+      builder: (builder, store) => DecoratedBox(
+        decoration: BoxDecoration(
+          color: store.state.theme.articleBackgroundColor,
+          border: Border.symmetric(
+            horizontal: BorderSide(
+              width: AppSize.articleBorderSize,
+              color: store.state.theme.articleBorderColor,
             ),
-            child: ArticleBodyWidget(article: widget.article),
           ),
+        ),
+        child: _hasBackgroundImage
+          ? ArticleBackgroundImageWidget(
+              imageLink: widget.article.image!.link,
+              child: articleBodyWidget,
+            )
+          : articleBodyWidget,
+      ),
     );
   }
 }

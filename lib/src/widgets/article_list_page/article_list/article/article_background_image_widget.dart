@@ -24,6 +24,7 @@ class ArticleBackgroundImageWidget extends StatelessWidget {
             imageFilter: ImageFilter.blur(
               sigmaX: AppSize.articleImageBlurSize,
               sigmaY: AppSize.articleImageBlurSize,
+              tileMode: TileMode.decal,
             ),
             child: Container(
               foregroundDecoration: const BoxDecoration(

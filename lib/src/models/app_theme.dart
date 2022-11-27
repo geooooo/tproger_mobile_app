@@ -7,10 +7,11 @@ class AppTheme {
 
   final bool isDark;
 
-  final Color articleListEndWidgetSleepingCatColor;
+  final Color articleListEndSleepingCatColor;
   final Color mainBackgroundColor;
   final Color loaderColor;
   final Color articleBackgroundColor;
+  final Color articleBorderColor;
   final Color articleViewCountIconColor;
   final Color articleViewCountIconInvertedColor;
   final Color articleFooterButtonIconColor;
@@ -21,6 +22,8 @@ class AppTheme {
   final Color readUsTelegramButtonColor;
   final Color readUsTelegramButtonBorderColor;
   final Color readUsTelegramButtonIconColor;
+  final Color articlesSortColor;
+  final Color articlesSortBorderColor;
   
   final TextStyle articleAuthorNameTextStyle;
   final TextStyle articleAuthorNameInvertedTextStyle;
@@ -33,15 +36,17 @@ class AppTheme {
   final TextStyle articleFooterButtonTextStyle;
   final TextStyle articleFooterButtonInvertedTextStyle;
   final TextStyle articleReactionTextStyle;
-  final TextStyle articleListEndWidgetSleepingCatTextStyle;
-  final TextStyle articleListEndWidgetTelegramTextStyle;
-  final TextStyle articleListEndWidgetTelegramLinkTextStyle;
+  final TextStyle articleListEndSleepingCatTextStyle;
+  final TextStyle articleListEndTelegramTextStyle;
+  final TextStyle articleListEndTelegramLinkTextStyle;
   final TextStyle readUsTelegramButtonTextStyle;
+  final TextStyle articlesSortMenuItemTextStyle;
 
   AppTheme.light(): 
     isDark = false,
-    articleListEndWidgetSleepingCatColor = AppColor.grayColor3,
+    articleListEndSleepingCatColor = AppColor.grayColor3,
     mainBackgroundColor = AppColor.whiteColor0,
+    articleBorderColor = AppColor.whiteColor2,
     loaderColor = AppColor.blackColor2,
     articleBackgroundColor = AppColor.whiteColor,
     articleViewCountIconColor = AppColor.grayColor,
@@ -54,6 +59,8 @@ class AppTheme {
     readUsTelegramButtonColor = AppColor.whiteColor,
     readUsTelegramButtonBorderColor = AppColor.whiteColor2,
     readUsTelegramButtonIconColor = AppColor.blueColor0,
+    articlesSortColor = AppColor.whiteColor,
+    articlesSortBorderColor = AppColor.whiteColor2,
     articleAuthorNameTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
@@ -113,18 +120,18 @@ class AppTheme {
       fontWeight: FontWeight.w500,
       color: AppColor.grayColor0,
     ),
-    articleListEndWidgetSleepingCatTextStyle = _fontFamily(
+    articleListEndSleepingCatTextStyle = _fontFamily(
       fontSize: 20,
       fontWeight: FontWeight.w500,
       color: AppColor.grayColor0,
     ),
-    articleListEndWidgetTelegramTextStyle = _fontFamily(
+    articleListEndTelegramTextStyle = _fontFamily(
       fontSize: 20,
       height: 28 / 20,
       fontWeight: FontWeight.w600,
       color: AppColor.blackColor2,
     ),
-    articleListEndWidgetTelegramLinkTextStyle = _fontFamily(
+    articleListEndTelegramLinkTextStyle = _fontFamily(
       color: AppColor.greenColor1,
       fontSize: 20,
       height: 28 / 20,
@@ -134,12 +141,18 @@ class AppTheme {
       color: AppColor.blackColor2,
       fontSize: 18,
       fontWeight: FontWeight.w400,
+    ),
+    articlesSortMenuItemTextStyle = _fontFamily(
+      color: AppColor.grayColor,
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
     );
   
   AppTheme.dark():
     isDark = true,
-    articleListEndWidgetSleepingCatColor = AppColor.grayColor,
+    articleListEndSleepingCatColor = AppColor.grayColor,
     mainBackgroundColor = AppColor.blackColor,
+    articleBorderColor = AppColor.blackColor1,
     loaderColor = AppColor.whiteColor3,
     articleBackgroundColor = AppColor.blackColor0,
     articleViewCountIconColor = AppColor.grayColor1,
@@ -152,6 +165,8 @@ class AppTheme {
     readUsTelegramButtonColor = AppColor.blackColor0,
     readUsTelegramButtonBorderColor = AppColor.blackColor1,
     readUsTelegramButtonIconColor = AppColor.blueColor0,
+    articlesSortColor = AppColor.blackColor0,
+    articlesSortBorderColor = AppColor.blackColor1,
     articleAuthorNameTextStyle = _fontFamily(
       fontSize: 16,
       fontWeight: FontWeight.w500,
@@ -211,18 +226,18 @@ class AppTheme {
       fontWeight: FontWeight.w500,
       color: AppColor.grayColor2,
     ),
-    articleListEndWidgetSleepingCatTextStyle = _fontFamily(
+    articleListEndSleepingCatTextStyle = _fontFamily(
       fontSize: 20,
       fontWeight: FontWeight.w500,
       color: AppColor.grayColor0,
     ),
-    articleListEndWidgetTelegramTextStyle = _fontFamily(
+    articleListEndTelegramTextStyle = _fontFamily(
       fontSize: 20,
       height: 28 / 20,
       fontWeight: FontWeight.w600,
       color: AppColor.whiteColor3,
     ),
-    articleListEndWidgetTelegramLinkTextStyle = _fontFamily(
+    articleListEndTelegramLinkTextStyle = _fontFamily(
       color: AppColor.greenColor0,
       fontSize: 20,
       height: 28 / 20,
@@ -232,5 +247,10 @@ class AppTheme {
       color: AppColor.grayColor1,
       fontSize: 18,
       fontWeight: FontWeight.w400,
+    ),
+    articlesSortMenuItemTextStyle = _fontFamily(
+      color: AppColor.grayColor1,
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
     );
 }
