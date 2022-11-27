@@ -97,7 +97,10 @@ class ArticleListParser {
       return null;
     }
 
-    final authorAvatarElement = authorElement.querySelector('img')!;
+    final authorAvatarElement = authorElement.querySelector('img');
+    if (authorAvatarElement == null) {
+      return null;
+    }
 
     final src = authorAvatarElement.attributes['src'];
     if (src != null && _isLinkToImage(src)) {

@@ -23,7 +23,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   static void _setDefaults(AppStateBuilder b) => b
     ..articles.replace([])
     ..theme = AppTheme.light()
-    ..articlesSortType = ArticlesSortType.hot
+    ..articlesSortType = ArticlesSortType.topOfTop
     ..isSetThemeProgrammatically = false
     ..isArticlesFullLoaded = false
     ..articlesPageNumber = 1;
