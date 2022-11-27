@@ -114,6 +114,36 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Читать нас в Telegram'**
   String get readUsInTelegramText;
+
+  /// No description provided for @newText.
+  ///
+  /// In ru, this message translates to:
+  /// **'Новое'**
+  String get newText;
+
+  /// No description provided for @hotText.
+  ///
+  /// In ru, this message translates to:
+  /// **'Горячее'**
+  String get hotText;
+
+  /// No description provided for @topOfWeekText.
+  ///
+  /// In ru, this message translates to:
+  /// **'Лучшее за неделю'**
+  String get topOfWeekText;
+
+  /// No description provided for @topOfMonthText.
+  ///
+  /// In ru, this message translates to:
+  /// **'Лучшее за месяц'**
+  String get topOfMonthText;
+
+  /// No description provided for @topOfTopText.
+  ///
+  /// In ru, this message translates to:
+  /// **'Лучшее за все время'**
+  String get topOfTopText;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

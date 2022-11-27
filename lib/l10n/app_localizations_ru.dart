@@ -15,4 +15,19 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get readUsInTelegramText => 'Читать нас в Telegram';
+
+  @override
+  String get newText => 'Новое';
+
+  @override
+  String get hotText => 'Горячее';
+
+  @override
+  String get topOfWeekText => 'Лучшее за неделю';
+
+  @override
+  String get topOfMonthText => 'Лучшее за месяц';
+
+  @override
+  String get topOfTopText => 'Лучшее за все время';
 }

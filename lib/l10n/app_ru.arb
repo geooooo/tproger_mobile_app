@@ -9,5 +9,20 @@
     "@orFindInOurTelegramChannelsText": {},
 
     "readUsInTelegramText": "Читать нас в Telegram",
-    "@readUsInTelegramText": {}
+    "@readUsInTelegramText": {},
+
+    "newText": "Новое",
+    "@newText": {},
+
+    "hotText": "Горячее",
+    "@hotText": {},
+
+    "topOfWeekText": "Лучшее за неделю",
+    "@topOfWeekText": {},
+
+    "topOfMonthText": "Лучшее за месяц",
+    "@topOfMonthText": {},
+
+    "topOfTopText": "Лучшее за все время",
+    "@topOfTopText": {}
 }

@@ -3,6 +3,8 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:redux/redux.dart';
 import 'package:tproger_mobile_app/l10n/app_localizations.dart';
+import 'package:tproger_mobile_app/src/models/actions/open_link_action.dart';
+import 'package:tproger_mobile_app/src/models/app_common.dart';
 import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
@@ -65,8 +67,8 @@ class _ReadUsTelegramButtonWidgetState extends State<ReadUsTelegramButtonWidget>
   }
 
   void _onTapUp(TapUpDetails details, Store<AppState> store) {
-    setState(() { _isTapped = false; });
+    store.dispatch(const OpenLinkAction(AppCommon.tprogerTelegramLink1));
 
-    // store.dispatch(const OpenLinkAction(AppCommon.tprogerTelegramLink1));
+    setState(() { _isTapped = false; });
   }
 }

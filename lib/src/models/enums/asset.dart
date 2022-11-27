@@ -1,4 +1,5 @@
 enum Asset {
+  arrowUp('images/arrow_up.svg'),
   sleepingCat('images/sleeping_cat.svg'),
   telegram0('images/telegram0.svg'),
   telegram1('images/telegram1.svg'),
