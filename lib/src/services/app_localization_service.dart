@@ -3,7 +3,6 @@ import 'package:injectable/injectable.dart';
 import 'package:tproger_mobile_app/l10n/app_localizations.dart';
 import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
 
-// TODO: Add tests
 @singleton
 class AppLocalizationService {
   String getTextByArticlesSortType(ArticlesSortType type, BuildContext context) {
