@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
+import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/load_next_articles_action.dart';
+import 'package:tproger_mobile_app/src/models/actions/open_link_action.dart';
+import 'package:tproger_mobile_app/src/models/app_common.dart';
 import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
@@ -13,15 +16,11 @@ class ArticleListWidget extends StatelessWidget {
   final List<ArticleModel> articles;
   final bool isFullLoaded;
   final int articlesPageNumber;
-  final void Function(String) onSelectArticle;
-  final Future<void> Function() onRefresh;
 
   const ArticleListWidget({
     required this.articles,
     required this.isFullLoaded,
     required this.articlesPageNumber,
-    required this.onSelectArticle,
-    required this.onRefresh,
     super.key,
   });
 
@@ -30,7 +29,7 @@ class ArticleListWidget extends StatelessWidget {
     builder: (context, store) => RefreshIndicator(
       color: store.state.theme.loaderColor,
       backgroundColor: store.state.theme.mainBackgroundColor,
-      onRefresh: onRefresh,
+      onRefresh: () async => _onRefresh(store),
       child: ListView.separated(
         shrinkWrap: true,
         addAutomaticKeepAlives: true,
@@ -56,12 +55,11 @@ class ArticleListWidget extends StatelessWidget {
     late final Widget widget;
     
     if (isArticle) {
-      widget = GestureDetector(
-        onTap: () => onSelectArticle(articles[index].articleLink),
+      widget = ArticleWidget(
         key: ValueKey(articles[index].id),
-        child: ArticleWidget(
-          article: articles[index],
-        ),
+        article: articles[index],
+        onContentClick: () => _onContentClick(articles[index].articleLink, store),
+        onCommentClick: () => _onCommentClick(articles[index].articleLink, store),
       );
     } else if (isFullLoaded && isLastWidget) {
       widget = const ArticleListEndWidget();
@@ -84,5 +82,20 @@ class ArticleListWidget extends StatelessWidget {
       : AppSize.articleListArticleSeparatorSize;
 
     return SizedBox(height: height);
+  }
+
+  void _onRefresh(Store<AppState> store) =>
+    store.dispatch(LoadArticlesAction(store.state.articlesSortType));
+
+  void _onContentClick(String articleLink, Store<AppState> store) =>
+    store.dispatch(OpenLinkAction(articleLink));
+
+  void _onCommentClick(String articleLink, Store<AppState> store) {
+    final link = Uri
+      .parse(articleLink)
+      .replace(fragment: AppCommon.commetsLinkHash)
+      .toString();
+    
+    store.dispatch(OpenLinkAction(link));
   }
 }

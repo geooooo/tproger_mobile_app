@@ -39,7 +39,7 @@ class ArticleBackgroundImageWidget extends StatelessWidget {
                 ),
               ),
               child: FadeInImage.memoryNetwork(
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
                 image: imageLink,
                 placeholder: kTransparentImage,
               ),

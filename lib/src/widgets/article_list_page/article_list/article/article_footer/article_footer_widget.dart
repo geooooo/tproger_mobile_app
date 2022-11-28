@@ -10,12 +10,14 @@ class ArticleFooterWidget extends StatelessWidget {
   final int commentCount;
   final List<ReactionData> reactions;
   final bool isInvertetStyle;
+  final void Function() onCommentClick;
 
   const ArticleFooterWidget({
     required this.bookmarkCount,
     required this.commentCount,
     required this.reactions,
     required this.isInvertetStyle,
+    required this.onCommentClick,
     super.key,
   });
 
@@ -30,12 +32,14 @@ class ArticleFooterWidget extends StatelessWidget {
               icon: Asset.bookmark,
               count: bookmarkCount,
               isInvertetStyle: isInvertetStyle,
+              onClick: () => 'onBookmarkClick',
             ),
             const SizedBox(width: AppSize.articleFooterButtonsSeparatorSize),
             ArticleFooterButtonWidget(
               icon: Asset.comment,
               count: commentCount,
               isInvertetStyle: isInvertetStyle,
+              onClick: onCommentClick,
             ),
           ],
         ),

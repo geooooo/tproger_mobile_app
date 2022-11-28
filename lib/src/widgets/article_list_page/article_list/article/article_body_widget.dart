@@ -8,11 +8,15 @@ import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/ar
 
 class ArticleBodyWidget extends StatelessWidget {
   final ArticleModel article;
+  final void Function() onContentClick;
+  final void Function() onCommentClick;
 
   bool get _hasBackgroundImage => article.image is ArticleBackgroundImage;
   
   const ArticleBodyWidget({
     required this.article,
+    required this.onContentClick,
+    required this.onCommentClick,
     super.key,
   });
   
@@ -28,10 +32,13 @@ class ArticleBodyWidget extends StatelessWidget {
           isInvertetStyle: _hasBackgroundImage,
         ),
         const SizedBox(height: AppSize.articleHeaderAndContentSeparatorSize),
-        ArticleContentWidget(
-          title: article.title,
-          description: article.description,
-          image: article.image,
+        GestureDetector(
+          onTap: onContentClick,
+          child: ArticleContentWidget(
+            title: article.title,
+            description: article.description,
+            image: article.image,
+          ),
         ),
         const SizedBox(height: AppSize.articleDescriptionAndFooterSeparatorSize),
         ArticleFooterWidget(
@@ -39,6 +46,7 @@ class ArticleBodyWidget extends StatelessWidget {
           commentCount: article.commentCount,
           reactions: article.reactions,
           isInvertetStyle: _hasBackgroundImage,
+          onCommentClick: onCommentClick,
         ),
       ],
     ),

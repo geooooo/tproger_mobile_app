@@ -24,6 +24,7 @@ class _ReadUsTelegramButtonWidgetState extends State<ReadUsTelegramButtonWidget>
     builder: (context, store) => GestureDetector(
       onTapDown: _onTapDown,
       onTapUp: (detail) => _onTapUp(detail, store),
+      onTapCancel: _onTapCancel,
       child: Opacity(
         opacity: _isTapped? 0.7 : 1,
         child: Container(
@@ -62,9 +63,9 @@ class _ReadUsTelegramButtonWidgetState extends State<ReadUsTelegramButtonWidget>
     ),
   );
 
-  void _onTapDown(TapDownDetails details) {
-    setState(() { _isTapped = true; });
-  }
+  void _onTapDown(TapDownDetails details) => setState(() { _isTapped = true; });
+
+  void _onTapCancel() => setState(() { _isTapped = false; });
 
   void _onTapUp(TapUpDetails details, Store<AppState> store) {
     store.dispatch(const OpenLinkAction(AppCommon.tprogerTelegramLink1));

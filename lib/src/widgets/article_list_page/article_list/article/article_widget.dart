@@ -9,9 +9,13 @@ import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/ar
 
 class ArticleWidget extends StatefulWidget {
   final ArticleModel article;
+  final void Function() onContentClick;
+  final void Function() onCommentClick;
 
   const ArticleWidget({
     required this.article,
+    required this.onContentClick,
+    required this.onCommentClick,
     super.key,
   });
 
@@ -29,7 +33,11 @@ class _ArticleWidgetState extends State<ArticleWidget> with AutomaticKeepAliveCl
   Widget build(BuildContext context) {
     super.build(context);
     
-    final articleBodyWidget = ArticleBodyWidget(article: widget.article);
+    final articleBodyWidget = ArticleBodyWidget(
+      article: widget.article,
+      onContentClick: widget.onContentClick,
+      onCommentClick: widget.onCommentClick,
+    );
 
     return StoreBuilder<AppState>(
       builder: (builder, store) => DecoratedBox(

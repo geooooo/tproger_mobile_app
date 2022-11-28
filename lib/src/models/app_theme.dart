@@ -15,8 +15,6 @@ class AppTheme {
   final Color articleBorderColor;
   final Color articleViewCountIconColor;
   final Color articleViewCountIconInvertedColor;
-  final Color articleFooterButtonIconColor;
-  final Color articleFooterButtonIconInvertedColor;
   final Color articleReactionsBackgroundColor;
   final Color articleReactionsBorderColor;
   final Color articleReactionBorderColor;
@@ -36,6 +34,7 @@ class AppTheme {
   final TextStyle articleDescriptionInvertedTextStyle;
   final TextStyle articleFooterButtonTextStyle;
   final TextStyle articleFooterButtonInvertedTextStyle;
+  final TextStyle articleFooterButtonActiveTextStyle;
   final TextStyle articleReactionTextStyle;
   final TextStyle articleListEndSleepingCatTextStyle;
   final TextStyle articleListEndTelegramTextStyle;
@@ -53,8 +52,6 @@ class AppTheme {
     articleBackgroundColor = AppColor.whiteColor0,
     articleViewCountIconColor = AppColor.grayColor0,
     articleViewCountIconInvertedColor = AppColor.whiteColor0,
-    articleFooterButtonIconColor = AppColor.grayColor1,
-    articleFooterButtonIconInvertedColor = AppColor.whiteColor0,
     articleReactionsBackgroundColor = AppColor.whiteColor2,
     articleReactionsBorderColor = AppColor.whiteColor3,
     articleReactionBorderColor = AppColor.whiteColor0,
@@ -117,6 +114,11 @@ class AppTheme {
       fontWeight: FontWeight.w500,
       color: AppColor.whiteColor0,
     ),
+    articleFooterButtonActiveTextStyle = _fontFamilyInter(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: AppColor.greenColor1,
+    ),
     articleReactionTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
@@ -164,8 +166,6 @@ class AppTheme {
     articleBackgroundColor = AppColor.blackColor1,
     articleViewCountIconColor = AppColor.grayColor2,
     articleViewCountIconInvertedColor = AppColor.whiteColor0,
-    articleFooterButtonIconColor = AppColor.grayColor3,
-    articleFooterButtonIconInvertedColor = AppColor.whiteColor0,
     articleReactionsBackgroundColor = AppColor.blackColor0,
     articleReactionsBorderColor = AppColor.blackColor2,
     articleReactionBorderColor = AppColor.blackColor1,
@@ -227,6 +227,11 @@ class AppTheme {
       fontSize: 16,
       fontWeight: FontWeight.w500,
       color: AppColor.whiteColor0,
+    ),
+    articleFooterButtonActiveTextStyle = _fontFamilyInter(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: AppColor.greenColor0,
     ),
     articleReactionTextStyle = _fontFamilyInter(
       fontSize: 16,
