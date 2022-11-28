@@ -25,42 +25,48 @@ class _ArticlesSortWidgetState extends State<ArticlesSortWidget> {
   var _isOpened = false;
 
   @override
-  Widget build(BuildContext context) => DropdownButtonHideUnderline(
-    child: StoreBuilder<AppState>(
-      builder: (context, store) => DropdownButton2<ArticlesSortType>(
-        value: widget.type,
-        onChanged: _onChanged,
-        onMenuStateChange: _onMenuStateChange,
-        dropdownElevation: 0,
-        buttonElevation: 0,
-        itemSplashColor: Colors.transparent,
-        itemHighlightColor: Colors.transparent,
-        focusColor: Colors.transparent,
-        buttonSplashColor: Colors.transparent,
-        buttonHighlightColor: Colors.transparent,
-        dropdownWidth: AppSize.articlesSortMenuWidth, // TODO: Make width adaptable
-        itemPadding: AppSize.articlesSortMenuItemPadding,
-        dropdownDecoration: BoxDecoration(
-          border: Border.all(
-            width: AppSize.articlesSortBorderSize,
-            color: store.state.theme.articlesSortBorderColor,
+  Widget build(BuildContext context) => LayoutBuilder(
+    builder: (context, constraints) {
+      final dropdownWidth = MediaQuery.of(context).size.width * 0.5;
+
+      return DropdownButtonHideUnderline(
+        child: StoreBuilder<AppState>(
+          builder: (context, store) => DropdownButton2<ArticlesSortType>(
+            value: widget.type,
+            onChanged: _onChanged,
+            onMenuStateChange: _onMenuStateChange,
+            dropdownElevation: 0,
+            buttonElevation: 0,
+            itemSplashColor: Colors.transparent,
+            itemHighlightColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            buttonSplashColor: Colors.transparent,
+            buttonHighlightColor: Colors.transparent,
+            dropdownWidth: dropdownWidth, //AppSize.articlesSortMenuWidth,
+            itemPadding: AppSize.articlesSortMenuItemPadding,
+            dropdownDecoration: BoxDecoration(
+              border: Border.all(
+                width: AppSize.articlesSortBorderSize,
+                color: store.state.theme.articlesSortBorderColor,
+              ),
+              borderRadius: const BorderRadius.all(AppSize.articlesSortBorderRadius),
+              color: store.state.theme.articlesSortColor,
+            ),
+            dropdownPadding: AppSize.articlesSortMenuPadding,
+            customButton: ArticlesSortButtonWidget(
+              isOpened: _isOpened,
+              type: widget.type,
+            ),
+            items: [ for (final type in ArticlesSortType.values)
+              DropdownMenuItem(
+                value: type,
+                child: ArticlesSortMenuItemWidget(type: type),
+              ),
+            ],
           ),
-          borderRadius: const BorderRadius.all(AppSize.articlesSortBorderRadius),
-          color: store.state.theme.articlesSortColor,
         ),
-        dropdownPadding: AppSize.articlesSortMenuPadding,
-        customButton: ArticlesSortButtonWidget(
-          isOpened: _isOpened,
-          type: widget.type,
-        ),
-        items: [ for (final type in ArticlesSortType.values)
-          DropdownMenuItem(
-            value: type,
-            child: ArticlesSortMenuItemWidget(type: type),
-          )
-        ],
-      ),
-    ),
+      );
+    },
   );
 
   void _onChanged(ArticlesSortType? type) => widget.onSelect(type!);

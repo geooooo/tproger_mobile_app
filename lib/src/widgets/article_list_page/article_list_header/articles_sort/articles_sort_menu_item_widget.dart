@@ -20,6 +20,7 @@ class ArticlesSortMenuItemWidget extends StatelessWidget {
     builder: (context, store) => Text(
       _appLocalizationService.getTextByArticlesSortType(type, context),
       style: store.state.theme.articlesSortMenuItemTextStyle,
+      maxLines: 1,
     ),
   );
 }
