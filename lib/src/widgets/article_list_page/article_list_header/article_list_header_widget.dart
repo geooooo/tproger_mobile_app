@@ -4,6 +4,7 @@ import 'package:redux/redux.dart';
 import 'package:tproger_mobile_app/src/models/actions/sort_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter/articles_filter_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_sort/articles_sort_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/read_us_telegram_widget.dart';
 
@@ -25,16 +26,13 @@ class ArticleListHeaderWidget extends StatelessWidget {
         const SizedBox(height: 15),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ArticlesSortWidget(
               type: store.state.articlesSortType,
               onSelect: (type) => _onSelectSortType(type, store),
             ),
-            Container(
-              color: Colors.grey,
-              height: 42,
-              width: 98,
-            ),
+            const ArticlesFilterWidget(),
           ],
         ),
         const SizedBox(height: 15),
