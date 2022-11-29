@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:overlayment/overlayment.dart';
 import 'package:tproger_mobile_app/src/models/app_color.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter/articles_filter_overlay_widget.dart';
 
-// TODO: In progress
 class ArticlesFilterWidget extends StatefulWidget {
   const ArticlesFilterWidget({ super.key });
 
@@ -53,6 +54,11 @@ class _ArticlesFilterWidgetState extends State<ArticlesFilterWidget> {
 
   void _onTapUp(TapUpDetails details) {
     setState(() { _isTapped = false; });
+
+    Overlayment.show(
+      OverPanel(child: const ArticlesFilterOverlayWidget()),
+      context: context,
+    );
   }
 
   void _onTapCancel() {

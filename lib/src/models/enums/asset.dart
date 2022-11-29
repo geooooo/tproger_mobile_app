@@ -1,4 +1,6 @@
 enum Asset {
+  cross('images/cross.svg'),
+  trash('images/trash.svg'),
   arrowUp('images/arrow_up.svg'),
   sleepingCat('images/sleeping_cat.svg'),
   telegram0('images/telegram0.svg'),
