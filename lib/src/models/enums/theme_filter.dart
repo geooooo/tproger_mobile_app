@@ -1,3 +1,19 @@
-// enum ThemeFilter {
-//   // algo...
-// }
+enum ThemeFilter {
+  algoAndDataStructure,
+  designPattern,
+  interview,
+  machineLearning,
+  devMethodology,
+  neuralNetwork,
+  ai,
+  ux,
+  dataScience,
+  admin,
+  webDev,
+  gameDev,
+  db,
+  mobileDev,
+  bot,
+  advice,
+  learning,
+}

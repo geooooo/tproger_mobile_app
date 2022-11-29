@@ -17,11 +17,11 @@ class ArticleListHeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) => StoreBuilder<AppState>(
     builder: (context, store) => Column(
       children: [
-        Container(
-          color: Colors.grey,
-          height: 58,
-          width: double.infinity,
-        ),
+        // Container(
+        //   color: Colors.grey,
+        //   height: 58,
+        //   width: double.infinity,
+        // ),
         const ReadUsTelegramButtonWidget(),
         const SizedBox(height: 15),
         Row(
