@@ -27,7 +27,7 @@ class _ArticlesSortWidgetState extends State<ArticlesSortWidget> {
   @override
   Widget build(BuildContext context) => LayoutBuilder(
     builder: (context, constraints) {
-      final dropdownWidth = MediaQuery.of(context).size.width * 0.5;
+      final dropdownWidth = MediaQuery.of(context).size.width * 0.6;
 
       return DropdownButtonHideUnderline(
         child: StoreBuilder<AppState>(

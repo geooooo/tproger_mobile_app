@@ -21,6 +21,7 @@ class ArticlesSortMenuItemWidget extends StatelessWidget {
       _appLocalizationService.getTextByArticlesSortType(type, context),
       style: store.state.theme.articlesSortMenuItemTextStyle,
       maxLines: 1,
+      overflow: TextOverflow.ellipsis,
     ),
   );
 }
