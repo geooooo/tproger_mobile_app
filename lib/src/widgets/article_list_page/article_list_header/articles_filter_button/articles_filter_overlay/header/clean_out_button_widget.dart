@@ -6,7 +6,7 @@ import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 
-class CleanOutButtonWidget extends StatelessWidget {
+class CleanOutButtonWidget extends StatefulWidget {
   final void Function() onClick;
 
   const CleanOutButtonWidget({ 
@@ -15,17 +15,35 @@ class CleanOutButtonWidget extends StatelessWidget {
   });
 
   @override
+  State<CleanOutButtonWidget> createState() => _CleanOutButtonWidgetState();
+}
+
+class _CleanOutButtonWidgetState extends State<CleanOutButtonWidget> {
+  static const _duration = Duration(milliseconds: 250);
+
+  var _isTapped = false;
+
+  @override
   Widget build(BuildContext context) => StoreBuilder<AppState>(
     builder: (context, store) => GestureDetector(
       onTapUp: _onTapUp,
-      child: Container(
+      onTapDown: _onTapDown,
+      onTapCancel: _onTapCancel,
+      child: AnimatedContainer(
+        duration: _duration,
+        curve: Curves.ease,
         padding: AppSize.articlesFilterOverlayHeaderButtonPadding,
         decoration: BoxDecoration(
           border: Border.all(
             width: AppSize.articlesFilterOverlayHeaderButtonBorderSize,
-            color: Colors.transparent,
+            color: _isTapped
+              ? store.state.theme.articlesFilterOverlayCleanOutButtonBorderActiveColor
+              : Colors.transparent,
           ),
           borderRadius: AppSize.articlesFilterOverlayHeaderButtonBorderRadius,
+          color: _isTapped
+            ? store.state.theme.articlesFilterOverlayCleanOutButtonActiveColor
+            : Colors.transparent,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -49,6 +67,14 @@ class CleanOutButtonWidget extends StatelessWidget {
   );
 
   void _onTapUp(TapUpDetails detail) {
-    onClick();
+    setState(() { _isTapped = false; });
+
+    // widget.onClick();
   }
+
+  void _onTapDown(TapDownDetails detail) =>
+    setState(() { _isTapped = true; });
+
+  void _onTapCancel() =>
+    setState(() { _isTapped = false; });
 }

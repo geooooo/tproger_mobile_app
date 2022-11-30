@@ -30,6 +30,8 @@ class AppTheme {
   final Color articlesFilterOverlayCleanOutButtonIconColor;
   final Color articlesFilterButtonColor;
   final Color articlesFilterButtonBorderColor;
+  final Color articlesFilterOverlayCleanOutButtonActiveColor;
+  final Color articlesFilterOverlayCleanOutButtonBorderActiveColor;
   
   final TextStyle articleAuthorNameTextStyle;
   final TextStyle articleAuthorNameInvertedTextStyle;
@@ -81,6 +83,8 @@ class AppTheme {
     articlesFilterOverlayCleanOutButtonIconColor = AppColor.grayColor4,
     articlesFilterButtonColor = AppColor.whiteColor0,
     articlesFilterButtonBorderColor = AppColor.whiteColor3,
+    articlesFilterOverlayCleanOutButtonActiveColor = AppColor.whiteColor5,
+    articlesFilterOverlayCleanOutButtonBorderActiveColor = AppColor.greenColor1,
     articleAuthorNameTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
@@ -237,6 +241,8 @@ class AppTheme {
     articlesFilterOverlayCleanOutButtonIconColor = AppColor.grayColor0,
     articlesFilterButtonColor = AppColor.blackColor1,
     articlesFilterButtonBorderColor = AppColor.blackColor2,
+    articlesFilterOverlayCleanOutButtonActiveColor = AppColor.grayColor5,
+    articlesFilterOverlayCleanOutButtonBorderActiveColor = AppColor.greenColor0,
     articleAuthorNameTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
