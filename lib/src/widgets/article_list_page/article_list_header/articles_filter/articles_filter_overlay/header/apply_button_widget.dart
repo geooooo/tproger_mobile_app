@@ -1,32 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tproger_mobile_app/l10n/app_localizations.dart';
-import 'package:tproger_mobile_app/src/models/app_color.dart';
+import 'package:tproger_mobile_app/src/models/app_size.dart';
+import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 
 class ApplyButtonWidget extends StatelessWidget {
   const ApplyButtonWidget({ super.key });
 
   @override
-  Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.symmetric(
-      vertical: 6,
-      horizontal: 24,
-    ),
-    decoration: BoxDecoration(
-      border: Border.all(
-        width: 2,
-        color: Colors.transparent,
+  Widget build(BuildContext context) => StoreBuilder<AppState>(
+    builder: (context, store) => Container(
+      padding: AppSize.articlesFilterOverlayHeaderButtonPadding,
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: AppSize.articlesFilterOverlayHeaderButtonBorderSize,
+          color: Colors.transparent,
+        ),
+        borderRadius: AppSize.articlesFilterOverlayHeaderButtonBorderRadius,
+        color: store.state.theme.articlesFilterOverlayApplyButtonColor,
       ),
-      borderRadius: BorderRadius.circular(8),
-      color: AppColor.grayColor5,
-    ),
-    child: Center(child: Text(
-      AppLocalizations.of(context)!.applyText,
-      style: const TextStyle(
-        color: AppColor.greenColor0,
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
+      child: Center(
+        child: Text(
+          AppLocalizations.of(context)!.applyText,
+          style: store.state.theme.articlesFilterOverlayApplyButtonTextStyle,
+          textAlign: TextAlign.center,
+        ),
       ),
-      textAlign: TextAlign.center,
-    ),),
+    ),
   );
 }

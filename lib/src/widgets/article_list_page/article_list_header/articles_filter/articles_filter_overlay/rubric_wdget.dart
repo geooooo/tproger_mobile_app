@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tproger_mobile_app/l10n/app_localizations.dart';
-import 'package:tproger_mobile_app/src/models/app_color.dart';
+import 'package:tproger_mobile_app/src/models/app_size.dart';
+import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 
 class RubricWidget extends StatelessWidget {
   final bool isForBeginner;
@@ -13,58 +15,45 @@ class RubricWidget extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        AppLocalizations.of(context)!.rubricsText,
-        style: const TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.w600,
-          color: AppColor.grayColor2,
+  Widget build(BuildContext context) => StoreBuilder<AppState>(
+    builder: (context, store) => Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          AppLocalizations.of(context)!.rubricsText,
+          style: store.state.theme.articlesFilterOverlayRubricTitleTextStyle,
         ),
-      ),
-      const SizedBox(height: 16),
-      GestureDetector(
-        onTap: isForBeginnerClick,
-        behavior: HitTestBehavior.translucent,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                bottom: 5.4,
-              ),
-              child: Checkbox(
-                value: isForBeginner, 
-                onChanged: (value) => isForBeginnerClick(),
-                hoverColor: Colors.transparent,
-                activeColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                splashRadius: 0,
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                fillColor: MaterialStateProperty.all(AppColor.greenColor0),
-                side: const BorderSide(
-                  color: AppColor.greenColor0,
-                  width: 2,
-                ),
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(4)),
+        const SizedBox(height: AppSize.articlesFilterOverlayRubricTitleAndContentSeparatorSize),
+        GestureDetector(
+          onTap: isForBeginnerClick,
+          behavior: HitTestBehavior.translucent,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: AppSize.articlesFilterOverlayIsForBeginnerCheckboxPadding,
+                child: Checkbox(
+                  value: isForBeginner, 
+                  onChanged: (value) => isForBeginnerClick(),
+                  splashRadius: 0,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  side: BorderSide(
+                    color: store.state.theme.articlesFilterOverlayIsForBeginnerCheckboxColor,
+                    width: AppSize.articlesFilterOverlayIsForeBeginnerCheckboxBorderSize,
+                  ),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: AppSize.articlesFilterOverlayIsForBeginnerCheckboxcBorderRadius,
+                  ),
                 ),
               ),
-            ),
-            Text(
-              AppLocalizations.of(context)!.forBeginnersText,
-              style: const TextStyle(
-                fontSize: 18,
-                fontFamily: 'Arial',
-                fontWeight: FontWeight.w400,
-                color: AppColor.grayColor2,
+              Text(
+                AppLocalizations.of(context)!.forBeginnersText,
+                style: store.state.theme.articlesFilterOverlayIsForBeginnerCheckboxTextStyle,
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-    ],
+      ],
+    ),
   );
 }

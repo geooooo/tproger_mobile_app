@@ -24,6 +24,8 @@ class AppTheme {
   final Color articlesSortColor;
   final Color articlesSortBorderColor;
   final Color articlesFilterOverlayCloseButtonIconColor;
+  final Color articlesFilterOverlayApplyButtonColor;
+  final Color articlesFilterOverlayIsForBeginnerCheckboxColor;
   
   final TextStyle articleAuthorNameTextStyle;
   final TextStyle articleAuthorNameInvertedTextStyle;
@@ -44,6 +46,10 @@ class AppTheme {
   final TextStyle articlesSortMenuItemTextStyle;
   final TextStyle articlesSortButtonTextStyle;
   final TextStyle articlesFilterOverlayHeaderTitleTextStyle;
+  final TextStyle articlesFilterOverlayApplyButtonTextStyle;
+  final TextStyle articlesFilterOverlayCleanUpButtonTextStyle;
+  final TextStyle articlesFilterOverlayRubricTitleTextStyle;
+  final TextStyle articlesFilterOverlayIsForBeginnerCheckboxTextStyle;
 
   AppTheme.light(): 
     isDark = false,
@@ -63,6 +69,8 @@ class AppTheme {
     articlesSortColor = AppColor.whiteColor0,
     articlesSortBorderColor = AppColor.whiteColor3,
     articlesFilterOverlayCloseButtonIconColor = AppColor.grayColor0,
+    articlesFilterOverlayApplyButtonColor = AppColor.whiteColor5,
+    articlesFilterOverlayIsForBeginnerCheckboxColor = AppColor.greenColor1,
     articleAuthorNameTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
@@ -163,6 +171,26 @@ class AppTheme {
       color: AppColor.blackColor3,
       fontSize: 28,
       fontWeight: FontWeight.w600,
+    ),
+    articlesFilterOverlayApplyButtonTextStyle = _fontFamilyInter(
+      color: AppColor.greenColor1,
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+    ),
+    articlesFilterOverlayCleanUpButtonTextStyle = _fontFamilyInter(
+      color: AppColor.grayColor1,
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+    ),
+    articlesFilterOverlayRubricTitleTextStyle = _fontFamilyInter(
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+      color: AppColor.grayColor0,
+    ),
+    articlesFilterOverlayIsForBeginnerCheckboxTextStyle = _fontFamilyArial.copyWith(
+      fontSize: 18,
+      fontWeight: FontWeight.w400,
+      color: AppColor.grayColor0,
     );
   
   AppTheme.dark():
@@ -183,6 +211,8 @@ class AppTheme {
     articlesSortColor = AppColor.blackColor1,
     articlesSortBorderColor = AppColor.blackColor2,
     articlesFilterOverlayCloseButtonIconColor = AppColor.grayColor2,
+    articlesFilterOverlayApplyButtonColor = AppColor.grayColor5,
+    articlesFilterOverlayIsForBeginnerCheckboxColor = AppColor.greenColor0,
     articleAuthorNameTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
@@ -283,5 +313,25 @@ class AppTheme {
       color: AppColor.whiteColor4,
       fontSize: 28,
       fontWeight: FontWeight.w600,
+    ),
+    articlesFilterOverlayApplyButtonTextStyle = _fontFamilyInter(
+      color: AppColor.greenColor0,
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+    ),
+    articlesFilterOverlayCleanUpButtonTextStyle = _fontFamilyInter(
+      color: AppColor.grayColor3,
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+    ),
+    articlesFilterOverlayRubricTitleTextStyle = _fontFamilyInter(
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+      color: AppColor.grayColor2,
+    ),
+    articlesFilterOverlayIsForBeginnerCheckboxTextStyle = _fontFamilyArial.copyWith(
+      fontSize: 18,
+      fontWeight: FontWeight.w400,
+      color: AppColor.grayColor2,
     );
 }

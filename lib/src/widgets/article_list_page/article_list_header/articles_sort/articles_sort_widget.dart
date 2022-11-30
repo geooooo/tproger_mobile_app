@@ -49,7 +49,7 @@ class _ArticlesSortWidgetState extends State<ArticlesSortWidget> {
                 width: AppSize.articlesSortBorderSize,
                 color: store.state.theme.articlesSortBorderColor,
               ),
-              borderRadius: const BorderRadius.all(AppSize.articlesSortBorderRadius),
+              borderRadius: AppSize.articlesSortBorderRadius,
               color: store.state.theme.articlesSortColor,
             ),
             dropdownPadding: AppSize.articlesSortMenuPadding,
