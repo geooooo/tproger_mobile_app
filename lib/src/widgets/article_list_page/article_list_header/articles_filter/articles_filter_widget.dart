@@ -56,7 +56,12 @@ class _ArticlesFilterWidgetState extends State<ArticlesFilterWidget> {
     setState(() { _isTapped = false; });
 
     Overlayment.show(
-      OverPanel(child: const ArticlesFilterOverlayWidget()),
+      OverPanel(
+        child: const ArticlesFilterOverlayWidget(),
+        backgroundSettings: const BackgroundSettings(
+          color: Colors.transparent,
+        ),
+      ),
       context: context,
     );
   }

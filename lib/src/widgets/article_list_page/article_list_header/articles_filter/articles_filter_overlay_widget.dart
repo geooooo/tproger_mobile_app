@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:overlayment/overlayment.dart';
 import 'package:tproger_mobile_app/l10n/app_localizations.dart';
 import 'package:tproger_mobile_app/src/models/app_color.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
@@ -10,31 +11,98 @@ class ArticlesFilterOverlayWidget extends StatelessWidget {
   const ArticlesFilterOverlayWidget({ super.key });
 
   @override
-  Widget build(BuildContext context) => SafeArea(
-    child: Stack(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(24),
-          width: double.infinity,
-          height: double.infinity,
-          color: AppColor.blackColor1,
-          child: SingleChildScrollView(
-            child: Column(
-              children: const [
-                Header(),
-                SizedBox(height: 20),
-              ],
+  Widget build(BuildContext context) => DecoratedBox(
+    decoration: const BoxDecoration(
+      color: AppColor.blackColor1,
+    ),
+    child: SafeArea(
+      child: Stack(
+        children: [
+          Container(
+            color: AppColor.blackColor1,
+            padding: const EdgeInsets.all(24),
+            width: double.infinity,
+            height: double.infinity,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Header(),
+                  SizedBox(height: 20),
+                  Rubric(),
+                  SizedBox(height: 40),
+                ],
+              ),
             ),
           ),
-        ),
-        const Positioned(
-          top: 0,
-          right: 0,
-          child: Cross(),
-        ),
-      ],
+          const Positioned(
+            top: 0,
+            right: 0,
+            child: Cross(),
+          ),
+        ],
+      ),
     ),
   );
+}
+
+class Rubric extends StatelessWidget {
+  const Rubric({ super.key });
+
+  @override
+  Widget build(BuildContext context) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        AppLocalizations.of(context)!.rubricsText,
+        style: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+          color: AppColor.grayColor2,
+        ),
+      ),
+      const SizedBox(height: 16),
+      Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+              bottom: 5.4,
+            ),
+            child: Checkbox(
+              value: false, 
+              onChanged: _onChanged,
+              hoverColor: Colors.transparent,
+              activeColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              splashRadius: 0,
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              // fillColor: MaterialStateProperty.all(AppColor.greenColor0),
+              side: const BorderSide(
+                color: AppColor.greenColor0,
+                width: 2,
+              ),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(4)),
+              ),
+            ),
+          ),
+          Text(
+            AppLocalizations.of(context)!.forBeginnersText,
+            style: const TextStyle(
+              fontSize: 18,
+              fontFamily: 'Arial',
+              fontWeight: FontWeight.w400,
+              color: AppColor.grayColor2,
+            ),
+          )
+        ],
+      ),
+    ],
+  );
+
+  void _onChanged(bool? isChecked) {
+    print(isChecked);
+  }
 }
 
 class Header extends StatelessWidget {
@@ -155,17 +223,22 @@ class Cross extends StatelessWidget {
   const Cross({ super.key });
 
   @override
-  Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.symmetric(
-      horizontal: 18,
-      vertical: 24,
-    ),
-    child: SvgPicture.asset(
-      Asset.cross.value,
-      package: Asset.package,
-      width: 18,
-      height: 18,
-      color: AppColor.grayColor2,
+  Widget build(BuildContext context) => GestureDetector(
+    onTap: _onTap,
+    child: Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 18,
+        vertical: 24,
+      ),
+      child: SvgPicture.asset(
+        Asset.cross.value,
+        package: Asset.package,
+        width: 18,
+        height: 18,
+        color: AppColor.grayColor2,
+      ),
     ),
   );
+
+  void _onTap() => Overlayment.dismissLast();
 }
