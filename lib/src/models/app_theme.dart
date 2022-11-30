@@ -43,6 +43,7 @@ class AppTheme {
   final TextStyle readUsTelegramButtonTextStyle;
   final TextStyle articlesSortMenuItemTextStyle;
   final TextStyle articlesSortButtonTextStyle;
+  final TextStyle articlesFilterOverlayHeaderTitleTextStyle;
 
   AppTheme.light(): 
     isDark = false,
@@ -157,6 +158,11 @@ class AppTheme {
       color: AppColor.grayColor0,
       fontSize: 16,
       fontWeight: FontWeight.w500,
+    ),
+    articlesFilterOverlayHeaderTitleTextStyle = _fontFamilyInter(
+      color: AppColor.blackColor3,
+      fontSize: 28,
+      fontWeight: FontWeight.w600,
     );
   
   AppTheme.dark():
@@ -272,5 +278,10 @@ class AppTheme {
       color: AppColor.grayColor2,
       fontSize: 16,
       fontWeight: FontWeight.w500,
+    ),
+    articlesFilterOverlayHeaderTitleTextStyle = _fontFamilyInter(
+      color: AppColor.whiteColor4,
+      fontSize: 28,
+      fontWeight: FontWeight.w600,
     );
 }

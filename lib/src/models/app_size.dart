@@ -19,6 +19,8 @@ class AppSize {
   static const articleListEndTelegramIconAndTextSeparatorSize = 12.0;
   static const readUsTelegramButtonIconAndTextSeparatorSize = 10.0;
   static const articleSortTextAndIconSeparatorSize = 6.0;
+  static const articlesFilterOverlayHeaderTitleAndButtonsSeparatorSize = 20.0;
+  static const articlesFilterOverlayHeaderCleanOutAndApplyButtonsSeparatorSize = 4.0;
   
   static const articleListEndSize = 110.0;
   static const articleListEndTelegramIconSize = 48.0;
