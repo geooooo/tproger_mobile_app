@@ -5,6 +5,7 @@ import 'package:tproger_mobile_app/src/models/actions/apply_filters_action.dart'
 import 'package:tproger_mobile_app/src/models/actions/clear_filters_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_base_action.dart';
+import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_empty_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_success_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/load_next_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/load_next_articles_base_action.dart';
@@ -14,6 +15,7 @@ import 'package:tproger_mobile_app/src/models/actions/open_link_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/sort_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/exceptions/load_articles_list_exception.dart';
+import 'package:tproger_mobile_app/src/models/filter_data.dart';
 import 'package:tproger_mobile_app/src/services/article_list_service.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -35,10 +37,18 @@ class MiddlewareService {
   Stream<LoadArticlesBaseAction> _loadArticles(Stream<LoadArticlesAction> actions, EpicStore<AppState> store) =>
     actions.asyncMap((action) async {
       try {
-        final articles = await _articleListService.getArticles(action.sortType);
-        return LoadArticlesSuccessAction(articles);
+        final articles = await _articleListService.getArticles(
+          sortType: action.sortType,
+          filterData: action.filterData,
+        );
+        return articles.isEmpty
+          ? const LoadArticlesEmtpyAction()
+          : LoadArticlesSuccessAction(articles);
       } on LoadArticlesListException {
-        return LoadArticlesAction(action.sortType);
+        return LoadArticlesAction(
+          sortType: action.sortType,
+          filterData: action.filterData,
+        );
       }
     });
 
@@ -47,6 +57,7 @@ class MiddlewareService {
       final articles = await _articleListService.getNextArticles(
         pageNumber: action.nextPageNumber,
         sortType: action.sortType,
+        filterData: store.state.filterData,
       );
 
       return articles.isEmpty
@@ -60,20 +71,20 @@ class MiddlewareService {
     );
 
   Stream<LoadArticlesBaseAction> _sortArticles(Stream<SortArticlesAction> actions, EpicStore<AppState> store) =>
-    actions.map((action) => LoadArticlesAction(action.type));
+    actions.map((action) => LoadArticlesAction(
+      sortType: action.type,
+      filterData: store.state.filterData,
+    ));
 
   Stream<void> _applyFilters(Stream<ApplyFiltersAction> actions, EpicStore<AppState> store) =>
-    actions.asyncMap((action) async {
-      // final articles = await _articleListService.getNextArticles(
-      //   pageNumber: action.nextPageNumber,
-      //   sortType: action.sortType,
-      // );
-
-      // return articles.isEmpty
-      //   ? const LoadNextArticlesEndAction()
-      //   : LoadNextArticlesSuccessAction(articles, action.nextPageNumber);
-    });
+    actions.map((action) => LoadArticlesAction(
+      sortType: store.state.articlesSortType,
+      filterData: store.state.filterData,
+    ));
 
   Stream<LoadArticlesAction> _clearFilters(Stream<ClearFiltersAction> actions, EpicStore<AppState> store) =>
-    actions.map((action) => LoadArticlesAction(store.state.articlesSortType));
+    actions.map((action) => LoadArticlesAction(
+      sortType: store.state.articlesSortType,
+      filterData: FilterData(),
+    ));
 }

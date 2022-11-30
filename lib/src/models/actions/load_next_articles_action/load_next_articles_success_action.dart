@@ -4,7 +4,7 @@ import 'package:tproger_mobile_app/src/models/article_model.dart';
 
 class LoadNextArticlesSuccessAction implements LoadNextArticlesBaseAction {
   final List<ArticleModel> articles;
-  final int pageNumber;
+  final int nextPgeNumber;
   
-  const LoadNextArticlesSuccessAction(this.articles, this.pageNumber);
+  const LoadNextArticlesSuccessAction(this.articles, this.nextPgeNumber);
 }

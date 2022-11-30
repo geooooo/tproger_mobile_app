@@ -14,13 +14,23 @@ class LoadNextArticlesRequest {
   )
   final ArticlesSortType sortType;
 
+  @JsonKey(
+    name: 'tags',
+    toJson: _isForBeginnerToJson,
+  )
+  final bool isForBeginner;
+
   final String action = 'infinite-scroll';
 
   const LoadNextArticlesRequest({
     required this.pageNumber,
     required this.sortType,
+    required this.isForBeginner,
   });
 
   Map<String, dynamic> toJson() =>
     _$LoadNextArticlesRequestToJson(this);
+
+  static String? _isForBeginnerToJson(bool value) => 
+    value ? 'on' : null;
 }

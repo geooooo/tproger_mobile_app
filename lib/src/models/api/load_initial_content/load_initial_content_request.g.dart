@@ -10,4 +10,6 @@ Map<String, dynamic> _$LoadInitialContentRequestToJson(
         LoadInitialContentRequest instance) =>
     <String, dynamic>{
       'sort': ArticlesSortType.staticToString(instance.sortType),
+      'tags': LoadInitialContentRequest._isForBeginnerToJson(
+          instance.isForBeginner),
     };

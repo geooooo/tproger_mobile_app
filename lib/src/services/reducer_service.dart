@@ -5,6 +5,7 @@ import 'package:tproger_mobile_app/src/models/actions/clear_filters_action.dart'
 import 'package:tproger_mobile_app/src/models/actions/init_theme_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/is_for_beginner_filter_change_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_action.dart';
+import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_empty_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_success_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/load_next_articles_end_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/load_next_articles_success_action.dart';
@@ -28,6 +29,7 @@ class ReducerService {
     TypedReducer(_loadArticlesSuccess),
     TypedReducer(_loadNextArticlesSuccess),
     TypedReducer(_loadNextArticlesEnd),
+    TypedReducer(_loadArticlesEmtpy),
     TypedReducer(_sortArticles),
     TypedReducer(_applyFilters),
     TypedReducer(_clearFilters),
@@ -70,10 +72,15 @@ class ReducerService {
   AppState _loadNextArticlesSuccess(AppState state, LoadNextArticlesSuccessAction action) => 
     state.rebuild((b) => b
       ..articles.addAll(action.articles)
-      ..articlesPageNumber = action.pageNumber
+      ..articlesPageNumber = action.nextPgeNumber
     );
 
   AppState _loadNextArticlesEnd(AppState state, LoadNextArticlesEndAction action) => 
+    state.rebuild((b) => b
+      ..isArticlesFullLoaded = true
+    );
+
+  AppState _loadArticlesEmtpy(AppState state, LoadArticlesEmtpyAction action) => 
     state.rebuild((b) => b
       ..isArticlesFullLoaded = true
     );

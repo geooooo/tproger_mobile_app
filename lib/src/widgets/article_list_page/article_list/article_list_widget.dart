@@ -85,7 +85,10 @@ class ArticleListWidget extends StatelessWidget {
   }
 
   void _onRefresh(Store<AppState> store) =>
-    store.dispatch(LoadArticlesAction(store.state.articlesSortType));
+    store.dispatch(LoadArticlesAction(
+      sortType: store.state.articlesSortType,
+      filterData: store.state.filterData,
+    ));
 
   void _onContentClick(String articleLink, Store<AppState> store) =>
     store.dispatch(OpenLinkAction(articleLink));

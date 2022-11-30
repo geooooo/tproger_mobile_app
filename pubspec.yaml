@@ -33,6 +33,7 @@ dependencies:
   flutter_native_splash: ^2.2.14
   dropdown_button2: ^1.9.1
   overlayment: ^0.2.1
+  dio_logger: ^4.0.8+8
   
 dev_dependencies:
   flutter_lints: ^2.0.0

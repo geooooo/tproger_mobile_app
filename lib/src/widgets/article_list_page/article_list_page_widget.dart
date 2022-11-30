@@ -14,7 +14,10 @@ class ArticleListPageWidget extends PageWidget {
   Widget buildContent(BuildContext context) => StoreBuilder<AppState>(
     builder: (context, store) {      
       if (!store.state.isArticlesLoaded) {
-        store.dispatch(LoadArticlesAction(store.state.articlesSortType));
+        store.dispatch(LoadArticlesAction(
+          sortType: store.state.articlesSortType,
+          filterData: store.state.filterData,
+        ));
 
         return const ArticleListLoaderWidget();
       }

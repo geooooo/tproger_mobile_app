@@ -11,8 +11,20 @@ class LoadInitialContentRequest {
   )
   final ArticlesSortType sortType;
 
-  const LoadInitialContentRequest(this.sortType);
+  @JsonKey(
+    name: 'tags',
+    toJson: _isForBeginnerToJson,
+  )
+  final bool isForBeginner;
+
+  const LoadInitialContentRequest({
+    required this.sortType,
+    required this.isForBeginner,
+  });
 
   Map<String, dynamic> toJson() =>
     _$LoadInitialContentRequestToJson(this);
+
+  static String? _isForBeginnerToJson(bool value) => 
+    value ? 'on' : null;
 }

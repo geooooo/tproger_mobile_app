@@ -12,6 +12,7 @@ import 'package:tproger_mobile_app/src/models/api/load_articles_comment_counts/l
 import 'package:tproger_mobile_app/src/models/api/load_articles_comment_counts/load_articles_comment_counts_response.dart';
 import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/load_articles_view_counts_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/load_articles_view_counts_response.dart';
+import 'package:tproger_mobile_app/src/models/filter_data.dart';
 import 'package:tproger_mobile_app/src/models/parsed_article/addition_data.dart';
 import 'package:tproger_mobile_app/src/models/parsed_article/parsed_article.dart';
 import 'package:tproger_mobile_app/src/models/reaction_data.dart';
@@ -28,19 +29,37 @@ class ArticleListLoader {
     this._httpService,
   );
 
-  Future<List<ArticleModel>> load(ArticlesSortType sortType) async {
-    final response = await _httpService.loadInitialContent(LoadInitialContentRequest(sortType));
+  Future<List<ArticleModel>> load({
+    required ArticlesSortType sortType,
+    required FilterData filterData,
+  }) async {
+    final appliedFilterData = filterData.isEnabled
+      ? filterData
+      : FilterData();
+
+    final response = await _httpService.loadInitialContent(LoadInitialContentRequest(
+      sortType: sortType,
+      isForBeginner: appliedFilterData.isForBeginner,
+    ));
+
     return _parseArticles(response.html);
   }
 
   Future<List<ArticleModel>> loadNext({
     required int pageNumber,
     required ArticlesSortType sortType,
+    required FilterData filterData,
   }) async {
+    final appliedFilterData = filterData.isEnabled
+      ? filterData
+      : FilterData();
+
     final response = await _httpService.loadNextArticles(LoadNextArticlesRequest(
       pageNumber: pageNumber,
       sortType: sortType,
+      isForBeginner: appliedFilterData.isForBeginner,
     ));
+    
     return _parseArticles(response.html);
   }
 
