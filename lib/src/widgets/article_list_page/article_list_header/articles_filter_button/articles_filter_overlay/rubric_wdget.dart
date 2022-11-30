@@ -4,7 +4,7 @@ import 'package:tproger_mobile_app/l10n/app_localizations.dart';
 import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 
-class RubricWidget extends StatelessWidget {
+class RubricWidget extends StatefulWidget {
   final bool isForBeginner;
   final void Function() onIsForBeginnerClick;
 
@@ -13,6 +13,15 @@ class RubricWidget extends StatelessWidget {
     required this.onIsForBeginnerClick,
     super.key,
   });
+
+  @override
+  State<RubricWidget> createState() => _RubricWidgetState();
+}
+
+class _RubricWidgetState extends State<RubricWidget> {
+  static const _duration = Duration(milliseconds: 250);
+
+  var _isTapped = false;
 
   @override
   Widget build(BuildContext context) => StoreBuilder<AppState>(
@@ -25,35 +34,56 @@ class RubricWidget extends StatelessWidget {
         ),
         const SizedBox(height: AppSize.articlesFilterOverlayRubricTitleAndContentSeparatorSize),
         GestureDetector(
-          onTap: onIsForBeginnerClick,
+          onTapUp: _onTapUp,
+          onTapDown: _onTapDown,
+          onTapCancel: _onTapCancel,
           behavior: HitTestBehavior.translucent,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: AppSize.articlesFilterOverlayIsForBeginnerCheckboxPadding,
-                child: Checkbox(
-                  value: isForBeginner, 
-                  onChanged: (value) => onIsForBeginnerClick(),
-                  splashRadius: 0,
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  side: BorderSide(
-                    color: store.state.theme.articlesFilterOverlayIsForBeginnerCheckboxColor,
-                    width: AppSize.articlesFilterOverlayIsForeBeginnerCheckboxBorderSize,
-                  ),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: AppSize.articlesFilterOverlayIsForBeginnerCheckboxcBorderRadius,
+          child: AnimatedOpacity(
+            duration: _duration,
+            curve: Curves.ease,
+            opacity: _isTapped? 0.7 : 1,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: AppSize.articlesFilterOverlayIsForBeginnerCheckboxPadding,
+                  child: Checkbox(
+                    value: widget.isForBeginner, 
+                    onChanged: (value) => widget.onIsForBeginnerClick(),
+                    splashRadius: 0,
+                    activeColor: store.state.theme.articlesFilterOverlayIsForBeginnerCheckboxCheckFillActiveColor,//Color.fromRGBO(42, 165, 160, 1),
+                    checkColor: store.state.theme.articlesFilterOverlayIsForBeginnerCheckboxCheckColor,//Color.fromRGBO(255, 255, 255, 1),
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    side: BorderSide(
+                      color: store.state.theme.articlesFilterOverlayIsForBeginnerCheckboxColor,
+                      width: AppSize.articlesFilterOverlayIsForeBeginnerCheckboxBorderSize,
+                    ),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: AppSize.articlesFilterOverlayIsForBeginnerCheckboxcBorderRadius,
+                    ),
                   ),
                 ),
-              ),
-              Text(
-                AppLocalizations.of(context)!.forBeginnersText,
-                style: store.state.theme.articlesFilterOverlayIsForBeginnerCheckboxTextStyle,
-              ),
-            ],
+                Text(
+                  AppLocalizations.of(context)!.forBeginnersText,
+                  style: store.state.theme.articlesFilterOverlayIsForBeginnerCheckboxTextStyle,
+                ),
+              ],
+            ),
           ),
         ),
       ],
     ),
   );
+
+  void _onTapUp(TapUpDetails details) {
+    widget.onIsForBeginnerClick();
+
+    setState(() { _isTapped = false; });
+  }
+
+  void _onTapDown(TapDownDetails details) =>
+    setState(() { _isTapped = true; });
+
+  void _onTapCancel() =>
+    setState(() { _isTapped = false; });
 }

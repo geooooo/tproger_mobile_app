@@ -32,6 +32,8 @@ class AppTheme {
   final Color articlesFilterButtonBorderColor;
   final Color articlesFilterOverlayCleanOutButtonActiveColor;
   final Color articlesFilterOverlayCleanOutButtonBorderActiveColor;
+  final Color articlesFilterOverlayIsForBeginnerCheckboxCheckColor;
+  final Color articlesFilterOverlayIsForBeginnerCheckboxCheckFillActiveColor;
   
   final TextStyle articleAuthorNameTextStyle;
   final TextStyle articleAuthorNameInvertedTextStyle;
@@ -85,6 +87,8 @@ class AppTheme {
     articlesFilterButtonBorderColor = AppColor.whiteColor3,
     articlesFilterOverlayCleanOutButtonActiveColor = AppColor.whiteColor5,
     articlesFilterOverlayCleanOutButtonBorderActiveColor = AppColor.greenColor1,
+    articlesFilterOverlayIsForBeginnerCheckboxCheckColor = AppColor.whiteColor0,
+    articlesFilterOverlayIsForBeginnerCheckboxCheckFillActiveColor = AppColor.greenColor1,
     articleAuthorNameTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
@@ -243,6 +247,8 @@ class AppTheme {
     articlesFilterButtonBorderColor = AppColor.blackColor2,
     articlesFilterOverlayCleanOutButtonActiveColor = AppColor.grayColor5,
     articlesFilterOverlayCleanOutButtonBorderActiveColor = AppColor.greenColor0,
+    articlesFilterOverlayIsForBeginnerCheckboxCheckColor = AppColor.whiteColor0,
+    articlesFilterOverlayIsForBeginnerCheckboxCheckFillActiveColor = AppColor.greenColor0,
     articleAuthorNameTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
