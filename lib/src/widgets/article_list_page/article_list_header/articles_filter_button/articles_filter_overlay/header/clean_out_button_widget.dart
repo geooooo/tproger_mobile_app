@@ -69,7 +69,7 @@ class _CleanOutButtonWidgetState extends State<CleanOutButtonWidget> {
   void _onTapUp(TapUpDetails detail) {
     setState(() { _isTapped = false; });
 
-    // widget.onClick();
+    widget.onClick();
   }
 
   void _onTapDown(TapDownDetails detail) =>

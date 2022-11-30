@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:injectable/injectable.dart';
 import 'package:redux_epics/redux_epics.dart';
+import 'package:tproger_mobile_app/src/models/actions/apply_filters_action.dart';
+import 'package:tproger_mobile_app/src/models/actions/clear_filters_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_base_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_success_action.dart';
@@ -24,6 +26,8 @@ class MiddlewareService {
     TypedEpic(_loadNextArticles),
     TypedEpic(_openLink),
     TypedEpic(_sortArticles),
+    TypedEpic(_applyFilters),
+    TypedEpic(_clearFilters),
   ]);
 
   MiddlewareService(this._articleListService);
@@ -57,4 +61,19 @@ class MiddlewareService {
 
   Stream<LoadArticlesBaseAction> _sortArticles(Stream<SortArticlesAction> actions, EpicStore<AppState> store) =>
     actions.map((action) => LoadArticlesAction(action.type));
+
+  Stream<void> _applyFilters(Stream<ApplyFiltersAction> actions, EpicStore<AppState> store) =>
+    actions.asyncMap((action) async {
+      // final articles = await _articleListService.getNextArticles(
+      //   pageNumber: action.nextPageNumber,
+      //   sortType: action.sortType,
+      // );
+
+      // return articles.isEmpty
+      //   ? const LoadNextArticlesEndAction()
+      //   : LoadNextArticlesSuccessAction(articles, action.nextPageNumber);
+    });
+
+  Stream<LoadArticlesAction> _clearFilters(Stream<ClearFiltersAction> actions, EpicStore<AppState> store) =>
+    actions.map((action) => LoadArticlesAction(store.state.articlesSortType));
 }

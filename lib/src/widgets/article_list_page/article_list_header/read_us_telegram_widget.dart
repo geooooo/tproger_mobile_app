@@ -17,6 +17,8 @@ class ReadUsTelegramButtonWidget extends StatefulWidget {
 }
 
 class _ReadUsTelegramButtonWidgetState extends State<ReadUsTelegramButtonWidget> {
+  static const _duration = Duration(milliseconds: 250);
+
   bool _isTapped = false;
 
   @override
@@ -25,7 +27,9 @@ class _ReadUsTelegramButtonWidgetState extends State<ReadUsTelegramButtonWidget>
       onTapDown: _onTapDown,
       onTapUp: (detail) => _onTapUp(detail, store),
       onTapCancel: _onTapCancel,
-      child: Opacity(
+      child: AnimatedOpacity(
+        duration: _duration,
+        curve: Curves.ease,
         opacity: _isTapped? 0.7 : 1,
         child: Container(
           padding: AppSize.readUsTelegramButtonPadding,

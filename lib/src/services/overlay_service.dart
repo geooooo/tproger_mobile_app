@@ -13,10 +13,6 @@ class OverlayService {
     required void Function() onCloseClick,
   }) => Overlayment.show<void>(
     OverPanel(
-      animation: const OverFadeAnimation(
-        begin: 1,
-        durationMilliseconds: 0,
-      ),
       child: ArticlesFilterOverlayWidget(
         onApplyClick: onApplyClick,
         onCleanOutClick: onCleanOutClick,
