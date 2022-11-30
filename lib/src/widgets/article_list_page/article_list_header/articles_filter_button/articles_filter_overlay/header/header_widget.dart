@@ -3,8 +3,8 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tproger_mobile_app/l10n/app_localizations.dart';
 import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter/articles_filter_overlay/header/apply_button_widget.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter/articles_filter_overlay/header/clean_out_button_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter_button/articles_filter_overlay/header/apply_button_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter_button/articles_filter_overlay/header/clean_out_button_widget.dart';
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({ super.key });

@@ -22,7 +22,7 @@ class ArticleBodyWidget extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.all(AppSize.articlePaddingSize),
+    padding: AppSize.articlePaddingSize,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

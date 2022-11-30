@@ -26,6 +26,10 @@ class AppTheme {
   final Color articlesFilterOverlayCloseButtonIconColor;
   final Color articlesFilterOverlayApplyButtonColor;
   final Color articlesFilterOverlayIsForBeginnerCheckboxColor;
+  final Color articlesFilterOverlayColor;
+  final Color articlesFilterOverlayCleanOutButtonIconColor;
+  final Color articlesFilterButtonColor;
+  final Color articlesFilterButtonBorderColor;
   
   final TextStyle articleAuthorNameTextStyle;
   final TextStyle articleAuthorNameInvertedTextStyle;
@@ -47,9 +51,11 @@ class AppTheme {
   final TextStyle articlesSortButtonTextStyle;
   final TextStyle articlesFilterOverlayHeaderTitleTextStyle;
   final TextStyle articlesFilterOverlayApplyButtonTextStyle;
-  final TextStyle articlesFilterOverlayCleanUpButtonTextStyle;
+  final TextStyle articlesFilterOverlayCleanOutButtonTextStyle;
   final TextStyle articlesFilterOverlayRubricTitleTextStyle;
   final TextStyle articlesFilterOverlayIsForBeginnerCheckboxTextStyle;
+  final TextStyle articlesFilterButtonTextStyle;
+  final TextStyle articlesFilterButtonActiveTextStyle;
 
   AppTheme.light(): 
     isDark = false,
@@ -71,6 +77,10 @@ class AppTheme {
     articlesFilterOverlayCloseButtonIconColor = AppColor.grayColor0,
     articlesFilterOverlayApplyButtonColor = AppColor.whiteColor5,
     articlesFilterOverlayIsForBeginnerCheckboxColor = AppColor.greenColor1,
+    articlesFilterOverlayColor = AppColor.whiteColor0,
+    articlesFilterOverlayCleanOutButtonIconColor = AppColor.grayColor4,
+    articlesFilterButtonColor = AppColor.whiteColor0,
+    articlesFilterButtonBorderColor = AppColor.whiteColor3,
     articleAuthorNameTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
@@ -177,7 +187,7 @@ class AppTheme {
       fontSize: 16,
       fontWeight: FontWeight.w500,
     ),
-    articlesFilterOverlayCleanUpButtonTextStyle = _fontFamilyInter(
+    articlesFilterOverlayCleanOutButtonTextStyle = _fontFamilyInter(
       color: AppColor.grayColor1,
       fontSize: 16,
       fontWeight: FontWeight.w500,
@@ -191,6 +201,16 @@ class AppTheme {
       fontSize: 18,
       fontWeight: FontWeight.w400,
       color: AppColor.grayColor0,
+    ),
+    articlesFilterButtonTextStyle = _fontFamilyInter(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: AppColor.grayColor0,
+    ),
+    articlesFilterButtonActiveTextStyle = _fontFamilyInter(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: AppColor.grayColor1,
     );
   
   AppTheme.dark():
@@ -213,6 +233,10 @@ class AppTheme {
     articlesFilterOverlayCloseButtonIconColor = AppColor.grayColor2,
     articlesFilterOverlayApplyButtonColor = AppColor.grayColor5,
     articlesFilterOverlayIsForBeginnerCheckboxColor = AppColor.greenColor0,
+    articlesFilterOverlayColor = AppColor.blackColor1,
+    articlesFilterOverlayCleanOutButtonIconColor = AppColor.grayColor0,
+    articlesFilterButtonColor = AppColor.blackColor1,
+    articlesFilterButtonBorderColor = AppColor.blackColor2,
     articleAuthorNameTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
@@ -319,7 +343,7 @@ class AppTheme {
       fontSize: 16,
       fontWeight: FontWeight.w500,
     ),
-    articlesFilterOverlayCleanUpButtonTextStyle = _fontFamilyInter(
+    articlesFilterOverlayCleanOutButtonTextStyle = _fontFamilyInter(
       color: AppColor.grayColor3,
       fontSize: 16,
       fontWeight: FontWeight.w500,
@@ -333,5 +357,15 @@ class AppTheme {
       fontSize: 18,
       fontWeight: FontWeight.w400,
       color: AppColor.grayColor2,
+    ),
+    articlesFilterButtonTextStyle = _fontFamilyInter(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: AppColor.grayColor2,
+    ),
+    articlesFilterButtonActiveTextStyle = _fontFamilyInter(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: AppColor.grayColor3,
     );
 }
