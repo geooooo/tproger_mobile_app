@@ -3,7 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:overlayment/overlayment.dart';
 import 'package:tproger_mobile_app/src/models/app_color.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter/articles_filter_overlay_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter/articles_filter_overlay/articles_filter_overlay_widget.dart';
 
 class ArticlesFilterWidget extends StatefulWidget {
   const ArticlesFilterWidget({ super.key });

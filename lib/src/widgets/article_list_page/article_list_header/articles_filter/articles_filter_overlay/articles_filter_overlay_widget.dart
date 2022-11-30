@@ -6,6 +6,7 @@ import 'package:tproger_mobile_app/l10n/app_localizations.dart';
 import 'package:tproger_mobile_app/src/models/app_color.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter/articles_filter_overlay/close_button_widget.dart';
 
 class ArticlesFilterOverlayWidget extends StatelessWidget {
   const ArticlesFilterOverlayWidget({ super.key });
@@ -35,15 +36,19 @@ class ArticlesFilterOverlayWidget extends StatelessWidget {
               ),
             ),
           ),
-          const Positioned(
+          Positioned(
             top: 0,
             right: 0,
-            child: Cross(),
+            child: CloseButtonWidget(
+              onClick: _onCloseClick,
+            ),
           ),
         ],
       ),
     ),
   );
+
+  void _onCloseClick() => Overlayment.dismissLast();
 }
 
 class Rubric extends StatelessWidget {
@@ -217,28 +222,4 @@ class CleanOut extends StatelessWidget {
       ],
     ),
   );
-}
-
-class Cross extends StatelessWidget {
-  const Cross({ super.key });
-
-  @override
-  Widget build(BuildContext context) => GestureDetector(
-    onTap: _onTap,
-    child: Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 18,
-        vertical: 24,
-      ),
-      child: SvgPicture.asset(
-        Asset.cross.value,
-        package: Asset.package,
-        width: 18,
-        height: 18,
-        color: AppColor.grayColor2,
-      ),
-    ),
-  );
-
-  void _onTap() => Overlayment.dismissLast();
 }

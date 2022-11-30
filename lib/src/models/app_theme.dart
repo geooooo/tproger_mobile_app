@@ -23,6 +23,7 @@ class AppTheme {
   final Color readUsTelegramButtonIconColor;
   final Color articlesSortColor;
   final Color articlesSortBorderColor;
+  final Color articlesFilterOverlayCloseButtonIconColor;
   
   final TextStyle articleAuthorNameTextStyle;
   final TextStyle articleAuthorNameInvertedTextStyle;
@@ -60,6 +61,7 @@ class AppTheme {
     readUsTelegramButtonIconColor = AppColor.blueColor0,
     articlesSortColor = AppColor.whiteColor0,
     articlesSortBorderColor = AppColor.whiteColor3,
+    articlesFilterOverlayCloseButtonIconColor = AppColor.grayColor0,
     articleAuthorNameTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,
@@ -174,6 +176,7 @@ class AppTheme {
     readUsTelegramButtonIconColor = AppColor.blueColor0,
     articlesSortColor = AppColor.blackColor1,
     articlesSortBorderColor = AppColor.blackColor2,
+    articlesFilterOverlayCloseButtonIconColor = AppColor.grayColor2,
     articleAuthorNameTextStyle = _fontFamilyInter(
       fontSize: 16,
       fontWeight: FontWeight.w500,

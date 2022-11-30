@@ -37,6 +37,7 @@ class AppSize {
   static const articleListLoaderSize = 98.0;
   static const readUsTelegramButtonIconSize = 24.0;
   static const articlesSortIconSize = 16.0;
+  static const articlesFilterOverlayCloseButtonIconSize = 18.0;
   
   static const articleAuthorNameMaxWidth = 200.0;
   static const articleImageContainerHeight = 120.0;
@@ -68,5 +69,9 @@ class AppSize {
   static const articlesSortButtonPadding = EdgeInsets.symmetric(
     vertical: 8,
     horizontal: 16,
+  );
+  static const articlesFilterOverlayCloseButtonPadding = EdgeInsets.symmetric(
+    horizontal: 18,
+    vertical: 24,
   );
 }
