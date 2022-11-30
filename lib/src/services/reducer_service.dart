@@ -1,6 +1,9 @@
 import 'package:injectable/injectable.dart';
 import 'package:redux/redux.dart';
+import 'package:tproger_mobile_app/src/models/actions/apply_filters_action.dart';
+import 'package:tproger_mobile_app/src/models/actions/clear_filters_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/init_theme_action.dart';
+import 'package:tproger_mobile_app/src/models/actions/is_for_beginner_filter_change_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_success_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/load_next_articles_end_action.dart';
@@ -9,6 +12,7 @@ import 'package:tproger_mobile_app/src/models/actions/set_theme_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/sort_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
+import 'package:tproger_mobile_app/src/models/filter_data.dart';
 import 'package:tproger_mobile_app/src/services/app_theme_service.dart';
 
 @singleton
@@ -25,6 +29,9 @@ class ReducerService {
     TypedReducer(_loadNextArticlesSuccess),
     TypedReducer(_loadNextArticlesEnd),
     TypedReducer(_sortArticles),
+    TypedReducer(_applyFilters),
+    TypedReducer(_clearFilters),
+    TypedReducer(_isForBeginnerFilterChange),
   ]);
 
   AppState _initTheme(AppState state, InitThemeAction action) {
@@ -74,5 +81,20 @@ class ReducerService {
   AppState _sortArticles(AppState state, SortArticlesAction action) => 
     state.rebuild((b) => b
       ..articlesSortType = action.type
+    );
+
+  AppState _applyFilters(AppState state, ApplyFiltersAction action) => 
+    state.rebuild((b) => b
+      ..filterData.isEnabled = true
+    );
+
+  AppState _clearFilters(AppState state, ClearFiltersAction action) => 
+    state.rebuild((b) => b
+      ..filterData.replace(FilterData())
+    );
+
+  AppState _isForBeginnerFilterChange(AppState state, IsForBeginnerFilterChangeAction action) => 
+    state.rebuild((b) => b
+      ..filterData.isForBeginner = !state.filterData.isForBeginner
     );
 }

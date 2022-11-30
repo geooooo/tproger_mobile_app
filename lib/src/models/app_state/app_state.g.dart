@@ -14,6 +14,8 @@ class _$AppState extends AppState {
   @override
   final ArticlesSortType articlesSortType;
   @override
+  final FilterData filterData;
+  @override
   final bool isSetThemeProgrammatically;
   @override
   final bool isArticlesFullLoaded;
@@ -29,6 +31,7 @@ class _$AppState extends AppState {
       {required this.articles,
       required this.theme,
       required this.articlesSortType,
+      required this.filterData,
       required this.isSetThemeProgrammatically,
       required this.isArticlesFullLoaded,
       required this.isArticlesLoaded,
@@ -38,6 +41,8 @@ class _$AppState extends AppState {
     BuiltValueNullFieldError.checkNotNull(theme, r'AppState', 'theme');
     BuiltValueNullFieldError.checkNotNull(
         articlesSortType, r'AppState', 'articlesSortType');
+    BuiltValueNullFieldError.checkNotNull(
+        filterData, r'AppState', 'filterData');
     BuiltValueNullFieldError.checkNotNull(
         isSetThemeProgrammatically, r'AppState', 'isSetThemeProgrammatically');
     BuiltValueNullFieldError.checkNotNull(
@@ -62,6 +67,7 @@ class _$AppState extends AppState {
         articles == other.articles &&
         theme == other.theme &&
         articlesSortType == other.articlesSortType &&
+        filterData == other.filterData &&
         isSetThemeProgrammatically == other.isSetThemeProgrammatically &&
         isArticlesFullLoaded == other.isArticlesFullLoaded &&
         isArticlesLoaded == other.isArticlesLoaded &&
@@ -74,8 +80,10 @@ class _$AppState extends AppState {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, articles.hashCode), theme.hashCode),
-                        articlesSortType.hashCode),
+                    $jc(
+                        $jc($jc($jc(0, articles.hashCode), theme.hashCode),
+                            articlesSortType.hashCode),
+                        filterData.hashCode),
                     isSetThemeProgrammatically.hashCode),
                 isArticlesFullLoaded.hashCode),
             isArticlesLoaded.hashCode),
@@ -88,6 +96,7 @@ class _$AppState extends AppState {
           ..add('articles', articles)
           ..add('theme', theme)
           ..add('articlesSortType', articlesSortType)
+          ..add('filterData', filterData)
           ..add('isSetThemeProgrammatically', isSetThemeProgrammatically)
           ..add('isArticlesFullLoaded', isArticlesFullLoaded)
           ..add('isArticlesLoaded', isArticlesLoaded)
@@ -113,6 +122,12 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   ArticlesSortType? get articlesSortType => _$this._articlesSortType;
   set articlesSortType(ArticlesSortType? articlesSortType) =>
       _$this._articlesSortType = articlesSortType;
+
+  FilterDataBuilder? _filterData;
+  FilterDataBuilder get filterData =>
+      _$this._filterData ??= new FilterDataBuilder();
+  set filterData(FilterDataBuilder? filterData) =>
+      _$this._filterData = filterData;
 
   bool? _isSetThemeProgrammatically;
   bool? get isSetThemeProgrammatically => _$this._isSetThemeProgrammatically;
@@ -144,6 +159,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _articles = $v.articles.toBuilder();
       _theme = $v.theme;
       _articlesSortType = $v.articlesSortType;
+      _filterData = $v.filterData.toBuilder();
       _isSetThemeProgrammatically = $v.isSetThemeProgrammatically;
       _isArticlesFullLoaded = $v.isArticlesFullLoaded;
       _isArticlesLoaded = $v.isArticlesLoaded;
@@ -177,6 +193,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
                   theme, r'AppState', 'theme'),
               articlesSortType: BuiltValueNullFieldError.checkNotNull(
                   articlesSortType, r'AppState', 'articlesSortType'),
+              filterData: filterData.build(),
               isSetThemeProgrammatically: BuiltValueNullFieldError.checkNotNull(
                   isSetThemeProgrammatically,
                   r'AppState',
@@ -192,6 +209,9 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       try {
         _$failedField = 'articles';
         articles.build();
+
+        _$failedField = 'filterData';
+        filterData.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'AppState', _$failedField, e.toString());

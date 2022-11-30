@@ -7,7 +7,14 @@ import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_he
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter_button/articles_filter_overlay/header/clean_out_button_widget.dart';
 
 class HeaderWidget extends StatelessWidget {
-  const HeaderWidget({ super.key });
+  final void Function() onCleanOutClick;
+  final void Function() onApplyClick;
+
+  const HeaderWidget({ 
+    required this.onCleanOutClick,
+    required this.onApplyClick,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) => StoreBuilder<AppState>(
@@ -21,15 +28,19 @@ class HeaderWidget extends StatelessWidget {
         IntrinsicHeight(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: const [
+            children: [
               Flexible(
                 fit: FlexFit.tight,
-                child: CleanOutButtonWidget(),
+                child: CleanOutButtonWidget(
+                  onClick: onCleanOutClick,
+                ),
               ),
-              SizedBox(width: AppSize.articlesFilterOverlayHeaderCleanOutAndApplyButtonsSeparatorSize),
+              const SizedBox(width: AppSize.articlesFilterOverlayHeaderCleanOutAndApplyButtonsSeparatorSize),
               Flexible(
                 fit: FlexFit.tight,
-                child: ApplyButtonWidget(),
+                child: ApplyButtonWidget(
+                  onClick: onApplyClick,
+                ),
               ),
             ],
           ),

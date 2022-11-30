@@ -6,11 +6,11 @@ import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 
 class RubricWidget extends StatelessWidget {
   final bool isForBeginner;
-  final void Function() isForBeginnerClick;
+  final void Function() onIsForBeginnerClick;
 
   const RubricWidget({ 
     required this.isForBeginner,
-    required this.isForBeginnerClick,
+    required this.onIsForBeginnerClick,
     super.key,
   });
 
@@ -25,7 +25,7 @@ class RubricWidget extends StatelessWidget {
         ),
         const SizedBox(height: AppSize.articlesFilterOverlayRubricTitleAndContentSeparatorSize),
         GestureDetector(
-          onTap: isForBeginnerClick,
+          onTap: onIsForBeginnerClick,
           behavior: HitTestBehavior.translucent,
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -34,7 +34,7 @@ class RubricWidget extends StatelessWidget {
                 padding: AppSize.articlesFilterOverlayIsForBeginnerCheckboxPadding,
                 child: Checkbox(
                   value: isForBeginner, 
-                  onChanged: (value) => isForBeginnerClick(),
+                  onChanged: (value) => onIsForBeginnerClick(),
                   splashRadius: 0,
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   side: BorderSide(

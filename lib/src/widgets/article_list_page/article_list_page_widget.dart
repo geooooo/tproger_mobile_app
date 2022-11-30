@@ -21,7 +21,7 @@ class ArticleListPageWidget extends PageWidget {
 
       return Column(
         children: [
-          const ArticleListHeaderWidget(),
+          ArticleListHeaderWidget(),
           Expanded(
             child: ArticleListWidget(
               isFullLoaded: store.state.isArticlesFullLoaded,

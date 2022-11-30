@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:overlayment/overlayment.dart';
 import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter_button/articles_filter_overlay/header/close_button_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter_button/articles_filter_overlay/close_button_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter_button/articles_filter_overlay/header/header_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter_button/articles_filter_overlay/rubric_wdget.dart';
 
 class ArticlesFilterOverlayWidget extends StatelessWidget {
-  const ArticlesFilterOverlayWidget({ super.key });
+  final void Function() onApplyClick;
+  final void Function() onCleanOutClick;
+  final void Function() onIsForBeginnerClick;
+  final void Function() onCloseClick;
+
+  const ArticlesFilterOverlayWidget({
+    required this.onApplyClick,
+    required this.onCleanOutClick,
+    required this.onIsForBeginnerClick,
+    required this.onCloseClick,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) => StoreBuilder<AppState>(
@@ -28,11 +38,14 @@ class ArticlesFilterOverlayWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const HeaderWidget(),
+                    HeaderWidget(
+                      onApplyClick: onApplyClick,
+                      onCleanOutClick: onCleanOutClick,
+                    ),
                     const SizedBox(height: AppSize.articlesFilterOverlayHeaderAndRubricSeparatorSize),
                     RubricWidget(
-                      isForBeginner: false,
-                      isForBeginnerClick: () => print('+'),
+                      isForBeginner: store.state.filterData.isForBeginner,
+                      onIsForBeginnerClick: onIsForBeginnerClick,
                     ),
                   ],
                 ),
@@ -42,7 +55,7 @@ class ArticlesFilterOverlayWidget extends StatelessWidget {
               top: 0,
               right: 0,
               child: CloseButtonWidget(
-                onClick: _onCloseClick,
+                onClick: onCloseClick,
               ),
             ),
           ],
@@ -50,6 +63,4 @@ class ArticlesFilterOverlayWidget extends StatelessWidget {
       ),
     ),
   );
-
-  void _onCloseClick() => Overlayment.dismissLast();
 }

@@ -1,0 +1,16 @@
+import 'package:built_value/built_value.dart';
+
+part 'filter_data.g.dart';
+
+abstract class FilterData implements Built<FilterData, FilterDataBuilder> {
+  bool get isEnabled;
+  bool get isForBeginner;
+  
+  FilterData._();
+  factory FilterData() = _$FilterData;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _setDefaults(FilterDataBuilder b) => b
+    ..isEnabled = false
+    ..isForBeginner = false;
+}

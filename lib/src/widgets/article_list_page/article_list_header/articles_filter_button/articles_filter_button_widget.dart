@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:overlayment/overlayment.dart';
 import 'package:tproger_mobile_app/l10n/app_localizations.dart';
 import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter_button/articles_filter_overlay/articles_filter_overlay_widget.dart';
 
 class ArticlesFilterButtonWidget extends StatefulWidget {
-  const ArticlesFilterButtonWidget({ super.key });
+  final void Function() onClick;
+
+  const ArticlesFilterButtonWidget({ 
+    required this.onClick,
+    super.key,
+  });
 
   @override
   State<ArticlesFilterButtonWidget> createState() => _ArticlesFilterButtonWidgetState();
@@ -51,17 +54,9 @@ class _ArticlesFilterButtonWidgetState extends State<ArticlesFilterButtonWidget>
   }
 
   void _onTapUp(TapUpDetails details) {
+    widget.onClick();
+    
     setState(() { _isTapped = false; });
-
-    Overlayment.show(
-      OverPanel(
-        child: const ArticlesFilterOverlayWidget(),
-        backgroundSettings: const BackgroundSettings(
-          color: Colors.transparent,
-        ),
-      ),
-      context: context,
-    );
   }
 
   void _onTapCancel() {
