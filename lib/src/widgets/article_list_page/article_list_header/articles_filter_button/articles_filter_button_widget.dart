@@ -4,6 +4,7 @@ import 'package:tproger_mobile_app/l10n/app_localizations.dart';
 import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 
+// TODO: Add on/off indicator
 class ArticlesFilterButtonWidget extends StatefulWidget {
   final void Function() onClick;
 
