@@ -3,12 +3,14 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tproger_mobile_app/l10n/app_localizations.dart';
 import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter_button/active_indicator_widget.dart';
 
-// TODO: Add on/off indicator
 class ArticlesFilterButtonWidget extends StatefulWidget {
+  final bool isFiltersEnabled;
   final void Function() onClick;
 
   const ArticlesFilterButtonWidget({ 
+    required this.isFiltersEnabled,
     required this.onClick,
     super.key,
   });
@@ -44,7 +46,16 @@ class _ArticlesFilterButtonWidgetState extends State<ArticlesFilterButtonWidget>
           style: _isTapped
             ? store.state.theme.articlesFilterButtonTextStyle
             : store.state.theme.articlesFilterButtonActiveTextStyle,
-          child: Text(AppLocalizations.of(context)!.filterText),
+          child: Stack(
+            children: [
+              Text(AppLocalizations.of(context)!.filterText),
+              if (widget.isFiltersEnabled) const Positioned(
+                top: 2,
+                left: 5,
+                child: ActiveIndicatorWidget(),
+              ),
+            ],
+          ),
         ),
       ),
     ),

@@ -40,6 +40,7 @@ class ArticleListHeaderWidget extends StatelessWidget {
               onSelect: (type) => _onSelectSortType(type, store),
             ),
             ArticlesFilterButtonWidget(
+              isFiltersEnabled: store.state.filterData.isEnabled,
               onClick: () => _onFilterButtonClick(store, context),
             ),
           ],
