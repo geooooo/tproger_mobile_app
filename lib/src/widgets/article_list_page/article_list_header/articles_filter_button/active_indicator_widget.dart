@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:tproger_mobile_app/src/models/app_color.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:tproger_mobile_app/src/models/app_size.dart';
+import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 
 class ActiveIndicatorWidget extends StatelessWidget {
   const ActiveIndicatorWidget({ super.key });
 
   @override
-  Widget build(BuildContext context) => Container(
-    width: 8,
-    height: 8,
-    decoration: const BoxDecoration(
-      borderRadius: BorderRadius.all(Radius.circular(50)),
-      color: AppColor.greenColor1,
+  Widget build(BuildContext context) => StoreBuilder<AppState>(
+    builder: (context, store) => Container(
+      width: AppSize.articlesFiltersActiveIndicatorSize,
+      height: AppSize.articlesFiltersActiveIndicatorSize,
+      decoration: BoxDecoration(
+        borderRadius: AppSize.articlesFiltersActiveIndicatorBorderRadius,
+        color: store.state.theme.articlesFiltersAcitveIndicatorColor,
+      ),
     ),
   );
 }

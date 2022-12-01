@@ -26,6 +26,7 @@ class AppSize {
   static const articlesFilterOverlayHeaderAndRubricSeparatorSize = 20.0;
   static const loaderItemSeparatorSize = 8.0;
 
+  static const articlesFiltersActiveIndicatorSize = 8.0;
   static const articleReactionListSize = 30.0;
   static const articleListLoaderSize = 98.0;
   static const articleImageBlurSize = 2.0;
@@ -64,6 +65,7 @@ class AppSize {
   static const articlesFilterOverlayHeaderButtonBorderRadius = BorderRadius.all(Radius.circular(8));
   static const articlesFilterOverlayIsForBeginnerCheckboxcBorderRadius = BorderRadius.all(Radius.circular(4));
   static const articlesFilterButtonBorderRadius = BorderRadius.all(Radius.circular(12));
+  static const articlesFiltersActiveIndicatorBorderRadius = BorderRadius.all(Radius.circular(50));
 
   static const articlePaddingSize = EdgeInsets.all(16.0);
   static const articleReactionsPadding = EdgeInsets.only(
