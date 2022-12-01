@@ -24,7 +24,7 @@ class OverlayService {
       ),
     ),
     context: context,
-  );
+);
 
   Future<void> hide() => Overlayment.dismissLast<void>();
 }

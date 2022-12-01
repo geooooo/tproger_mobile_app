@@ -8,12 +8,12 @@ import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 import 'package:tproger_mobile_app/src/services/view_count_service.dart';
 
 class ArticleViewCountWidget extends StatelessWidget {
-  final _viewCountService = GetIt.instance.get<ViewCountService>();
+  static final _viewCountService = GetIt.instance.get<ViewCountService>();
 
   final int viewCount;
   final bool isInvertetStyle;
 
-  ArticleViewCountWidget({
+  const ArticleViewCountWidget({
     required this.viewCount,
     required this.isInvertetStyle,
     super.key,

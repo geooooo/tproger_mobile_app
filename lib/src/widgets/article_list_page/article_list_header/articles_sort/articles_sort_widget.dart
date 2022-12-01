@@ -42,7 +42,7 @@ class _ArticlesSortWidgetState extends State<ArticlesSortWidget> {
             focusColor: Colors.transparent,
             buttonSplashColor: Colors.transparent,
             buttonHighlightColor: Colors.transparent,
-            dropdownWidth: dropdownWidth, //AppSize.articlesSortMenuWidth,
+            dropdownWidth: dropdownWidth,
             itemPadding: AppSize.articlesSortMenuItemPadding,
             dropdownDecoration: BoxDecoration(
               border: Border.all(

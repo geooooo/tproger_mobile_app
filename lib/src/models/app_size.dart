@@ -54,7 +54,6 @@ class AppSize {
   static const loaderStartHeight = 64.0;
   static const loaderEndHeight = 32.0;
   static const loaderWidth = 16.0;
-  static const articlesSortMenuWidth = 210.0;
 
   static const articleImageRadius = BorderRadius.all(Radius.circular(12));
   static const articleAuthorAvatarRadius = BorderRadius.all(Radius.circular(8,));

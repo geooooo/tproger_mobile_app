@@ -10,13 +10,12 @@ import 'package:tproger_mobile_app/src/services/app_localization_service.dart';
 
 class ArticlesSortButtonWidget extends StatelessWidget {
   static const _duration = Duration(milliseconds: 350);
-
-  final _appLocalizationService = GetIt.instance.get<AppLocalizationService>();
+  static final _appLocalizationService = GetIt.instance.get<AppLocalizationService>();
 
   final ArticlesSortType type;
   final bool isOpened;
 
-  ArticlesSortButtonWidget({
+  const ArticlesSortButtonWidget({
     required this.type,
     required this.isOpened,
     super.key,

@@ -6,11 +6,11 @@ import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
 import 'package:tproger_mobile_app/src/services/app_localization_service.dart';
 
 class ArticlesSortMenuItemWidget extends StatelessWidget {
-  final _appLocalizationService = GetIt.instance.get<AppLocalizationService>();
+  static final _appLocalizationService = GetIt.instance.get<AppLocalizationService>();
 
   final ArticlesSortType type;
 
-  ArticlesSortMenuItemWidget({
+  const ArticlesSortMenuItemWidget({
     required this.type,
     super.key,
   });

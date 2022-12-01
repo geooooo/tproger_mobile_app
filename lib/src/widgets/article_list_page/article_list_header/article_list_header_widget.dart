@@ -16,9 +16,9 @@ import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_he
 // TODO: Rework header to scroll full list
 // TODO: Add to widgetbook
 class ArticleListHeaderWidget extends StatelessWidget {
-  final _overlayService = GetIt.instance.get<OverlayService>();
+  static final _overlayService = GetIt.instance.get<OverlayService>();
 
-  ArticleListHeaderWidget({ super.key });
+  const ArticleListHeaderWidget({ super.key });
 
   @override
   Widget build(BuildContext context) => StoreBuilder<AppState>(

@@ -3,7 +3,7 @@ import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 import 'package:tproger_mobile_app/src/models/reaction_data.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_footer_button_widget.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_reactions/article_reactions_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_reactions_button/article_reactions_button_widget.dart';
 
 class ArticleFooterWidget extends StatelessWidget {
   final int bookmarkCount;
@@ -46,7 +46,9 @@ class ArticleFooterWidget extends StatelessWidget {
       ),
       Flexible(
         child: FittedBox(
-          child: ArticleReactionsWidget(reactions: reactions),
+          child: ArticleReactionsButtonWidget(
+            reactions: reactions,
+          ),
         ),
       ),
     ],

@@ -4,16 +4,15 @@ import 'package:tproger_mobile_app/src/models/app_common.dart';
 import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/reaction_data.dart';
 import 'package:tproger_mobile_app/src/services/reaction_service.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_reactions/reaction_text_widget.dart';
-import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_reactions/reaction_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_reactions_button/reaction_text_widget.dart';
+import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_reactions_button/reaction_widget.dart';
 
 class ReactionListWidget extends StatelessWidget {
-  final _reactionService = GetIt.instance.get<ReactionService>();
+  static final _reactionService = GetIt.instance.get<ReactionService>();
 
   final List<ReactionData> reactions;
 
   List<ReactionData> get _visibleReactions => reactions.take(AppCommon.maxReactions).toList();
-
   int get _commonCount => _reactionService.commonCount(reactions);
   
   double get _width {
@@ -30,7 +29,7 @@ class ReactionListWidget extends StatelessWidget {
     throw Exception('Only ${AppCommon.maxReactions} reactions in the list');
   }
 
-  ReactionListWidget({ 
+  const ReactionListWidget({ 
     required this.reactions,
     super.key,
   });

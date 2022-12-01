@@ -10,7 +10,7 @@ import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/ar
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_content/article_title_widget.dart';
 
 class ArticleContentWidget extends StatelessWidget {
-  final _colorService = GetIt.instance.get<ColorService>();
+  static final _colorService = GetIt.instance.get<ColorService>();
   
   final String title;
   final String description;
@@ -19,7 +19,7 @@ class ArticleContentWidget extends StatelessWidget {
   bool get _hasContentImage => image is ArticleIconImage;
   bool get _hasBackgroundImage => image is ArticleBackgroundImage;
 
-  ArticleContentWidget({
+  const ArticleContentWidget({
     required this.title,
     required this.description,
     this.image,
