@@ -14,8 +14,8 @@ import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/
 import 'package:tproger_mobile_app/src/models/actions/open_link_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/sort_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
+import 'package:tproger_mobile_app/src/models/app_state/filter_data.dart';
 import 'package:tproger_mobile_app/src/models/exceptions/load_articles_list_exception.dart';
-import 'package:tproger_mobile_app/src/models/filter_data.dart';
 import 'package:tproger_mobile_app/src/services/article_list_service.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 

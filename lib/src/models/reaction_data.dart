@@ -6,7 +6,7 @@ class ReactionData extends Equatable {
   final int count;
 
   @override
-  List<Object?> get props => [reaction, count];
+  List<Object> get props => [reaction, count];
 
   const ReactionData({
     required this.reaction,

@@ -9,5 +9,8 @@ part of 'load_article_reactions_request.dart';
 Map<String, dynamic> _$LoadArticleReactionsRequestToJson(
         LoadArticleReactionsRequest instance) =>
     <String, dynamic>{
+      'stringify': instance.stringify,
+      'hashCode': instance.hashCode,
       'ids': instance.ids,
+      'props': instance.props,
     };

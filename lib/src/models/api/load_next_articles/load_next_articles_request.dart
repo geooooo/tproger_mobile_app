@@ -1,10 +1,13 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
 
 part 'load_next_articles_request.g.dart';
 
 @JsonSerializable(createFactory: false)
-class LoadNextArticlesRequest {
+class LoadNextArticlesRequest extends Equatable {
+  final String action = 'infinite-scroll';
+
   @JsonKey(name: 'page')
   final int pageNumber;
 
@@ -20,7 +23,8 @@ class LoadNextArticlesRequest {
   )
   final bool isForBeginner;
 
-  final String action = 'infinite-scroll';
+  @override
+  List<Object> get props => [pageNumber, sortType, isForBeginner];
 
   const LoadNextArticlesRequest({
     required this.pageNumber,

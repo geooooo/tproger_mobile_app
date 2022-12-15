@@ -2,9 +2,12 @@ import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/
 import 'package:tproger_mobile_app/src/models/article_model.dart';
 
 
-class LoadNextArticlesSuccessAction implements LoadNextArticlesBaseAction {
+class LoadNextArticlesSuccessAction extends LoadNextArticlesBaseAction {
   final List<ArticleModel> articles;
   final int nextPageNumber;
+
+  @override
+  List<Object> get props => [articles, nextPageNumber];
   
   const LoadNextArticlesSuccessAction(this.articles, this.nextPageNumber);
 }

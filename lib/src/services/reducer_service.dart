@@ -12,8 +12,8 @@ import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/
 import 'package:tproger_mobile_app/src/models/actions/set_theme_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/sort_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
+import 'package:tproger_mobile_app/src/models/app_state/filter_data.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
-import 'package:tproger_mobile_app/src/models/filter_data.dart';
 import 'package:tproger_mobile_app/src/services/app_theme_service.dart';
 
 @singleton

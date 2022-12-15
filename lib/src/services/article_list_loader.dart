@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:tproger_mobile_app/src/models/api/load_initial_content/load_initial_content_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_next_articles/load_next_articles_request.dart';
+import 'package:tproger_mobile_app/src/models/app_state/filter_data.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
 import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
@@ -12,7 +13,6 @@ import 'package:tproger_mobile_app/src/models/api/load_articles_comment_counts/l
 import 'package:tproger_mobile_app/src/models/api/load_articles_comment_counts/load_articles_comment_counts_response.dart';
 import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/load_articles_view_counts_request.dart';
 import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/load_articles_view_counts_response.dart';
-import 'package:tproger_mobile_app/src/models/filter_data.dart';
 import 'package:tproger_mobile_app/src/models/parsed_article/addition_data.dart';
 import 'package:tproger_mobile_app/src/models/parsed_article/parsed_article.dart';
 import 'package:tproger_mobile_app/src/models/reaction_data.dart';

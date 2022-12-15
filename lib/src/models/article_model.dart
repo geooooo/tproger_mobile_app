@@ -15,19 +15,6 @@ class ArticleModel extends Equatable {
   final ArticleImage? image;
   final ArticleAuthor? author;
 
-  const ArticleModel({
-    required this.title,
-    required this.articleLink,
-    required this.description,
-    required this.id,
-    required this.bookmarkCount,
-    required this.viewCount,
-    required this.commentCount,
-    required this.reactions,
-    this.image,
-    this.author,
-  });
-
   @override
   List<Object?> get props => [
     title,
@@ -41,4 +28,17 @@ class ArticleModel extends Equatable {
     image,
     author,
   ];
+
+  const ArticleModel({
+    required this.title,
+    required this.articleLink,
+    required this.description,
+    required this.id,
+    required this.bookmarkCount,
+    required this.viewCount,
+    required this.commentCount,
+    required this.reactions,
+    this.image,
+    this.author,
+  });
 }

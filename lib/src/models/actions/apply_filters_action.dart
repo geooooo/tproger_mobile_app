@@ -1,5 +1,5 @@
 import 'package:tproger_mobile_app/src/models/actions/action.dart';
 
-class ApplyFiltersAction implements Action {
+class ApplyFiltersAction extends Action {
   const ApplyFiltersAction();
 }

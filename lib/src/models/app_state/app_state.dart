@@ -1,9 +1,9 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:tproger_mobile_app/src/models/app_state/filter_data.dart';
 import 'package:tproger_mobile_app/src/models/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
 import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
-import 'package:tproger_mobile_app/src/models/filter_data.dart';
 
 part 'app_state.g.dart';
 

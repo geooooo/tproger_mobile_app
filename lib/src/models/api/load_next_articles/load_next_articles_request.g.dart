@@ -9,9 +9,11 @@ part of 'load_next_articles_request.dart';
 Map<String, dynamic> _$LoadNextArticlesRequestToJson(
         LoadNextArticlesRequest instance) =>
     <String, dynamic>{
+      'stringify': instance.stringify,
+      'hashCode': instance.hashCode,
       'page': instance.pageNumber,
       'sort': ArticlesSortType.staticToString(instance.sortType),
       'tags':
           LoadNextArticlesRequest._isForBeginnerToJson(instance.isForBeginner),
-      'action': instance.action,
+      'props': instance.props,
     };

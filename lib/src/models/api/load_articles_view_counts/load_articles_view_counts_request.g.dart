@@ -9,5 +9,8 @@ part of 'load_articles_view_counts_request.dart';
 Map<String, dynamic> _$LoadArticlesViewCountsRequestToJson(
         LoadArticlesViewCountsRequest instance) =>
     <String, dynamic>{
+      'stringify': instance.stringify,
+      'hashCode': instance.hashCode,
       'ids': instance.ids,
+      'props': instance.props,
     };
