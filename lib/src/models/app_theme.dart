@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tproger_mobile_app/src/models/app_color.dart';
+import 'package:tproger_mobile_app/src/models/consts/app_color.dart';
 
 class AppTheme {
   static const _fontFamilyInter = GoogleFonts.inter;

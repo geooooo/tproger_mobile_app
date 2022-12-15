@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:get_it/get_it.dart';
-import 'package:tproger_mobile_app/src/models/app_size.dart';
+import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 import 'package:tproger_mobile_app/src/services/view_count_service.dart';

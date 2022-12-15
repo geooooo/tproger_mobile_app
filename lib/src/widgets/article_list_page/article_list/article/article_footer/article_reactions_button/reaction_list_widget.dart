@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:tproger_mobile_app/src/models/app_common.dart';
-import 'package:tproger_mobile_app/src/models/app_size.dart';
+import 'package:tproger_mobile_app/src/models/consts/app_common.dart';
+import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/reaction_data.dart';
 import 'package:tproger_mobile_app/src/services/reaction_service.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_reactions_button/reaction_text_widget.dart';
@@ -21,9 +21,9 @@ class ReactionListWidget extends StatelessWidget {
     if (_visibleReactions.length == 1) {
       return baseWidth + AppSize.articleReactionBorderSize * 2;
     } else if (_visibleReactions.length == 2) {
-      return baseWidth + AppCommon.reactionOffsetPositionK * 2;
+      return baseWidth + AppSize.reactionOffsetPositionK * 2;
     } else if (_visibleReactions.length == 3) {
-      return baseWidth + AppCommon.reactionOffsetPositionK;
+      return baseWidth + AppSize.reactionOffsetPositionK;
     }
 
     throw Exception('Only ${AppCommon.maxReactions} reactions in the list');
@@ -58,7 +58,7 @@ class ReactionListWidget extends StatelessWidget {
       final icon = _reactionService.getIconByReaction(reaction);
 
       final widget = Positioned(
-        left: i * AppSize.articleReactionIconSize  - i * AppCommon.reactionOffsetPositionK,
+        left: i * AppSize.articleReactionIconSize  - i * AppSize.reactionOffsetPositionK,
         child: ReactionWidget(icon: icon),
       );
 

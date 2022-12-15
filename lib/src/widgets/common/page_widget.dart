@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tproger_mobile_app/src/models/actions/init_theme_action.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
-import 'package:tproger_mobile_app/src/models/localization.dart';
+import 'package:tproger_mobile_app/src/models/consts/app_localization.dart';
 import 'package:tproger_mobile_app/src/widgets/common/app_status_bar_colorizer_widget.dart';
 
 abstract class PageWidget extends StatelessWidget {
@@ -11,10 +11,10 @@ abstract class PageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => StoreBuilder<AppState>(
     builder: (context, store) => MaterialApp(
-      title: Localization.appTitle,
+      title: AppLocalization.appTitle,
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: Localization.localizationsDelegates,
-      supportedLocales: Localization.supportedLocales,
+      localizationsDelegates: AppLocalization.localizationsDelegates,
+      supportedLocales: AppLocalization.supportedLocales,
       home: Builder(
         builder: (context) {
           store.dispatch(InitThemeAction(context));

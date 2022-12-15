@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:tproger_mobile_app/src/models/app_color.dart';
-import 'package:tproger_mobile_app/src/models/app_size.dart';
+import 'package:tproger_mobile_app/src/models/consts/app_color.dart';
+import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class ArticleBackgroundImageWidget extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tproger_mobile_app/src/models/app_size.dart';
+import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/widgets/common/loader_widget.dart';
 
 class ArticleListLoaderWidget extends StatelessWidget {

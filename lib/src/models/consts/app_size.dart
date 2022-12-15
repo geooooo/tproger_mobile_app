@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AppSize {
+  static const reactionOffsetPositionK = 2.0;
+  
   static const articleListArticleSeparatorSize = 20.0;
   static const articleListLastItemSeparatorSize = 50.0;
   static const articleHeaderAndContentSeparatorSize = 18.0;

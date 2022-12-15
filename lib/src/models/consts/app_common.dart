@@ -4,5 +4,4 @@ class AppCommon {
   static const commetsLinkHash = 'tproger-comments';
 
   static const maxReactions = 3;
-  static const reactionOffsetPositionK = 2.0;
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tproger_mobile_app/src/models/app_size.dart';
+import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/article_author.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_header/article_author_avatar_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_header/article_author_name_widget.dart';
