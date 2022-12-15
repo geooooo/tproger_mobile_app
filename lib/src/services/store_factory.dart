@@ -19,7 +19,7 @@ class StoreFactory {
     _reducerService.reducer, 
     initialState: AppState(),
     middleware: [EpicMiddleware(_middlewareService.middleware)],
-    syncStream: false,
+    syncStream: true,
     distinct: true,
   );
 }

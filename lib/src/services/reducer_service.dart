@@ -55,6 +55,7 @@ class ReducerService {
   AppState _loadArticles(AppState state, LoadArticlesAction action) => state.rebuild((b) => b
     ..articles.replace([])
     ..isArticlesFullLoaded = false
+    ..isArticlesLoaded = false
     ..articlesPageNumber = 1
   );
 
@@ -72,7 +73,7 @@ class ReducerService {
   AppState _loadNextArticlesSuccess(AppState state, LoadNextArticlesSuccessAction action) => 
     state.rebuild((b) => b
       ..articles.addAll(action.articles)
-      ..articlesPageNumber = action.nextPgeNumber
+      ..articlesPageNumber = action.nextPageNumber
     );
 
   AppState _loadNextArticlesEnd(AppState state, LoadNextArticlesEndAction action) => 
