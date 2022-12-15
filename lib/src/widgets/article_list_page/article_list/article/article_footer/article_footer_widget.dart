@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 import 'package:tproger_mobile_app/src/models/reaction_data.dart';
+import 'package:tproger_mobile_app/src/models/typedefs.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_footer_button_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_reactions_button/article_reactions_button_widget.dart';
 
@@ -10,7 +11,7 @@ class ArticleFooterWidget extends StatelessWidget {
   final int commentCount;
   final List<ReactionData> reactions;
   final bool isInvertetStyle;
-  final void Function() onCommentClick;
+  final VoidFunction onCommentClick;
 
   const ArticleFooterWidget({
     required this.bookmarkCount,

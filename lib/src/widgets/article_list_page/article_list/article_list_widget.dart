@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:redux/redux.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/load_next_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/open_link_action.dart';
@@ -8,6 +7,7 @@ import 'package:tproger_mobile_app/src/models/consts/app_common.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
+import 'package:tproger_mobile_app/src/models/typedefs.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_list_end/article_list_end_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article_list_loader_widget.dart';
@@ -40,7 +40,7 @@ class ArticleListWidget extends StatelessWidget {
     ),
   );
 
-  Widget _itemBuilder(Store<AppState> store, int index) {
+  Widget _itemBuilder(AppStore store, int index) {
     final isArticle = index < articles.length;
     final isLastArticle = index == articles.length - 1;
     final isLastWidget = index == articles.length;
@@ -84,16 +84,16 @@ class ArticleListWidget extends StatelessWidget {
     return SizedBox(height: height);
   }
 
-  void _onRefresh(Store<AppState> store) =>
+  void _onRefresh(AppStore store) =>
     store.dispatch(LoadArticlesAction(
       sortType: store.state.articlesSortType,
       filterData: store.state.filterData,
     ));
 
-  void _onContentClick(String articleLink, Store<AppState> store) =>
+  void _onContentClick(String articleLink, AppStore store) =>
     store.dispatch(OpenLinkAction(articleLink));
 
-  void _onCommentClick(String articleLink, Store<AppState> store) {
+  void _onCommentClick(String articleLink, AppStore store) {
     final link = Uri
       .parse(articleLink)
       .replace(fragment: AppCommon.commetsLinkHash)

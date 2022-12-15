@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tproger_mobile_app/src/models/typedefs.dart';
 
 class ReactionsOverlayWidget extends StatelessWidget {
-  final void Function() onClick;
+  final VoidFunction onClick;
 
   const ReactionsOverlayWidget({ 
     required this.onClick,

@@ -4,13 +4,14 @@ import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_background_image.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
+import 'package:tproger_mobile_app/src/models/typedefs.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_background_image_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_body_widget.dart';
 
 class ArticleWidget extends StatefulWidget {
   final ArticleModel article;
-  final void Function() onContentClick;
-  final void Function() onCommentClick;
+  final VoidFunction onContentClick;
+  final VoidFunction onCommentClick;
 
   const ArticleWidget({
     required this.article,

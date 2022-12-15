@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
+import 'package:tproger_mobile_app/src/models/typedefs.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter_button/articles_filter_overlay/close_button_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter_button/articles_filter_overlay/header/header_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter_button/articles_filter_overlay/rubric_wdget.dart';
 
 class ArticlesFilterOverlayWidget extends StatelessWidget {
-  final void Function() onApplyClick;
-  final void Function() onCleanOutClick;
-  final void Function() onIsForBeginnerClick;
-  final void Function() onCloseClick;
+  final VoidFunction onApplyClick;
+  final VoidFunction onCleanOutClick;
+  final VoidFunction onIsForBeginnerClick;
+  final VoidFunction onCloseClick;
 
   const ArticlesFilterOverlayWidget({
     required this.onApplyClick,

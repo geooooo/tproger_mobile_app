@@ -5,9 +5,10 @@ import 'package:tproger_mobile_app/l10n/app_localizations.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
+import 'package:tproger_mobile_app/src/models/typedefs.dart';
 
 class CleanOutButtonWidget extends StatefulWidget {
-  final void Function() onClick;
+  final VoidFunction onClick;
 
   const CleanOutButtonWidget({ 
     required this.onClick,

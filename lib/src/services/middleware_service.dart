@@ -70,13 +70,13 @@ class MiddlewareService {
       launchUrlString(action.link, mode: LaunchMode.externalApplication)
     );
 
-  Stream<LoadArticlesBaseAction> _sortArticles(Stream<SortArticlesAction> actions, EpicStore<AppState> store) =>
+  Stream<LoadArticlesAction> _sortArticles(Stream<SortArticlesAction> actions, EpicStore<AppState> store) =>
     actions.map((action) => LoadArticlesAction(
       sortType: action.type,
       filterData: store.state.filterData,
     ));
 
-  Stream<void> _applyFilters(Stream<ApplyFiltersAction> actions, EpicStore<AppState> store) =>
+  Stream<LoadArticlesAction> _applyFilters(Stream<ApplyFiltersAction> actions, EpicStore<AppState> store) =>
     actions.map((action) => LoadArticlesAction(
       sortType: store.state.articlesSortType,
       filterData: store.state.filterData,

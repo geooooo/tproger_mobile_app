@@ -11,6 +11,7 @@ Map<String, dynamic> _$LoadNextArticlesRequestToJson(
     <String, dynamic>{
       'stringify': instance.stringify,
       'hashCode': instance.hashCode,
+      'action': instance.action,
       'page': instance.pageNumber,
       'sort': ArticlesSortType.staticToString(instance.sortType),
       'tags':

@@ -4,12 +4,13 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
+import 'package:tproger_mobile_app/src/models/typedefs.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_sort/articles_sort_button_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_sort/articles_sort_menu_item_widget.dart';
 
 class ArticlesSortWidget extends StatefulWidget {
   final ArticlesSortType type;
-  final void Function(ArticlesSortType) onSelect;
+  final VoidFunctionArticlesSortType onSelect;
 
   const ArticlesSortWidget({
     required this.type,

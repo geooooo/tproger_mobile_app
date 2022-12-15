@@ -16,6 +16,7 @@ import 'package:tproger_mobile_app/src/models/api/load_articles_view_counts/load
 import 'package:tproger_mobile_app/src/models/parsed_article/addition_data.dart';
 import 'package:tproger_mobile_app/src/models/parsed_article/parsed_article.dart';
 import 'package:tproger_mobile_app/src/models/reaction_data.dart';
+import 'package:tproger_mobile_app/src/models/typedefs.dart';
 import 'package:tproger_mobile_app/src/services/article_list_parser.dart';
 import 'package:tproger_mobile_app/src/services/http_service.dart';
 
@@ -109,17 +110,17 @@ class ArticleListLoader {
   String _encodeIds(List<ParsedArticle> articles) =>
     articles.map((article) => article.id).join(',');
 
-  Map<int, int> _getArticleIdsToCommentCounts(LoadArticlesCommentCountsResponse response) =>
+  MapIdToCount _getArticleIdsToCommentCounts(LoadArticlesCommentCountsResponse response) =>
     {for (final count in response.counts) count.articleId: count.count};
 
-  Map<int, int> _getArticleIdsToBookmarkCounts(LoadArticlesBookmarkCountsResponse response) =>
+  MapIdToCount _getArticleIdsToBookmarkCounts(LoadArticlesBookmarkCountsResponse response) =>
     {for (final count in response.counts) count.articleId: count.count};
 
-  Map<int, int> _getArticleIdsToViewCounts(LoadArticlesViewCountsResponse response) =>
+  MapIdToCount _getArticleIdsToViewCounts(LoadArticlesViewCountsResponse response) =>
     {for (final count in response.counts) count.articleId: count.count};
 
-  Map<int, List<ReactionData>> _getArticleIdsToReactions(LoadArticleReactionsResponse response) {
-    final idsToReactions = <int, List<ReactionData>>{};
+  MapIdToReactions _getArticleIdsToReactions(LoadArticleReactionsResponse response) {
+    final MapIdToReactions idsToReactions = {};
 
     for (final articleReaction in response.articleReactions) {
       final reactions = articleReaction.reactions;

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:redux/redux.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
+import 'package:tproger_mobile_app/src/models/typedefs.dart';
 
 class ArticleFooterButtonWidget extends StatefulWidget {
   final Asset icon;
   final int count;
   final bool isInvertetStyle;
-  final void Function() onClick;
+  final VoidFunction onClick;
 
   const ArticleFooterButtonWidget({
     required this.icon,
@@ -76,7 +76,7 @@ class _ArticleFooterButtonWidgetState extends State<ArticleFooterButtonWidget> w
     },
   );
 
-  void _initAnimation(Store<AppState> store) {
+  void _initAnimation(AppStore store) {
     final newBegin = _style.color;
     final end = store.state.theme.articleFooterButtonActiveTextStyle.color;
 
@@ -91,7 +91,7 @@ class _ArticleFooterButtonWidgetState extends State<ArticleFooterButtonWidget> w
     }
   }
 
-  void _initStyle(Store<AppState> store) {
+  void _initStyle(AppStore store) {
     var newStyle = store.state.theme.articleFooterButtonTextStyle;
     
     if (_isTapped) {
@@ -103,13 +103,13 @@ class _ArticleFooterButtonWidgetState extends State<ArticleFooterButtonWidget> w
     _style = newStyle;
   }
 
-  void _onTapDown(TapDownDetails details, Store<AppState>store) {
+  void _onTapDown(TapDownDetails details, AppStore store) {
     setState(() { _isTapped = true; });
 
     _controller.forward(from: 1);
   } 
 
-  void _onTapUp(TapUpDetails details, Store<AppState>store) {
+  void _onTapUp(TapUpDetails details, AppStore store) {
     setState(() { _isTapped = false; });
 
     _controller.reverse();
@@ -117,7 +117,7 @@ class _ArticleFooterButtonWidgetState extends State<ArticleFooterButtonWidget> w
     widget.onClick();
   }
 
-  void _onTapCancel(Store<AppState>store) {
+  void _onTapCancel(AppStore store) {
     setState(() { _isTapped = false; });
 
     _controller.reverse();
