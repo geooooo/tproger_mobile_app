@@ -3,7 +3,6 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tproger_mobile_app/src/models/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 
-// TODO: Make an identical start animation's frame as in an original
 class LoaderWidget extends StatelessWidget {
   static const _duration = Duration(milliseconds: 1200);
   static const _delay1 = Duration(milliseconds: 120);

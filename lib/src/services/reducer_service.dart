@@ -97,7 +97,7 @@ class ReducerService {
 
   AppState _clearFilters(AppState state, ClearFiltersAction action) => 
     state.rebuild((b) => b
-      ..filterData.replace(FilterData())
+      ..filterData.replace(FilterData.empty())
     );
 
   AppState _isForBeginnerFilterChange(AppState state, IsForBeginnerFilterChangeAction action) => 

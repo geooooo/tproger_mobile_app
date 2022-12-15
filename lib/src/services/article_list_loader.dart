@@ -35,7 +35,7 @@ class ArticleListLoader {
   }) async {
     final appliedFilterData = filterData.isEnabled
       ? filterData
-      : FilterData();
+      : FilterData.empty();
 
     final response = await _httpService.loadInitialContent(LoadInitialContentRequest(
       sortType: sortType,
@@ -52,7 +52,7 @@ class ArticleListLoader {
   }) async {
     final appliedFilterData = filterData.isEnabled
       ? filterData
-      : FilterData();
+      : FilterData.empty();
 
     final response = await _httpService.loadNextArticles(LoadNextArticlesRequest(
       pageNumber: pageNumber,

@@ -33,9 +33,10 @@ class _ArticleReactionsButtonWidgetState extends State<ArticleReactionsButtonWid
   var _isOverlayOpened = false;
 
   @override
+  // ignore: avoid_print
   Widget build(BuildContext context) { print([_isTapped, _isOverlayOpened]); return StoreBuilder<AppState>(
     builder: (context, store) => OverExpander(
-      animation: OverFadeAnimation(
+      animation: const OverFadeAnimation(
         curve: Curves.ease,
         reverseCurve: Curves.ease,
         durationMilliseconds: 250,

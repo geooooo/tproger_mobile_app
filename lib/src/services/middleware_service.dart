@@ -85,6 +85,6 @@ class MiddlewareService {
   Stream<LoadArticlesAction> _clearFilters(Stream<ClearFiltersAction> actions, EpicStore<AppState> store) =>
     actions.map((action) => LoadArticlesAction(
       sortType: store.state.articlesSortType,
-      filterData: FilterData(),
+      filterData: FilterData.empty(),
     ));
 }

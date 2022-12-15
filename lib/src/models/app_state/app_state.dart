@@ -25,7 +25,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
     ..articles.replace([])
     ..theme = AppTheme.light()
     ..articlesSortType = ArticlesSortType.hot
-    ..filterData.replace(FilterData())
+    ..filterData.replace(FilterData.empty())
     ..isSetThemeProgrammatically = false
     ..isArticlesFullLoaded = false
     ..isArticlesLoaded = false
