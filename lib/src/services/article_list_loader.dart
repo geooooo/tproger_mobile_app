@@ -29,10 +29,10 @@ class ArticleListLoader {
     this._httpService,
   );
 
-  Future<List<ArticleModel>> load({
-    required ArticlesSortType sortType,
-    required FilterData filterData,
-  }) async {
+  Future<List<ArticleModel>> load(
+    ArticlesSortType sortType,
+    FilterData filterData,
+  ) async {
     final appliedFilterData = filterData.isEnabled
       ? filterData
       : FilterData.empty();
@@ -45,11 +45,11 @@ class ArticleListLoader {
     return _parseArticles(response.html);
   }
 
-  Future<List<ArticleModel>> loadNext({
-    required int pageNumber,
-    required ArticlesSortType sortType,
-    required FilterData filterData,
-  }) async {
+  Future<List<ArticleModel>> loadNext(
+    int pageNumber,
+    ArticlesSortType sortType,
+    FilterData filterData,
+  ) async {
     final appliedFilterData = filterData.isEnabled
       ? filterData
       : FilterData.empty();

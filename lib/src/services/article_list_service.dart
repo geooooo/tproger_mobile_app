@@ -17,32 +17,25 @@ class ArticleListService {
     this._logger,
   );
 
-  Future<List<ArticleModel>> getArticles({
-    required ArticlesSortType sortType,
-    required FilterData filterData,
-  }) async {
+  Future<List<ArticleModel>> getArticles(
+    ArticlesSortType sortType,
+    FilterData filterData,
+  ) async {
     try {
-      return await _articleListLoader.load(
-        sortType: sortType, 
-        filterData: filterData,
-      );
+      return await _articleListLoader.load(sortType, filterData);
     } on Exception catch (error, stackTrace) {
       _logger.e('Load a list of articles', error, stackTrace);
       throw const LoadArticlesListException();
     }
   }
 
-  Future<List<ArticleModel>> getNextArticles({
-    required int pageNumber,
-    required ArticlesSortType sortType,
-    required FilterData filterData,
-  }) async {
+  Future<List<ArticleModel>> getNextArticles(
+    int pageNumber,
+    ArticlesSortType sortType,
+    FilterData filterData,
+  ) async {
     try {
-      return await _articleListLoader.loadNext(
-        pageNumber: pageNumber,
-        sortType: sortType,
-        filterData: filterData,
-      );
+      return await _articleListLoader.loadNext(pageNumber, sortType, filterData);
     } on Exception catch (error, stackTrace) {
       _logger.e('Load a list of next articles', error, stackTrace);
       throw const LoadNextArticlesException();

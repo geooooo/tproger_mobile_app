@@ -23,7 +23,7 @@ void main() {
     expect(Asset.surprise, equals(surpriseIcon));
   });
 
-  test('Get icon by reaction', () {
+  test('Get common reactions count', () {
     int count;
 
     count = reactionService.commonCount(const [

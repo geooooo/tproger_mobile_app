@@ -9,5 +9,8 @@ class LoadNextArticlesSuccessAction extends LoadNextArticlesBaseAction {
   @override
   List<Object> get props => [articles, nextPageNumber];
   
-  const LoadNextArticlesSuccessAction(this.articles, this.nextPageNumber);
+  const LoadNextArticlesSuccessAction({
+    required this.articles,
+    required this.nextPageNumber,
+  });
 }

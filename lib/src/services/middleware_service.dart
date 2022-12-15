@@ -37,10 +37,7 @@ class MiddlewareService {
   Stream<LoadArticlesBaseAction> _loadArticles(Stream<LoadArticlesAction> actions, EpicStore<AppState> store) =>
     actions.asyncMap((action) async {
       try {
-        final articles = await _articleListService.getArticles(
-          sortType: action.sortType,
-          filterData: action.filterData,
-        );
+        final articles = await _articleListService.getArticles(action.sortType, action.filterData);
         return articles.isEmpty
           ? const LoadArticlesEmtpyAction()
           : LoadArticlesSuccessAction(articles);
@@ -55,14 +52,17 @@ class MiddlewareService {
   Stream<LoadNextArticlesBaseAction> _loadNextArticles(Stream<LoadNextArticlesAction> actions, EpicStore<AppState> store) =>
     actions.asyncMap((action) async {
       final articles = await _articleListService.getNextArticles(
-        pageNumber: action.nextPageNumber,
-        sortType: action.sortType,
-        filterData: store.state.filterData,
+        action.nextPageNumber,
+        action.sortType,
+        store.state.filterData,
       );
 
       return articles.isEmpty
         ? const LoadNextArticlesEndAction()
-        : LoadNextArticlesSuccessAction(articles, action.nextPageNumber);
+        : LoadNextArticlesSuccessAction(
+            articles: articles, 
+            nextPageNumber: action.nextPageNumber,
+          );
     });
 
   Stream<void> _openLink(Stream<OpenLinkAction> actions, EpicStore<AppState> store) =>
