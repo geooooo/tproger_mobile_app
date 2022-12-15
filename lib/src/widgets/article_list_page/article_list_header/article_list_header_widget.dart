@@ -50,7 +50,10 @@ class ArticleListHeaderWidget extends StatelessWidget {
 
   void _onSelectSortType(ArticlesSortType type, AppStore store) {
     if (type != store.state.articlesSortType) {
-      store.dispatch(SortArticlesAction(type));
+      store.dispatch(SortArticlesAction(
+        sortType: type,
+        filterData: store.state.filterData,
+      ));
     }
   }
 
@@ -65,12 +68,15 @@ class ArticleListHeaderWidget extends StatelessWidget {
 
   Future<void> _onApplyClick(AppStore store) async {
     await _overlayService.hide();
-    store.dispatch(const ApplyFiltersAction()); 
+    store.dispatch(ApplyFiltersAction(
+      filterData: store.state.filterData,
+      sortType: store.state.articlesSortType,
+    )); 
   }
 
   Future<void> _onCleanOutClick(AppStore store) async {
     await _overlayService.hide();
-    store.dispatch(const ClearFiltersAction()); 
+    store.dispatch(ClearFiltersAction(store.state.articlesSortType)); 
   }
 
   void _onIsForBeginnerClick(AppStore store) => 

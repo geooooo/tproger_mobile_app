@@ -49,6 +49,7 @@ class ArticleListWidget extends StatelessWidget {
       store.dispatch(LoadNextArticlesAction(
         nextPageNumber: articlesPageNumber + 1,
         sortType: store.state.articlesSortType,
+        filterData: store.state.filterData,
       ));
     } 
 

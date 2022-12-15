@@ -88,7 +88,7 @@ class ReducerService {
 
   AppState _sortArticles(AppState state, SortArticlesAction action) => 
     state.rebuild((b) => b
-      ..articlesSortType = action.type
+      ..articlesSortType = action.sortType
     );
 
   AppState _applyFilters(AppState state, ApplyFiltersAction action) => 

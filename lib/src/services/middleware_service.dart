@@ -54,7 +54,7 @@ class MiddlewareService {
       final articles = await _articleListService.getNextArticles(
         action.nextPageNumber,
         action.sortType,
-        store.state.filterData,
+        action.filterData,
       );
 
       return articles.isEmpty
@@ -72,19 +72,19 @@ class MiddlewareService {
 
   Stream<LoadArticlesAction> _sortArticles(Stream<SortArticlesAction> actions, EpicStore<AppState> store) =>
     actions.map((action) => LoadArticlesAction(
-      sortType: action.type,
-      filterData: store.state.filterData,
+      sortType: action.sortType,
+      filterData: action.filterData,
     ));
 
   Stream<LoadArticlesAction> _applyFilters(Stream<ApplyFiltersAction> actions, EpicStore<AppState> store) =>
     actions.map((action) => LoadArticlesAction(
-      sortType: store.state.articlesSortType,
-      filterData: store.state.filterData,
+      sortType: action.sortType,
+      filterData: action.filterData,
     ));
 
   Stream<LoadArticlesAction> _clearFilters(Stream<ClearFiltersAction> actions, EpicStore<AppState> store) =>
     actions.map((action) => LoadArticlesAction(
-      sortType: store.state.articlesSortType,
+      sortType: action.sortType,
       filterData: FilterData.empty(),
     ));
 }
