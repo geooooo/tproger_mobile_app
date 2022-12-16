@@ -3,6 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tproger_mobile_app/l10n/app_localizations.dart';
 import 'package:tproger_mobile_app/src/models/actions/open_link_action.dart';
+import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_common.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
@@ -34,9 +35,9 @@ class _ReadUsTelegramButtonWidgetState extends State<ReadUsTelegramButtonWidget>
         child: Container(
           padding: AppSize.readUsTelegramButtonPadding,
           decoration: BoxDecoration(
-            color: store.state.theme.readUsTelegramButtonColor,
+            color: Theme.of(context).extension<AppTheme>()!.readUsTelegramButtonColor,
             border: Border.all(
-              color: store.state.theme.readUsTelegramButtonBorderColor,
+              color: Theme.of(context).extension<AppTheme>()!.readUsTelegramButtonBorderColor,
               width: 1,
             ),
             borderRadius: AppSize.readUsTelegramButtonBorderRadius,
@@ -52,13 +53,13 @@ class _ReadUsTelegramButtonWidgetState extends State<ReadUsTelegramButtonWidget>
                   package: Asset.package,
                   height: AppSize.readUsTelegramButtonIconSize,
                   width: AppSize.readUsTelegramButtonIconSize,
-                  color: store.state.theme.readUsTelegramButtonIconColor,
+                  color: Theme.of(context).extension<AppTheme>()!.readUsTelegramButtonIconColor,
                 ),
               ),
               const SizedBox(width: AppSize.readUsTelegramButtonIconAndTextSeparatorSize),
               Text(
                 AppLocalizations.of(context)!.readUsInTelegramText,
-                style: store.state.theme.readUsTelegramButtonTextStyle,
+                style: Theme.of(context).extension<AppTheme>()!.readUsTelegramButtonTextStyle,
               ),
             ],
           ),

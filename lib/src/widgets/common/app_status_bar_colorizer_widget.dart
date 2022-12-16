@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 
 class AppStatusBarColorizerWidget extends StatelessWidget {
-  final Color color;
-  final bool isDark;
   final Widget child;
 
   const AppStatusBarColorizerWidget({ 
-    required this.color,
-    required this.isDark,
     required this.child,
     super.key,
   });
@@ -16,8 +13,8 @@ class AppStatusBarColorizerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => AnnotatedRegion<SystemUiOverlayStyle>(
     value: SystemUiOverlayStyle(
-      statusBarColor: color,
-      statusBarIconBrightness: isDark
+      statusBarColor: Theme.of(context).extension<AppTheme>()!.mainBackgroundColor,
+      statusBarIconBrightness: Theme.of(context).brightness == Brightness.dark
         ? Brightness.light
         : Brightness.dark,
     ),

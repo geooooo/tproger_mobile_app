@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tproger_mobile_app/l10n/app_localizations.dart';
+import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/typedefs.dart';
@@ -36,17 +37,17 @@ class _ArticlesFilterButtonWidgetState extends State<ArticlesFilterButtonWidget>
         decoration: BoxDecoration(
           border: Border.all(
             width: AppSize.articlesFilterButtonBorderSize,
-            color: store.state.theme.articlesFilterButtonBorderColor,
+            color: Theme.of(context).extension<AppTheme>()!.articlesFilterButtonBorderColor,
           ),
           borderRadius: AppSize.articlesFilterButtonBorderRadius,
-          color: store.state.theme.articlesFilterButtonColor,
+          color: Theme.of(context).extension<AppTheme>()!.articlesFilterButtonColor,
         ),
         child: AnimatedDefaultTextStyle(
           duration: _duration,
           curve: Curves.ease,
           style: _isTapped
-            ? store.state.theme.articlesFilterButtonTextStyle
-            : store.state.theme.articlesFilterButtonActiveTextStyle,
+            ? Theme.of(context).extension<AppTheme>()!.articlesFilterButtonTextStyle
+            : Theme.of(context).extension<AppTheme>()!.articlesFilterButtonActiveTextStyle,
           child: Stack(
             children: [
               Text(AppLocalizations.of(context)!.filterText),

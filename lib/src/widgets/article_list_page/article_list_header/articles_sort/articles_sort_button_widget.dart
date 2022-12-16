@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
+import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
@@ -28,10 +29,10 @@ class ArticlesSortButtonWidget extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(
           width: AppSize.articlesSortBorderSize,
-          color: store.state.theme.articlesSortBorderColor,
+          color: Theme.of(context).extension<AppTheme>()!.articlesSortBorderColor,
         ),
         borderRadius: AppSize.articlesSortBorderRadius,
-        color: store.state.theme.articlesSortColor,
+        color: Theme.of(context).extension<AppTheme>()!.articlesSortColor,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -39,7 +40,7 @@ class ArticlesSortButtonWidget extends StatelessWidget {
         children: [
           Text(
             _appLocalizationService.getTextByArticlesSortType(type, context),
-            style: store.state.theme.articlesSortButtonTextStyle,
+            style: Theme.of(context).extension<AppTheme>()!.articlesSortButtonTextStyle,
           ),
           const SizedBox(width: AppSize.articleSortTextAndIconSeparatorSize),
           AnimatedRotation(
@@ -51,7 +52,7 @@ class ArticlesSortButtonWidget extends StatelessWidget {
               package: Asset.package,
               width: AppSize.articlesSortIconSize,
               height: AppSize.articlesSortIconSize,
-              color: store.state.theme.articlesSortMenuItemTextStyle.color,
+              color: Theme.of(context).extension<AppTheme>()!.articlesSortMenuItemTextStyle.color,
             ),
           ),
         ],

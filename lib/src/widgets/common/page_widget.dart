@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:tproger_mobile_app/src/models/actions/init_theme_action.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
+import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_localization.dart';
 import 'package:tproger_mobile_app/src/widgets/common/app_status_bar_colorizer_widget.dart';
 
@@ -15,16 +15,18 @@ abstract class PageWidget extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalization.localizationsDelegates,
       supportedLocales: AppLocalization.supportedLocales,
+      theme: ThemeData.light().copyWith(
+        extensions: <ThemeExtension<AppTheme>>[AppTheme.light()],
+      ),
+      darkTheme: ThemeData.dark().copyWith(
+        extensions: <ThemeExtension<AppTheme>>[AppTheme.dark()],
+      ),
       home: Builder(
         builder: (context) {
-          store.dispatch(InitThemeAction(context));
-          
           return AppStatusBarColorizerWidget(
-            color: store.state.theme.mainBackgroundColor,
-            isDark: store.state.theme.isDark,
             child: SafeArea(
               child: Scaffold(
-                backgroundColor: store.state.theme.mainBackgroundColor,
+                backgroundColor: Theme.of(context).extension<AppTheme>()!.mainBackgroundColor,
                 body: buildContent(context),
               ),
             ),

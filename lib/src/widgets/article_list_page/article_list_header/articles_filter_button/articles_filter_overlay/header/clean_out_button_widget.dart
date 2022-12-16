@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tproger_mobile_app/l10n/app_localizations.dart';
+import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
@@ -38,12 +39,12 @@ class _CleanOutButtonWidgetState extends State<CleanOutButtonWidget> {
           border: Border.all(
             width: AppSize.articlesFilterOverlayHeaderButtonBorderSize,
             color: _isTapped
-              ? store.state.theme.articlesFilterOverlayCleanOutButtonBorderActiveColor
+              ? Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayCleanOutButtonBorderActiveColor
               : Colors.transparent,
           ),
           borderRadius: AppSize.articlesFilterOverlayHeaderButtonBorderRadius,
           color: _isTapped
-            ? store.state.theme.articlesFilterOverlayCleanOutButtonActiveColor
+            ? Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayCleanOutButtonActiveColor
             : Colors.transparent,
         ),
         child: Row(
@@ -54,12 +55,12 @@ class _CleanOutButtonWidgetState extends State<CleanOutButtonWidget> {
               package: Asset.package,
               width: AppSize.articlesFilterOverlayCleanUpButtonIconSize,
               height: AppSize.articlesFilterOverlayCleanUpButtonIconSize,
-              color: store.state.theme.articlesFilterOverlayCleanOutButtonIconColor,
+              color: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayCleanOutButtonIconColor,
             ),
             const SizedBox(width: AppSize.articlesFilterOverlayCleanUpAndApplyButtonsSeparatorSize),
             Text(
               AppLocalizations.of(context)!.cleanOutText,
-              style: store.state.theme.articlesFilterOverlayCleanOutButtonTextStyle,
+              style: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayCleanOutButtonTextStyle,
             ),
           ],
         ),

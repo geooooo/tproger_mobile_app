@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tproger_mobile_app/l10n/app_localizations.dart';
+import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/typedefs.dart';
@@ -31,7 +32,7 @@ class _RubricWidgetState extends State<RubricWidget> {
       children: [
         Text(
           AppLocalizations.of(context)!.rubricsText,
-          style: store.state.theme.articlesFilterOverlayRubricTitleTextStyle,
+          style: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayRubricTitleTextStyle,
         ),
         const SizedBox(height: AppSize.articlesFilterOverlayRubricTitleAndContentSeparatorSize),
         GestureDetector(
@@ -52,11 +53,11 @@ class _RubricWidgetState extends State<RubricWidget> {
                     value: widget.isForBeginner, 
                     onChanged: (value) => widget.onIsForBeginnerClick(),
                     splashRadius: 0,
-                    activeColor: store.state.theme.articlesFilterOverlayIsForBeginnerCheckboxCheckFillActiveColor,//Color.fromRGBO(42, 165, 160, 1),
-                    checkColor: store.state.theme.articlesFilterOverlayIsForBeginnerCheckboxCheckColor,//Color.fromRGBO(255, 255, 255, 1),
+                    activeColor: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayIsForBeginnerCheckboxCheckFillActiveColor,//Color.fromRGBO(42, 165, 160, 1),
+                    checkColor: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayIsForBeginnerCheckboxCheckColor,//Color.fromRGBO(255, 255, 255, 1),
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     side: BorderSide(
-                      color: store.state.theme.articlesFilterOverlayIsForBeginnerCheckboxColor,
+                      color: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayIsForBeginnerCheckboxColor,
                       width: AppSize.articlesFilterOverlayIsForeBeginnerCheckboxBorderSize,
                     ),
                     shape: const RoundedRectangleBorder(
@@ -66,7 +67,7 @@ class _RubricWidgetState extends State<RubricWidget> {
                 ),
                 Text(
                   AppLocalizations.of(context)!.forBeginnersText,
-                  style: store.state.theme.articlesFilterOverlayIsForBeginnerCheckboxTextStyle,
+                  style: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayIsForBeginnerCheckboxTextStyle,
                 ),
               ],
             ),

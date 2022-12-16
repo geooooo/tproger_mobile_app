@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 
@@ -16,7 +17,7 @@ class LoaderWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ArticlesLoaderItemWidget(
-          color: store.state.theme.loaderColor,
+          color: Theme.of(context).extension<AppTheme>()!.loaderColor,
           startHeight: AppSize.loaderStartHeight,
           endHeight: AppSize.loaderEndHeight,
           width: AppSize.loaderWidth,
@@ -25,7 +26,7 @@ class LoaderWidget extends StatelessWidget {
         ),
         const SizedBox(width: AppSize.loaderItemSeparatorSize),
         ArticlesLoaderItemWidget(
-          color: store.state.theme.loaderColor,
+          color: Theme.of(context).extension<AppTheme>()!.loaderColor,
           startHeight: AppSize.loaderStartHeight,
           endHeight: AppSize.loaderEndHeight,
           width: AppSize.loaderWidth,
@@ -35,7 +36,7 @@ class LoaderWidget extends StatelessWidget {
         ),
         const SizedBox(width: AppSize.loaderItemSeparatorSize),
         ArticlesLoaderItemWidget(
-          color: store.state.theme.loaderColor,
+          color: Theme.of(context).extension<AppTheme>()!.loaderColor,
           startHeight: AppSize.loaderStartHeight,
           endHeight: AppSize.loaderEndHeight,
           width: AppSize.loaderWidth,

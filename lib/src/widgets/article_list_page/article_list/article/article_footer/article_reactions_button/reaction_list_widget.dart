@@ -26,7 +26,7 @@ class ReactionListWidget extends StatelessWidget {
       return baseWidth + AppSize.reactionOffsetPositionK;
     }
 
-    throw Exception('Only ${AppCommon.maxReactions} reactions in the list');
+    throw UnsupportedError('Only ${AppCommon.maxReactions} reactions in the list');
   }
 
   const ReactionListWidget({ 

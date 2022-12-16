@@ -3,6 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/load_next_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/open_link_action.dart';
+import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_common.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
@@ -27,8 +28,8 @@ class ArticleListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => StoreBuilder<AppState>(
     builder: (context, store) => RefreshIndicator(
-      color: store.state.theme.loaderColor,
-      backgroundColor: store.state.theme.mainBackgroundColor,
+      color: Theme.of(context).extension<AppTheme>()!.loaderColor,
+      backgroundColor: Theme.of(context).extension<AppTheme>()!.mainBackgroundColor,
       onRefresh: () async => _onRefresh(store),
       child: ListView.separated(
         shrinkWrap: true,

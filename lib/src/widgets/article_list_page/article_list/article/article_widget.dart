@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/article_image/article_background_image.dart';
@@ -43,11 +44,11 @@ class _ArticleWidgetState extends State<ArticleWidget> with AutomaticKeepAliveCl
     return StoreBuilder<AppState>(
       builder: (builder, store) => DecoratedBox(
         decoration: BoxDecoration(
-          color: store.state.theme.articleBackgroundColor,
+          color: Theme.of(context).extension<AppTheme>()!.articleBackgroundColor,
           border: Border.symmetric(
             horizontal: BorderSide(
               width: AppSize.articleBorderSize,
-              color: store.state.theme.articleBorderColor,
+              color: Theme.of(context).extension<AppTheme>()!.articleBorderColor,
             ),
           ),
         ),

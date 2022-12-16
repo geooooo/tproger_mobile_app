@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tproger_mobile_app/l10n/app_localizations.dart';
+import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/typedefs.dart';
@@ -40,12 +41,12 @@ class _ApplyButtonWidgetState extends State<ApplyButtonWidget> {
               color: Colors.transparent,
             ),
             borderRadius: AppSize.articlesFilterOverlayHeaderButtonBorderRadius,
-            color: store.state.theme.articlesFilterOverlayApplyButtonColor,
+            color: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayApplyButtonColor,
           ),
           child: Center(
             child: Text(
               AppLocalizations.of(context)!.applyText,
-              style: store.state.theme.articlesFilterOverlayApplyButtonTextStyle,
+              style: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayApplyButtonTextStyle,
               textAlign: TextAlign.center,
             ),
           ),

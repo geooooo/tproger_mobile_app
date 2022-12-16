@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:get_it/get_it.dart';
 import 'package:overlayment/overlayment.dart';
+import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_color.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
@@ -64,7 +65,7 @@ class _ArticleReactionsButtonWidgetState extends State<ArticleReactionsButtonWid
           duration: _duration,
           curve: Curves.ease,
           decoration: BoxDecoration(
-            color: store.state.theme.articleReactionsBackgroundColor,
+            color: Theme.of(context).extension<AppTheme>()!.articleReactionsBackgroundColor,
             boxShadow: _isTapped
               ? const [
                   BoxShadow(
@@ -76,7 +77,7 @@ class _ArticleReactionsButtonWidgetState extends State<ArticleReactionsButtonWid
               : null,
             border: Border.all(
               width: AppSize.articleReactionsBorderSize,
-              color: store.state.theme.articleReactionsBorderColor,
+              color: Theme.of(context).extension<AppTheme>()!.articleReactionsBorderColor,
             ),
             borderRadius: AppSize.articleReactionsBorderRadius,
           ),

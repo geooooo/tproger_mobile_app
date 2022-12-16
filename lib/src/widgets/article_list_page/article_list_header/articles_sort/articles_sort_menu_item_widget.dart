@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
+import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
 import 'package:tproger_mobile_app/src/services/app_localization_service.dart';
 
@@ -19,7 +20,7 @@ class ArticlesSortMenuItemWidget extends StatelessWidget {
   Widget build(BuildContext context) => StoreBuilder<AppState>(
     builder: (context, store) => Text(
       _appLocalizationService.getTextByArticlesSortType(type, context),
-      style: store.state.theme.articlesSortMenuItemTextStyle,
+      style: Theme.of(context).extension<AppTheme>()!.articlesSortMenuItemTextStyle,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
     ),

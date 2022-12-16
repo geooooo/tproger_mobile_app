@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
@@ -78,7 +79,7 @@ class _ArticleFooterButtonWidgetState extends State<ArticleFooterButtonWidget> w
 
   void _initAnimation(AppStore store) {
     final newBegin = _style.color;
-    final end = store.state.theme.articleFooterButtonActiveTextStyle.color;
+    final end = Theme.of(context).extension<AppTheme>()!.articleFooterButtonActiveTextStyle.color;
 
     if (!_isAnimationInitialized || _tween.begin != newBegin) {
       _tween = ColorTween(
@@ -92,12 +93,12 @@ class _ArticleFooterButtonWidgetState extends State<ArticleFooterButtonWidget> w
   }
 
   void _initStyle(AppStore store) {
-    var newStyle = store.state.theme.articleFooterButtonTextStyle;
+    var newStyle = Theme.of(context).extension<AppTheme>()!.articleFooterButtonTextStyle;
     
     if (_isTapped) {
-      newStyle = store.state.theme.articleFooterButtonActiveTextStyle;
+      newStyle = Theme.of(context).extension<AppTheme>()!.articleFooterButtonActiveTextStyle;
     } else if (widget.isInvertetStyle) {
-      newStyle = store.state.theme.articleFooterButtonInvertedTextStyle;
+      newStyle = Theme.of(context).extension<AppTheme>()!.articleFooterButtonInvertedTextStyle;
     }
 
     _style = newStyle;
