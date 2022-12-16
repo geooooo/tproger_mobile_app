@@ -14,7 +14,7 @@ class LoaderWidget extends StatelessWidget {
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       ArticlesLoaderItemWidget(
-        color: Theme.of(context).extension<AppTheme>()!.loaderColor,
+        color: AppTheme.of(context).loaderColor,
         startHeight: AppSize.loaderStartHeight,
         endHeight: AppSize.loaderEndHeight,
         width: AppSize.loaderWidth,
@@ -23,7 +23,7 @@ class LoaderWidget extends StatelessWidget {
       ),
       const SizedBox(width: AppSize.loaderItemSeparatorSize),
       ArticlesLoaderItemWidget(
-        color: Theme.of(context).extension<AppTheme>()!.loaderColor,
+        color: AppTheme.of(context).loaderColor,
         startHeight: AppSize.loaderStartHeight,
         endHeight: AppSize.loaderEndHeight,
         width: AppSize.loaderWidth,
@@ -33,7 +33,7 @@ class LoaderWidget extends StatelessWidget {
       ),
       const SizedBox(width: AppSize.loaderItemSeparatorSize),
       ArticlesLoaderItemWidget(
-        color: Theme.of(context).extension<AppTheme>()!.loaderColor,
+        color: AppTheme.of(context).loaderColor,
         startHeight: AppSize.loaderStartHeight,
         endHeight: AppSize.loaderEndHeight,
         width: AppSize.loaderWidth,

@@ -29,7 +29,7 @@ class _RubricWidgetState extends State<RubricWidget> {
     children: [
       Text(
         AppLocalizations.of(context)!.rubricsText,
-        style: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayRubricTitleTextStyle,
+        style: AppTheme.of(context).articlesFilterOverlayRubricTitleTextStyle,
       ),
       const SizedBox(height: AppSize.articlesFilterOverlayRubricTitleAndContentSeparatorSize),
       GestureDetector(
@@ -50,11 +50,11 @@ class _RubricWidgetState extends State<RubricWidget> {
                   value: widget.isForBeginner, 
                   onChanged: (value) => widget.onIsForBeginnerClick(),
                   splashRadius: 0,
-                  activeColor: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayIsForBeginnerCheckboxCheckFillActiveColor,//Color.fromRGBO(42, 165, 160, 1),
-                  checkColor: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayIsForBeginnerCheckboxCheckColor,//Color.fromRGBO(255, 255, 255, 1),
+                  activeColor: AppTheme.of(context).articlesFilterOverlayIsForBeginnerCheckboxCheckFillActiveColor,//Color.fromRGBO(42, 165, 160, 1),
+                  checkColor: AppTheme.of(context).articlesFilterOverlayIsForBeginnerCheckboxCheckColor,//Color.fromRGBO(255, 255, 255, 1),
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   side: BorderSide(
-                    color: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayIsForBeginnerCheckboxColor,
+                    color: AppTheme.of(context).articlesFilterOverlayIsForBeginnerCheckboxColor,
                     width: AppSize.articlesFilterOverlayIsForeBeginnerCheckboxBorderSize,
                   ),
                   shape: const RoundedRectangleBorder(
@@ -64,7 +64,7 @@ class _RubricWidgetState extends State<RubricWidget> {
               ),
               Text(
                 AppLocalizations.of(context)!.forBeginnersText,
-                style: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayIsForBeginnerCheckboxTextStyle,
+                style: AppTheme.of(context).articlesFilterOverlayIsForBeginnerCheckboxTextStyle,
               ),
             ],
           ),

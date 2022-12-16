@@ -36,12 +36,12 @@ class _CleanOutButtonWidgetState extends State<CleanOutButtonWidget> {
         border: Border.all(
           width: AppSize.articlesFilterOverlayHeaderButtonBorderSize,
           color: _isTapped
-            ? Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayCleanOutButtonBorderActiveColor
+            ? AppTheme.of(context).articlesFilterOverlayCleanOutButtonBorderActiveColor
             : Colors.transparent,
         ),
         borderRadius: AppSize.articlesFilterOverlayHeaderButtonBorderRadius,
         color: _isTapped
-          ? Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayCleanOutButtonActiveColor
+          ? AppTheme.of(context).articlesFilterOverlayCleanOutButtonActiveColor
           : Colors.transparent,
       ),
       child: Row(
@@ -52,12 +52,12 @@ class _CleanOutButtonWidgetState extends State<CleanOutButtonWidget> {
             package: Asset.package,
             width: AppSize.articlesFilterOverlayCleanUpButtonIconSize,
             height: AppSize.articlesFilterOverlayCleanUpButtonIconSize,
-            color: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayCleanOutButtonIconColor,
+            color: AppTheme.of(context).articlesFilterOverlayCleanOutButtonIconColor,
           ),
           const SizedBox(width: AppSize.articlesFilterOverlayCleanUpAndApplyButtonsSeparatorSize),
           Text(
             AppLocalizations.of(context)!.cleanOutText,
-            style: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayCleanOutButtonTextStyle,
+            style: AppTheme.of(context).articlesFilterOverlayCleanOutButtonTextStyle,
           ),
         ],
       ),

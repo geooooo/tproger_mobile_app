@@ -25,13 +25,13 @@ class ArticlesFilterOverlayWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => DecoratedBox(
     decoration: BoxDecoration(
-      color: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayColor,
+      color: AppTheme.of(context).articlesFilterOverlayColor,
     ),
     child: SafeArea(
       child: Stack(
         children: [
           Container(
-            color: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayColor,
+            color: AppTheme.of(context).articlesFilterOverlayColor,
             padding: AppSize.articlesFilterOverlayPadding,
             width: double.infinity,
             height: double.infinity,

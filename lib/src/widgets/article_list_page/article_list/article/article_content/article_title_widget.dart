@@ -15,7 +15,7 @@ class ArticleTitleWidget extends StatelessWidget {
   Widget build(BuildContext context) => Text(
     text,
     style: isInvertetStyle
-      ? Theme.of(context).extension<AppTheme>()!.articleTitleInvertedTextStyle
-      : Theme.of(context).extension<AppTheme>()!.articleTitleTextStyle,
+      ? AppTheme.of(context).articleTitleInvertedTextStyle
+      : AppTheme.of(context).articleTitleTextStyle,
   );
 }

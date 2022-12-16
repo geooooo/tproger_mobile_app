@@ -17,7 +17,7 @@ class ArticlesSortMenuItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Text(
     _appLocalizationService.getTextByArticlesSortType(type, context),
-    style: Theme.of(context).extension<AppTheme>()!.articlesSortMenuItemTextStyle,
+    style: AppTheme.of(context).articlesSortMenuItemTextStyle,
     maxLines: 1,
     overflow: TextOverflow.ellipsis,
   );

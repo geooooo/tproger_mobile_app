@@ -13,7 +13,7 @@ class AppStatusBarColorizerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => AnnotatedRegion<SystemUiOverlayStyle>(
     value: SystemUiOverlayStyle(
-      statusBarColor: Theme.of(context).extension<AppTheme>()!.mainBackgroundColor,
+      statusBarColor: AppTheme.of(context).mainBackgroundColor,
       statusBarIconBrightness: Theme.of(context).brightness == Brightness.dark
         ? Brightness.light
         : Brightness.dark,

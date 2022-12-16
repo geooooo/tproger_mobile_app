@@ -34,17 +34,17 @@ class _ArticlesFilterButtonWidgetState extends State<ArticlesFilterButtonWidget>
       decoration: BoxDecoration(
         border: Border.all(
           width: AppSize.articlesFilterButtonBorderSize,
-          color: Theme.of(context).extension<AppTheme>()!.articlesFilterButtonBorderColor,
+          color: AppTheme.of(context).articlesFilterButtonBorderColor,
         ),
         borderRadius: AppSize.articlesFilterButtonBorderRadius,
-        color: Theme.of(context).extension<AppTheme>()!.articlesFilterButtonColor,
+        color: AppTheme.of(context).articlesFilterButtonColor,
       ),
       child: AnimatedDefaultTextStyle(
         duration: _duration,
         curve: Curves.ease,
         style: _isTapped
-          ? Theme.of(context).extension<AppTheme>()!.articlesFilterButtonTextStyle
-          : Theme.of(context).extension<AppTheme>()!.articlesFilterButtonActiveTextStyle,
+          ? AppTheme.of(context).articlesFilterButtonTextStyle
+          : AppTheme.of(context).articlesFilterButtonActiveTextStyle,
         child: Stack(
           children: [
             Text(AppLocalizations.of(context)!.filterText),

@@ -41,11 +41,11 @@ class _ArticleWidgetState extends State<ArticleWidget> with AutomaticKeepAliveCl
 
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: Theme.of(context).extension<AppTheme>()!.articleBackgroundColor,
+        color: AppTheme.of(context).articleBackgroundColor,
         border: Border.symmetric(
           horizontal: BorderSide(
             width: AppSize.articleBorderSize,
-            color: Theme.of(context).extension<AppTheme>()!.articleBorderColor,
+            color: AppTheme.of(context).articleBorderColor,
           ),
         ),
       ),

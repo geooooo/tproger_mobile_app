@@ -12,6 +12,6 @@ class ReactionTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Text(
     text,
-    style: Theme.of(context).extension<AppTheme>()!.articleReactionTextStyle,
+    style: AppTheme.of(context).articleReactionTextStyle,
   );
 }

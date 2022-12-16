@@ -21,7 +21,7 @@ class HeaderWidget extends StatelessWidget {
     children: [
       Text(
         AppLocalizations.of(context)!.filterText,
-        style: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayHeaderTitleTextStyle,
+        style: AppTheme.of(context).articlesFilterOverlayHeaderTitleTextStyle,
       ),
       const SizedBox(height: AppSize.articlesFilterOverlayHeaderTitleAndButtonsSeparatorSize),
       IntrinsicHeight(

@@ -28,16 +28,16 @@ class ArticleViewCountWidget extends StatelessWidget {
         width: AppSize.articleViewCountIconSize,
         height: AppSize.articleViewCountIconSize,
         color: isInvertetStyle
-          ? Theme.of(context).extension<AppTheme>()!.articleViewCountIconInvertedColor
-          : Theme.of(context).extension<AppTheme>()!.articleViewCountIconColor,
+          ? AppTheme.of(context).articleViewCountIconInvertedColor
+          : AppTheme.of(context).articleViewCountIconColor,
       ),
       const SizedBox(width: AppSize.articleViewCountIconAndViewCountTextSeparatorSize),
       Text(
         _viewCountService.format(viewCount),
         textAlign: TextAlign.start,
         style: isInvertetStyle
-          ? Theme.of(context).extension<AppTheme>()!.articleViewCountInvertedTextStyle
-          : Theme.of(context).extension<AppTheme>()!.articleViewCountTextStyle,
+          ? AppTheme.of(context).articleViewCountInvertedTextStyle
+          : AppTheme.of(context).articleViewCountTextStyle,
       ),
     ],
   ); 

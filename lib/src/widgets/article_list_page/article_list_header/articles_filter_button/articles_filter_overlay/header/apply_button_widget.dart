@@ -38,12 +38,12 @@ class _ApplyButtonWidgetState extends State<ApplyButtonWidget> {
             color: Colors.transparent,
           ),
           borderRadius: AppSize.articlesFilterOverlayHeaderButtonBorderRadius,
-          color: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayApplyButtonColor,
+          color: AppTheme.of(context).articlesFilterOverlayApplyButtonColor,
         ),
         child: Center(
           child: Text(
             AppLocalizations.of(context)!.applyText,
-            style: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayApplyButtonTextStyle,
+            style: AppTheme.of(context).articlesFilterOverlayApplyButtonTextStyle,
             textAlign: TextAlign.center,
           ),
         ),

@@ -35,8 +35,8 @@ class ArticleListWidget extends StatelessWidget {
       dispatch: store.dispatch,
     ),
     builder: (context, viewModel) => RefreshIndicator(
-      color: Theme.of(context).extension<AppTheme>()!.loaderColor,
-      backgroundColor: Theme.of(context).extension<AppTheme>()!.mainBackgroundColor,
+      color: AppTheme.of(context).loaderColor,
+      backgroundColor: AppTheme.of(context).mainBackgroundColor,
       onRefresh: () async => _onRefresh(viewModel),
       child: ListView.separated(
         shrinkWrap: true,

@@ -24,7 +24,7 @@ class CloseButtonWidget extends StatelessWidget {
         package: Asset.package,
         width: AppSize.articlesFilterOverlayCloseButtonIconSize,
         height: AppSize.articlesFilterOverlayCloseButtonIconSize,
-        color: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayCloseButtonIconColor,
+        color: AppTheme.of(context).articlesFilterOverlayCloseButtonIconColor,
       ),
     ),
   );

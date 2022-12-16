@@ -46,10 +46,10 @@ class _ArticlesSortWidgetState extends State<ArticlesSortWidget> {
           dropdownDecoration: BoxDecoration(
             border: Border.all(
               width: AppSize.articlesSortBorderSize,
-              color: Theme.of(context).extension<AppTheme>()!.articlesSortBorderColor,
+              color: AppTheme.of(context).articlesSortBorderColor,
             ),
             borderRadius: AppSize.articlesSortBorderRadius,
-            color: Theme.of(context).extension<AppTheme>()!.articlesSortColor,
+            color: AppTheme.of(context).articlesSortColor,
           ),
           dropdownPadding: AppSize.articlesSortMenuPadding,
           customButton: ArticlesSortButtonWidget(

@@ -22,7 +22,7 @@ abstract class PageWidget extends StatelessWidget {
       child: SafeArea(
         child: Builder(
           builder: (context) => Scaffold(
-            backgroundColor: Theme.of(context).extension<AppTheme>()!.mainBackgroundColor,
+            backgroundColor: AppTheme.of(context).mainBackgroundColor,
             body: buildContent(context),
           ),
         ),

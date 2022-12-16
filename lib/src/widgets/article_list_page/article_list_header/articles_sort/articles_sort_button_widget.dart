@@ -26,10 +26,10 @@ class ArticlesSortButtonWidget extends StatelessWidget {
     decoration: BoxDecoration(
       border: Border.all(
         width: AppSize.articlesSortBorderSize,
-        color: Theme.of(context).extension<AppTheme>()!.articlesSortBorderColor,
+        color: AppTheme.of(context).articlesSortBorderColor,
       ),
       borderRadius: AppSize.articlesSortBorderRadius,
-      color: Theme.of(context).extension<AppTheme>()!.articlesSortColor,
+      color: AppTheme.of(context).articlesSortColor,
     ),
     child: Row(
       mainAxisSize: MainAxisSize.min,
@@ -37,7 +37,7 @@ class ArticlesSortButtonWidget extends StatelessWidget {
       children: [
         Text(
           _appLocalizationService.getTextByArticlesSortType(type, context),
-          style: Theme.of(context).extension<AppTheme>()!.articlesSortButtonTextStyle,
+          style: AppTheme.of(context).articlesSortButtonTextStyle,
         ),
         const SizedBox(width: AppSize.articleSortTextAndIconSeparatorSize),
         AnimatedRotation(
@@ -49,7 +49,7 @@ class ArticlesSortButtonWidget extends StatelessWidget {
             package: Asset.package,
             width: AppSize.articlesSortIconSize,
             height: AppSize.articlesSortIconSize,
-            color: Theme.of(context).extension<AppTheme>()!.articlesSortMenuItemTextStyle.color,
+            color: AppTheme.of(context).articlesSortMenuItemTextStyle.color,
           ),
         ),
       ],

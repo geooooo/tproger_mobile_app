@@ -16,7 +16,7 @@ class ArticleAuthorNameWidget extends StatelessWidget {
     authorName,
     overflow: TextOverflow.ellipsis,
     style: isInvertetStyle
-      ? Theme.of(context).extension<AppTheme>()!.articleAuthorNameInvertedTextStyle
-      : Theme.of(context).extension<AppTheme>()!.articleAuthorNameTextStyle,
+      ? AppTheme.of(context).articleAuthorNameInvertedTextStyle
+      : AppTheme.of(context).articleAuthorNameTextStyle,
   );
 }

@@ -120,6 +120,8 @@ class AppTheme extends ThemeExtension<AppTheme> {
   factory AppTheme.light() => _light; 
   factory AppTheme.dark() => _dark;
 
+  static AppTheme of(BuildContext context) => Theme.of(context).extension<AppTheme>()!;
+
   @override
   AppTheme copyWith() => throw UnsupportedError('');
 

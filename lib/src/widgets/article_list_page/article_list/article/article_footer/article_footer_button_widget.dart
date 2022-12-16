@@ -75,7 +75,7 @@ class _ArticleFooterButtonWidgetState extends State<ArticleFooterButtonWidget> w
 
   void _initAnimation() {
     final newBegin = _style.color;
-    final end = Theme.of(context).extension<AppTheme>()!.articleFooterButtonActiveTextStyle.color;
+    final end = AppTheme.of(context).articleFooterButtonActiveTextStyle.color;
 
     if (!_isAnimationInitialized || _tween.begin != newBegin) {
       _tween = ColorTween(
@@ -89,12 +89,12 @@ class _ArticleFooterButtonWidgetState extends State<ArticleFooterButtonWidget> w
   }
 
   void _initStyle() {
-    var newStyle = Theme.of(context).extension<AppTheme>()!.articleFooterButtonTextStyle;
+    var newStyle = AppTheme.of(context).articleFooterButtonTextStyle;
     
     if (_isTapped) {
-      newStyle = Theme.of(context).extension<AppTheme>()!.articleFooterButtonActiveTextStyle;
+      newStyle = AppTheme.of(context).articleFooterButtonActiveTextStyle;
     } else if (widget.isInvertetStyle) {
-      newStyle = Theme.of(context).extension<AppTheme>()!.articleFooterButtonInvertedTextStyle;
+      newStyle = AppTheme.of(context).articleFooterButtonInvertedTextStyle;
     }
 
     _style = newStyle;

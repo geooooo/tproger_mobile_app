@@ -17,7 +17,7 @@ class ReactionWidget extends StatelessWidget {
     decoration: BoxDecoration(
       border: Border.all(
         width: AppSize.articleReactionBorderSize,
-        color: Theme.of(context).extension<AppTheme>()!.articleReactionBorderColor,
+        color: AppTheme.of(context).articleReactionBorderColor,
       ),
       borderRadius: AppSize.articleReactionBorderRadius,
     ),

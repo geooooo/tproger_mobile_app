@@ -11,7 +11,7 @@ class ActiveIndicatorWidget extends StatelessWidget {
     height: AppSize.articlesFiltersActiveIndicatorSize,
     decoration: BoxDecoration(
       borderRadius: AppSize.articlesFiltersActiveIndicatorBorderRadius,
-      color: Theme.of(context).extension<AppTheme>()!.articlesFiltersAcitveIndicatorColor,
+      color: AppTheme.of(context).articlesFiltersAcitveIndicatorColor,
     ),
   );
 }

@@ -37,9 +37,9 @@ class _ReadUsTelegramButtonWidgetState extends State<ReadUsTelegramButtonWidget>
         child: Container(
           padding: AppSize.readUsTelegramButtonPadding,
           decoration: BoxDecoration(
-            color: Theme.of(context).extension<AppTheme>()!.readUsTelegramButtonColor,
+            color: AppTheme.of(context).readUsTelegramButtonColor,
             border: Border.all(
-              color: Theme.of(context).extension<AppTheme>()!.readUsTelegramButtonBorderColor,
+              color: AppTheme.of(context).readUsTelegramButtonBorderColor,
               width: 1,
             ),
             borderRadius: AppSize.readUsTelegramButtonBorderRadius,
@@ -55,13 +55,13 @@ class _ReadUsTelegramButtonWidgetState extends State<ReadUsTelegramButtonWidget>
                   package: Asset.package,
                   height: AppSize.readUsTelegramButtonIconSize,
                   width: AppSize.readUsTelegramButtonIconSize,
-                  color: Theme.of(context).extension<AppTheme>()!.readUsTelegramButtonIconColor,
+                  color: AppTheme.of(context).readUsTelegramButtonIconColor,
                 ),
               ),
               const SizedBox(width: AppSize.readUsTelegramButtonIconAndTextSeparatorSize),
               Text(
                 AppLocalizations.of(context)!.readUsInTelegramText,
-                style: Theme.of(context).extension<AppTheme>()!.readUsTelegramButtonTextStyle,
+                style: AppTheme.of(context).readUsTelegramButtonTextStyle,
               ),
             ],
           ),

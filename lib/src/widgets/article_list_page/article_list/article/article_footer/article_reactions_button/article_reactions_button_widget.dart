@@ -62,7 +62,7 @@ class _ArticleReactionsButtonWidgetState extends State<ArticleReactionsButtonWid
           duration: _duration,
           curve: Curves.ease,
           decoration: BoxDecoration(
-            color: Theme.of(context).extension<AppTheme>()!.articleReactionsBackgroundColor,
+            color: AppTheme.of(context).articleReactionsBackgroundColor,
             boxShadow: _isTapped
               ? const [
                   BoxShadow(
@@ -74,7 +74,7 @@ class _ArticleReactionsButtonWidgetState extends State<ArticleReactionsButtonWid
               : null,
             border: Border.all(
               width: AppSize.articleReactionsBorderSize,
-              color: Theme.of(context).extension<AppTheme>()!.articleReactionsBorderColor,
+              color: AppTheme.of(context).articleReactionsBorderColor,
             ),
             borderRadius: AppSize.articleReactionsBorderRadius,
           ),

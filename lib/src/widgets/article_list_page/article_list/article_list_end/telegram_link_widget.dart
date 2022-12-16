@@ -28,14 +28,14 @@ class TelegramLinkWidget extends StatelessWidget {
         const SizedBox(height: AppSize.articleListEndTelegramIconAndTextSeparatorSize),
         Text(
           AppLocalizations.of(context)!.orFindInOurTelegramChannelsText,
-          style: Theme.of(context).extension<AppTheme>()!.articleListEndTelegramTextStyle,
+          style: AppTheme.of(context).articleListEndTelegramTextStyle,
           textAlign: TextAlign.center,
         ),
         GestureDetector(
           onTap: () => _onTap(dispatch),
           child: Text(
             '@tproger_channels',
-            style: Theme.of(context).extension<AppTheme>()!.articleListEndTelegramLinkTextStyle,
+            style: AppTheme.of(context).articleListEndTelegramLinkTextStyle,
           ),
         ),
       ],
