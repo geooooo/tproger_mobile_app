@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
-import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 
 class LoaderWidget extends StatelessWidget {
   static const _duration = Duration(milliseconds: 1200);
@@ -12,39 +10,37 @@ class LoaderWidget extends StatelessWidget {
   const LoaderWidget({ super.key });
 
   @override
-  Widget build(BuildContext context) => StoreBuilder<AppState>(
-    builder: (context, store) => Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ArticlesLoaderItemWidget(
-          color: Theme.of(context).extension<AppTheme>()!.loaderColor,
-          startHeight: AppSize.loaderStartHeight,
-          endHeight: AppSize.loaderEndHeight,
-          width: AppSize.loaderWidth,
-          speedUpTo: _delay2,
-          duration: _duration,
-        ),
-        const SizedBox(width: AppSize.loaderItemSeparatorSize),
-        ArticlesLoaderItemWidget(
-          color: Theme.of(context).extension<AppTheme>()!.loaderColor,
-          startHeight: AppSize.loaderStartHeight,
-          endHeight: AppSize.loaderEndHeight,
-          width: AppSize.loaderWidth,
-          speedUpTo: _delay1,
-          slowDownTo: _delay1,
-          duration: _duration,
-        ),
-        const SizedBox(width: AppSize.loaderItemSeparatorSize),
-        ArticlesLoaderItemWidget(
-          color: Theme.of(context).extension<AppTheme>()!.loaderColor,
-          startHeight: AppSize.loaderStartHeight,
-          endHeight: AppSize.loaderEndHeight,
-          width: AppSize.loaderWidth,
-          slowDownTo: _delay2,
-          duration: _duration,
-        ),
-      ],
-    ),
+  Widget build(BuildContext context) => Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      ArticlesLoaderItemWidget(
+        color: Theme.of(context).extension<AppTheme>()!.loaderColor,
+        startHeight: AppSize.loaderStartHeight,
+        endHeight: AppSize.loaderEndHeight,
+        width: AppSize.loaderWidth,
+        speedUpTo: _delay2,
+        duration: _duration,
+      ),
+      const SizedBox(width: AppSize.loaderItemSeparatorSize),
+      ArticlesLoaderItemWidget(
+        color: Theme.of(context).extension<AppTheme>()!.loaderColor,
+        startHeight: AppSize.loaderStartHeight,
+        endHeight: AppSize.loaderEndHeight,
+        width: AppSize.loaderWidth,
+        speedUpTo: _delay1,
+        slowDownTo: _delay1,
+        duration: _duration,
+      ),
+      const SizedBox(width: AppSize.loaderItemSeparatorSize),
+      ArticlesLoaderItemWidget(
+        color: Theme.of(context).extension<AppTheme>()!.loaderColor,
+        startHeight: AppSize.loaderStartHeight,
+        endHeight: AppSize.loaderEndHeight,
+        width: AppSize.loaderWidth,
+        slowDownTo: _delay2,
+        duration: _duration,
+      ),
+    ],
   );
 }
 

@@ -23,45 +23,47 @@ class ArticlesFilterOverlayWidget extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => StoreBuilder<AppState>(
-    builder: (context, store) => DecoratedBox(
-      decoration: BoxDecoration(
-        color: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayColor,
-      ),
-      child: SafeArea(
-        child: Stack(
-          children: [
-            Container(
-              color: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayColor,
-              padding: AppSize.articlesFilterOverlayPadding,
-              width: double.infinity,
-              height: double.infinity,
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    HeaderWidget(
-                      onApplyClick: onApplyClick,
-                      onCleanOutClick: onCleanOutClick,
-                    ),
-                    const SizedBox(height: AppSize.articlesFilterOverlayHeaderAndRubricSeparatorSize),
-                    RubricWidget(
-                      isForBeginner: store.state.filterData.isForBeginner,
+  Widget build(BuildContext context) => DecoratedBox(
+    decoration: BoxDecoration(
+      color: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayColor,
+    ),
+    child: SafeArea(
+      child: Stack(
+        children: [
+          Container(
+            color: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayColor,
+            padding: AppSize.articlesFilterOverlayPadding,
+            width: double.infinity,
+            height: double.infinity,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  HeaderWidget(
+                    onApplyClick: onApplyClick,
+                    onCleanOutClick: onCleanOutClick,
+                  ),
+                  const SizedBox(height: AppSize.articlesFilterOverlayHeaderAndRubricSeparatorSize),
+                  StoreConnector<AppState, bool>(
+                    distinct: true,
+                    converter: (store) => store.state.filterData.isForBeginner,
+                    builder: (context, isForBeginner) => RubricWidget(
+                      isForBeginner: isForBeginner,
                       onIsForBeginnerClick: onIsForBeginnerClick,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-            Positioned(
-              top: 0,
-              right: 0,
-              child: CloseButtonWidget(
-                onClick: onCloseClick,
-              ),
+          ),
+          Positioned(
+            top: 0,
+            right: 0,
+            child: CloseButtonWidget(
+              onClick: onCloseClick,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     ),
   );

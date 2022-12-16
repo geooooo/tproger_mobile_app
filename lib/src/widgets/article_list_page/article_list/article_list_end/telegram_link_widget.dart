@@ -14,8 +14,10 @@ class TelegramLinkWidget extends StatelessWidget {
   const TelegramLinkWidget({ super.key });
 
   @override
-  Widget build(BuildContext context) => StoreBuilder<AppState>(
-    builder: (context, store) => Column(
+  Widget build(BuildContext context) => StoreConnector<AppState, DynamicFunctionDynamic>(
+    distinct: true,
+    converter: (store) => store.dispatch,
+    builder: (context, dispatch) => Column(
       children: [
         SvgPicture.asset(
           Asset.telegram0.value,
@@ -30,7 +32,7 @@ class TelegramLinkWidget extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         GestureDetector(
-          onTap: () => _onTap(store),
+          onTap: () => _onTap(dispatch),
           child: Text(
             '@tproger_channels',
             style: Theme.of(context).extension<AppTheme>()!.articleListEndTelegramLinkTextStyle,
@@ -40,6 +42,6 @@ class TelegramLinkWidget extends StatelessWidget {
     ),
   );
 
-  void _onTap(AppStore store) =>
-    store.dispatch(const OpenLinkAction(AppCommon.tprogerTelegramLink0));
+  void _onTap(DynamicFunctionDynamic dispatch) =>
+    dispatch(const OpenLinkAction(AppCommon.tprogerTelegramLink0));
 }

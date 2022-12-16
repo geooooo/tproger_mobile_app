@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tproger_mobile_app/l10n/app_localizations.dart';
 import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
-import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/typedefs.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter_button/active_indicator_widget.dart';
 
@@ -27,37 +25,35 @@ class _ArticlesFilterButtonWidgetState extends State<ArticlesFilterButtonWidget>
   var _isTapped = false;
 
   @override
-  Widget build(BuildContext context) => StoreBuilder<AppState>(
-    builder: (context, store) => GestureDetector(
-      onTapDown: _onTapDown,
-      onTapUp: _onTapUp,
-      onTapCancel: _onTapCancel,
-      child: Container(
-        padding: AppSize.articlesFilterButtonPadding,
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: AppSize.articlesFilterButtonBorderSize,
-            color: Theme.of(context).extension<AppTheme>()!.articlesFilterButtonBorderColor,
-          ),
-          borderRadius: AppSize.articlesFilterButtonBorderRadius,
-          color: Theme.of(context).extension<AppTheme>()!.articlesFilterButtonColor,
+  Widget build(BuildContext context) => GestureDetector(
+    onTapDown: _onTapDown,
+    onTapUp: _onTapUp,
+    onTapCancel: _onTapCancel,
+    child: Container(
+      padding: AppSize.articlesFilterButtonPadding,
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: AppSize.articlesFilterButtonBorderSize,
+          color: Theme.of(context).extension<AppTheme>()!.articlesFilterButtonBorderColor,
         ),
-        child: AnimatedDefaultTextStyle(
-          duration: _duration,
-          curve: Curves.ease,
-          style: _isTapped
-            ? Theme.of(context).extension<AppTheme>()!.articlesFilterButtonTextStyle
-            : Theme.of(context).extension<AppTheme>()!.articlesFilterButtonActiveTextStyle,
-          child: Stack(
-            children: [
-              Text(AppLocalizations.of(context)!.filterText),
-              if (widget.isFiltersEnabled) const Positioned(
-                top: 2,
-                left: 5,
-                child: ActiveIndicatorWidget(),
-              ),
-            ],
-          ),
+        borderRadius: AppSize.articlesFilterButtonBorderRadius,
+        color: Theme.of(context).extension<AppTheme>()!.articlesFilterButtonColor,
+      ),
+      child: AnimatedDefaultTextStyle(
+        duration: _duration,
+        curve: Curves.ease,
+        style: _isTapped
+          ? Theme.of(context).extension<AppTheme>()!.articlesFilterButtonTextStyle
+          : Theme.of(context).extension<AppTheme>()!.articlesFilterButtonActiveTextStyle,
+        child: Stack(
+          children: [
+            Text(AppLocalizations.of(context)!.filterText),
+            if (widget.isFiltersEnabled) const Positioned(
+              top: 2,
+              left: 5,
+              child: ActiveIndicatorWidget(),
+            ),
+          ],
         ),
       ),
     ),

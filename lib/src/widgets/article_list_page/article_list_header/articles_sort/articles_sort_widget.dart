@@ -1,9 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
-import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
 import 'package:tproger_mobile_app/src/models/typedefs.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_sort/articles_sort_button_widget.dart';
@@ -32,40 +30,38 @@ class _ArticlesSortWidgetState extends State<ArticlesSortWidget> {
       final dropdownWidth = MediaQuery.of(context).size.width * 0.6;
 
       return DropdownButtonHideUnderline(
-        child: StoreBuilder<AppState>(
-          builder: (context, store) => DropdownButton2<ArticlesSortType>(
-            value: widget.type,
-            onChanged: _onChanged,
-            onMenuStateChange: _onMenuStateChange,
-            dropdownElevation: 0,
-            buttonElevation: 0,
-            itemSplashColor: Colors.transparent,
-            itemHighlightColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            buttonSplashColor: Colors.transparent,
-            buttonHighlightColor: Colors.transparent,
-            dropdownWidth: dropdownWidth,
-            itemPadding: AppSize.articlesSortMenuItemPadding,
-            dropdownDecoration: BoxDecoration(
-              border: Border.all(
-                width: AppSize.articlesSortBorderSize,
-                color: Theme.of(context).extension<AppTheme>()!.articlesSortBorderColor,
-              ),
-              borderRadius: AppSize.articlesSortBorderRadius,
-              color: Theme.of(context).extension<AppTheme>()!.articlesSortColor,
+        child: DropdownButton2<ArticlesSortType>(
+          value: widget.type,
+          onChanged: _onChanged,
+          onMenuStateChange: _onMenuStateChange,
+          dropdownElevation: 0,
+          buttonElevation: 0,
+          itemSplashColor: Colors.transparent,
+          itemHighlightColor: Colors.transparent,
+          focusColor: Colors.transparent,
+          buttonSplashColor: Colors.transparent,
+          buttonHighlightColor: Colors.transparent,
+          dropdownWidth: dropdownWidth,
+          itemPadding: AppSize.articlesSortMenuItemPadding,
+          dropdownDecoration: BoxDecoration(
+            border: Border.all(
+              width: AppSize.articlesSortBorderSize,
+              color: Theme.of(context).extension<AppTheme>()!.articlesSortBorderColor,
             ),
-            dropdownPadding: AppSize.articlesSortMenuPadding,
-            customButton: ArticlesSortButtonWidget(
-              isOpened: _isOpened,
-              type: widget.type,
-            ),
-            items: [ for (final type in ArticlesSortType.values)
-              DropdownMenuItem(
-                value: type,
-                child: ArticlesSortMenuItemWidget(type: type),
-              ),
-            ],
+            borderRadius: AppSize.articlesSortBorderRadius,
+            color: Theme.of(context).extension<AppTheme>()!.articlesSortColor,
           ),
+          dropdownPadding: AppSize.articlesSortMenuPadding,
+          customButton: ArticlesSortButtonWidget(
+            isOpened: _isOpened,
+            type: widget.type,
+          ),
+          items: [ for (final type in ArticlesSortType.values)
+            DropdownMenuItem(
+              value: type,
+              child: ArticlesSortMenuItemWidget(type: type),
+            ),
+          ],
         ),
       );
     },

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 
 class ReactionTextWidget extends StatelessWidget {
@@ -12,10 +10,8 @@ class ReactionTextWidget extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => StoreBuilder<AppState>(
-    builder: (context, store) => Text(
-      text,
-      style: Theme.of(context).extension<AppTheme>()!.articleReactionTextStyle,
-    ),
+  Widget build(BuildContext context) => Text(
+    text,
+    style: Theme.of(context).extension<AppTheme>()!.articleReactionTextStyle,
   );
 }

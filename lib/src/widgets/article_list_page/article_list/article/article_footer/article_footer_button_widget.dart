@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
-import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 import 'package:tproger_mobile_app/src/models/typedefs.dart';
 
@@ -48,36 +46,34 @@ class _ArticleFooterButtonWidgetState extends State<ArticleFooterButtonWidget> w
   }
 
   @override
-  Widget build(BuildContext context) => StoreBuilder<AppState>(
-    builder: (context, store) {
-      _initStyle(store);
-      _initAnimation(store);
+  Widget build(BuildContext context) {
+    _initStyle();
+    _initAnimation();
 
-      return GestureDetector(
-        onTapDown: (details) => _onTapDown(details, store),
-        onTapUp: (details) => _onTapUp(details, store),
-        onTapCancel: () => _onTapCancel(store),
-        child: Row(
-          children: [
-            SvgPicture.asset(
-              widget.icon.value,
-              package: Asset.package,
-              width:  AppSize.articleFooterButtonIconSize,
-              height: AppSize.articleFooterButtonIconSize,
-              color: _animation.value,
-            ),
-            const SizedBox(width: AppSize.articleFooterButtonIconAndTextSeparatorSize),
-            if (widget.count > 0) Text(
-              widget.count.toString(),
-              style: _style.copyWith(color: _animation.value),
-            ),
-          ],
-        ),
-      );
-    },
-  );
+    return GestureDetector(
+      onTapDown: _onTapDown,
+      onTapUp: _onTapUp,
+      onTapCancel: _onTapCancel,
+      child: Row(
+        children: [
+          SvgPicture.asset(
+            widget.icon.value,
+            package: Asset.package,
+            width:  AppSize.articleFooterButtonIconSize,
+            height: AppSize.articleFooterButtonIconSize,
+            color: _animation.value,
+          ),
+          const SizedBox(width: AppSize.articleFooterButtonIconAndTextSeparatorSize),
+          if (widget.count > 0) Text(
+            widget.count.toString(),
+            style: _style.copyWith(color: _animation.value),
+          ),
+        ],
+      ),
+    );
+  }
 
-  void _initAnimation(AppStore store) {
+  void _initAnimation() {
     final newBegin = _style.color;
     final end = Theme.of(context).extension<AppTheme>()!.articleFooterButtonActiveTextStyle.color;
 
@@ -92,7 +88,7 @@ class _ArticleFooterButtonWidgetState extends State<ArticleFooterButtonWidget> w
     }
   }
 
-  void _initStyle(AppStore store) {
+  void _initStyle() {
     var newStyle = Theme.of(context).extension<AppTheme>()!.articleFooterButtonTextStyle;
     
     if (_isTapped) {
@@ -104,13 +100,13 @@ class _ArticleFooterButtonWidgetState extends State<ArticleFooterButtonWidget> w
     _style = newStyle;
   }
 
-  void _onTapDown(TapDownDetails details, AppStore store) {
+  void _onTapDown(TapDownDetails details) {
     setState(() { _isTapped = true; });
 
     _controller.forward(from: 1);
   } 
 
-  void _onTapUp(TapUpDetails details, AppStore store) {
+  void _onTapUp(TapUpDetails details) {
     setState(() { _isTapped = false; });
 
     _controller.reverse();
@@ -118,7 +114,7 @@ class _ArticleFooterButtonWidgetState extends State<ArticleFooterButtonWidget> w
     widget.onClick();
   }
 
-  void _onTapCancel(AppStore store) {
+  void _onTapCancel() {
     setState(() { _isTapped = false; });
 
     _controller.reverse();

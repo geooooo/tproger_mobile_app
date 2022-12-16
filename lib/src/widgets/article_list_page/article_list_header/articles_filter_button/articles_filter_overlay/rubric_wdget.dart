@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tproger_mobile_app/l10n/app_localizations.dart';
 import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
-import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/typedefs.dart';
 
 class RubricWidget extends StatefulWidget {
@@ -26,55 +24,53 @@ class _RubricWidgetState extends State<RubricWidget> {
   var _isTapped = false;
 
   @override
-  Widget build(BuildContext context) => StoreBuilder<AppState>(
-    builder: (context, store) => Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          AppLocalizations.of(context)!.rubricsText,
-          style: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayRubricTitleTextStyle,
-        ),
-        const SizedBox(height: AppSize.articlesFilterOverlayRubricTitleAndContentSeparatorSize),
-        GestureDetector(
-          onTapUp: _onTapUp,
-          onTapDown: _onTapDown,
-          onTapCancel: _onTapCancel,
-          behavior: HitTestBehavior.translucent,
-          child: AnimatedOpacity(
-            duration: _duration,
-            curve: Curves.ease,
-            opacity: _isTapped? 0.7 : 1,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Padding(
-                  padding: AppSize.articlesFilterOverlayIsForBeginnerCheckboxPadding,
-                  child: Checkbox(
-                    value: widget.isForBeginner, 
-                    onChanged: (value) => widget.onIsForBeginnerClick(),
-                    splashRadius: 0,
-                    activeColor: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayIsForBeginnerCheckboxCheckFillActiveColor,//Color.fromRGBO(42, 165, 160, 1),
-                    checkColor: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayIsForBeginnerCheckboxCheckColor,//Color.fromRGBO(255, 255, 255, 1),
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    side: BorderSide(
-                      color: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayIsForBeginnerCheckboxColor,
-                      width: AppSize.articlesFilterOverlayIsForeBeginnerCheckboxBorderSize,
-                    ),
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: AppSize.articlesFilterOverlayIsForBeginnerCheckboxcBorderRadius,
-                    ),
+  Widget build(BuildContext context) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        AppLocalizations.of(context)!.rubricsText,
+        style: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayRubricTitleTextStyle,
+      ),
+      const SizedBox(height: AppSize.articlesFilterOverlayRubricTitleAndContentSeparatorSize),
+      GestureDetector(
+        onTapUp: _onTapUp,
+        onTapDown: _onTapDown,
+        onTapCancel: _onTapCancel,
+        behavior: HitTestBehavior.translucent,
+        child: AnimatedOpacity(
+          duration: _duration,
+          curve: Curves.ease,
+          opacity: _isTapped? 0.7 : 1,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: AppSize.articlesFilterOverlayIsForBeginnerCheckboxPadding,
+                child: Checkbox(
+                  value: widget.isForBeginner, 
+                  onChanged: (value) => widget.onIsForBeginnerClick(),
+                  splashRadius: 0,
+                  activeColor: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayIsForBeginnerCheckboxCheckFillActiveColor,//Color.fromRGBO(42, 165, 160, 1),
+                  checkColor: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayIsForBeginnerCheckboxCheckColor,//Color.fromRGBO(255, 255, 255, 1),
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  side: BorderSide(
+                    color: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayIsForBeginnerCheckboxColor,
+                    width: AppSize.articlesFilterOverlayIsForeBeginnerCheckboxBorderSize,
+                  ),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: AppSize.articlesFilterOverlayIsForBeginnerCheckboxcBorderRadius,
                   ),
                 ),
-                Text(
-                  AppLocalizations.of(context)!.forBeginnersText,
-                  style: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayIsForBeginnerCheckboxTextStyle,
-                ),
-              ],
-            ),
+              ),
+              Text(
+                AppLocalizations.of(context)!.forBeginnersText,
+                style: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayIsForBeginnerCheckboxTextStyle,
+              ),
+            ],
           ),
         ),
-      ],
-    ),
+      ),
+    ],
   );
 
   void _onTapUp(TapUpDetails details) {

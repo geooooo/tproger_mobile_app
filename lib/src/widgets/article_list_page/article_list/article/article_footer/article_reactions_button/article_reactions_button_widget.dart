@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:get_it/get_it.dart';
 import 'package:overlayment/overlayment.dart';
 import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_color.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
-import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/reaction_data.dart';
 import 'package:tproger_mobile_app/src/services/reaction_service.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/article/article_footer/article_reactions_button/add_reaction_widget.dart';
@@ -35,8 +33,7 @@ class _ArticleReactionsButtonWidgetState extends State<ArticleReactionsButtonWid
 
   @override
   // ignore: avoid_print
-  Widget build(BuildContext context) { print([_isTapped, _isOverlayOpened]); return StoreBuilder<AppState>(
-    builder: (context, store) => OverExpander(
+  Widget build(BuildContext context) { print([_isTapped, _isOverlayOpened]); return OverExpander(
       animation: const OverFadeAnimation(
         curve: Curves.ease,
         reverseCurve: Curves.ease,
@@ -87,7 +84,6 @@ class _ArticleReactionsButtonWidgetState extends State<ArticleReactionsButtonWid
             : ReactionListWidget(reactions: widget.reactions),
         ),
       ),
-    ),
   );}
 
   void _onTapDown(TapDownDetails details) =>

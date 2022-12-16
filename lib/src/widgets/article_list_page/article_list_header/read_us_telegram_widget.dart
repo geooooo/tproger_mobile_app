@@ -23,10 +23,12 @@ class _ReadUsTelegramButtonWidgetState extends State<ReadUsTelegramButtonWidget>
   bool _isTapped = false;
 
   @override
-  Widget build(BuildContext context) => StoreBuilder<AppState>(
-    builder: (context, store) => GestureDetector(
+  Widget build(BuildContext context) => StoreConnector<AppState, DynamicFunctionDynamic>(
+    distinct: true,
+    converter: (store) => store.dispatch,
+    builder: (context, dispatch) => GestureDetector(
       onTapDown: _onTapDown,
-      onTapUp: (detail) => _onTapUp(detail, store),
+      onTapUp: (detail) => _onTapUp(detail, dispatch),
       onTapCancel: _onTapCancel,
       child: AnimatedOpacity(
         duration: _duration,
@@ -72,8 +74,8 @@ class _ReadUsTelegramButtonWidgetState extends State<ReadUsTelegramButtonWidget>
 
   void _onTapCancel() => setState(() { _isTapped = false; });
 
-  void _onTapUp(TapUpDetails details, AppStore store) {
-    store.dispatch(const OpenLinkAction(AppCommon.tprogerTelegramLink1));
+  void _onTapUp(TapUpDetails details, DynamicFunctionDynamic dispatch) {
+    dispatch(const OpenLinkAction(AppCommon.tprogerTelegramLink1));
 
     setState(() { _isTapped = false; });
   }

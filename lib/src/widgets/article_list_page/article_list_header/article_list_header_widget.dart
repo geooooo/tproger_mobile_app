@@ -7,7 +7,7 @@ import 'package:tproger_mobile_app/src/models/actions/is_for_beginner_filter_cha
 import 'package:tproger_mobile_app/src/models/actions/sort_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
-import 'package:tproger_mobile_app/src/models/typedefs.dart';
+import 'package:tproger_mobile_app/src/models/view_models/article_list_header_view_model.dart';
 import 'package:tproger_mobile_app/src/services/overlay_service.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_filter_button/articles_filter_button_widget.dart';
 import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list_header/articles_sort/articles_sort_widget.dart';
@@ -19,68 +19,74 @@ class ArticleListHeaderWidget extends StatelessWidget {
   const ArticleListHeaderWidget({ super.key });
 
   @override
-  Widget build(BuildContext context) => StoreBuilder<AppState>(
-    builder: (context, store) => Column(
-      children: [
-        // Container(
-        //   color: Colors.grey,
-        //   height: 58,
-        //   width: double.infinity,
-        // ),
-        const ReadUsTelegramButtonWidget(),
-        const SizedBox(height: 15),
-        Row(
+  Widget build(BuildContext context) => Column(
+    children: [
+      // Container(
+      //   color: Colors.grey,
+      //   height: 58,
+      //   width: double.infinity,
+      // ),
+      const ReadUsTelegramButtonWidget(),
+      const SizedBox(height: 15),
+      StoreConnector<AppState, ArticleListHeaderViewModel>(
+        distinct: true,
+        converter: (store) => ArticleListHeaderViewModel(
+          dispatch: store.dispatch,
+          filterData: store.state.filterData,
+          articlesSortType: store.state.articlesSortType,
+        ),
+        builder: (context, viewModel) => Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ArticlesSortWidget(
-              type: store.state.articlesSortType,
-              onSelect: (type) => _onSelectSortType(type, store),
+              type: viewModel.articlesSortType,
+              onSelect: (type) => _onSelectSortType(type, viewModel),
             ),
             ArticlesFilterButtonWidget(
-              isFiltersEnabled: store.state.filterData.isEnabled,
-              onClick: () => _onFilterButtonClick(store, context),
+              isFiltersEnabled: viewModel.filterData.isEnabled,
+              onClick: () => _onFilterButtonClick(viewModel, context),
             ),
           ],
         ),
-        const SizedBox(height: 15),
-      ],
-    ),
+      ),
+      const SizedBox(height: 15),
+    ],
   );
 
-  void _onSelectSortType(ArticlesSortType type, AppStore store) {
-    if (type != store.state.articlesSortType) {
-      store.dispatch(SortArticlesAction(
-        sortType: type,
-        filterData: store.state.filterData,
+  void _onSelectSortType(ArticlesSortType selectedType, ArticleListHeaderViewModel viewModel) {
+    if (selectedType != viewModel.articlesSortType) {
+      viewModel.dispatch(SortArticlesAction(
+        sortType: viewModel.articlesSortType,
+        filterData: viewModel.filterData,
       ));
     }
   }
 
-  void _onFilterButtonClick(AppStore store, BuildContext context) =>
+  void _onFilterButtonClick(ArticleListHeaderViewModel viewModel, BuildContext context) =>
     _overlayService.showArticlesFilters(
       context: context,
-      onApplyClick: () => _onApplyClick(store),
-      onCleanOutClick: () => _onCleanOutClick(store), 
-      onIsForBeginnerClick: () => _onIsForBeginnerClick(store), 
+      onApplyClick: () => _onApplyClick(viewModel),
+      onCleanOutClick: () => _onCleanOutClick(viewModel), 
+      onIsForBeginnerClick: () => _onIsForBeginnerClick(viewModel), 
       onCloseClick: _onCloseClick, 
     );
 
-  Future<void> _onApplyClick(AppStore store) async {
+  Future<void> _onApplyClick(ArticleListHeaderViewModel viewModel) async {
     await _overlayService.hide();
-    store.dispatch(ApplyFiltersAction(
-      filterData: store.state.filterData,
-      sortType: store.state.articlesSortType,
+    viewModel.dispatch(ApplyFiltersAction(
+      filterData: viewModel.filterData,
+      sortType: viewModel.articlesSortType,
     )); 
   }
 
-  Future<void> _onCleanOutClick(AppStore store) async {
+  Future<void> _onCleanOutClick(ArticleListHeaderViewModel viewModel) async {
     await _overlayService.hide();
-    store.dispatch(ClearFiltersAction(store.state.articlesSortType)); 
+    viewModel.dispatch(ClearFiltersAction(viewModel.articlesSortType)); 
   }
 
-  void _onIsForBeginnerClick(AppStore store) => 
-    store.dispatch(const IsForBeginnerFilterChangeAction()); 
+  void _onIsForBeginnerClick(ArticleListHeaderViewModel viewModel) => 
+    viewModel.dispatch(const IsForBeginnerFilterChangeAction()); 
 
   void _onCloseClick() => _overlayService.hide();
 }

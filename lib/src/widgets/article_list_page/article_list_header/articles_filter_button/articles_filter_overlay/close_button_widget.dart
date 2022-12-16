@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
-import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 import 'package:tproger_mobile_app/src/models/typedefs.dart';
 
@@ -16,19 +14,17 @@ class CloseButtonWidget extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => StoreBuilder<AppState>(
-    builder: (context, store) => GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTap: onClick,
-      child: Padding(
-        padding: AppSize.articlesFilterOverlayCloseButtonPadding,
-        child: SvgPicture.asset(
-          Asset.cross.value,
-          package: Asset.package,
-          width: AppSize.articlesFilterOverlayCloseButtonIconSize,
-          height: AppSize.articlesFilterOverlayCloseButtonIconSize,
-          color: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayCloseButtonIconColor,
-        ),
+  Widget build(BuildContext context) => GestureDetector(
+    behavior: HitTestBehavior.translucent,
+    onTap: onClick,
+    child: Padding(
+      padding: AppSize.articlesFilterOverlayCloseButtonPadding,
+      child: SvgPicture.asset(
+        Asset.cross.value,
+        package: Asset.package,
+        width: AppSize.articlesFilterOverlayCloseButtonIconSize,
+        height: AppSize.articlesFilterOverlayCloseButtonIconSize,
+        color: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayCloseButtonIconColor,
       ),
     ),
   );

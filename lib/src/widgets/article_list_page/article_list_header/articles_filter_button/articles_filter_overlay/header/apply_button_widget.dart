@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tproger_mobile_app/l10n/app_localizations.dart';
 import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
-import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/typedefs.dart';
 
 class ApplyButtonWidget extends StatefulWidget {
@@ -24,31 +22,29 @@ class _ApplyButtonWidgetState extends State<ApplyButtonWidget> {
   var _isTapped = false;
 
   @override
-  Widget build(BuildContext context) => StoreBuilder<AppState>(
-    builder: (context, store) => GestureDetector(
-      onTapUp: _onTapUp,
-      onTapDown: _onTapDown,
-      onTapCancel: _onTapCancel,
-      child: AnimatedOpacity(
-        duration: _duration,
-        curve: Curves.ease,
-        opacity: _isTapped? 0.7 : 1,
-        child: Container(
-          padding: AppSize.articlesFilterOverlayHeaderButtonPadding,
-          decoration: BoxDecoration(
-            border: Border.all(
-              width: AppSize.articlesFilterOverlayHeaderButtonBorderSize,
-              color: Colors.transparent,
-            ),
-            borderRadius: AppSize.articlesFilterOverlayHeaderButtonBorderRadius,
-            color: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayApplyButtonColor,
+  Widget build(BuildContext context) => GestureDetector(
+    onTapUp: _onTapUp,
+    onTapDown: _onTapDown,
+    onTapCancel: _onTapCancel,
+    child: AnimatedOpacity(
+      duration: _duration,
+      curve: Curves.ease,
+      opacity: _isTapped? 0.7 : 1,
+      child: Container(
+        padding: AppSize.articlesFilterOverlayHeaderButtonPadding,
+        decoration: BoxDecoration(
+          border: Border.all(
+            width: AppSize.articlesFilterOverlayHeaderButtonBorderSize,
+            color: Colors.transparent,
           ),
-          child: Center(
-            child: Text(
-              AppLocalizations.of(context)!.applyText,
-              style: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayApplyButtonTextStyle,
-              textAlign: TextAlign.center,
-            ),
+          borderRadius: AppSize.articlesFilterOverlayHeaderButtonBorderRadius,
+          color: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayApplyButtonColor,
+        ),
+        child: Center(
+          child: Text(
+            AppLocalizations.of(context)!.applyText,
+            style: Theme.of(context).extension<AppTheme>()!.articlesFilterOverlayApplyButtonTextStyle,
+            textAlign: TextAlign.center,
           ),
         ),
       ),
