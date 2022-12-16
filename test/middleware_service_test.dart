@@ -2,4 +2,8 @@
 
 import 'package:test/test.dart';
 
-void main() {}
+void main() {
+  test('', () {
+    expect(true, isTrue);
+  });
+}

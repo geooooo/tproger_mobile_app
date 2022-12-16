@@ -17,11 +17,12 @@ import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
 import 'package:tproger_mobile_app/src/models/app_state/filter_data.dart';
 import 'package:tproger_mobile_app/src/models/exceptions/load_articles_list_exception.dart';
 import 'package:tproger_mobile_app/src/services/article_list/article_list_service.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:tproger_mobile_app/src/services/url_launcher/url_launcher_service.dart';
 
 @singleton
 class MiddlewareService {
   final ArticleListService _articleListService;
+  final UrlLauncherService _urlLauncherService;
 
   Epic<AppState> get middleware => combineEpics<AppState>([
     TypedEpic(_loadArticles),
@@ -32,7 +33,10 @@ class MiddlewareService {
     TypedEpic(_clearFilters),
   ]);
 
-  MiddlewareService(this._articleListService);
+  MiddlewareService(
+    this._articleListService,
+    this._urlLauncherService,
+  );
 
   Stream<LoadArticlesBaseAction> _loadArticles(Stream<LoadArticlesAction> actions, EpicStore<AppState> store) =>
     actions.asyncMap((action) async {
@@ -67,7 +71,7 @@ class MiddlewareService {
 
   Stream<void> _openLink(Stream<OpenLinkAction> actions, EpicStore<AppState> store) =>
     actions.map((action) => 
-      launchUrlString(action.link, mode: LaunchMode.externalApplication)
+      _urlLauncherService.launch(action.link)
     );
 
   Stream<LoadArticlesAction> _sortArticles(Stream<SortArticlesAction> actions, EpicStore<AppState> store) =>
