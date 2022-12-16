@@ -17,7 +17,7 @@ import 'package:tproger_mobile_app/src/models/parsed_article/addition_data.dart'
 import 'package:tproger_mobile_app/src/models/parsed_article/parsed_article.dart';
 import 'package:tproger_mobile_app/src/models/reaction_data.dart';
 import 'package:tproger_mobile_app/src/models/typedefs.dart';
-import 'package:tproger_mobile_app/src/services/article_list_parser.dart';
+import 'package:tproger_mobile_app/src/services/article_list/article_list_parser.dart';
 import 'package:tproger_mobile_app/src/services/http_service.dart';
 
 @singleton

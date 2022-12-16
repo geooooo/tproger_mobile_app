@@ -11,22 +11,24 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:logger/logger.dart' as _i9;
 import 'package:tproger_mobile_app/src/services/app_localization_service.dart'
     as _i3;
-import 'package:tproger_mobile_app/src/services/article_list_loader.dart'
+import 'package:tproger_mobile_app/src/services/article_list/article_list_loader.dart'
     as _i14;
-import 'package:tproger_mobile_app/src/services/article_list_parser.dart'
+import 'package:tproger_mobile_app/src/services/article_list/article_list_parser.dart'
     as _i4;
-import 'package:tproger_mobile_app/src/services/article_list_service.dart'
+import 'package:tproger_mobile_app/src/services/article_list/article_list_service.dart'
     as _i15;
 import 'package:tproger_mobile_app/src/services/color_service.dart' as _i5;
 import 'package:tproger_mobile_app/src/services/di_configuration/register_module.dart'
     as _i7;
 import 'package:tproger_mobile_app/src/services/http_service.dart' as _i8;
-import 'package:tproger_mobile_app/src/services/middleware_service.dart'
-    as _i16;
 import 'package:tproger_mobile_app/src/services/overlay_service.dart' as _i10;
 import 'package:tproger_mobile_app/src/services/reaction_service.dart' as _i11;
-import 'package:tproger_mobile_app/src/services/reducer_service.dart' as _i12;
-import 'package:tproger_mobile_app/src/services/store_factory.dart' as _i17;
+import 'package:tproger_mobile_app/src/services/redux/middleware_service.dart'
+    as _i16;
+import 'package:tproger_mobile_app/src/services/redux/reducer_service.dart'
+    as _i12;
+import 'package:tproger_mobile_app/src/services/redux/store_factory.dart'
+    as _i17;
 import 'package:tproger_mobile_app/src/services/view_count_service.dart'
     as _i13; // ignore_for_file: unnecessary_lambdas
 

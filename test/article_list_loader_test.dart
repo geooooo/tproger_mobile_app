@@ -23,8 +23,8 @@ import 'package:tproger_mobile_app/src/models/article_model.dart';
 import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
 import 'package:tproger_mobile_app/src/models/reaction_data.dart';
-import 'package:tproger_mobile_app/src/services/article_list_loader.dart';
-import 'package:tproger_mobile_app/src/services/article_list_parser.dart';
+import 'package:tproger_mobile_app/src/services/article_list/article_list_loader.dart';
+import 'package:tproger_mobile_app/src/services/article_list/article_list_parser.dart';
 import 'package:tproger_mobile_app/src/services/http_service.dart';
 
 import 'mocks/mocks.dart';
