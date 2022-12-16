@@ -18,7 +18,9 @@ class StoreFactory {
   AppStore create() => AppStore(
     _reducerService.reducer, 
     initialState: AppState(),
-    middleware: [EpicMiddleware(_middlewareService.middleware)],
+    middleware: [
+      EpicMiddleware(_middlewareService.middleware), 
+    ],
     syncStream: true,
     distinct: true,
   );

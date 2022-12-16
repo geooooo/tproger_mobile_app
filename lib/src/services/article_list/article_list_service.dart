@@ -35,7 +35,7 @@ class ArticleListService {
     FilterData filterData,
   ) async {
     try {
-      return await _articleListLoader.loadNext(pageNumber, sortType, filterData);
+      return await _articleListLoader.loadNext(pageNumber + 1, sortType, filterData);
     } on Exception catch (error, stackTrace) {
       _logger.e('Load a list of next articles', error, stackTrace);
       throw const LoadNextArticlesException();

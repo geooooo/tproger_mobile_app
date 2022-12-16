@@ -11,6 +11,7 @@ class ArticleBodyWidget extends StatelessWidget {
   final ArticleModel article;
   final VoidFunction onContentClick;
   final VoidFunction onCommentClick;
+  final VoidFunction onBookmarkClick;
 
   bool get _hasBackgroundImage => article.image is ArticleBackgroundImage;
   
@@ -18,6 +19,7 @@ class ArticleBodyWidget extends StatelessWidget {
     required this.article,
     required this.onContentClick,
     required this.onCommentClick,
+    required this.onBookmarkClick,
     super.key,
   });
   
@@ -48,6 +50,7 @@ class ArticleBodyWidget extends StatelessWidget {
           reactions: article.reactions,
           isInvertetStyle: _hasBackgroundImage,
           onCommentClick: onCommentClick,
+          onBookmarkClick: onBookmarkClick,
         ),
       ],
     ),

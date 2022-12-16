@@ -16,7 +16,7 @@ void main() {
   final getIt = configureInjectable();
 
   final storeFactory = getIt.get<StoreFactory>();
-
+  
   runApp(StoreProvider<AppState>(
     store: storeFactory.create(),
     child: const AppWidget(),

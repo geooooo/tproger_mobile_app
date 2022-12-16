@@ -4,13 +4,13 @@ import 'package:tproger_mobile_app/src/models/article_model.dart';
 
 class LoadNextArticlesSuccessAction extends LoadNextArticlesBaseAction {
   final List<ArticleModel> articles;
-  final int nextPageNumber;
+  final int pageNumber;
 
   @override
-  List<Object> get props => [articles, nextPageNumber];
+  List<Object> get props => [articles, pageNumber];
   
   const LoadNextArticlesSuccessAction({
     required this.articles,
-    required this.nextPageNumber,
+    required this.pageNumber,
   });
 }

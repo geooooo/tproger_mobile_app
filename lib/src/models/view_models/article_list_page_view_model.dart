@@ -5,7 +5,6 @@ import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
 import 'package:tproger_mobile_app/src/models/typedefs.dart';
 
 class ArticleListPageViewModel extends Equatable {
-  final bool isArticlesLoaded;
   final bool isArticlesFullLoaded;
   final int articlesPageNumber;
   final ArticlesSortType articlesSortType;
@@ -15,7 +14,6 @@ class ArticleListPageViewModel extends Equatable {
 
   @override
   List<Object> get props => [
-    isArticlesLoaded,
     isArticlesFullLoaded,
     articlesPageNumber,
     articlesSortType,
@@ -25,7 +23,6 @@ class ArticleListPageViewModel extends Equatable {
   ];
 
   const ArticleListPageViewModel({
-    required this.isArticlesLoaded,
     required this.isArticlesFullLoaded,
     required this.articlesPageNumber,
     required this.articlesSortType,

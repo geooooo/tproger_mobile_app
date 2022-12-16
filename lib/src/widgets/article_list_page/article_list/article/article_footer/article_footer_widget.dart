@@ -12,6 +12,7 @@ class ArticleFooterWidget extends StatelessWidget {
   final List<ReactionData> reactions;
   final bool isInvertetStyle;
   final VoidFunction onCommentClick;
+  final VoidFunction onBookmarkClick;
 
   const ArticleFooterWidget({
     required this.bookmarkCount,
@@ -19,6 +20,7 @@ class ArticleFooterWidget extends StatelessWidget {
     required this.reactions,
     required this.isInvertetStyle,
     required this.onCommentClick,
+    required this.onBookmarkClick,
     super.key,
   });
 
@@ -33,7 +35,7 @@ class ArticleFooterWidget extends StatelessWidget {
               icon: Asset.bookmark,
               count: bookmarkCount,
               isInvertetStyle: isInvertetStyle,
-              onClick: () => 'onBookmarkClick',
+              onClick: onBookmarkClick,
             ),
             const SizedBox(width: AppSize.articleFooterButtonsSeparatorSize),
             ArticleFooterButtonWidget(

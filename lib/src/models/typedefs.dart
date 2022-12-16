@@ -8,5 +8,7 @@ typedef MapIdToReactions = Map<int, List<ReactionData>>;
 typedef AppStore = Store<AppState>;
 
 typedef VoidFunction = void Function();
+typedef FutureVoidFunction = Future<void> Function();
+typedef VoidFunctionString = void Function(String);
 typedef DynamicFunctionDynamic = dynamic Function(dynamic);
 typedef VoidFunctionArticlesSortType = void Function(ArticlesSortType);

@@ -11,11 +11,13 @@ class ArticleWidget extends StatefulWidget {
   final ArticleModel article;
   final VoidFunction onContentClick;
   final VoidFunction onCommentClick;
+  final VoidFunction onBookmarkClick;
 
   const ArticleWidget({
     required this.article,
     required this.onContentClick,
     required this.onCommentClick,
+    required this.onBookmarkClick,
     super.key,
   });
 
@@ -37,6 +39,7 @@ class _ArticleWidgetState extends State<ArticleWidget> with AutomaticKeepAliveCl
       article: widget.article,
       onContentClick: widget.onContentClick,
       onCommentClick: widget.onCommentClick,
+      onBookmarkClick: widget.onBookmarkClick,
     );
 
     return DecoratedBox(
