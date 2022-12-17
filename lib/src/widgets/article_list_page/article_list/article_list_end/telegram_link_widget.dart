@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tproger_mobile_app/l10n/app_localizations.dart';
 import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
+import 'package:tproger_mobile_app/src/models/consts/app_common.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 import 'package:tproger_mobile_app/src/models/typedefs.dart';
@@ -32,7 +33,7 @@ class TelegramLinkWidget extends StatelessWidget {
       GestureDetector(
         onTap: onClick,
         child: Text(
-          '@tproger_channels',
+          AppCommon.tprogerTelegramLinkText,
           style: AppTheme.of(context).articleListEndTelegramLinkTextStyle,
         ),
       ),
