@@ -1,24 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:tproger_mobile_app_widgetbook/folders/article_list_page_folder.dart';
-import 'package:tproger_mobile_app/src/models/actions/set_theme_action.dart';
-import 'package:tproger_mobile_app/src/models/app_theme.dart';
-import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
-import 'package:tproger_mobile_app/src/models/localization.dart';
+import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app_widgetbook/folders/common_folder.dart';
-import 'package:tproger_mobile_app_widgetbook/widgets/widgetbook_page_widget.dart';
+import 'package:tproger_mobile_app/src/models/consts/app_localization.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 class WidgetbookWidget extends StatelessWidget {
   const WidgetbookWidget({ super.key });
 
   @override
-  Widget build(BuildContext context) => Widgetbook<AppTheme>(
+  Widget build(BuildContext context) => Widgetbook<ThemeData>(
     categories: [
       WidgetbookCategory(
         name: 'All',
         folders: [
-          buildArticleListPageFolder(context),
           buildCommonFolder(context),
         ],
       ),
@@ -30,30 +24,36 @@ class WidgetbookWidget extends StatelessWidget {
     devices: const [
       Apple.iPhoneSE2020,
     ],
-    supportedLocales: Localization.supportedLocales,
-    appBuilder: (context, widget) => WidgetbookPageWidget(child: widget),
-    scaffoldBuilder: (context, frame, widget) => widget,
-    themeBuilder: (context, theme, widget) => StoreBuilder<AppState>(
-      builder: (context, store) {
-        final isNeedUpdateTheme = theme.isDark != store.state.theme.isDark;
-        if (isNeedUpdateTheme) {
-          store.dispatch(SetThemeAction(theme));
-        }
-
-        return widget;
-      },
+    appBuilder: (context, child) => child,
+    useCaseBuilder: (context, child) => child,  
+    scaffoldBuilder: (context, frame, child) => Scaffold(
+      backgroundColor: AppTheme.of(context).mainBackgroundColor,
+      body: child,
     ),
+    themeBuilder: (context, theme, child) => MaterialApp(
+      title: AppLocalization.appTitle,
+      debugShowCheckedModeBanner: false,
+      localizationsDelegates: AppLocalization.localizationsDelegates,
+      supportedLocales: AppLocalization.supportedLocales,
+      theme: theme,
+      home: child,
+    ), 
+    supportedLocales: AppLocalization.supportedLocales,
     appInfo: AppInfo(
-      name: 'Tproger',
+      name: AppLocalization.appTitle,
     ),
     themes: [
       WidgetbookTheme(
         name: 'Light',
-        data: AppTheme.light(),
+        data: ThemeData.light().copyWith(
+                extensions: <ThemeExtension<AppTheme>>[AppTheme.light()],
+              ),
       ),
       WidgetbookTheme(
         name: 'Dark',
-        data: AppTheme.dark(),
+        data: ThemeData.dark().copyWith(
+                extensions: <ThemeExtension<AppTheme>>[AppTheme.dark()],
+              ),
       ),
     ],
   );

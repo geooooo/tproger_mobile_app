@@ -2,110 +2,128 @@ import 'package:flutter/material.dart';
 import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 
-class LoaderWidget extends StatelessWidget {
-  static const _duration = Duration(milliseconds: 1200);
-  static const _delay1 = Duration(milliseconds: 120);
-  static const _delay2 = Duration(milliseconds: 240);
+class LoaderWidget extends StatefulWidget {
+  final bool isActive;
 
-  const LoaderWidget({ super.key });
-
-  @override
-  Widget build(BuildContext context) => Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      ArticlesLoaderItemWidget(
-        color: AppTheme.of(context).loaderColor,
-        startHeight: AppSize.loaderStartHeight,
-        endHeight: AppSize.loaderEndHeight,
-        width: AppSize.loaderWidth,
-        speedUpTo: _delay2,
-        duration: _duration,
-      ),
-      const SizedBox(width: AppSize.loaderItemSeparatorSize),
-      ArticlesLoaderItemWidget(
-        color: AppTheme.of(context).loaderColor,
-        startHeight: AppSize.loaderStartHeight,
-        endHeight: AppSize.loaderEndHeight,
-        width: AppSize.loaderWidth,
-        speedUpTo: _delay1,
-        slowDownTo: _delay1,
-        duration: _duration,
-      ),
-      const SizedBox(width: AppSize.loaderItemSeparatorSize),
-      ArticlesLoaderItemWidget(
-        color: AppTheme.of(context).loaderColor,
-        startHeight: AppSize.loaderStartHeight,
-        endHeight: AppSize.loaderEndHeight,
-        width: AppSize.loaderWidth,
-        slowDownTo: _delay2,
-        duration: _duration,
-      ),
-    ],
-  );
-}
-
-class ArticlesLoaderItemWidget extends StatefulWidget {
-  final Color color;
-  final double startHeight;
-  final double endHeight;
-  final double width;
-  final Duration duration;
-  final Duration speedUpTo;
-  final Duration slowDownTo;
-
-  const ArticlesLoaderItemWidget({ 
+  const LoaderWidget({ 
+    this.isActive = true,
     super.key,
-    required this.color,
-    required this.startHeight,
-    required this.endHeight,
-    required this.width,
-    required this.duration,
-    this.speedUpTo = Duration.zero,
-    this.slowDownTo = Duration.zero,
   });
 
   @override
-  State<ArticlesLoaderItemWidget> createState() => _ArticlesLoaderItemWidgetState();
+  State<StatefulWidget> createState() => _LoaderWidgetState();
 }
 
-class _ArticlesLoaderItemWidgetState extends State<ArticlesLoaderItemWidget> with SingleTickerProviderStateMixin {
+class _LoaderWidgetState extends State<LoaderWidget> with SingleTickerProviderStateMixin {
   static const _curve = Cubic(0, 0.5, 0.5, 1);
+  static const _duration = Duration(milliseconds: 1200);
+
+  static final _tween1 = TweenSequence<double>(<TweenSequenceItem<double>>[
+    TweenSequenceItem<double>(
+      tween: Tween<double>(begin: AppSize.loaderItem1StartHeight, end: AppSize.loaderItemEndHeight)
+        .chain(CurveTween(curve: _curve)),
+      weight: 50,
+    ),
+    TweenSequenceItem<double>(
+      tween: ConstantTween<double>(AppSize.loaderItemEndHeight),
+      weight: 30,
+    ),
+    TweenSequenceItem<double>(
+      tween: Tween<double>(begin: AppSize.loaderItem3StartHeight, end: AppSize.loaderItem1StartHeight)
+        .chain(CurveTween(curve: _curve)),
+      weight: 20,
+    ),
+  ]);
+
+  static final _tween2 = TweenSequence<double>(<TweenSequenceItem<double>>[
+    TweenSequenceItem<double>(
+      tween: Tween<double>(begin: AppSize.loaderItem2StartHeight, end: AppSize.loaderItemEndHeight)
+        .chain(CurveTween(curve: _curve)),
+      weight: 50,
+    ),
+    TweenSequenceItem<double>(
+      tween: ConstantTween<double>(AppSize.loaderItemEndHeight),
+      weight: 40,
+    ),
+    TweenSequenceItem<double>(
+      tween: Tween<double>(begin: AppSize.loaderItem3StartHeight, end: AppSize.loaderItem2StartHeight)
+        .chain(CurveTween(curve: _curve)),
+      weight: 10,
+    ),
+  ]);
+
+  static final _tween3 = TweenSequence<double>(<TweenSequenceItem<double>>[
+    TweenSequenceItem<double>(
+      tween: Tween<double>(begin: AppSize.loaderItem3StartHeight, end: AppSize.loaderItemEndHeight)
+        .chain(CurveTween(curve: _curve)),
+      weight: 50,
+    ),
+    TweenSequenceItem<double>(
+      tween: ConstantTween<double>(AppSize.loaderItemEndHeight),
+      weight: 50,
+    ),
+  ]);
 
   late final AnimationController _controller;
-  late final Animation<double> _animation;
+  late final Animation<double> _animation1;
+  late final Animation<double> _animation2;
+  late final Animation<double> _animation3;
 
-  @override
+   @override
   void initState() {
     super.initState();
 
     _controller = AnimationController(
       vsync: this,
-      duration: widget.duration - widget.speedUpTo,
+      duration: _duration,
     )
-    ..addListener(() => setState(() {}))
-    ..addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        _controller.duration = Duration.zero;
-        _controller.reverse(); 
-      } else if (status == AnimationStatus.dismissed) {
-        _controller.duration = widget.duration;
-        _controller.forward();
-      }
-    });
+    ..addListener(() => setState(() {}));
 
-    _animation = Tween(
-      begin: widget.startHeight, 
-      end: widget.endHeight
-    ).animate(CurvedAnimation(
-      curve: _curve,
-      parent: _controller,
-    ));
+    _animation1 = _tween1.animate(_controller);
+    _animation2 = _tween2.animate(_controller);
+    _animation3 = _tween3.animate(_controller);
 
-    Future.delayed(widget.slowDownTo).then((_) {
-      if (mounted) {
-        _controller.forward();
-      }
-    });
+    if (!widget.isActive) {
+      return;
+    }
+
+    _controller.repeat(reverse: false);
+  }
+
+  @override
+  Widget build(BuildContext context) => Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Container(
+        color: AppTheme.of(context).loaderColor,
+        width: AppSize.loaderItemWidth,
+        height: _animation1.value,
+      ),
+      const SizedBox(width: AppSize.loaderItemSeparatorSize),
+      Container(
+        color: AppTheme.of(context).loaderColor,
+        width: AppSize.loaderItemWidth,
+        height: _animation2.value,
+      ),
+      const SizedBox(width: AppSize.loaderItemSeparatorSize),
+      Container(
+        color: AppTheme.of(context).loaderColor,
+        width: AppSize.loaderItemWidth,
+        height: _animation3.value,
+      ),
+    ],
+  );
+
+  @override
+  void didUpdateWidget(LoaderWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (oldWidget.isActive && !widget.isActive) {
+      _controller.reset();
+      _controller.stop();
+    } else if (!oldWidget.isActive && widget.isActive) {
+      _controller.repeat(reverse: false);
+    }
   }
 
   @override
@@ -114,11 +132,4 @@ class _ArticlesLoaderItemWidgetState extends State<ArticlesLoaderItemWidget> wit
     
     super.dispose();
   }
-
-  @override
-  Widget build(BuildContext context) => Container(
-    color: widget.color,
-    width: widget.width,
-    height: _animation.value,
-  );
 }

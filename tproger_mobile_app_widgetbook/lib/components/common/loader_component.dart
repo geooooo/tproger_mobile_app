@@ -6,9 +6,14 @@ WidgetbookComponent buildLoaderComponent(BuildContext context) => WidgetbookComp
   name: 'Loader',
   useCases: [
     WidgetbookUseCase(
-      name: 'Default', 
-      builder: (context) => const Center(
-        child: LoaderWidget(),
+      name: 'Custom', 
+      builder: (context) => Center(
+        child: LoaderWidget(
+          isActive: context.knobs.boolean(
+            label: 'Is active',
+            initialValue: true,
+          ),
+        ),
       ),
     ),
   ],
