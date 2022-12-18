@@ -46,10 +46,15 @@ class ReducerService {
       ..articlesSortType = action.selectedSortType
     );
 
-  AppState _applyFilters(AppState state, ApplyFiltersAction action) => 
-    state.rebuild((b) => b
+  AppState _applyFilters(AppState state, ApplyFiltersAction action) {
+    if (state.filterData == FilterData.empty()) {
+      return state;
+    }
+
+    return state.rebuild((b) => b
       ..filterData.isEnabled = true
     );
+  } 
 
   AppState _clearFilters(AppState state, ClearFiltersAction action) => 
     state.rebuild((b) => b

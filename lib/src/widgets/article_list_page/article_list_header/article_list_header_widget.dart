@@ -36,7 +36,6 @@ class ArticleListHeaderWidget extends StatelessWidget {
       const SizedBox(height: 15),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           ArticlesSortWidget(
             type: articlesSortType,

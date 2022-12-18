@@ -21,9 +21,9 @@ class ReactionListWidget extends StatelessWidget {
     if (_visibleReactions.length == 1) {
       return baseWidth + AppSize.articleReactionBorderSize * 2;
     } else if (_visibleReactions.length == 2) {
-      return baseWidth + AppSize.reactionOffsetPositionK * 2;
+      return baseWidth + AppSize.reactionOffsetK * 2;
     } else if (_visibleReactions.length == 3) {
-      return baseWidth + AppSize.reactionOffsetPositionK;
+      return baseWidth + AppSize.reactionOffsetK;
     }
 
     throw UnsupportedError('Only ${AppCommon.maxReactions} reactions in the list');
@@ -58,7 +58,7 @@ class ReactionListWidget extends StatelessWidget {
       final icon = _reactionService.getIconByReaction(reaction);
 
       final widget = Positioned(
-        left: i * AppSize.articleReactionIconSize  - i * AppSize.reactionOffsetPositionK,
+        left: i * AppSize.articleReactionIconSize  - i * AppSize.reactionOffsetK,
         child: ReactionWidget(icon: icon),
       );
 

@@ -49,8 +49,8 @@ class _ArticlesFilterButtonWidgetState extends State<ArticlesFilterButtonWidget>
           children: [
             Text(AppLocalizations.of(context)!.filterText),
             if (widget.isFiltersEnabled) const Positioned(
-              top: 2,
-              left: 5,
+              top: AppSize.articlesFilterButtonActiveIndicatorOffsetTop,
+              left: AppSize.articlesFilterButtonActiveIndicatorOffsetLeft,
               child: ActiveIndicatorWidget(),
             ),
           ],

@@ -19,7 +19,8 @@ class ReadUsTelegramButtonWidget extends StatefulWidget {
 }
 
 class _ReadUsTelegramButtonWidgetState extends State<ReadUsTelegramButtonWidget> {
-  static const _duration = Duration(milliseconds: 250);
+  static const _opacityDuration = Duration(milliseconds: 250);
+  static const _rotationDuration = Duration(milliseconds: 500);
 
   bool _isTapped = false;
 
@@ -29,7 +30,7 @@ class _ReadUsTelegramButtonWidgetState extends State<ReadUsTelegramButtonWidget>
     onTapUp: _onTapUp,
     onTapCancel: _onTapCancel,
     child: AnimatedOpacity(
-      duration: _duration,
+      duration: _opacityDuration,
       curve: Curves.ease,
       opacity: _isTapped? 0.7 : 1,
       child: Container(
@@ -46,7 +47,7 @@ class _ReadUsTelegramButtonWidgetState extends State<ReadUsTelegramButtonWidget>
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AnimatedRotation(
-              duration: const Duration(milliseconds: 500),
+              duration: _rotationDuration,
               turns: _isTapped? 1 : 0,
               child: SvgPicture.asset(
                 Asset.telegram1.value,

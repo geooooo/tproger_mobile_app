@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AppSize {
-  static const reactionOffsetPositionK = 2.0;
+  static const reactionOffsetK = 2.0;
+  static const articlesFilterButtonActiveIndicatorOffsetTop = 2.0;
+  static const articlesFilterButtonActiveIndicatorOffsetLeft = 5.0;
   
   static const articleListArticleSeparatorSize = 20.0;
   static const articleListLastItemSeparatorSize = 50.0;
