@@ -10,7 +10,7 @@ class ActiveIndicatorWidget extends StatelessWidget {
     width: AppSize.articlesFiltersActiveIndicatorSize,
     height: AppSize.articlesFiltersActiveIndicatorSize,
     decoration: BoxDecoration(
-      borderRadius: AppSize.articlesFiltersActiveIndicatorBorderRadius,
+      shape: BoxShape.circle,
       color: AppTheme.of(context).articlesFiltersAcitveIndicatorColor,
     ),
   );

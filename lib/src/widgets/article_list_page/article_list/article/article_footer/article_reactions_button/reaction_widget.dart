@@ -15,11 +15,11 @@ class ReactionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
     decoration: BoxDecoration(
+      shape: BoxShape.circle,
       border: Border.all(
         width: AppSize.articleReactionBorderSize,
         color: AppTheme.of(context).articleReactionBorderColor,
       ),
-      borderRadius: AppSize.articleReactionBorderRadius,
     ),
     child: SvgPicture.asset(
       icon.value,

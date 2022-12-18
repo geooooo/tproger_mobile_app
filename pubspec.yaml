@@ -33,7 +33,7 @@ dependencies:
   flutter_native_splash: ^2.2.14
   dropdown_button2: ^1.9.1
   overlayment: ^0.2.1
-  dio_logger: ^4.0.8+8
+  collection: ^1.16.0
   
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -45,6 +45,7 @@ dev_dependencies:
   http_mock_adapter: ^0.3.3
   flutter_launcher_icons: ^0.11.0
   rename: ^2.0.1
+  dio_logger: ^4.0.8+8
   tproger_mobile_app_assets:
     path: tproger_mobile_app_assets
   
