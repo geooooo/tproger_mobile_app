@@ -60,15 +60,13 @@ class AppSize {
   static const loaderItemWidth = 16.0;
 
   static const articleImageRadius = BorderRadius.all(Radius.circular(12));
-  static const articleAuthorAvatarRadius = BorderRadius.all(Radius.circular(8,));
+  static const articleAuthorAvatarRadius = BorderRadius.all(Radius.circular(8));
   static const articleReactionsBorderRadius = BorderRadius.all(Radius.circular(50));
-  static const articleReactionBorderRadius = BorderRadius.all(Radius.circular(180));
   static const readUsTelegramButtonBorderRadius = BorderRadius.all(Radius.circular(12));
   static const articlesSortBorderRadius = BorderRadius.all(Radius.circular(12));
   static const articlesFilterOverlayHeaderButtonBorderRadius = BorderRadius.all(Radius.circular(8));
   static const articlesFilterOverlayIsForBeginnerCheckboxcBorderRadius = BorderRadius.all(Radius.circular(4));
   static const articlesFilterButtonBorderRadius = BorderRadius.all(Radius.circular(12));
-  static const articlesFiltersActiveIndicatorBorderRadius = BorderRadius.all(Radius.circular(50));
 
   static const articlePaddingSize = EdgeInsets.all(16.0);
   static const articleReactionsPadding = EdgeInsets.only(
