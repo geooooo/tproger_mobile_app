@@ -2,13 +2,13 @@ import 'package:injectable/injectable.dart';
 import 'package:tproger_mobile_app/src/models/enums/asset.dart';
 import 'package:tproger_mobile_app/src/models/enums/reaction.dart';
 import 'package:tproger_mobile_app/src/models/reaction_data.dart';
+import 'package:collection/collection.dart';
 
 @singleton
 class ReactionService {
   int commonCount(List<ReactionData> reactions) => reactions.isEmpty
     ? 0
-    : reactions.map((reaction) => reaction.count) 
-               .reduce((x, y) => x + y);
+    : reactions.map((reaction) => reaction.count).sum;
 
   Asset getIconByReaction(Reaction reaction) {
     switch (reaction) {
