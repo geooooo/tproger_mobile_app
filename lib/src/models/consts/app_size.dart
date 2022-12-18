@@ -27,6 +27,7 @@ class AppSize {
   static const articlesFilterOverlayRubricTitleAndContentSeparatorSize = 16.0;
   static const articlesFilterOverlayHeaderAndRubricSeparatorSize = 20.0;
   static const loaderItemSeparatorSize = 8.0;
+  static const articlesFilterOverlayIsForBeginnerCheckboxAndTextSeparatorSize = 11.7;
 
   static const articlesFiltersActiveIndicatorSize = 8.0;
   static const articleReactionListSize = 30.0;
@@ -42,6 +43,7 @@ class AppSize {
   static const articlesSortIconSize = 16.0;
   static const articlesFilterOverlayCleanUpButtonIconSize = 24.0;
   static const articlesFilterOverlayCloseButtonIconSize = 18.0;
+  static const articlesFilterOverlayIsForeBeginnerCheckboxSize = 14.0;
   static const articleReactionsBorderSize = 1.0;
   static const articleReactionBorderSize = 3.0;
   static const articlesSortBorderSize = 1.0;
@@ -65,7 +67,7 @@ class AppSize {
   static const readUsTelegramButtonBorderRadius = BorderRadius.all(Radius.circular(12));
   static const articlesSortBorderRadius = BorderRadius.all(Radius.circular(12));
   static const articlesFilterOverlayHeaderButtonBorderRadius = BorderRadius.all(Radius.circular(8));
-  static const articlesFilterOverlayIsForBeginnerCheckboxcBorderRadius = BorderRadius.all(Radius.circular(4));
+  static const articlesFilterOverlayIsForBeginnerCheckboxBorderRadius = BorderRadius.all(Radius.circular(4));
   static const articlesFilterButtonBorderRadius = BorderRadius.all(Radius.circular(12));
 
   static const articlePaddingSize = EdgeInsets.all(16.0);

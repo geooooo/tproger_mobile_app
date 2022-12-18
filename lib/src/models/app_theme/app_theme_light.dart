@@ -146,6 +146,7 @@ final _light = AppTheme._(
   ),
   articlesFilterOverlayIsForBeginnerCheckboxTextStyle: _fontFamilyArial.copyWith(
     fontSize: 18,
+    height: 24 / 18,
     fontWeight: FontWeight.w400,
     color: AppColor.grayColor0,
   ),

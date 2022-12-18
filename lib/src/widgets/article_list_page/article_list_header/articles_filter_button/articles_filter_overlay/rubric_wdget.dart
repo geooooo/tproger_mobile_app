@@ -45,23 +45,27 @@ class _RubricWidgetState extends State<RubricWidget> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
-                padding: AppSize.articlesFilterOverlayIsForBeginnerCheckboxPadding,
-                child: Checkbox(
-                  value: widget.isForBeginner, 
-                  onChanged: (value) => widget.onIsForBeginnerClick(),
-                  splashRadius: 0,
-                  activeColor: AppTheme.of(context).articlesFilterOverlayIsForBeginnerCheckboxCheckFillActiveColor,//Color.fromRGBO(42, 165, 160, 1),
-                  checkColor: AppTheme.of(context).articlesFilterOverlayIsForBeginnerCheckboxCheckColor,//Color.fromRGBO(255, 255, 255, 1),
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  side: BorderSide(
-                    color: AppTheme.of(context).articlesFilterOverlayIsForBeginnerCheckboxColor,
-                    width: AppSize.articlesFilterOverlayIsForeBeginnerCheckboxBorderSize,
-                  ),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: AppSize.articlesFilterOverlayIsForBeginnerCheckboxcBorderRadius,
+                padding: AppSize.articlesFilterOverlayIsForBeginnerCheckboxPadding, 
+                child: SizedBox(
+                  width: AppSize.articlesFilterOverlayIsForeBeginnerCheckboxSize, 
+                  height: AppSize.articlesFilterOverlayIsForeBeginnerCheckboxSize, 
+                  child: Checkbox(
+                    value: widget.isForBeginner, 
+                    onChanged: (value) => widget.onIsForBeginnerClick(),
+                    splashRadius: 0,
+                    activeColor: AppTheme.of(context).articlesFilterOverlayIsForBeginnerCheckboxCheckFillActiveColor,
+                    checkColor: AppTheme.of(context).articlesFilterOverlayIsForBeginnerCheckboxCheckColor,
+                    side: BorderSide(
+                      color: AppTheme.of(context).articlesFilterOverlayIsForBeginnerCheckboxColor,
+                      width: AppSize.articlesFilterOverlayIsForeBeginnerCheckboxBorderSize,
+                    ),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: AppSize.articlesFilterOverlayIsForBeginnerCheckboxBorderRadius,
+                    ),
                   ),
                 ),
               ),
+              const SizedBox(width: AppSize.articlesFilterOverlayIsForBeginnerCheckboxAndTextSeparatorSize),
               Text(
                 AppLocalizations.of(context)!.forBeginnersText,
                 style: AppTheme.of(context).articlesFilterOverlayIsForBeginnerCheckboxTextStyle,
@@ -79,9 +83,7 @@ class _RubricWidgetState extends State<RubricWidget> {
     setState(() { _isTapped = false; });
   }
 
-  void _onTapDown(TapDownDetails details) =>
-    setState(() { _isTapped = true; });
+  void _onTapDown(TapDownDetails details) => setState(() { _isTapped = true; });
 
-  void _onTapCancel() =>
-    setState(() { _isTapped = false; });
+  void _onTapCancel() => setState(() { _isTapped = false; });
 }
