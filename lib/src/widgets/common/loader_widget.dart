@@ -69,7 +69,7 @@ class _LoaderWidgetState extends State<LoaderWidget> with SingleTickerProviderSt
   late final Animation<double> _animation2;
   late final Animation<double> _animation3;
 
-   @override
+  @override
   void initState() {
     super.initState();
 
