@@ -81,9 +81,9 @@ class MiddlewareService {
     });
 
   Stream<void> _openLink(Stream<OpenLinkAction> actions, EpicStore<AppState> store) =>
-    actions.map((action) => 
-      _urlLauncherService.launch(action.link)
-    );
+    actions.expand((action) sync* {
+      yield _urlLauncherService.launch(action.link);
+    });
   
   Stream<OpenLinkAction> _openCommentLink(Stream<OpenCommentLinkAction> actions, EpicStore<AppState> store) =>
     actions.map((action) {
@@ -98,18 +98,17 @@ class MiddlewareService {
   Stream<LoadArticlesAction> _sortArticles(Stream<SortArticlesAction> actions, EpicStore<AppState> store) =>
     actions.map((action) => const LoadArticlesAction());
 
-  Stream<LoadArticlesAction?> _applyFilters(Stream<ApplyFiltersAction> actions, EpicStore<AppState> store) =>
-    actions.map((action) {
+  Stream<LoadArticlesAction> _applyFilters(Stream<ApplyFiltersAction> actions, EpicStore<AppState> store) =>
+    actions.expand((action) sync* {
       if (action.sourceFilterData != store.state.filterData) {
-        return const LoadArticlesAction();
+        yield const LoadArticlesAction();
       }
-
-      return null;
     });
 
-  Stream<LoadArticlesAction?> _clearFilters(Stream<ClearFiltersAction> actions, EpicStore<AppState> store) =>
-    actions.map((action) => action.wasFilterEnabled
-      ? const LoadArticlesAction()
-      : null
-    );
+  Stream<LoadArticlesAction> _clearFilters(Stream<ClearFiltersAction> actions, EpicStore<AppState> store) =>
+    actions.expand((action) sync* { 
+      if (action.wasFilterEnabled) {
+        yield const LoadArticlesAction();
+      }
+    }); 
 }
