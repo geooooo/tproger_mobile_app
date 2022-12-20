@@ -1,4 +1,5 @@
 enum Asset {
+  defaultAvatar('images/default_avatar.png'),
   cross('images/cross.svg'),
   trash('images/trash.svg'),
   arrowUp('images/arrow_up.svg'),

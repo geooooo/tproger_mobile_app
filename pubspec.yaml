@@ -69,3 +69,4 @@ flutter:
     - packages/tproger_mobile_app_assets/images/arrow_up.svg
     - packages/tproger_mobile_app_assets/images/trash.svg
     - packages/tproger_mobile_app_assets/images/cross.svg
+    - packages/tproger_mobile_app_assets/images/default_avatar.png
