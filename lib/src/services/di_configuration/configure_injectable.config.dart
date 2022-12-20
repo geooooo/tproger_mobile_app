@@ -64,7 +64,8 @@ _i1.GetIt $configureInjectable(
   gh.singleton<_i10.OverlayService>(_i10.OverlayService());
   gh.singleton<_i11.ReactionService>(_i11.ReactionService());
   gh.singleton<_i12.ReducerService>(_i12.ReducerService());
-  gh.singleton<_i13.UrlLauncherService>(_i14.UrlLauncherServiceImpl());
+  gh.singleton<_i13.UrlLauncherService>(
+      _i14.UrlLauncherServiceImpl(get<_i9.Logger>()));
   gh.singleton<_i15.ViewCountService>(_i15.ViewCountService());
   gh.singleton<_i16.ArticleListLoader>(_i16.ArticleListLoader(
     get<_i4.ArticleListParser>(),
