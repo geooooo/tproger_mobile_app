@@ -37,27 +37,23 @@ class ReducerService {
   AppState _loadNextArticlesSuccess(AppState state, LoadNextArticlesSuccessAction action) => 
     state.rebuild((b) => b
       ..articles.addAll(action.articles)
-      ..articlesPageNumber = action.pageNumber + 1
+      ..articlesPageNumber = action.pageNumber
       ..isArticlesFullLoaded = action.articles.isEmpty
     );
 
   AppState _sortArticles(AppState state, SortArticlesAction action) => 
     state.rebuild((b) => b
-      ..articlesSortType = action.selectedSortType
+      ..articlesSortType = action.sortType
     );
 
-  AppState _applyFilters(AppState state, ApplyFiltersAction action) {
-    if (state.filterData == FilterData.empty()) {
-      return state;
-    }
-
-    return state.rebuild((b) => b
-      ..filterData.isEnabled = true
+  AppState _applyFilters(AppState state, ApplyFiltersAction action) =>
+    state.rebuild((b) => b
+      ..isFilterEnabled = state.filterData != FilterData.empty()
     );
-  } 
 
   AppState _clearFilters(AppState state, ClearFiltersAction action) => 
     state.rebuild((b) => b
+      ..isFilterEnabled = false
       ..filterData.replace(FilterData.empty())
     );
 

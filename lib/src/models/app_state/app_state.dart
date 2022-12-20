@@ -11,6 +11,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   ArticlesSortType get articlesSortType;
   FilterData get filterData;
   bool get isArticlesFullLoaded;
+  bool get isFilterEnabled;
   int get articlesPageNumber;
 
   AppState._();
@@ -22,5 +23,6 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
     ..articlesSortType = ArticlesSortType.hot
     ..filterData.replace(FilterData.empty())
     ..isArticlesFullLoaded = false
+    ..isFilterEnabled = false
     ..articlesPageNumber = 1;
 }

@@ -8,17 +8,12 @@ part of 'filter_data.dart';
 
 class _$FilterData extends FilterData {
   @override
-  final bool isEnabled;
-  @override
   final bool isForBeginner;
 
   factory _$FilterData([void Function(FilterDataBuilder)? updates]) =>
       (new FilterDataBuilder()..update(updates))._build();
 
-  _$FilterData._({required this.isEnabled, required this.isForBeginner})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        isEnabled, r'FilterData', 'isEnabled');
+  _$FilterData._({required this.isForBeginner}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         isForBeginner, r'FilterData', 'isForBeginner');
   }
@@ -33,20 +28,17 @@ class _$FilterData extends FilterData {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is FilterData &&
-        isEnabled == other.isEnabled &&
-        isForBeginner == other.isForBeginner;
+    return other is FilterData && isForBeginner == other.isForBeginner;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, isEnabled.hashCode), isForBeginner.hashCode));
+    return $jf($jc(0, isForBeginner.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'FilterData')
-          ..add('isEnabled', isEnabled)
           ..add('isForBeginner', isForBeginner))
         .toString();
   }
@@ -54,10 +46,6 @@ class _$FilterData extends FilterData {
 
 class FilterDataBuilder implements Builder<FilterData, FilterDataBuilder> {
   _$FilterData? _$v;
-
-  bool? _isEnabled;
-  bool? get isEnabled => _$this._isEnabled;
-  set isEnabled(bool? isEnabled) => _$this._isEnabled = isEnabled;
 
   bool? _isForBeginner;
   bool? get isForBeginner => _$this._isForBeginner;
@@ -71,7 +59,6 @@ class FilterDataBuilder implements Builder<FilterData, FilterDataBuilder> {
   FilterDataBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _isEnabled = $v.isEnabled;
       _isForBeginner = $v.isForBeginner;
       _$v = null;
     }
@@ -95,8 +82,6 @@ class FilterDataBuilder implements Builder<FilterData, FilterDataBuilder> {
   _$FilterData _build() {
     final _$result = _$v ??
         new _$FilterData._(
-            isEnabled: BuiltValueNullFieldError.checkNotNull(
-                isEnabled, r'FilterData', 'isEnabled'),
             isForBeginner: BuiltValueNullFieldError.checkNotNull(
                 isForBeginner, r'FilterData', 'isForBeginner'));
     replace(_$result);

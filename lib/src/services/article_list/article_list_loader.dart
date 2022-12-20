@@ -33,8 +33,9 @@ class ArticleListLoader {
   Future<List<ArticleModel>> load(
     ArticlesSortType sortType,
     FilterData filterData,
+    bool isFilterEnabled,
   ) async {
-    final appliedFilterData = filterData.isEnabled
+    final appliedFilterData = isFilterEnabled
       ? filterData
       : FilterData.empty();
 
@@ -50,8 +51,9 @@ class ArticleListLoader {
     int pageNumber,
     ArticlesSortType sortType,
     FilterData filterData,
+    bool isFilterEnabled,
   ) async {
-    final appliedFilterData = filterData.isEnabled
+    final appliedFilterData = isFilterEnabled
       ? filterData
       : FilterData.empty();
 

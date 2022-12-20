@@ -13,7 +13,6 @@ import 'package:tproger_mobile_app/src/models/actions/open_comment_link_action.d
 import 'package:tproger_mobile_app/src/models/actions/open_link_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/sort_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
-import 'package:tproger_mobile_app/src/models/app_state/filter_data.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_common.dart';
 import 'package:tproger_mobile_app/src/models/exceptions/load_articles_list_exception.dart';
 import 'package:tproger_mobile_app/src/services/article_list/article_list_service.dart';
@@ -42,27 +41,31 @@ class MiddlewareService {
   Stream<LoadArticlesBaseAction?> _loadArticles(Stream<LoadArticlesAction> actions, EpicStore<AppState> store) =>
     actions.asyncMap((action) async {
       try {
-        final articles = await _articleListService.getArticles(action.sortType, action.filterData);
+        final articles = await _articleListService.getArticles(
+          store.state.articlesSortType, 
+          store.state.filterData,
+          store.state.isFilterEnabled,
+        );
         return LoadArticlesSuccessAction(articles);
       } on LoadArticlesListException {        
-        return LoadArticlesAction(
-          sortType: action.sortType,
-          filterData: action.filterData,
-        );
+        return const LoadArticlesAction();
       }
     });
 
   Stream<LoadNextArticlesBaseAction> _loadNextArticles(Stream<LoadNextArticlesAction> actions, EpicStore<AppState> store) =>
     actions.asyncMap((action) async {
+      final nextPageNumber = store.state.articlesPageNumber + 1;
+
       final articles = await _articleListService.getNextArticles(
-        action.pageNumber,
-        action.sortType,
-        action.filterData,
+        nextPageNumber,
+        store.state.articlesSortType,
+        store.state.filterData,
+        store.state.isFilterEnabled,
       );
 
       return LoadNextArticlesSuccessAction(
         articles: articles, 
-        pageNumber: action.pageNumber,
+        pageNumber: nextPageNumber,
       );
     });
 
@@ -81,27 +84,12 @@ class MiddlewareService {
       return OpenLinkAction(link);
     });
 
-  Stream<LoadArticlesAction?> _sortArticles(Stream<SortArticlesAction> actions, EpicStore<AppState> store) =>
-    actions.map((action) {
-      if (action.selectedSortType != action.currentSortType) {
-        return LoadArticlesAction(
-          sortType: action.selectedSortType,
-          filterData: action.filterData,
-        );
-      }
-
-      return null;
-    });
+  Stream<LoadArticlesAction> _sortArticles(Stream<SortArticlesAction> actions, EpicStore<AppState> store) =>
+    actions.map((action) => const LoadArticlesAction());
 
   Stream<LoadArticlesAction> _applyFilters(Stream<ApplyFiltersAction> actions, EpicStore<AppState> store) =>
-    actions.map((action) => LoadArticlesAction(
-      sortType: action.sortType,
-      filterData: action.filterData,
-    ));
+    actions.map((action) => const LoadArticlesAction());
 
   Stream<LoadArticlesAction> _clearFilters(Stream<ClearFiltersAction> actions, EpicStore<AppState> store) =>
-    actions.map((action) => LoadArticlesAction(
-      sortType: action.sortType,
-      filterData: FilterData.empty(),
-    ));
+    actions.map((action) => const LoadArticlesAction());
 }

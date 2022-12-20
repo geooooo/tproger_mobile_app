@@ -30,17 +30,13 @@ class ArticleListPageWidget extends PageWidget {
     converter: (store) => ArticleListPageViewModel(
       isArticlesFullLoaded: store.state.isArticlesFullLoaded,
       articlesSortType: store.state.articlesSortType,
-      filterData: store.state.filterData,
-      articlesPageNumber: store.state.articlesPageNumber,
+      isFilterEnabled: store.state.isFilterEnabled,
       articles: store.state.articles.toList(),
       dispatch: store.dispatch,
     ),
     builder: (context, viewModel) {     
       if (viewModel.articles.isEmpty && !viewModel.isArticlesFullLoaded) {
-        viewModel.dispatch(LoadArticlesAction(
-          sortType: viewModel.articlesSortType,
-          filterData: viewModel.filterData,
-        ));
+        viewModel.dispatch(const LoadArticlesAction());
 
         return const ArticleListLoaderWidget();
       }
@@ -49,7 +45,7 @@ class ArticleListPageWidget extends PageWidget {
         children: [
           ArticleListHeaderWidget(
             articlesSortType: viewModel.articlesSortType,
-            filterData: viewModel.filterData,
+            isFilterEnabled: viewModel.isFilterEnabled,
             onReadUsTelegramClick: () => _onReadUsTelegramClick(viewModel),
             onFilterClick: () => _onFilterClick(viewModel, context),
             onSelectSortType: (type) => _onSelectSortType(type, viewModel),
@@ -75,17 +71,10 @@ class ArticleListPageWidget extends PageWidget {
     viewModel.dispatch(const OpenLinkAction(AppCommon.tprogerTelegramLink1));
 
   void _onLoadNextArticles(ArticleListPageViewModel viewModel) =>
-    viewModel.dispatch(LoadNextArticlesAction(
-      pageNumber: viewModel.articlesPageNumber,
-      sortType: viewModel.articlesSortType,
-      filterData: viewModel.filterData,
-    ));
+    viewModel.dispatch(const LoadNextArticlesAction());
 
   Future<void> _onRefresh(ArticleListPageViewModel viewModel) async {
-    viewModel.dispatch(LoadArticlesAction(
-      sortType: viewModel.articlesSortType,
-      filterData: viewModel.filterData,
-    ));
+    viewModel.dispatch(const LoadArticlesAction());
   }
 
   void _onArticleClick(String articleLink, ArticleListPageViewModel viewModel) =>
@@ -102,12 +91,11 @@ class ArticleListPageWidget extends PageWidget {
   void _onTelegramLinkClick(ArticleListPageViewModel viewModel) =>
     viewModel.dispatch(const OpenLinkAction(AppCommon.tprogerTelegramLink0));
 
-  void _onSelectSortType(ArticlesSortType selectedType, ArticleListPageViewModel viewModel) =>
-    viewModel.dispatch(SortArticlesAction(
-      selectedSortType: selectedType,
-      currentSortType: viewModel.articlesSortType,
-      filterData: viewModel.filterData,
-    ));
+  void _onSelectSortType(ArticlesSortType selectedType, ArticleListPageViewModel viewModel) {
+    if (selectedType != viewModel.articlesSortType) {
+      viewModel.dispatch(SortArticlesAction(selectedType));
+    }
+  }
 
   void _onFilterClick(ArticleListPageViewModel viewModel, BuildContext context) =>
     _overlayService.showArticlesFilters(
@@ -120,15 +108,12 @@ class ArticleListPageWidget extends PageWidget {
 
   Future<void> _onApplyClick(ArticleListPageViewModel viewModel) async {
     await _overlayService.hide();
-    viewModel.dispatch(ApplyFiltersAction(
-      filterData: viewModel.filterData,
-      sortType: viewModel.articlesSortType,
-    )); 
+    viewModel.dispatch(const ApplyFiltersAction()); 
   }
 
   Future<void> _onCleanOutClick(ArticleListPageViewModel viewModel) async {
     await _overlayService.hide();
-    viewModel.dispatch(ClearFiltersAction(viewModel.articlesSortType)); 
+    viewModel.dispatch(const ClearFiltersAction()); 
   }
 
   void _onIsForBeginnerClick(ArticleListPageViewModel viewModel) => 

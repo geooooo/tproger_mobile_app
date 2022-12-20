@@ -20,9 +20,10 @@ class ArticleListService {
   Future<List<ArticleModel>> getArticles(
     ArticlesSortType sortType,
     FilterData filterData,
+    bool isFilterEnabled,
   ) async {
     try {
-      return await _articleListLoader.load(sortType, filterData);
+      return await _articleListLoader.load(sortType, filterData, isFilterEnabled);
     } on Exception catch (error, stackTrace) {
       _logger.e('Load a list of articles', error, stackTrace);
       throw const LoadArticlesListException();
@@ -33,9 +34,10 @@ class ArticleListService {
     int pageNumber,
     ArticlesSortType sortType,
     FilterData filterData,
+    bool isFilterEnabled,
   ) async {
     try {
-      return await _articleListLoader.loadNext(pageNumber + 1, sortType, filterData);
+      return await _articleListLoader.loadNext(pageNumber, sortType, filterData, isFilterEnabled);
     } on Exception catch (error, stackTrace) {
       _logger.e('Load a list of next articles', error, stackTrace);
       throw const LoadNextArticlesException();
