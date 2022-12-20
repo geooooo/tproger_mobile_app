@@ -67,7 +67,11 @@ class _ArticlesSortWidgetState extends State<ArticlesSortWidget> {
     },
   );
 
-  void _onChanged(ArticlesSortType? type) => widget.onSelect(type!);
+  void _onChanged(ArticlesSortType? selectedType) {
+    if (widget.type != selectedType) {
+      widget.onSelect(selectedType!);
+    }
+  }
 
   void _onMenuStateChange(bool isOpened) =>
     setState(() { _isOpened = isOpened; });

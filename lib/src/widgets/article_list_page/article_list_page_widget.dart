@@ -31,6 +31,7 @@ class ArticleListPageWidget extends PageWidget {
       isArticlesFullLoaded: store.state.isArticlesFullLoaded,
       isAppLoaded: store.state.isAppLoaded,
       isFilterEnabled: store.state.isFilterEnabled,
+      filterData: store.state.filterData,
       articlesSortType: store.state.articlesSortType,
       articles: store.state.articles.toList(),
       dispatch: store.dispatch,
@@ -92,11 +93,8 @@ class ArticleListPageWidget extends PageWidget {
   void _onTelegramLinkClick(ArticleListPageViewModel viewModel) =>
     viewModel.dispatch(const OpenLinkAction(AppCommon.tprogerTelegramLink0));
 
-  void _onSelectSortType(ArticlesSortType selectedType, ArticleListPageViewModel viewModel) {
-    if (selectedType != viewModel.articlesSortType) {
-      viewModel.dispatch(SortArticlesAction(selectedType));
-    }
-  }
+  void _onSelectSortType(ArticlesSortType selectedType, ArticleListPageViewModel viewModel) =>
+    viewModel.dispatch(SortArticlesAction(selectedType));
 
   void _onFilterClick(ArticleListPageViewModel viewModel, BuildContext context) =>
     _overlayService.showArticlesFilters(
@@ -109,12 +107,12 @@ class ArticleListPageWidget extends PageWidget {
     
   Future<void> _onApplyClick(ArticleListPageViewModel viewModel) async {
     await _overlayService.hide();
-    viewModel.dispatch(const ApplyFiltersAction()); 
+    viewModel.dispatch(ApplyFiltersAction(viewModel.filterData)); 
   }
 
   Future<void> _onCleanOutClick(ArticleListPageViewModel viewModel) async {
     await _overlayService.hide();
-    viewModel.dispatch(const ClearFiltersAction()); 
+    viewModel.dispatch(ClearFiltersAction(viewModel.isFilterEnabled)); 
   }
 
   void _onIsForBeginnerClick(ArticleListPageViewModel viewModel) => 

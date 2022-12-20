@@ -98,9 +98,18 @@ class MiddlewareService {
   Stream<LoadArticlesAction> _sortArticles(Stream<SortArticlesAction> actions, EpicStore<AppState> store) =>
     actions.map((action) => const LoadArticlesAction());
 
-  Stream<LoadArticlesAction> _applyFilters(Stream<ApplyFiltersAction> actions, EpicStore<AppState> store) =>
-    actions.map((action) => const LoadArticlesAction());
+  Stream<LoadArticlesAction?> _applyFilters(Stream<ApplyFiltersAction> actions, EpicStore<AppState> store) =>
+    actions.map((action) {
+      if (action.sourceFilterData != store.state.filterData) {
+        return const LoadArticlesAction();
+      }
 
-  Stream<LoadArticlesAction> _clearFilters(Stream<ClearFiltersAction> actions, EpicStore<AppState> store) =>
-    actions.map((action) => const LoadArticlesAction());
+      return null;
+    });
+
+  Stream<LoadArticlesAction?> _clearFilters(Stream<ClearFiltersAction> actions, EpicStore<AppState> store) =>
+    actions.map((action) => action.wasFilterEnabled
+      ? const LoadArticlesAction()
+      : null
+    );
 }

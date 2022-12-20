@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:tproger_mobile_app/src/models/app_state/filter_data.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
 import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
 import 'package:tproger_mobile_app/src/models/typedefs.dart';
@@ -7,6 +8,7 @@ class ArticleListPageViewModel extends Equatable {
   final bool isArticlesFullLoaded;
   final bool isAppLoaded;
   final bool isFilterEnabled;
+  final FilterData filterData;
   final ArticlesSortType articlesSortType;
   final List<ArticleModel> articles;
   final DynamicFunctionDynamic dispatch;
@@ -16,6 +18,7 @@ class ArticleListPageViewModel extends Equatable {
     isArticlesFullLoaded,
     isAppLoaded,
     isFilterEnabled,
+    filterData,
     articlesSortType,
     articles,
     dispatch,
@@ -25,6 +28,7 @@ class ArticleListPageViewModel extends Equatable {
     required this.isArticlesFullLoaded,
     required this.isAppLoaded,
     required this.isFilterEnabled,
+    required this.filterData,
     required this.articlesSortType,
     required this.articles,
     required this.dispatch,
