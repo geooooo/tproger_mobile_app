@@ -42,6 +42,7 @@ class ArticleBackgroundImageWidget extends StatelessWidget {
                 fit: BoxFit.cover,
                 image: imageLink,
                 placeholder: kTransparentImage,
+                imageErrorBuilder: (context, error, stackTrace) => const SizedBox(),
               ),
             ),
           ),
