@@ -5,24 +5,27 @@ import 'package:tproger_mobile_app/src/models/typedefs.dart';
 
 class ArticleListPageViewModel extends Equatable {
   final bool isArticlesFullLoaded;
-  final ArticlesSortType articlesSortType;
+  final bool isAppLoaded;
   final bool isFilterEnabled;
+  final ArticlesSortType articlesSortType;
   final List<ArticleModel> articles;
   final DynamicFunctionDynamic dispatch;
 
   @override
   List<Object> get props => [
     isArticlesFullLoaded,
-    articlesSortType,
+    isAppLoaded,
     isFilterEnabled,
+    articlesSortType,
     articles,
     dispatch,
   ];
 
   const ArticleListPageViewModel({
     required this.isArticlesFullLoaded,
-    required this.articlesSortType,
+    required this.isAppLoaded,
     required this.isFilterEnabled,
+    required this.articlesSortType,
     required this.articles,
     required this.dispatch,
   });

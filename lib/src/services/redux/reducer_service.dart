@@ -32,6 +32,7 @@ class ReducerService {
     state.rebuild((b) => b
       ..articles.replace(action.articles)
       ..isArticlesFullLoaded = action.articles.isEmpty
+      ..isAppLoaded = true
     );
 
   AppState _loadNextArticlesSuccess(AppState state, LoadNextArticlesSuccessAction action) => 

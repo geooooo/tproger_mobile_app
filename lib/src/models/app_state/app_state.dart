@@ -12,6 +12,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   FilterData get filterData;
   bool get isArticlesFullLoaded;
   bool get isFilterEnabled;
+  bool get isAppLoaded;
   int get articlesPageNumber;
 
   AppState._();
@@ -24,5 +25,6 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
     ..filterData.replace(FilterData.empty())
     ..isArticlesFullLoaded = false
     ..isFilterEnabled = false
+    ..isAppLoaded = false
     ..articlesPageNumber = 1;
 }

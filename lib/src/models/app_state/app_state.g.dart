@@ -18,6 +18,8 @@ class _$AppState extends AppState {
   @override
   final bool isFilterEnabled;
   @override
+  final bool isAppLoaded;
+  @override
   final int articlesPageNumber;
 
   factory _$AppState([void Function(AppStateBuilder)? updates]) =>
@@ -29,6 +31,7 @@ class _$AppState extends AppState {
       required this.filterData,
       required this.isArticlesFullLoaded,
       required this.isFilterEnabled,
+      required this.isAppLoaded,
       required this.articlesPageNumber})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(articles, r'AppState', 'articles');
@@ -40,6 +43,8 @@ class _$AppState extends AppState {
         isArticlesFullLoaded, r'AppState', 'isArticlesFullLoaded');
     BuiltValueNullFieldError.checkNotNull(
         isFilterEnabled, r'AppState', 'isFilterEnabled');
+    BuiltValueNullFieldError.checkNotNull(
+        isAppLoaded, r'AppState', 'isAppLoaded');
     BuiltValueNullFieldError.checkNotNull(
         articlesPageNumber, r'AppState', 'articlesPageNumber');
   }
@@ -60,6 +65,7 @@ class _$AppState extends AppState {
         filterData == other.filterData &&
         isArticlesFullLoaded == other.isArticlesFullLoaded &&
         isFilterEnabled == other.isFilterEnabled &&
+        isAppLoaded == other.isAppLoaded &&
         articlesPageNumber == other.articlesPageNumber;
   }
 
@@ -68,10 +74,14 @@ class _$AppState extends AppState {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, articles.hashCode), articlesSortType.hashCode),
-                    filterData.hashCode),
-                isArticlesFullLoaded.hashCode),
-            isFilterEnabled.hashCode),
+                $jc(
+                    $jc(
+                        $jc($jc(0, articles.hashCode),
+                            articlesSortType.hashCode),
+                        filterData.hashCode),
+                    isArticlesFullLoaded.hashCode),
+                isFilterEnabled.hashCode),
+            isAppLoaded.hashCode),
         articlesPageNumber.hashCode));
   }
 
@@ -83,6 +93,7 @@ class _$AppState extends AppState {
           ..add('filterData', filterData)
           ..add('isArticlesFullLoaded', isArticlesFullLoaded)
           ..add('isFilterEnabled', isFilterEnabled)
+          ..add('isAppLoaded', isAppLoaded)
           ..add('articlesPageNumber', articlesPageNumber))
         .toString();
   }
@@ -118,6 +129,10 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   set isFilterEnabled(bool? isFilterEnabled) =>
       _$this._isFilterEnabled = isFilterEnabled;
 
+  bool? _isAppLoaded;
+  bool? get isAppLoaded => _$this._isAppLoaded;
+  set isAppLoaded(bool? isAppLoaded) => _$this._isAppLoaded = isAppLoaded;
+
   int? _articlesPageNumber;
   int? get articlesPageNumber => _$this._articlesPageNumber;
   set articlesPageNumber(int? articlesPageNumber) =>
@@ -135,6 +150,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _filterData = $v.filterData.toBuilder();
       _isArticlesFullLoaded = $v.isArticlesFullLoaded;
       _isFilterEnabled = $v.isFilterEnabled;
+      _isAppLoaded = $v.isAppLoaded;
       _articlesPageNumber = $v.articlesPageNumber;
       _$v = null;
     }
@@ -168,6 +184,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
                   isArticlesFullLoaded, r'AppState', 'isArticlesFullLoaded'),
               isFilterEnabled: BuiltValueNullFieldError.checkNotNull(
                   isFilterEnabled, r'AppState', 'isFilterEnabled'),
+              isAppLoaded: BuiltValueNullFieldError.checkNotNull(
+                  isAppLoaded, r'AppState', 'isAppLoaded'),
               articlesPageNumber: BuiltValueNullFieldError.checkNotNull(
                   articlesPageNumber, r'AppState', 'articlesPageNumber'));
     } catch (_) {

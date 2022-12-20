@@ -29,13 +29,14 @@ class ArticleListPageWidget extends PageWidget {
     distinct: true,
     converter: (store) => ArticleListPageViewModel(
       isArticlesFullLoaded: store.state.isArticlesFullLoaded,
-      articlesSortType: store.state.articlesSortType,
+      isAppLoaded: store.state.isAppLoaded,
       isFilterEnabled: store.state.isFilterEnabled,
+      articlesSortType: store.state.articlesSortType,
       articles: store.state.articles.toList(),
       dispatch: store.dispatch,
     ),
     builder: (context, viewModel) {     
-      if (viewModel.articles.isEmpty && !viewModel.isArticlesFullLoaded) {
+      if (!viewModel.isAppLoaded) {
         viewModel.dispatch(const LoadArticlesAction());
 
         return const ArticleListLoaderWidget();
