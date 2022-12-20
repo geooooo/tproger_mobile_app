@@ -167,7 +167,7 @@ class ArticleListParser {
     final match = backgroundColorPattern.firstMatch(style)!;
     final color = match.group(0)!;
     
-    return color.toLowerCase();
+    return color;
   }
 
   Element _getDescriptionElement(Element articleElement) =>

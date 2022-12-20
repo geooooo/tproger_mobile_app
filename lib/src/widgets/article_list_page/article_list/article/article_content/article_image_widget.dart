@@ -23,10 +23,11 @@ class ArticleImageWidget extends StatelessWidget {
     child: Center(
       child: SizedBox(
         height: AppSize.articleImageHeight,
+        width: AppSize.articleImageHeight,
         child: FadeInImage.memoryNetwork(
           image: link,
           placeholder: kTransparentImage,
-          imageErrorBuilder: (context, error, stackTrace) => const SizedBox(),
+          imageErrorBuilder: (context, error, stackTrace) => const SizedBox.shrink(),//TODO:
         ),
       ),
     ),

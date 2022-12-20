@@ -1,5 +1,4 @@
 import 'package:injectable/injectable.dart';
-import 'package:logger/logger.dart';
 import 'package:tproger_mobile_app/src/models/app_state/filter_data.dart';
 import 'package:tproger_mobile_app/src/models/article_model.dart';
 import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
@@ -10,12 +9,8 @@ import 'package:tproger_mobile_app/src/models/exceptions/load_articles_list_exce
 @singleton
 class ArticleListService {
   final ArticleListLoader _articleListLoader;
-  final Logger _logger;
 
-  ArticleListService(
-    this._articleListLoader,
-    this._logger,
-  );
+  ArticleListService(this._articleListLoader);
 
   Future<List<ArticleModel>> getArticles(
     ArticlesSortType sortType,
@@ -24,8 +19,7 @@ class ArticleListService {
   ) async {
     try {
       return await _articleListLoader.load(sortType, filterData, isFilterEnabled);
-    } on Exception catch (error, stackTrace) {
-      _logger.e('Load a list of articles', error, stackTrace);
+    } on Exception {
       throw const LoadArticlesListException();
     }
   }
@@ -38,8 +32,7 @@ class ArticleListService {
   ) async {
     try {
       return await _articleListLoader.loadNext(pageNumber, sortType, filterData, isFilterEnabled);
-    } on Exception catch (error, stackTrace) {
-      _logger.e('Load a list of next articles', error, stackTrace);
+    } on Exception {
       throw const LoadNextArticlesException();
     }
   }

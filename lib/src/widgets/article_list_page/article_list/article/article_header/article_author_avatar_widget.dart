@@ -20,7 +20,7 @@ class ArticleAuthorAvatarWidget extends StatelessWidget {
       child: FadeInImage.memoryNetwork(
         image: avatarLink,
         placeholder: kTransparentImage,
-        imageErrorBuilder: (context, error, stackTrace) => Image.asset(
+        imageErrorBuilder: (context, error, stackTrace) => Image.asset(//TODO:
           Asset.defaultAvatar.value,
           package: Asset.package,
         ),
