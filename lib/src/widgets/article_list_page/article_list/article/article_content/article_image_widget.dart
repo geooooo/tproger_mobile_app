@@ -26,6 +26,7 @@ class ArticleImageWidget extends StatelessWidget {
         child: FadeInImage.memoryNetwork(
           image: link,
           placeholder: kTransparentImage,
+          imageErrorBuilder: (context, error, stackTrace) => const SizedBox(),
         ),
       ),
     ),
