@@ -18,5 +18,5 @@ class _AppWidgetState extends State<AppWidget> {
   }
 
   @override
-  Widget build(BuildContext context) => ArticleListPageWidget();
+  Widget build(BuildContext context) => const ArticleListPageWidget();
 }

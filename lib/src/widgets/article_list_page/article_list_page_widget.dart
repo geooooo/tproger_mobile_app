@@ -20,9 +20,9 @@ import 'package:tproger_mobile_app/src/widgets/article_list_page/article_list/ar
 import 'package:tproger_mobile_app/src/widgets/common/page_widget.dart';
 
 class ArticleListPageWidget extends PageWidget {
-  final _overlayService = GetIt.instance.get<OverlayService>();
+  static final _overlayService = GetIt.instance.get<OverlayService>();
 
-  ArticleListPageWidget({ super.key });
+  const ArticleListPageWidget({ super.key });
 
   @override
   Widget buildContent(BuildContext context) => StoreConnector<AppState, ArticleListPageViewModel>(
@@ -106,7 +106,7 @@ class ArticleListPageWidget extends PageWidget {
       onIsForBeginnerClick: () => _onIsForBeginnerClick(viewModel), 
       onCloseClick: _onCloseClick, 
     );
-
+    
   Future<void> _onApplyClick(ArticleListPageViewModel viewModel) async {
     await _overlayService.hide();
     viewModel.dispatch(const ApplyFiltersAction()); 
