@@ -2,7 +2,6 @@ import 'package:injectable/injectable.dart';
 import 'package:redux/redux.dart';
 import 'package:tproger_mobile_app/src/models/actions/apply_filters_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/clear_filters_action.dart';
-import 'package:tproger_mobile_app/src/models/actions/is_for_beginner_filter_change_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_success_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/load_next_articles_success_action.dart';
@@ -19,7 +18,6 @@ class ReducerService {
     TypedReducer(_sortArticles),
     TypedReducer(_applyFilters),
     TypedReducer(_clearFilters),
-    TypedReducer(_isForBeginnerFilterChange),
   ]);
 
   AppState _loadArticles(AppState state, LoadArticlesAction action) => state.rebuild((b) => b
@@ -49,17 +47,13 @@ class ReducerService {
 
   AppState _applyFilters(AppState state, ApplyFiltersAction action) =>
     state.rebuild((b) => b
-      ..isFilterEnabled = state.filterData != FilterData.empty()
+      ..isFilterEnabled = action.newFilterData != FilterData.empty()
+      ..filterData.replace(action.newFilterData)
     );
 
   AppState _clearFilters(AppState state, ClearFiltersAction action) => 
     state.rebuild((b) => b
       ..isFilterEnabled = false
       ..filterData.replace(FilterData.empty())
-    );
-
-  AppState _isForBeginnerFilterChange(AppState state, IsForBeginnerFilterChangeAction action) => 
-    state.rebuild((b) => b
-      ..filterData.isForBeginner = !state.filterData.isForBeginner
     );
 }

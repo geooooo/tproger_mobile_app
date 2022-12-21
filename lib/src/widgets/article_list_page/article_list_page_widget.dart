@@ -3,13 +3,13 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tproger_mobile_app/src/models/actions/apply_filters_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/clear_filters_action.dart';
-import 'package:tproger_mobile_app/src/models/actions/is_for_beginner_filter_change_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_articles_action/load_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/load_next_articles_action/load_next_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/open_comment_link_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/open_link_action.dart';
 import 'package:tproger_mobile_app/src/models/actions/sort_articles_action.dart';
 import 'package:tproger_mobile_app/src/models/app_state/app_state.dart';
+import 'package:tproger_mobile_app/src/models/app_state/filter_data.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_common.dart';
 import 'package:tproger_mobile_app/src/models/enums/articles_sort_type.dart';
 import 'package:tproger_mobile_app/src/models/view_models/article_list_page_view_model.dart';
@@ -99,24 +99,30 @@ class ArticleListPageWidget extends PageWidget {
   void _onFilterClick(ArticleListPageViewModel viewModel, BuildContext context) =>
     _overlayService.showArticlesFilters(
       context: context,
-      onApplyClick: () => _onApplyClick(viewModel),
+      filterData: viewModel.filterData,
+      onApplyClick: (filterData) => _onApplyClick(filterData, viewModel),
       onCleanOutClick: () => _onCleanOutClick(viewModel), 
-      onIsForBeginnerClick: () => _onIsForBeginnerClick(viewModel), 
       onCloseClick: _onCloseClick, 
     );
     
-  Future<void> _onApplyClick(ArticleListPageViewModel viewModel) async {
+  Future<void> _onApplyClick(FilterData newFilterData, ArticleListPageViewModel viewModel) async {
     await _overlayService.hide();
-    viewModel.dispatch(ApplyFiltersAction(viewModel.filterData)); 
+
+    if (newFilterData != viewModel.filterData) {
+      viewModel.dispatch(ApplyFiltersAction(
+        newFilterData: newFilterData,
+        oldFilterData: viewModel.filterData,
+      )); 
+    }
   }
 
   Future<void> _onCleanOutClick(ArticleListPageViewModel viewModel) async {
     await _overlayService.hide();
-    viewModel.dispatch(ClearFiltersAction(viewModel.isFilterEnabled)); 
-  }
 
-  void _onIsForBeginnerClick(ArticleListPageViewModel viewModel) => 
-    viewModel.dispatch(const IsForBeginnerFilterChangeAction()); 
+    if (viewModel.isFilterEnabled) {
+      viewModel.dispatch(const ClearFiltersAction()); 
+    }
+  }
 
   void _onCloseClick() => _overlayService.hide();
 }

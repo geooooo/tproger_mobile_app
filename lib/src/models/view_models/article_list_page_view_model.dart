@@ -18,7 +18,7 @@ class ArticleListPageViewModel extends Equatable {
     isArticlesFullLoaded,
     isAppLoaded,
     isFilterEnabled,
-    filterData,
+    // filterData, Should not rebuild when the field changed
     articlesSortType,
     articles,
     dispatch,

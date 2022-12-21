@@ -99,16 +99,8 @@ class MiddlewareService {
     actions.map((action) => const LoadArticlesAction());
 
   Stream<LoadArticlesAction> _applyFilters(Stream<ApplyFiltersAction> actions, EpicStore<AppState> store) =>
-    actions.expand((action) sync* {
-      if (action.sourceFilterData != store.state.filterData) {
-        yield const LoadArticlesAction();
-      }
-    });
+    actions.map((action) => const LoadArticlesAction());
 
   Stream<LoadArticlesAction> _clearFilters(Stream<ClearFiltersAction> actions, EpicStore<AppState> store) =>
-    actions.expand((action) sync* { 
-      if (action.wasFilterEnabled) {
-        yield const LoadArticlesAction();
-      }
-    }); 
+    actions.map((action) => const LoadArticlesAction());
 }
