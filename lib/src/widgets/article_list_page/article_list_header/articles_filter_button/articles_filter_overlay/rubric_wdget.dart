@@ -80,10 +80,16 @@ class _RubricWidgetState extends State<RubricWidget> {
   void _onTapUp(TapUpDetails details) {
     widget.onIsForBeginnerClick();
 
-    setState(() { _isTapped = false; });
+    setState(() { 
+      _isTapped = false;
+    });
   }
 
-  void _onTapDown(TapDownDetails details) => setState(() { _isTapped = true; });
+  void _onTapDown(TapDownDetails details) => setState(() { 
+    _isTapped = true;
+  });
 
-  void _onTapCancel() => setState(() { _isTapped = false; });
+  void _onTapCancel() => setState(() { 
+    _isTapped = false;
+  });
 }

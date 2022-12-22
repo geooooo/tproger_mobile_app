@@ -73,6 +73,7 @@ class _ArticlesSortWidgetState extends State<ArticlesSortWidget> {
     }
   }
 
-  void _onMenuStateChange(bool isOpened) =>
-    setState(() { _isOpened = isOpened; });
+  void _onMenuStateChange(bool isOpened) => setState(() {
+    _isOpened = isOpened;
+  });
 }

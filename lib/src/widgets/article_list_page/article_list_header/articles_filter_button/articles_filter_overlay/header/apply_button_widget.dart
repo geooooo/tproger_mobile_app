@@ -54,12 +54,16 @@ class _ApplyButtonWidgetState extends State<ApplyButtonWidget> {
   void _onTapUp(TapUpDetails detail) {
     widget.onClick();
 
-    setState(() { _isTapped = false; });
+    setState(() { 
+      _isTapped = false;
+    });
   }
 
-  void _onTapDown(TapDownDetails detail) =>
-    setState(() { _isTapped = true; });
+  void _onTapDown(TapDownDetails detail) => setState(() { 
+    _isTapped = true;
+  });
 
-  void _onTapCancel() => 
-    setState(() { _isTapped = false; });
+  void _onTapCancel() => setState(() {
+    _isTapped = false;
+  });
 }

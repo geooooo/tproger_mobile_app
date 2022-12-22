@@ -101,13 +101,17 @@ class _ArticleFooterButtonWidgetState extends State<ArticleFooterButtonWidget> w
   }
 
   void _onTapDown(TapDownDetails details) {
-    setState(() { _isTapped = true; });
+    setState(() {
+      _isTapped = true;
+    });
 
     _controller.forward(from: 1);
   } 
 
   void _onTapUp(TapUpDetails details) {
-    setState(() { _isTapped = false; });
+    setState(() { 
+      _isTapped = false;
+    });
 
     _controller.reverse();
 
@@ -115,7 +119,9 @@ class _ArticleFooterButtonWidgetState extends State<ArticleFooterButtonWidget> w
   }
 
   void _onTapCancel() {
-    setState(() { _isTapped = false; });
+    setState(() { 
+      _isTapped = false;
+    });
 
     _controller.reverse();
   }

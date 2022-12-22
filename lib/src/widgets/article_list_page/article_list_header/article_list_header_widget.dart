@@ -24,11 +24,6 @@ class ArticleListHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Column(
     children: [
-      // Container(
-      //   color: Colors.grey,
-      //   height: 58,
-      //   width: double.infinity,
-      // ),
       ReadUsTelegramButtonWidget(
         onClick: onReadUsTelegramClick,
       ),
