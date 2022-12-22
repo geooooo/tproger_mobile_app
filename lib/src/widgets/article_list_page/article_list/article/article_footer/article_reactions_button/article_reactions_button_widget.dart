@@ -25,7 +25,6 @@ class _ArticleReactionsButtonWidgetState
   extends State<ArticleReactionsButtonWidget> 
   with SingleTickerProviderStateMixin
 {
-  static const _duration = Duration(milliseconds: 250);
   static const _borderRadius = AppSize.articleReactionsBorderRadius;
   static const _beginBoxShadow = [
     BoxShadow(color: Colors.transparent),
@@ -33,9 +32,8 @@ class _ArticleReactionsButtonWidgetState
 
   static final _reactionService = GetIt.instance.get<ReactionService>();
 
-  final _tooltipController = JustTheController();
   late final _animationController = AnimationController(
-    duration: _duration,
+    duration: const Duration(milliseconds: 250),
     vsync: this,
   )..addListener(() => setState(() {}));
 
@@ -50,22 +48,36 @@ class _ArticleReactionsButtonWidgetState
   Widget build(BuildContext context) {
     _initAnimation();
 
-    return JustTheTooltip(
-      showDuration: const Duration(milliseconds: 2050),
-      // fadeInDuration: ,
-      curve: Curves.ease,
-      triggerMode: TooltipTriggerMode.manual,
-      tailLength: 0,
-      tailBaseWidth: 0,
-      elevation: 0,
-      barrierDismissible: true,
-      isModal: true,
-      controller: _tooltipController,
-      content: const ReactionsOverlayWidget(),
-      child: GestureDetector(
-        onTapDown: _onTapDown,
-        onTapUp: _onTapUp,
-        onTapCancel: _onTapCancel,
+    return GestureDetector(
+      onTapDown: _onTapDown,
+      onTapUp: _onTapUp,
+      onTapCancel: _onTapCancel,
+      child: JustTheTooltip(
+        isModal: true,
+        barrierDismissible: true,
+        preferredDirection: AxisDirection.up,
+        triggerMode: TooltipTriggerMode.tap,
+        elevation: 0,
+        tailBaseWidth: 0,
+        tailLength: 0,
+        curve: Curves.ease,
+        fadeInDuration: const Duration(milliseconds: 250),
+        fadeOutDuration: const Duration(milliseconds: 250),
+        backgroundColor: Colors.transparent,
+        shadow: const Shadow(
+          color: Colors.transparent,
+        ),
+        content: ConstrainedBox(
+          constraints: const BoxConstraints(
+            maxHeight: double.infinity,
+          ),
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: const [
+              ReactionsOverlayWidget(),
+            ],
+          ),
+        ),
         child: Container(
           decoration: _animation.value,
           padding: AppSize.articleReactionsPadding,
@@ -80,7 +92,6 @@ class _ArticleReactionsButtonWidgetState
   @override
   void dispose() {
     _animationController.dispose();
-    _tooltipController.dispose();
 
     super.dispose();
   }
@@ -129,10 +140,7 @@ class _ArticleReactionsButtonWidgetState
 
   void _onTapDown(TapDownDetails details) => _animationController.forward(from: 1);
 
-  void _onTapUp(TapUpDetails details) {
-    _tooltipController.showTooltip();
-    _animationController.reverse();
-  }
+  void _onTapUp(TapUpDetails details) => _animationController.reverse();
 
   void _onTapCancel() => _animationController.reverse();
 }
