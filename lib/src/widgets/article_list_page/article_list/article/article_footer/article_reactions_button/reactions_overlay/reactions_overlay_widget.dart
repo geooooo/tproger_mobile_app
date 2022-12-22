@@ -1,40 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:tproger_mobile_app/src/models/typedefs.dart';
 
-class ReactionsOverlayWidget extends StatefulWidget {
-  const ReactionsOverlayWidget({ super.key });
+class ReactionsOverlayWidget extends StatelessWidget {
+  final VoidFunction onClick;
 
-  @override
-  State<StatefulWidget> createState() => _ReactionsOverlayWidgetState();
-}
-
-class _ReactionsOverlayWidgetState 
-  extends State<ReactionsOverlayWidget> 
-  with SingleTickerProviderStateMixin
-{
-  static final _tween = Tween<double>(
-    begin: -16,
-    end: 16,
-  );
-
-  late final _controller = AnimationController(
-    duration: const Duration(milliseconds: 250),
-    vsync: this,
-  )..addListener(() => setState(() {}));
-
-  late final Animation<double> _animation;
+  const ReactionsOverlayWidget({ 
+    required this.onClick,
+    super.key,
+  });
 
   @override
-  void initState() {
-    super.initState();
-
-    _animation = _tween.animate(_controller);
-    _controller.forward();
-  }
-
-  @override
-  Widget build(BuildContext context) => Positioned(
-    right: 0,
-    bottom: _animation.value,
+  Widget build(BuildContext context) => GestureDetector(
+    onTap: onClick,
     child: Container(
       height: 50,
       width: 200,
@@ -42,13 +19,4 @@ class _ReactionsOverlayWidgetState
       child: const Text('+'),
     ),
   );
-
-  @override
-  void dispose() {
-    _controller.reverse().then((_) {
-      _controller.dispose();
-
-      super.dispose();
-    });
-  }
 }

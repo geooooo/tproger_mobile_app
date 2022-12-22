@@ -33,7 +33,6 @@ dependencies:
   dropdown_button2: ^1.9.1
   overlayment: ^0.2.1
   collection: ^1.16.0
-  just_the_tooltip: ^0.0.12
   
 dev_dependencies:
   flutter_lints: ^2.0.0

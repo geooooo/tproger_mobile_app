@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:just_the_tooltip/just_the_tooltip.dart';
 import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/reaction_data.dart';
@@ -23,124 +22,150 @@ class ArticleReactionsButtonWidget extends StatefulWidget {
 
 class _ArticleReactionsButtonWidgetState 
   extends State<ArticleReactionsButtonWidget> 
-  with SingleTickerProviderStateMixin
+  with TickerProviderStateMixin
 {
-  static const _borderRadius = AppSize.articleReactionsBorderRadius;
-  static const _beginBoxShadow = [
-    BoxShadow(color: Colors.transparent),
-  ];
-
   static final _reactionService = GetIt.instance.get<ReactionService>();
 
-  late final _animationController = AnimationController(
+  late final _decorationAnimationController = AnimationController(
+    duration: const Duration(milliseconds: 250),
+    vsync: this,
+  )..addListener(() => setState(() {}));
+  late final _overlayAnimationController = AnimationController(
     duration: const Duration(milliseconds: 250),
     vsync: this,
   )..addListener(() => setState(() {}));
 
-  var _isAnimationInitialized = false;
+  var _isAnimationsInitialized = false;
+  var _isReactionsOverlayShown = false;
 
-  late DecorationTween _tween;
-  late Animation<Decoration?> _animation;
+  late Animation<Decoration> _decorationAnimation;
+  late final Animation<double> _opacityAnimation = Tween<double>(
+    begin: 0,
+    end: 1,
+  ).animate(_overlayAnimationController);
+  late final Animation<double> _positionAnimation = Tween<double>(
+    begin: 0,
+    end: AppSize.articleReactionIconSize + 
+      AppSize.articleReactionBorderSize * 2 + 
+      AppSize.articleReactionsPadding.top + 
+      AppSize.articleReactionsPadding.bottom +
+      AppSize.articleReactionsBorderSize * 2 +
+      AppSize.reactionsOverlayOffset,
+  ).animate(_overlayAnimationController);
+
+  late Tween<Decoration> _decorationTween;
 
   int get _commonCount => _reactionService.commonCount(widget.reactions);
 
   @override
   Widget build(BuildContext context) {
-    _initAnimation();
+    _initAnimations();
 
-    return GestureDetector(
-      onTapDown: _onTapDown,
-      onTapUp: _onTapUp,
-      onTapCancel: _onTapCancel,
-      child: JustTheTooltip(
-        isModal: true,
-        barrierDismissible: true,
-        preferredDirection: AxisDirection.up,
-        triggerMode: TooltipTriggerMode.tap,
-        elevation: 0,
-        tailBaseWidth: 0,
-        tailLength: 0,
-        curve: Curves.ease,
-        fadeInDuration: const Duration(milliseconds: 250),
-        fadeOutDuration: const Duration(milliseconds: 250),
-        backgroundColor: Colors.transparent,
-        shadow: const Shadow(
-          color: Colors.transparent,
-        ),
-        content: ConstrainedBox(
-          constraints: const BoxConstraints(
-            maxHeight: double.infinity,
-          ),
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: const [
-              ReactionsOverlayWidget(),
-            ],
+    return GestureDetector(child: Stack(
+      clipBehavior: Clip.none,
+      children: [
+        GestureDetector(
+          onTapDown: _onTapDown,
+          onTapUp: _onTapUp,
+          onTapCancel: _onTapCancel,
+          child: Container(
+            decoration: _decorationAnimation.value,
+            padding: AppSize.articleReactionsPadding,
+            child: (_commonCount == 0) 
+              ? const AddReactionWidget() 
+              : ReactionListWidget(reactions: widget.reactions),
           ),
         ),
-        child: Container(
-          decoration: _animation.value,
-          padding: AppSize.articleReactionsPadding,
-          child: (_commonCount == 0) 
-            ? const AddReactionWidget() 
-            : ReactionListWidget(reactions: widget.reactions),
+        if (_isReactionsOverlayShown) Positioned(
+          bottom: _positionAnimation.value,
+          right: 0,
+          child: Opacity(
+            opacity: _opacityAnimation.value,
+            child: ReactionsOverlayWidget(
+              onClick: _onReactionsOverlayClick,
+            ),
+          ),
         ),
-      ),
-    );
+      ],
+    ));
   }
 
   @override
   void dispose() {
-    _animationController.dispose();
+    _decorationAnimationController.dispose();
+    _overlayAnimationController.dispose();
 
     super.dispose();
   }
 
-  void _initAnimation() {
-    final color = AppTheme.of(context).articleReactionsBackgroundColor;
-    final border = Border.all(
-      width: AppSize.articleReactionsBorderSize,
-      color: AppTheme.of(context).articleReactionsBorderColor,
-    );
-    const endBoxShadow = [
-      BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.14),
-        offset: Offset(0, 4),
-        blurRadius: 9,
-      ),
-    ];
+  void _initAnimations() {
+    _initDecorationAnimation();
 
+    _isAnimationsInitialized = true;
+  }
+
+  void _initDecorationAnimation() {
     final newBeginTween = BoxDecoration(
-      color: color,
-      boxShadow: _beginBoxShadow,
-      border: border,
-      borderRadius: _borderRadius,
-    );
-    final newEndTweet = BoxDecoration(
-      color: color,
-      boxShadow: endBoxShadow,
-      border: border,
-      borderRadius: _borderRadius,
+      color: AppTheme.of(context).articleReactionsBackgroundColor,
+      boxShadow: const [
+        BoxShadow(color: Colors.transparent),
+      ],
+      border: Border.all(
+        width: AppSize.articleReactionsBorderSize,
+        color: AppTheme.of(context).articleReactionsBorderColor,
+      ),
+      borderRadius: AppSize.articleReactionsBorderRadius,
     );
 
-    final isNeedUpdate = !_isAnimationInitialized ||
-      _tween.begin != newBeginTween ||
-      _tween.end != newEndTweet;
+    final newEndTweet = BoxDecoration(
+      color: AppTheme.of(context).articleReactionsBackgroundColor,
+      boxShadow: const [
+        BoxShadow(
+          color: Color.fromRGBO(0, 0, 0, 0.14),
+          offset: Offset(0, 4),
+          blurRadius: 9,
+        ),
+      ],
+      border: Border.all(
+        width: AppSize.articleReactionsBorderSize,
+        color: AppTheme.of(context).articleReactionsBorderColor,
+      ),
+      borderRadius: AppSize.articleReactionsBorderRadius,
+    );
+
+    final isNeedUpdate = !_isAnimationsInitialized ||
+      _decorationTween.begin != newBeginTween      ||
+      _decorationTween.end   != newEndTweet;
     
     if (isNeedUpdate) {
-      _tween = DecorationTween(
+      _decorationTween = DecorationTween(
         begin: newBeginTween,
         end: newEndTweet,
       );
-      _animation = _tween.animate(_animationController);
 
-      _isAnimationInitialized = true;
+      _decorationAnimation = _decorationTween.animate(_decorationAnimationController);
     }
   }
 
-  void _onTapDown(TapDownDetails details) => _animationController.forward(from: 1);
+  void _onTapDown(TapDownDetails details) => _decorationAnimationController.forward(from: 1);
 
-  void _onTapUp(TapUpDetails details) => _animationController.reverse();
+  void _onTapUp(TapUpDetails details) {
+    _decorationAnimationController.reverse();
 
-  void _onTapCancel() => _animationController.reverse();
+    setState(() {
+      _isReactionsOverlayShown = true;
+      _overlayAnimationController.forward();
+    });
+  }
+
+  void _onTapCancel() => _decorationAnimationController.reverse();
+
+  Future<void> _onReactionsOverlayClick() async {
+    print('+++');
+    await _overlayAnimationController.reverse();
+
+    setState(() {
+      _isReactionsOverlayShown = false;
+    });
+  }
 }
