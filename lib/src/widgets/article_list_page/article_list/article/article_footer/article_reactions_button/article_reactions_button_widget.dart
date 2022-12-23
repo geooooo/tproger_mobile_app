@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:overlayment/overlayment.dart';
 import 'package:tproger_mobile_app/src/models/app_theme/app_theme.dart';
 import 'package:tproger_mobile_app/src/models/consts/app_size.dart';
 import 'package:tproger_mobile_app/src/models/reaction_data.dart';
@@ -24,14 +25,16 @@ class _ArticleReactionsButtonWidgetState
   extends State<ArticleReactionsButtonWidget> 
   with TickerProviderStateMixin
 {
+  static const _duration = Duration(milliseconds: 250);
+
   static final _reactionService = GetIt.instance.get<ReactionService>();
 
   late final _decorationAnimationController = AnimationController(
-    duration: const Duration(milliseconds: 250),
+    duration: _duration,
     vsync: this,
   )..addListener(() => setState(() {}));
   late final _overlayAnimationController = AnimationController(
-    duration: const Duration(milliseconds: 250),
+    duration: _duration,
     vsync: this,
   )..addListener(() => setState(() {}));
 
@@ -39,11 +42,7 @@ class _ArticleReactionsButtonWidgetState
   var _isReactionsOverlayShown = false;
 
   late Animation<Decoration> _decorationAnimation;
-  late final Animation<double> _opacityAnimation = Tween<double>(
-    begin: 0,
-    end: 1,
-  ).animate(_overlayAnimationController);
-  late final Animation<double> _positionAnimation = Tween<double>(
+  late final Animation<double> _overlayAnimation = Tween<double>(
     begin: 0,
     end: AppSize.articleReactionIconSize + 
       AppSize.articleReactionBorderSize * 2 + 
@@ -52,7 +51,7 @@ class _ArticleReactionsButtonWidgetState
       AppSize.articleReactionsBorderSize * 2 +
       AppSize.reactionsOverlayOffset,
   ).animate(_overlayAnimationController);
-
+  
   late Tween<Decoration> _decorationTween;
 
   int get _commonCount => _reactionService.commonCount(widget.reactions);
@@ -61,33 +60,59 @@ class _ArticleReactionsButtonWidgetState
   Widget build(BuildContext context) {
     _initAnimations();
 
-    return GestureDetector(child: Stack(
-      clipBehavior: Clip.none,
-      children: [
-        GestureDetector(
-          onTapDown: _onTapDown,
-          onTapUp: _onTapUp,
-          onTapCancel: _onTapCancel,
-          child: Container(
-            decoration: _decorationAnimation.value,
-            padding: AppSize.articleReactionsPadding,
-            child: (_commonCount == 0) 
-              ? const AddReactionWidget() 
-              : ReactionListWidget(reactions: widget.reactions),
-          ),
+    return OverExpander<void>(
+      isClickable: false,
+      expand: _isReactionsOverlayShown,
+      addInsetsPaddings: false,
+      alignment: Alignment.bottomCenter,
+      decoration: const BoxDecoration(),
+      onSelect: _onOverlayHide,
+      backgroundSettings: const BackgroundSettings(
+        color: Colors.transparent,
+        dismissOnClick: true,
+      ),
+      animation: OverFadeAnimation(
+        curve: Curves.ease,
+        reverseCurve: Curves.ease,
+        durationMilliseconds: _duration.inMilliseconds,
+        reverseDurationMilliseconds: _duration.inMilliseconds,
+        child: OverScaleAnimation(
+          curve: Curves.ease,
+          reverseCurve: Curves.ease,
+          durationMilliseconds: _duration.inMilliseconds,
+          reverseDurationMilliseconds: _duration.inMilliseconds,
         ),
-        if (_isReactionsOverlayShown) Positioned(
-          bottom: _positionAnimation.value,
-          right: 0,
-          child: Opacity(
-            opacity: _opacityAnimation.value,
-            child: ReactionsOverlayWidget(
-              onClick: _onReactionsOverlayClick,
+      ),
+      expandChild: LimitedBox(
+        maxHeight: 0,
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            AnimatedBuilder(
+              animation: _overlayAnimation, 
+              builder: (context, child) => Positioned(
+                bottom: _overlayAnimation.value,
+                right: 0,
+                child: child!,
+              ),
+              child: const ReactionsOverlayWidget(),
             ),
-          ),
+          ],
         ),
-      ],
-    ));
+      ),
+      child: GestureDetector(
+        onTapDown: _onTapDown,
+        onTapUp: _onTapUp,
+        onTapCancel: _onTapCancel,
+        child: Container(
+          decoration: _decorationAnimation.value,
+          padding: AppSize.articleReactionsPadding,
+          child: (_commonCount == 0) 
+            ? const AddReactionWidget() 
+            : ReactionListWidget(reactions: widget.reactions),
+        ),
+      ),
+    );
   }
 
   @override
@@ -154,18 +179,14 @@ class _ArticleReactionsButtonWidgetState
 
     setState(() {
       _isReactionsOverlayShown = true;
-      _overlayAnimationController.forward();
     });
+
+    _overlayAnimationController.forward();
   }
 
   void _onTapCancel() => _decorationAnimationController.reverse();
 
-  Future<void> _onReactionsOverlayClick() async {
-    print('+++');
-    await _overlayAnimationController.reverse();
-
-    setState(() {
-      _isReactionsOverlayShown = false;
-    });
-  }
+  void _onOverlayHide(void _) => setState(() {
+    _isReactionsOverlayShown = false;
+  });
 }
